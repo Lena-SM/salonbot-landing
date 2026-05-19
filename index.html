@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SalonBot — Telegram bot do zapisów dla salonów piękności</title>
+  <meta name="description" content="Automatyczne zapisy przez Telegram dla salonów piękności. Przypomnienia, statystyki, Google Calendar. Gotowy w 1-2 dni." />
+  <style>
+    :root {
+      --rose: #c0506a;
+      --rose-light: #f8e8ec;
+      --rose-dark: #9a3d54;
+      --gold: #b8860b;
+      --text: #2c2c2c;
+      --text-muted: #6b6b6b;
+      --bg: #fdfcfb;
+      --white: #ffffff;
+      --border: #ecdcdf;
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(192, 80, 106, 0.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-bar {
+      background: var(--rose);
+      padding: 6px 24px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: white;
+      padding: 3px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+    .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,0.25); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(253,252,251,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; }
+    .logo span { color: var(--text); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 15px; }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta {
+      background: var(--rose);
+      color: white;
+      padding: 8px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+
+    /* ─── HERO ─── */
+    .hero-wrap {
+      background: linear-gradient(135deg, #fff5f7 0%, #fdf0f3 50%, #faf8f4 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+    }
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 40px 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--rose-light);
+      color: var(--rose-dark);
+      border: 1px solid #e8c0cb;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.3px;
+    }
+    .hero h1 {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 em { color: var(--rose); font-style: normal; }
+    .hero p { font-size: 18px; color: var(--text-muted); margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--rose);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(192,80,106,0.3);
+    }
+    .btn-primary:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,80,106,0.4); }
+    .btn-secondary {
+      background: white;
+      color: var(--rose);
+      padding: 14px 30px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      border: 2px solid var(--rose);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: var(--rose-light); transform: translateY(-2px); }
+    .hero-visual {
+      background: white;
+      border-radius: 24px;
+      box-shadow: var(--shadow), 0 0 0 1px var(--border);
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      max-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual-placeholder {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+    .hero-visual-placeholder .phone-icon { font-size: 64px; margin-bottom: 16px; }
+    .hero-visual-placeholder p { font-size: 14px; line-height: 1.5; }
+    /* When GIF is added, replace placeholder with: <img src="demo.gif" style="width:100%;height:100%;object-fit:cover"> */
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--rose);
+      padding: 0;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+    .stat-item {}
+    .stat-num { font-size: 32px; font-weight: 800; color: white; }
+    .stat-label { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+    /* ─── FEATURES ─── */
+    .features h2 { font-size: 34px; font-weight: 800; text-align: center; margin-bottom: 12px; }
+    .features .subtitle { text-align: center; color: var(--text-muted); font-size: 17px; margin-bottom: 52px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .feature-icon { font-size: 36px; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { color: var(--text-muted); font-size: 15px; }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-wrap { background: var(--rose-light); padding: 0; }
+    .how { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+    .how h2 { font-size: 34px; font-weight: 800; text-align: center; margin-bottom: 12px; }
+    .how .subtitle { text-align: center; color: var(--text-muted); font-size: 17px; margin-bottom: 52px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .step {
+      text-align: center;
+      background: white;
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      border: 1px solid var(--border);
+    }
+    .step-num {
+      width: 50px; height: 50px;
+      background: var(--rose);
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 800;
+      margin: 0 auto 20px;
+    }
+    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .step p { color: var(--text-muted); font-size: 15px; }
+
+    /* ─── PRICE ─── */
+    .price {
+      text-align: center;
+    }
+    .price h2 { font-size: 34px; font-weight: 800; margin-bottom: 12px; }
+    .price .subtitle { color: var(--text-muted); font-size: 17px; margin-bottom: 48px; }
+    .price-card {
+      background: white;
+      border: 2px solid var(--rose);
+      border-radius: 20px;
+      padding: 48px 60px;
+      max-width: 560px;
+      margin: 0 auto;
+      box-shadow: var(--shadow);
+    }
+    .price-card .price-label { font-size: 20px; color: var(--text-muted); margin-bottom: 8px; }
+    .price-card .price-value { font-size: 52px; font-weight: 900; color: var(--rose); margin-bottom: 6px; }
+    .price-card .price-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; }
+    .price-features { text-align: left; list-style: none; margin-bottom: 36px; }
+    .price-features li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+    .price-features li::before { content: "✓ "; color: var(--rose); font-weight: 700; }
+
+    /* ─── CONTACT ─── */
+    .contact-wrap { background: var(--rose); padding: 0; }
+    .contact { max-width: 800px; margin: 0 auto; padding: 80px 40px; text-align: center; }
+    .contact h2 { font-size: 38px; font-weight: 800; color: white; margin-bottom: 16px; }
+    .contact p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 44px; }
+    .contact-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: white;
+      color: var(--rose);
+      padding: 16px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 17px;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
+    .btn-outline-white {
+      background: transparent;
+      color: white;
+      padding: 16px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 17px;
+      border: 2px solid rgba(255,255,255,0.7);
+      transition: all 0.2s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #1e1e1e;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 28px 40px;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: white; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 50px 20px; gap: 40px; }
+      .hero h1 { font-size: 32px; }
+      .hero-visual { max-height: 300px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); padding: 28px 20px; }
+      section { padding: 56px 20px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .how { padding: 56px 20px; }
+      .contact { padding: 56px 20px; }
+      .price-card { padding: 36px 24px; }
+      .price-card .price-value { font-size: 40px; }
+    }
+
+    /* ─── LANGUAGE CONTENT ─── */
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+    .hero h1 [data-lang], .hero p [data-lang] { display: none; }
+    .hero h1 [data-lang].visible, .hero p [data-lang].visible { display: inline; }
+  </style>
+</head>
+<body>
+
+  <!-- LANGUAGE BAR -->
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('pl')" id="btn-pl">🇵🇱 PL</button>
+    <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">🇷🇺 RU</button>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Salon<span>Bot</span></div>
+    <ul class="nav-links">
+      <li><a href="#features" data-lang="pl" class="visible">Funkcje</a><a href="#features" data-lang="ru">Функции</a></li>
+      <li><a href="#how" data-lang="pl" class="visible">Jak działa</a><a href="#how" data-lang="ru">Как работает</a></li>
+      <li><a href="#price" data-lang="pl" class="visible">Cennik</a><a href="#price" data-lang="ru">Цены</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">
+      <span data-lang="pl" class="visible">Napisz do nas</span>
+      <span data-lang="ru">Написать нам</span>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span data-lang="pl" class="visible">🤖 Bot na Telegram dla salonu piękności</span>
+          <span data-lang="ru">🤖 Telegram-бот для салона красоты</span>
+        </div>
+        <h1>
+          <span data-lang="pl" class="visible">Klienci zapisują się sami —<br /><em>24 godziny na dobę</em></span>
+          <span data-lang="ru">Клиенты записываются сами —<br /><em>24 часа в сутки</em></span>
+        </h1>
+        <p>
+          <span data-lang="pl" class="visible">Telegram bot, który sam przyjmuje zapisy, wysyła przypomnienia i synchronizuje się z Google Calendar. Bez telefonu, bez WhatsApp, bez chaosu.</span>
+          <span data-lang="ru">Telegram-бот, который сам принимает записи, отправляет напоминания и синхронизируется с Google Calendar. Без звонков, без хаоса.</span>
+        </p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn-primary">
+            <span data-lang="pl" class="visible">Chcę takiego bota →</span>
+            <span data-lang="ru">Хочу такого бота →</span>
+          </a>
+          <a href="#how" class="btn-secondary">
+            <span data-lang="pl" class="visible">Jak to działa?</span>
+            <span data-lang="ru">Как это работает?</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <!-- Replace this div content with your GIF demo when ready:
+             <img src="demo.gif" alt="Demo bota" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="hero-visual-placeholder">
+          <div class="phone-icon">📱</div>
+          <p data-lang="pl" class="visible">Tu pojawi się<br />nagranie demo bota</p>
+          <p data-lang="ru">Здесь появится<br />видеодемонстрация бота</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">
+          <span data-lang="pl" class="visible">Zapisy bez przerwy</span>
+          <span data-lang="ru">Запись без перерывов</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">−80%</div>
+        <div class="stat-label">
+          <span data-lang="pl" class="visible">Mniej nieobecności</span>
+          <span data-lang="ru">Меньше неявок</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1–2 dni</div>
+        <div class="stat-label">
+          <span data-lang="pl" class="visible">Czas wdrożenia</span>
+          <span data-lang="ru">Время запуска</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3 języki</div>
+        <div class="stat-label">
+          <span data-lang="pl" class="visible">PL / UA / RU</span>
+          <span data-lang="ru">PL / UA / RU</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <h2>
+      <span data-lang="pl" class="visible">Co umie SalonBot?</span>
+      <span data-lang="ru">Что умеет SalonBot?</span>
+    </h2>
+    <p class="subtitle">
+      <span data-lang="pl" class="visible">Wszystko, czego potrzebujesz do zarządzania zapisami w salonie</span>
+      <span data-lang="ru">Всё, что нужно для управления записями в салоне</span>
+    </p>
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3><span data-lang="pl" class="visible">Automatyczne zapisy</span><span data-lang="ru">Автоматические записи</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Klient sam wybiera mistrza, usługę i wolny termin. Zero telefonów, zero WhatsApp o 22:00.</span>
+          <span data-lang="ru">Клиент сам выбирает мастера, услугу и свободное время. Никаких звонков и сообщений в 22:00.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⏰</div>
+        <h3><span data-lang="pl" class="visible">Automatyczne przypomnienia</span><span data-lang="ru">Автоматические напоминания</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Bot sam wysyła przypomnienie na 24h i 2h przed wizytą. Klienci nie zapominają, Ty nie tracisz czasu.</span>
+          <span data-lang="ru">Бот сам отправляет напоминание за 24ч и 2ч до визита. Клиенты не забывают, ты не теряешь деньги.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📆</div>
+        <h3><span data-lang="pl" class="visible">Google Calendar</span><span data-lang="ru">Google Calendar</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Każda wizyta pojawia się w kalendarzu mistrza automatycznie. Anulowanie też się synchronizuje.</span>
+          <span data-lang="ru">Каждый визит автоматически появляется в календаре мастера. Отмены тоже синхронизируются.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3><span data-lang="pl" class="visible">Recenzje klientów</span><span data-lang="ru">Отзывы клиентов</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Po wizycie bot automatycznie prosi o ocenę 1–5 ⭐. Mistrz widzi swoje oceny w aplikacji.</span>
+          <span data-lang="ru">После визита бот автоматически просит оценку 1–5 ⭐. Мастер видит свои отзывы прямо в боте.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3><span data-lang="pl" class="visible">Statystyki mistrza</span><span data-lang="ru">Статистика мастера</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Wizyty, przychody, nowi vs. stali klienci — za tydzień, miesiąc. Co niedziela digest na cały tydzień.</span>
+          <span data-lang="ru">Визиты, выручка, новые vs. постоянные клиенты — за неделю, месяц. Каждое воскресенье — план на неделю.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3><span data-lang="pl" class="visible">Grupowe wizyty</span><span data-lang="ru">Групповые визиты</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Klient może zarezerwować wizytę u kilku mistrzów naraz — np. farbowanie + manicure. Bot sam dobiera terminy.</span>
+          <span data-lang="ru">Клиент может записаться к нескольким мастерам сразу — например, окрашивание + маникюр. Бот сам подбирает время.</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-wrap">
+    <div class="how" id="how">
+      <h2>
+        <span data-lang="pl" class="visible">Jak to działa dla klienta?</span>
+        <span data-lang="ru">Как это работает для клиента?</span>
+      </h2>
+      <p class="subtitle">
+        <span data-lang="pl" class="visible">3 kroki — i wizyta jest umówiona</span>
+        <span data-lang="ru">3 шага — и запись готова</span>
+      </p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3><span data-lang="pl" class="visible">Otwiera bota</span><span data-lang="ru">Открывает бота</span></h3>
+          <p>
+            <span data-lang="pl" class="visible">Klient klika link do Twojego bota na Telegramie. Żadnych aplikacji do pobrania.</span>
+            <span data-lang="ru">Клиент переходит по ссылке на твоего бота в Telegram. Никаких дополнительных приложений.</span>
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3><span data-lang="pl" class="visible">Wybiera termin</span><span data-lang="ru">Выбирает время</span></h3>
+          <p>
+            <span data-lang="pl" class="visible">Wybiera mistrza, usługę i wolny termin. Czas rezerwacji: 2 minuty.</span>
+            <span data-lang="ru">Выбирает мастера, услугу и свободное время. Время на запись: 2 минуты.</span>
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3><span data-lang="pl" class="visible">Czeka na przypomnienie</span><span data-lang="ru">Ждёт напоминания</span></h3>
+          <p>
+            <span data-lang="pl" class="visible">Otrzymuje potwierdzenie i automatyczne przypomnienia. Mistrz też od razu dostaje powiadomienie.</span>
+            <span data-lang="ru">Получает подтверждение и автоматические напоминания. Мастер тоже сразу получает уведомление.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING -->
+  <section class="price" id="price">
+    <h2>
+      <span data-lang="pl" class="visible">Cennik</span>
+      <span data-lang="ru">Стоимость</span>
+    </h2>
+    <p class="subtitle">
+      <span data-lang="pl" class="visible">Indywidualna wycena dla każdego salonu</span>
+      <span data-lang="ru">Индивидуальная цена для каждого салона</span>
+    </p>
+    <div class="price-card">
+      <p class="price-label">
+        <span data-lang="pl" class="visible">Abonament miesięczny</span>
+        <span data-lang="ru">Ежемесячная подписка</span>
+      </p>
+      <p class="price-value">
+        <span data-lang="pl" class="visible">Na zapytanie</span>
+        <span data-lang="ru">По запросу</span>
+      </p>
+      <p class="price-sub">
+        <span data-lang="pl" class="visible">Tarify są w opracowaniu. Napisz — dobierzemy plan dla Twojego salonu.</span>
+        <span data-lang="ru">Тарифы в разработке. Напиши — подберём план для твоего салона.</span>
+      </p>
+      <ul class="price-features">
+        <li><span data-lang="pl" class="visible">Bot gotowy w 1–2 dni robocze</span><span data-lang="ru">Бот готов за 1–2 рабочих дня</span></li>
+        <li><span data-lang="pl" class="visible">Konfiguracja mistrzów, usług i godzin pracy</span><span data-lang="ru">Настройка мастеров, услуг и расписания</span></li>
+        <li><span data-lang="pl" class="visible">Integracja z Google Calendar</span><span data-lang="ru">Интеграция с Google Calendar</span></li>
+        <li><span data-lang="pl" class="visible">Wsparcie techniczne w Telegram</span><span data-lang="ru">Техническая поддержка в Telegram</span></li>
+        <li><span data-lang="pl" class="visible">Bot w 3 językach: PL, UA, RU</span><span data-lang="ru">Бот на 3 языках: PL, UA, RU</span></li>
+        <li><span data-lang="pl" class="visible">Miesiąc testowy dla pierwszych klientów</span><span data-lang="ru">Тестовый месяц для первых клиентов</span></li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:block;text-align:center;">
+        <span data-lang="pl" class="visible">Zapytaj o cenę →</span>
+        <span data-lang="ru">Узнать стоимость →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-wrap">
+    <div class="contact" id="contact">
+      <h2>
+        <span data-lang="pl" class="visible">Zainteresowana? Napisz!</span>
+        <span data-lang="ru">Заинтересованы? Напишите!</span>
+      </h2>
+      <p>
+        <span data-lang="pl" class="visible">Odpiszę w ciągu kilku godzin. Opowiem jak działa bot, ustalimy szczegóły i uruchomimy Twój salon.</span>
+        <span data-lang="ru">Отвечу в течение нескольких часов. Расскажу как работает бот, обсудим детали и запустим твой салон.</span>
+      </p>
+      <div class="contact-btns">
+        <a href="https://t.me/ElenaSheffchenko" class="btn-white" target="_blank">
+          ✈️ <span data-lang="pl" class="visible">Napisz na Telegram</span><span data-lang="ru">Написать в Telegram</span>
+        </a>
+        <a href="mailto:salonbotpl@gmail.com" class="btn-outline-white">
+          📧 <span data-lang="pl" class="visible">Wyślij e-mail</span><span data-lang="ru">Написать на email</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      © 2026 SalonBot &nbsp;·&nbsp;
+      <span data-lang="pl" class="visible">Telegram bot do zapisów dla salonów piękności w Polsce</span>
+      <span data-lang="ru">Telegram-бот для записи в салоны красоты в Польше</span>
+      &nbsp;·&nbsp;
+      <a href="https://t.me/ElenaSheffchenko">Telegram</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:salonbotpl@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script>
+    // Language switcher
+    function setLang(lang) {
+      // Update buttons
+      document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
+      document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+
+      // Update all lang elements
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+
+      // Update html lang attribute
+      document.documentElement.lang = lang;
+
+      // Store preference
+      localStorage.setItem('lang', lang);
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Init
+    const savedLang = localStorage.getItem('lang') || 'pl';
+    setLang(savedLang);
+  </
