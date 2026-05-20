@@ -277,6 +277,65 @@
     }
     .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
 
+
+    /* ─── MODALS ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 999;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+    .modal-overlay.open { display: block; }
+    .modal-box {
+      background: #fff;
+      max-width: 720px;
+      margin: 0 auto;
+      border-radius: var(--radius);
+      padding: 40px 48px 48px;
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--rose); }
+    .modal-box h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--rose);
+    }
+    .modal-body h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 20px 0 6px;
+      color: var(--text);
+    }
+    .modal-body p, .modal-body li {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+    .modal-body ul { padding-left: 20px; margin-bottom: 6px; }
+    .modal-updated {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 28px;
+    }
+    @media (max-width: 768px) {
+      .modal-box { padding: 28px 20px 32px; }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: #1e1e1e;
@@ -587,6 +646,11 @@
       &nbsp;·&nbsp;
       <a href="mailto:salonbotpl@gmail.com">Email</a>
     </p>
+    <p style="margin-top:10px;">
+      <a href="#" onclick="openModal('modal-privacy');return false;">Polityka prywatności</a>
+      &nbsp;·&nbsp;
+      <a href="#" onclick="openModal('modal-terms');return false;">Regulamin</a>
+    </p>
   </footer>
 
   <script>
@@ -602,7 +666,7 @@
       });
 
       // Update html lang attribute
-      document.documentElement.lang = lang;
+        document.documentElement.lang = lang;
 
       // Store preference
       localStorage.setItem('lang', lang);
@@ -622,6 +686,96 @@
     // Init
     const savedLang = localStorage.getItem('lang') || 'pl';
     setLang(savedLang);
+
+    // Modal helpers
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(m => {
+          m.classList.remove('open');
+        });
+        document.body.style.overflow = '';
+      }
+    });
   </script>
+
+  <!-- MODAL: Polityka prywatności -->
+  <div class="modal-overlay" id="modal-privacy" onclick="closeModal('modal-privacy')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('modal-privacy')">&#10005;</button>
+      <h2>Polityka prywatno&#347;ci</h2>
+      <div class="modal-body">
+        <h3>1. Administrator danych</h3>
+        <p>Administratorem danych osobowych jest <strong>Olena Shevchenko</strong>, e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+
+        <h3>2. Jakie dane zbieramy</h3>
+        <p>Strona salonbot.pl <strong>nie zbiera automatycznie &#380;adnych danych osobowych</strong>.</p>
+        <p>W pami&#281;ci lokalnej przegl&#261;darki (localStorage) przechowywana jest wy&#322;&#261;cznie preferencja j&#281;zykowa (PL/RU) &#8212; nie jest to dana osobowa i nie jest wysy&#322;ana na serwer.</p>
+        <p>Je&#347;li skontaktujesz si&#281; z nami przez e-mail lub Telegram, przetwarzamy Tw&#243;j adres e-mail lub identyfikator Telegram wy&#322;&#261;cznie w celu udzielenia odpowiedzi.</p>
+
+        <h3>3. Podstawa prawna</h3>
+        <p>Art. 6 ust. 1 lit. f RODO &#8212; prawnie uzasadniony interes administratora (obs&#322;uga korespondencji).</p>
+
+        <h3>4. Okres przechowywania</h3>
+        <p>Dane z korespondencji przechowywane s&#261; przez czas niezb&#281;dny do obs&#322;ugi zapytania, nie d&#322;u&#380;ej ni&#380; 12 miesi&#281;cy.</p>
+
+        <h3>5. Twoje prawa</h3>
+        <p>Masz prawo do: dost&#281;pu do danych, sprostowania, usuni&#281;cia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu.</p>
+        <p>Aby skorzysta&#263; z praw, napisz na: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+        <p>Masz prawo wniesienia skargi do Prezesa Urz&#281;du Ochrony Danych Osobowych (<a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a>).</p>
+
+        <h3>6. Przekazywanie danych</h3>
+        <p>Dane nie s&#261; sprzedawane ani udost&#281;pniane osobom trzecim. Strona jest hostowana przez Vercel Inc. &#8212; logi dost&#281;pu mog&#261; by&#263; przetwarzane przez Vercel zgodnie z ich polityk&#261; prywatno&#347;ci.</p>
+
+        <h3>7. Pliki cookies</h3>
+        <p>Strona nie u&#380;ywa plik&#243;w cookies. Jedyne dane zapisywane lokalnie to preferencja j&#281;zykowa w localStorage przegl&#261;darki.</p>
+
+        <p class="modal-updated">Ostatnia aktualizacja: maj 2026</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Regulamin -->
+  <div class="modal-overlay" id="modal-terms" onclick="closeModal('modal-terms')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('modal-terms')">&#10005;</button>
+      <h2>Regulamin</h2>
+      <div class="modal-body">
+        <h3>1. Postanowienia og&#243;lne</h3>
+        <p>Niniejszy Regulamin okre&#347;la zasady korzystania z serwisu informacyjnego dost&#281;pnego pod adresem <strong>salonbot.pl</strong>, prowadzonego przez <strong>Olena Shevchenko</strong> (dalej: &#8222;Us&#322;ugodawca&#8221;), e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+
+        <h3>2. Zakres us&#322;ug</h3>
+        <p>Serwis salonbot.pl jest stron&#261; informacyjn&#261; prezentuj&#261;c&#261; ofert&#281; bota Telegram do zarz&#261;dzania zapisami w salonach pi&#281;kno&#347;ci. Serwis nie &#347;wiadczy us&#322;ug bezpo&#347;rednio &#8212; kontakt z Us&#322;ugodawc&#261; odbywa si&#281; przez Telegram lub e-mail.</p>
+
+        <h3>3. Warunki korzystania</h3>
+        <p>Korzystanie z serwisu jest bezp&#322;atne i nie wymaga rejestracji. U&#380;ytkownik zobowi&#261;zuje si&#281; do korzystania z serwisu zgodnie z obowi&#261;zuj&#261;cym prawem i dobrymi obyczajami.</p>
+
+        <h3>4. Odpowiedzialno&#347;&#263;</h3>
+        <p>Us&#322;ugodawca dok&#322;ada stara&#324;, aby informacje zamieszczone w serwisie by&#322;y aktualne i rzetelne, jednak nie ponosi odpowiedzialno&#347;ci za przerwy w dzia&#322;aniu serwisu wynikaj&#261;ce z przyczyn technicznych niezale&#380;nych od Us&#322;ugodawcy.</p>
+
+        <h3>5. W&#322;asno&#347;&#263; intelektualna</h3>
+        <p>Wszelkie tre&#347;ci zamieszczone w serwisie (teksty, grafiki, logotypy) stanowi&#261; w&#322;asno&#347;&#263; Us&#322;ugodawcy i s&#261; chronione prawem autorskim. Kopiowanie bez zgody jest zabronione.</p>
+
+        <h3>6. Zmiany Regulaminu</h3>
+        <p>Us&#322;ugodawca zastrzega sobie prawo do zmiany Regulaminu. Zmiany wchodz&#261; w &#380;ycie z chwil&#261; opublikowania zaktualizowanej wersji na stronie.</p>
+
+        <h3>7. Kontakt</h3>
+        <p><a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a></p>
+
+        <h3>8. Prawo w&#322;a&#347;ciwe</h3>
+        <p>Regulamin podlega prawu polskiemu.</p>
+
+        <p class="modal-updated">Ostatnia aktualizacja: maj 2026</p>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
