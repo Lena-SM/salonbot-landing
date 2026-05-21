@@ -278,6 +278,60 @@
     .btn-outline-white:hover { background: rgba(255,255,255,0.15); }
 
 
+    /* ─── CONTACT FORM ─── */
+    .contact-form { text-align: left; }
+    .form-row { margin-bottom: 18px; }
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
+    }
+    .form-label span[data-lang] { display: none; }
+    .form-label span[data-lang].visible { display: inline; }
+    .contact-form input {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .contact-form input:focus {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.2);
+    }
+    .form-submit {
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+      font-family: inherit;
+      display: block;
+    }
+    .form-submit span[data-lang] { display: none; }
+    .form-submit span[data-lang].visible { display: inline; }
+    .form-submit:disabled { opacity: 0.65; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+    .form-result {
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .form-result.success { background: rgba(255,255,255,0.2); color: white; }
+    .form-result.error   { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); font-weight: 400; }
+    .form-result [data-lang] { display: none; }
+    .form-result [data-lang].visible { display: block; }
+
     /* ─── MODALS ─── */
     .modal-overlay {
       display: none;
@@ -624,15 +678,64 @@
         <span data-lang="pl" class="visible">Odpiszę w ciągu kilku godzin. Opowiem jak działa bot, ustalimy szczegóły i uruchomimy Twój salon.</span>
         <span data-lang="ru">Отвечу в течение нескольких часов. Расскажу как работает бот, обсудим детали и запустим твой салон.</span>
       </p>
-      <div class="contact-btns">
-        <a href="https://t.me/ElenaSheffchenko" class="btn-white" target="_blank">
-          ✈️ <span data-lang="pl" class="visible">Napisz na Telegram</span><span data-lang="ru">Написать в Telegram</span>
-        </a>
-        <a href="mailto:salonbotpl@gmail.com" class="btn-outline-white">
-          📧 <span data-lang="pl" class="visible">salonbotpl@gmail.com</span><span data-lang="ru">salonbotpl@gmail.com</span>
-        </a>
-      </div>
+            <form id="contact-form" class="contact-form" onsubmit="submitForm(event)" novalidate>
+        <!-- Honeypot -->
+        <div style="display:none"><input type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <div class="form-row">
+          <label class="form-label" for="f-name">
+            <span data-lang="pl">Twoje imię *</span>
+            <span data-lang="ru">Ваше имя *</span>
+          </label>
+          <input type="text" id="f-name" name="name" required
+            data-ph-pl="np. Agnieszka"
+            data-ph-ru="например, Елена">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-email">
+            <span data-lang="pl">E-mail *</span>
+            <span data-lang="ru">E-mail *</span>
+          </label>
+          <input type="email" id="f-email" name="email" required
+            data-ph-pl="twój@email.pl"
+            data-ph-ru="ваш@email.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-telegram">
+            <span data-lang="pl">Telegram (opcjonalnie)</span>
+            <span data-lang="ru">Telegram (необязательно)</span>
+          </label>
+          <input type="text" id="f-telegram" name="telegram"
+            data-ph-pl="@NazwaUżytkownika lub numer"
+            data-ph-ru="@НикнеймИли номер">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="f-salon">
+            <span data-lang="pl">Nazwa salonu *</span>
+            <span data-lang="ru">Название салона *</span>
+          </label>
+          <input type="text" id="f-salon" name="salon" required
+            data-ph-pl="np. Studio Urody Anna"
+            data-ph-ru="например, Студия красоты Анна">
+        </div>
+        <button type="submit" class="btn-white form-submit" id="form-submit-btn">
+          <span data-lang="pl">Wyślij zgłoszenie →</span>
+          <span data-lang="ru">Отправить заявку →</span>
+        </button>
+        <div id="form-success" class="form-result success" style="display:none">
+          <span data-lang="pl">✅ Dziękujemy! Odezwę się w ciągu kilku godzin.</span>
+          <span data-lang="ru">✅ Спасибо! Свяжусь с вами в течение нескольких часов.</span>
+        </div>
+        <div id="form-error" class="form-result error" style="display:none">
+          <span data-lang="pl">❌ Coś poszło nie tak. Napisz bezpośrednio:<br>
+            <a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> &nbsp;·&nbsp;
+            <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a></span>
+          <span data-lang="ru">❌ Что-то пошло не так. Напиши напрямую:<br>
+            <a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> &nbsp;·&nbsp;
+            <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a></span>
+        </div>
+      </form>
     </div>
+  </div>
   </div>
 
   <!-- FOOTER -->
@@ -669,6 +772,11 @@
         document.documentElement.lang = lang;
 
       // Store preference
+      // Update input placeholders
+      document.querySelectorAll('[data-ph-pl]').forEach(inp => {
+        inp.placeholder = lang === 'pl' ? inp.dataset.phPl : inp.dataset.phRu;
+      });
+
       localStorage.setItem('lang', lang);
     }
 
@@ -704,6 +812,51 @@
         document.body.style.overflow = '';
       }
     });
+
+    // Contact form submission
+    async function submitForm(e) {
+      e.preventDefault();
+      const btn  = document.getElementById('form-submit-btn');
+      const honey = document.querySelector('input[name="_honey"]');
+      if (honey && honey.value) return; // silently ignore bots
+
+      btn.disabled = true;
+
+      const data = {
+        name:     document.getElementById('f-name').value.trim(),
+        email:    document.getElementById('f-email').value.trim(),
+        telegram: document.getElementById('f-telegram').value.trim(),
+        salon:    document.getElementById('f-salon').value.trim(),
+      };
+
+      const lang = localStorage.getItem('lang') || 'pl';
+
+      try {
+        const resp = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (resp.ok) {
+          document.getElementById('contact-form').style.display = 'none';
+          const el = document.getElementById('form-success');
+          el.style.display = 'block';
+          el.querySelectorAll('[data-lang]').forEach(s => {
+            s.classList.toggle('visible', s.dataset.lang === lang);
+          });
+        } else {
+          throw new Error('status ' + resp.status);
+        }
+      } catch (err) {
+        console.error('Form error:', err);
+        btn.disabled = false;
+        const el = document.getElementById('form-error');
+        el.style.display = 'block';
+        el.querySelectorAll('[data-lang]').forEach(s => {
+          s.classList.toggle('visible', s.dataset.lang === lang);
+        });
+      }
+    }
   </script>
 
   <!-- MODAL: Polityka prywatności -->
@@ -716,9 +869,9 @@
         <p>Administratorem danych osobowych jest <strong>Olena Shevchenko</strong>, e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
 
         <h3>2. Jakie dane zbieramy</h3>
-        <p>Strona salonbot.pl <strong>nie zbiera automatycznie &#380;adnych danych osobowych</strong>.</p>
         <p>W pami&#281;ci lokalnej przegl&#261;darki (localStorage) przechowywana jest wy&#322;&#261;cznie preferencja j&#281;zykowa (PL/RU) &#8212; nie jest to dana osobowa i nie jest wysy&#322;ana na serwer.</p>
-        <p>Je&#347;li skontaktujesz si&#281; z nami przez e-mail lub Telegram, przetwarzamy Tw&#243;j adres e-mail lub identyfikator Telegram wy&#322;&#261;cznie w celu udzielenia odpowiedzi.</p>
+        <p><strong>Formularz kontaktowy:</strong> Je&#347;li wype&#322;nisz formularz na stronie, zbieramy: imi&#281;, adres e-mail, opcjonalny identyfikator Telegram oraz nazw&#281; salonu &#8212; wy&#322;&#261;cznie w celu nawi&#261;zania kontaktu i przedstawienia oferty. Dane s&#261; przekazywane do us&#322;ugi Formspree (podmiot przetwarzaj&#261;cy dane w imieniu Administratora).</p>
+        <p>Je&#347;li skontaktujesz si&#281; z nami bezpo&#347;rednio przez e-mail lub Telegram, przetwarzamy Tw&#243;j adres e-mail lub identyfikator Telegram wy&#322;&#261;cznie w celu udzielenia odpowiedzi.</p>
 
         <h3>3. Podstawa prawna</h3>
         <p>Art. 6 ust. 1 lit. f RODO &#8212; prawnie uzasadniony interes administratora (obs&#322;uga korespondencji).</p>
