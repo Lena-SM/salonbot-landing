@@ -423,6 +423,130 @@
     [data-lang].visible { display: block; }
     .hero h1 [data-lang], .hero p [data-lang] { display: none; }
     .hero h1 [data-lang].visible, .hero p [data-lang].visible { display: inline; }
+
+    /* ─── SIMULATOR ─── */
+    .sim-wrap { background: var(--rose-light); padding: 60px 40px; }
+    .sim-section { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .sim-section h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); color: var(--rose); margin-bottom: 12px; }
+    .sim-section .subtitle { color: var(--text-muted); margin-bottom: 36px; font-size: 15px; }
+    .phone-outer { display: flex; justify-content: center; }
+    .phone-mockup {
+      width: 300px;
+      background: #fff;
+      border-radius: 36px;
+      box-shadow: 0 20px 60px rgba(192,80,106,0.22), 0 0 0 7px #1c1c1e, 0 0 0 9px #3a3a3c;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    .phone-tg-header {
+      background: #2ca5e0;
+      color: white;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .phone-tg-avatar {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.22);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .phone-tg-info { line-height: 1.2; }
+    .phone-tg-name { font-weight: 700; font-size: 14px; }
+    .phone-tg-status { font-size: 11px; opacity: 0.85; }
+    .phone-msgs {
+      height: 310px;
+      overflow-y: auto;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      background: #eae6df;
+      scroll-behavior: smooth;
+    }
+    .msg-bot, .msg-user {
+      max-width: 83%;
+      padding: 8px 11px;
+      border-radius: 14px;
+      line-height: 1.45;
+      font-size: 13px;
+    }
+    .msg-bot {
+      background: #fff;
+      align-self: flex-start;
+      border-bottom-left-radius: 3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .msg-user {
+      background: #d9fdd3;
+      color: #1a1a1a;
+      align-self: flex-end;
+      border-bottom-right-radius: 3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .msg-typing {
+      background: #fff;
+      align-self: flex-start;
+      border-radius: 14px;
+      border-bottom-left-radius: 3px;
+      padding: 10px 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex; gap: 5px; align-items: center;
+    }
+    .msg-typing span {
+      width: 7px; height: 7px;
+      background: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      animation: simDot 1.3s infinite ease-in-out;
+    }
+    .msg-typing span:nth-child(2) { animation-delay: 0.22s; }
+    .msg-typing span:nth-child(3) { animation-delay: 0.44s; }
+    @keyframes simDot {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+      30% { transform: translateY(-5px); opacity: 1; }
+    }
+    @keyframes simFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .msg-bot, .msg-user { animation: simFadeIn 0.25s ease; }
+    .phone-btns {
+      background: #fff;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-height: 68px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .phone-btn-row { display: flex; gap: 5px; }
+    .phone-btn {
+      flex: 1;
+      background: var(--rose-light);
+      color: var(--rose-dark);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 5px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      font-family: inherit;
+      line-height: 1.3;
+      text-align: center;
+      font-weight: 500;
+    }
+    .phone-btn:active { transform: scale(0.96); }
+    .phone-btn:hover { background: #f0d8de; }
+    .phone-btn.sim-primary { background: var(--rose); color: white; border-color: var(--rose-dark); }
+    .phone-btn.sim-primary:hover { background: var(--rose-dark); }
+    .phone-btn.sim-tg { background: #2ca5e0; color: white; border-color: #1a8bc4; font-size: 12.5px; padding: 9px 5px; }
+    .phone-btn.sim-tg:hover { background: #1a8bc4; }
+    .phone-btn.sim-ghost { background: transparent; color: var(--text-muted); border-color: var(--border); font-size: 11px; }
+    .phone-btn.sim-ghost:hover { background: var(--rose-light); color: var(--rose-dark); }
+    @media (max-width: 480px) {
+      .sim-wrap { padding: 50px 20px; }
+      .phone-mockup { width: 280px; }
+    }
   </style>
 </head>
 <body>
@@ -693,6 +817,37 @@
     </div>
   </div>
 
+  <!-- SIMULATOR -->
+  <div class="sim-wrap">
+    <section class="sim-section" id="simulator">
+      <h2>
+        <span data-lang="pl" class="visible">Wypróbuj — jak to wygląda?</span>
+        <span data-lang="ru">Попробуй — как это выглядит?</span>
+        <span data-lang="uk">Спробуй — як це виглядає?</span>
+        <span data-lang="en">Try it — see how it works</span>
+      </h2>
+      <p class="subtitle">
+        <span data-lang="pl" class="visible">Demo salonu „Beauty Salon Rzeszów” — bez Telegrama, prosto w przeglądarce</span>
+        <span data-lang="ru">Демо салона «Beauty Salon Rzeszów» — без Telegram, прямо в браузере</span>
+        <span data-lang="uk">Демо салону «Beauty Salon Rzeszów» — без Telegram, прямо в браузері</span>
+        <span data-lang="en">Demo of “Beauty Salon Rzeszów” — no Telegram needed, right in your browser</span>
+      </p>
+      <div class="phone-outer">
+        <div class="phone-mockup">
+          <div class="phone-tg-header">
+            <div class="phone-tg-avatar">💅</div>
+            <div class="phone-tg-info">
+              <div class="phone-tg-name">Beauty Salon Rzeszów</div>
+              <div class="phone-tg-status" id="sim-tg-status">bot</div>
+            </div>
+          </div>
+          <div class="phone-msgs" id="sim-msgs"></div>
+          <div class="phone-btns" id="sim-btns"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <!-- PRICING -->
   <section class="price" id="price">
     <h2>
@@ -888,6 +1043,7 @@
       });
 
       localStorage.setItem('lang', lang);
+      if (window.simUpdateLang) window.simUpdateLang(lang);
     }
 
     // Smooth scroll for nav links
@@ -900,6 +1056,324 @@
         }
       });
     });
+
+
+    // ─── SIMULATOR ───────────────────────────────────────────────────────────
+    (function() {
+      'use strict';
+
+      // ── Данные демо-салона ──────────────────────────────────────────────────
+      var MASTERS = {
+        pl: ['Karolina', 'Marta'],
+        ru: ['Каролина', 'Марта'],
+        uk: ['Кароліна', 'Марта'],
+        en: ['Karolina', 'Marta']
+      };
+
+      var SERVICES = [
+        { pl: 'Manicure — 80 zł',          ru: 'Маникюр — 80 zł',          uk: 'Манікюр — 80 zł',          en: 'Manicure — 80 zł' },
+        { pl: 'Pedicure — 90 zł',          ru: 'Педикюр — 90 zł',          uk: 'Педикюр — 90 zł',          en: 'Pedicure — 90 zł' },
+        { pl: 'Stylizacja brwi — 60 zł',   ru: 'Коррекция бровей — 60 zł',   uk: 'Корекція брів — 60 zł',   en: 'Eyebrow styling — 60 zł' },
+        { pl: 'Koloryzacja — 180 zł',      ru: 'Окрашивание — 180 zł',      uk: 'Фарбування — 180 zł',      en: 'Hair coloring — 180 zł' }
+      ];
+
+      var DATES = [
+        { k: 'today',    pl: '📅 Dziś',       ru: '📅 Сегодня',    uk: '📅 Сьогодні',   en: '📅 Today'      },
+        { k: 'tomorrow', pl: '📅 Jutro',           ru: '📅 Завтра',           uk: '📅 Завтра',               en: '📅 Tomorrow'   },
+        { k: 'after',    pl: '📅 Pojutrze',        ru: '📅 Послезавтра', uk: '📅 Післязавтра', en: '📅 Day after' }
+      ];
+
+      var TIMES = ['10:00', '12:00', '15:00', '17:00'];
+
+      // ── Переводы ────────────────────────────────────────────────────────────
+      var T = {
+        welcome: {
+          pl: '👋 Witaj w <b>Beauty Salon Rzeszów</b>!\n\nRezerwuj wizyty 24/7 przez Telegram.\nZacznijmy! ✨',
+          ru: '👋 Добро пожаловать в <b>Beauty Salon Rzeszów</b>!\n\nЗаписывайся 24/7 через Telegram.\nНачнём! ✨',
+          uk: '👋 Ласкаво просимо до <b>Beauty Salon Rzeszów</b>!\n\nЗаписуйся 24/7 через Telegram.\nПочнімо! ✨',
+          en: '👋 Welcome to <b>Beauty Salon Rzeszów</b>!\n\nBook appointments 24/7 via Telegram.\nLet\'s start! ✨'
+        },
+        choose_master: {
+          pl: '👩‍🎨 Wybierz mistrzynię:',
+          ru: '👩‍🎨 Выбери мастера:',
+          uk: '👩‍🎨 Обери майстра:',
+          en: '👩‍🎨 Choose a master:'
+        },
+        choose_service: {
+          pl: function(m) { return '✅ Mistrzyni: <b>' + m + '</b>\n\n💅 Wybierz usługę:'; },
+          ru: function(m) { return '✅ Мастер: <b>' + m + '</b>\n\n💅 Выбери услугу:'; },
+          uk: function(m) { return '✅ Майстер: <b>' + m + '</b>\n\n💅 Обери послугу:'; },
+          en: function(m) { return '✅ Master: <b>' + m + '</b>\n\n💅 Choose a service:'; }
+        },
+        choose_date: {
+          pl: function(s) { return '✅ Usługa: <b>' + s + '</b>\n\n📅 Kiedy chcesz przyjść?'; },
+          ru: function(s) { return '✅ Услуга: <b>' + s + '</b>\n\n📅 Когда удобно?'; },
+          uk: function(s) { return '✅ Послуга: <b>' + s + '</b>\n\n📅 Коли зручно?'; },
+          en: function(s) { return '✅ Service: <b>' + s + '</b>\n\n📅 When would you like to come?'; }
+        },
+        choose_time: {
+          pl: function(d) { return '✅ Data: <b>' + d + '</b>\n\n⏰ Wybierz godzinę:'; },
+          ru: function(d) { return '✅ Дата: <b>' + d + '</b>\n\n⏰ Выбери время:'; },
+          uk: function(d) { return '✅ Дата: <b>' + d + '</b>\n\n⏰ Обери час:'; },
+          en: function(d) { return '✅ Date: <b>' + d + '</b>\n\n⏰ Choose a time slot:'; }
+        },
+        confirm_msg: {
+          pl: function(m,s,d,t) { return '📋 <b>Potwierdzenie wizyty:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nPotwierdzić?'; },
+          ru: function(m,s,d,t) { return '📋 <b>Подтверждение записи:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nПодтвердить?'; },
+          uk: function(m,s,d,t) { return '📋 <b>Підтвердження запису:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nПідтвердити?'; },
+          en: function(m,s,d,t) { return '📋 <b>Booking confirmation:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nConfirm?'; }
+        },
+        success: {
+          pl: '✅ <b>Wizyta potwierdzona!</b>\n\nDo zobaczenia w salonie! 💅\nPrzypomnimy 24h i 2h przed wizytą.',
+          ru: '✅ <b>Запись подтверждён!</b>\n\nДо встречи в салоне! 💅\nНапомним за 24ч и 2ч до визита.',
+          uk: '✅ <b>Запис підтверджено!</b>\n\nДо зустрічі в салоні! 💅\nНагадаємо за 24г і 2г до візиту.',
+          en: '✅ <b>Appointment confirmed!</b>\n\nSee you at the salon! 💅\nReminders: 24h and 2h before.'
+        },
+        btn_book:    { pl: '💅 Zapisz się',              ru: '💅 Записаться',       uk: '💅 Записатися',       en: '💅 Book now' },
+        btn_confirm: { pl: '✅ Potwierdź',                   ru: '✅ Подтвердить',      uk: '✅ Підтвердити',      en: '✅ Confirm' },
+        btn_restart: { pl: '🔄 Zacznij od nowa',              ru: '🔄 Начать заново', uk: '🔄 Почати знову', en: '🔄 Start over' },
+        btn_tg:      { pl: '🚀 Otwórz bota w Telegram',  ru: '🚀 Открыть бота в Telegram', uk: '🚀 Відкрити бота в Telegram', en: '🚀 Open bot in Telegram' }
+      };
+
+      // ── Состояние ───────────────────────────────────────────────────────────
+      var simLang = 'pl';
+      var simState = 0;
+      var sel = { mi: null, si: null, dk: null, time: null };
+      var history = [];
+      var typingTimer = null;
+
+      var msgsEl = document.getElementById('sim-msgs');
+      var btnsEl = document.getElementById('sim-btns');
+
+      // ── Утилиты ─────────────────────────────────────────────────────────────
+      function tStr(key) {
+        var e = T[key];
+        if (!e) return key;
+        return e[simLang] || e['pl'];
+      }
+
+      function tFn(key, a, b, c, d) {
+        var e = T[key];
+        if (!e) return key;
+        var fn = e[simLang] || e['pl'];
+        return (typeof fn === 'function') ? fn(a, b, c, d) : fn;
+      }
+
+      function mName(i) {
+        if (i === null) return '';
+        return (MASTERS[simLang] || MASTERS['pl'])[i];
+      }
+
+      function sName(i) {
+        if (i === null) return '';
+        var s = SERVICES[i];
+        return s[simLang] || s['pl'];
+      }
+
+      function dName(k) {
+        if (!k) return '';
+        for (var i = 0; i < DATES.length; i++) {
+          if (DATES[i].k === k) return DATES[i][simLang] || DATES[i]['pl'];
+        }
+        return k;
+      }
+
+      // ── Получение HTML сообщения ─────────────────────────────────────────────
+      function getMsgHtml(entry) {
+        var txt = '';
+        switch (entry.type) {
+          case 'welcome':        txt = tStr('welcome'); break;
+          case 'choose_master':  txt = tStr('choose_master'); break;
+          case 'choose_service': txt = tFn('choose_service', mName(sel.mi)); break;
+          case 'choose_date':    txt = tFn('choose_date', sName(sel.si)); break;
+          case 'choose_time':    txt = tFn('choose_time', dName(sel.dk)); break;
+          case 'confirm_msg':    txt = tFn('confirm_msg', mName(sel.mi), sName(sel.si), dName(sel.dk), sel.time); break;
+          case 'success':        txt = tStr('success'); break;
+          case 'u_book':         txt = tStr('btn_book'); break;
+          case 'u_master':       txt = mName(sel.mi); break;
+          case 'u_service':      txt = sName(sel.si); break;
+          case 'u_date':         txt = dName(sel.dk); break;
+          case 'u_time':         txt = '⏰ ' + (sel.time || ''); break;
+          case 'u_confirm':      txt = tStr('btn_confirm'); break;
+          default:               txt = entry.text || '';
+        }
+        return txt.replace(/\n/g, '<br>');
+      }
+
+      // ── Рендер истории ───────────────────────────────────────────────────────
+      function renderHistory() {
+        msgsEl.innerHTML = '';
+        for (var i = 0; i < history.length; i++) {
+          var e = history[i];
+          var div = document.createElement('div');
+          div.className = e.role === 'bot' ? 'msg-bot' : 'msg-user';
+          div.innerHTML = getMsgHtml(e);
+          msgsEl.appendChild(div);
+        }
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+      }
+
+      // ── Рендер кнопок ────────────────────────────────────────────────────────
+      function renderBtns() {
+        btnsEl.innerHTML = '';
+        var row, i;
+
+        switch (simState) {
+          case 0: // Приветствие
+            btnsEl.appendChild(mkBtn(tStr('btn_book'), 'sim-primary', function() {
+              addU('u_book');
+              renderHistory();
+              botMsg('choose_master', function() { simState = 1; renderBtns(); });
+            }));
+            break;
+
+          case 1: // Выбор мастера
+            row = mkRow();
+            var masters = MASTERS[simLang] || MASTERS['pl'];
+            for (i = 0; i < masters.length; i++) {
+              (function(idx) {
+                row.appendChild(mkBtn(masters[idx], '', function() {
+                  sel.mi = idx;
+                  addU('u_master');
+                  renderHistory();
+                  botMsg('choose_service', function() { simState = 2; renderBtns(); });
+                }));
+              })(i);
+            }
+            btnsEl.appendChild(row);
+            break;
+
+          case 2: // Выбор услуги (2 ряда по 2)
+            var pairs = [[0, 1], [2, 3]];
+            for (var p = 0; p < pairs.length; p++) {
+              row = mkRow();
+              for (var q = 0; q < pairs[p].length; q++) {
+                (function(idx) {
+                  var svc = SERVICES[idx];
+                  row.appendChild(mkBtn(svc[simLang] || svc['pl'], '', function() {
+                    sel.si = idx;
+                    addU('u_service');
+                    renderHistory();
+                    botMsg('choose_date', function() { simState = 3; renderBtns(); });
+                  }));
+                })(pairs[p][q]);
+              }
+              btnsEl.appendChild(row);
+            }
+            break;
+
+          case 3: // Выбор даты
+            row = mkRow();
+            for (i = 0; i < DATES.length; i++) {
+              (function(dt) {
+                row.appendChild(mkBtn(dt[simLang] || dt['pl'], '', function() {
+                  sel.dk = dt.k;
+                  addU('u_date');
+                  renderHistory();
+                  botMsg('choose_time', function() { simState = 4; renderBtns(); });
+                }));
+              })(DATES[i]);
+            }
+            btnsEl.appendChild(row);
+            break;
+
+          case 4: // Выбор времени (2 ряда по 2)
+            var timePairs = [TIMES.slice(0, 2), TIMES.slice(2)];
+            for (var tp = 0; tp < timePairs.length; tp++) {
+              row = mkRow();
+              for (var tq = 0; tq < timePairs[tp].length; tq++) {
+                (function(tm) {
+                  row.appendChild(mkBtn('⏰ ' + tm, '', function() {
+                    sel.time = tm;
+                    addU('u_time');
+                    renderHistory();
+                    botMsg('confirm_msg', function() { simState = 5; renderBtns(); });
+                  }));
+                })(timePairs[tp][tq]);
+              }
+              btnsEl.appendChild(row);
+            }
+            break;
+
+          case 5: // Подтверждение
+            row = mkRow();
+            row.appendChild(mkBtn(tStr('btn_confirm'), 'sim-primary', function() {
+              addU('u_confirm');
+              renderHistory();
+              botMsg('success', function() { simState = 6; renderBtns(); });
+            }));
+            row.appendChild(mkBtn(tStr('btn_restart'), 'sim-ghost', simReset));
+            btnsEl.appendChild(row);
+            break;
+
+          case 6: // Финал
+            btnsEl.appendChild(mkBtn(tStr('btn_tg'), 'sim-tg', function() {
+              window.open('https://t.me/lena_salon_bot', '_blank');
+            }));
+            btnsEl.appendChild(mkBtn(tStr('btn_restart'), 'sim-ghost', simReset));
+            break;
+        }
+      }
+
+      // ── Вспомогательные функции ──────────────────────────────────────────────
+      function mkRow() {
+        var r = document.createElement('div');
+        r.className = 'phone-btn-row';
+        return r;
+      }
+
+      function mkBtn(txt, cls, cb) {
+        var b = document.createElement('button');
+        b.className = 'phone-btn ' + (cls || '');
+        b.textContent = txt;
+        b.onclick = cb;
+        return b;
+      }
+
+      function addU(type) {
+        history.push({ role: 'user', type: type });
+      }
+
+      function botMsg(type, cb) {
+        if (typingTimer) clearTimeout(typingTimer);
+        btnsEl.innerHTML = '';
+        var typing = document.createElement('div');
+        typing.className = 'msg-typing';
+        typing.innerHTML = '<span></span><span></span><span></span>';
+        msgsEl.appendChild(typing);
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+        typingTimer = setTimeout(function() {
+          if (typing.parentNode) msgsEl.removeChild(typing);
+          history.push({ role: 'bot', type: type });
+          renderHistory();
+          if (cb) cb();
+        }, 800);
+      }
+
+      // ── Сброс / старт ────────────────────────────────────────────────────────
+      function simReset() {
+        if (typingTimer) clearTimeout(typingTimer);
+        simState = 0;
+        sel = { mi: null, si: null, dk: null, time: null };
+        history = [{ role: 'bot', type: 'welcome' }];
+        renderHistory();
+        renderBtns();
+      }
+
+      // ── Обновление языка (вызывается из setLang) ─────────────────────────────
+      window.simUpdateLang = function(lang) {
+        simLang = lang;
+        renderHistory();
+        renderBtns();
+        var statusEl = document.getElementById('sim-tg-status');
+        if (statusEl) statusEl.textContent = 'bot';
+      };
+
+      // ── Инициализация ────────────────────────────────────────────────────────
+      simLang = localStorage.getItem('lang') || 'pl';
+      simReset();
+
+    })();
 
     // Init
     const savedLang = localStorage.getItem('lang') || 'pl';
