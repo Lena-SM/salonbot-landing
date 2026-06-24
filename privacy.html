@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polityka Prywatności / Privacy Policy — SalonBot</title>
+  <meta name="description" content="Privacy Policy for SalonBot beauty salon booking platform." />
+  <style>
+    :root {
+      --rose: #c0506a;
+      --rose-light: #f8e8ec;
+      --rose-dark: #9a3d54;
+      --text: #2c2c2c;
+      --text-muted: #6b6b6b;
+      --bg: #fdfcfb;
+      --white: #ffffff;
+      --border: #ecdcdf;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    nav {
+      background: rgba(253,252,251,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--text); }
+    .lang-switch { display: flex; gap: 8px; }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      padding: 4px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .lang-btn.active { background: var(--rose); color: white; border-color: var(--rose); }
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+    }
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+    h1 { font-size: 32px; font-weight: 800; color: var(--rose); margin-bottom: 8px; }
+    .subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 40px; }
+    h2 { font-size: 22px; font-weight: 700; margin: 36px 0 16px; }
+    h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px; }
+    h4 { font-size: 16px; font-weight: 700; margin: 20px 0 8px; }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 0 0 12px 24px; }
+    li { margin-bottom: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px;
+      font-size: 14.5px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--rose-light);
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--rose-dark);
+    }
+    td { vertical-align: top; }
+    a { color: var(--rose); }
+    .note {
+      background: var(--rose-light);
+      border-left: 4px solid var(--rose);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    code { background: var(--rose-light); padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+    footer {
+      background: #1e1e1e;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 28px 40px;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: white; }
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .lang-switch { gap: 5px; }
+      .lang-btn { padding: 4px 10px; font-size: 12px; }
+      .content { padding: 40px 20px 60px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 19px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Salon<span>Bot</span></a>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('pl')" id="btn-pl">PL</button>
+      <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
+      <button class="lang-btn" onclick="setLang('uk')" id="btn-uk">UA</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </nav>
+
+  <div class="content">
+
+<!-- ======================== PL ======================== -->
+<div data-lang="pl" class="visible">
+<h1>Polityka Prywatności</h1>
+<p class="subtitle">Data ostatniej aktualizacji: 24 czerwca 2026</p>
+
+<p>Niniejsza Polityka Prywatności opisuje zasady przetwarzania danych osobowych przez serwis <strong>SalonBot</strong> — platformę SaaS (Software as a Service) do zarządzania rezerwacjami w salonach piękności za pośrednictwem bota Telegram, panelu administracyjnego oraz powiązanych usług.</p>
+
+<h2>1. Administrator danych i Usługodawca</h2>
+<p>Usługodawcą platformy SalonBot jest:</p>
+<p><strong>Olena Shevchenko</strong><br>prowadząca działalność nierejestrowaną w rozumieniu art. 5 ust. 1 ustawy z dnia 6 marca 2018 r. — Prawo przedsiębiorców (Dz.U. z 2024 r. poz. 236 ze zm.)</p>
+<p>Adres do korespondencji: Trzciana 206E, 36-071 Trzciana, Polska<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts</p>
+<p>zwana dalej „<strong>Usługodawcą</strong>" lub „<strong>SalonBot</strong>".</p>
+<p>SalonBot pełni rolę <strong>podmiotu przetwarzającego (procesora)</strong> w rozumieniu art. 28 RODO w odniesieniu do danych osobowych klientów salonów piękności. <strong>Administratorem danych osobowych</strong> klientów jest salon piękności (właściciel salonu lub specjalista), który korzysta z platformy SalonBot na podstawie odrębnej umowy (Umowa Subskrypcji SaaS) i powiązanej Umowy Powierzenia Przetwarzania Danych (DPA).</p>
+<p>W odniesieniu do danych osobowych właścicieli salonów i specjalistów (użytkowników panelu administracyjnego i bota specjalisty), SalonBot pełni rolę <strong>administratora danych</strong>.</p>
+
+<h2>2. Definicje</h2>
+<ul>
+<li><strong>Klient</strong> — osoba fizyczna korzystająca z bota Telegram salonu w celu rezerwacji wizyt.</li>
+<li><strong>Specjalista (Mistrz)</strong> — osoba fizyczna świadcząca usługi kosmetyczne w salonie, korzystająca z bota specjalisty Telegram i/lub panelu administracyjnego.</li>
+<li><strong>Właściciel salonu</strong> — osoba fizyczna lub prawna zarządzająca salonem piękności, korzystająca z panelu administracyjnego SalonBot.</li>
+<li><strong>Użytkownik</strong> — ogólne określenie dla Klienta, Specjalisty lub Właściciela salonu.</li>
+<li><strong>Platforma</strong> — ogół usług SalonBot: boty Telegram (kliencki i specjalisty), panel administracyjny, API.</li>
+<li><strong>RODO</strong> — Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r.</li>
+</ul>
+
+<h2>3. Zakres przetwarzanych danych</h2>
+<h3>3.1. Dane klientów salonu</h3>
+<p>Przetwarzamy następujące dane klientów w imieniu salonu (administratora):</p>
+<table><thead><tr><th>Kategoria</th><th>Dane</th><th>Źródło</th></tr></thead><tbody>
+<tr><td>Identyfikacyjne</td><td>Imię i nazwisko</td><td>Profil Telegram</td></tr>
+<tr><td>Kontaktowe</td><td>Telegram ID, numer telefonu (opcjonalnie)</td><td>Profil Telegram / udostępnione przez klienta</td></tr>
+<tr><td>Preferencje</td><td>Kod języka</td><td>Profil Telegram</td></tr>
+<tr><td>Historia wizyt</td><td>Data, godzina, specjalista, usługi, cena</td><td>Rezerwacje w systemie</td></tr>
+<tr><td>Opinie</td><td>Ocena 1–5, komentarz</td><td>Po wizycie w bocie</td></tr>
+<tr><td>Pytania</td><td>Treść pytań do specjalistów i odpowiedzi</td><td>Bot Telegram</td></tr>
+<tr><td>Zgody</td><td>Data i czas wyrażenia zgody na przetwarzanie danych, data i czas wyrażenia zgody na komunikację marketingową</td><td>Bot Telegram</td></tr>
+</tbody></table>
+
+<h3>3.2. Dane specjalistów (mistrzów)</h3>
+<table><thead><tr><th>Kategoria</th><th>Dane</th><th>Źródło</th></tr></thead><tbody>
+<tr><td>Identyfikacyjne</td><td>Imię i nazwisko</td><td>Wprowadzone przez właściciela salonu</td></tr>
+<tr><td>Kontaktowe</td><td>Telegram ID (bota specjalisty)</td><td>Konfiguracja salonu</td></tr>
+<tr><td>Kalendarz</td><td>Adres e-mail Google (przy podłączeniu Google Calendar), refresh token OAuth 2.0 (zaszyfrowany)</td><td>Google OAuth 2.0</td></tr>
+<tr><td>Kalendarz — zdarzenia</td><td>Informacje o zajętości (freebusy), zdarzenia utworzone przez SalonBot w kalendarzu osobistym specjalisty</td><td>Google Calendar API</td></tr>
+</tbody></table>
+
+<h3>3.3. Dane właścicieli salonów</h3>
+<table><thead><tr><th>Kategoria</th><th>Dane</th><th>Źródło</th></tr></thead><tbody>
+<tr><td>Identyfikacyjne</td><td>Imię, nazwisko, nazwa salonu</td><td>Rejestracja</td></tr>
+<tr><td>Kontaktowe</td><td>E-mail, telefon salonu, adres salonu</td><td>Rejestracja</td></tr>
+<tr><td>Uwierzytelnianie</td><td>Hash hasła (bcrypt)</td><td>Panel administracyjny</td></tr>
+</tbody></table>
+
+<h2>4. Cele i podstawa prawna przetwarzania</h2>
+<h3>4.1. Dane klientów (SalonBot jako procesor, salon jako administrator)</h3>
+<table><thead><tr><th>Cel</th><th>Podstawa prawna</th></tr></thead><tbody>
+<tr><td>Rezerwacja i obsługa wizyt</td><td>Art. 6 ust. 1 lit. b RODO (wykonanie umowy)</td></tr>
+<tr><td>Wysyłanie przypomnień o wizycie (24h, 2h przed)</td><td>Art. 6 ust. 1 lit. b RODO (wykonanie umowy)</td></tr>
+<tr><td>Łączenie historii klienta po numerze telefonu</td><td>Art. 6 ust. 1 lit. f RODO (uzasadniony interes)</td></tr>
+<tr><td>Wysyłanie komunikatów marketingowych</td><td>Art. 6 ust. 1 lit. a RODO (odrębna zgoda)</td></tr>
+<tr><td>Analityka salonu (statystyki, wykresy)</td><td>Art. 6 ust. 1 lit. f RODO (uzasadniony interes) — dane zagregowane</td></tr>
+</tbody></table>
+
+<h3>4.2. Dane specjalistów i właścicieli (SalonBot jako administrator)</h3>
+<table><thead><tr><th>Cel</th><th>Podstawa prawna</th></tr></thead><tbody>
+<tr><td>Świadczenie usługi SalonBot (obsługa konta, panel)</td><td>Art. 6 ust. 1 lit. b RODO (wykonanie umowy)</td></tr>
+<tr><td>Synchronizacja z Google Calendar specjalisty</td><td>Art. 6 ust. 1 lit. a RODO (zgoda — OAuth)</td></tr>
+<tr><td>Monitorowanie działania platformy (logi błędów)</td><td>Art. 6 ust. 1 lit. f RODO (uzasadniony interes)</td></tr>
+<tr><td>Wystawianie rachunków, dokumentacja księgowa</td><td>Art. 6 ust. 1 lit. c RODO (obowiązek prawny)</td></tr>
+</tbody></table>
+
+<h2>5. Zgoda na komunikację marketingową</h2>
+<p>5.1. Klient może wyrazić <strong>odrębną, dobrowolną zgodę</strong> na otrzymywanie komunikatów marketingowych od salonu za pośrednictwem bota Telegram.</p>
+<p>5.2. Zgoda na komunikację marketingową jest <strong>niezależna</strong> od zgody na przetwarzanie danych w celu rezerwacji wizyt.</p>
+<p>5.3. Klient może <strong>wycofać zgodę marketingową</strong> w dowolnym momencie: komendą <code>/unsubscribe</code> w bocie, przyciskiem „Wypisz się" w wiadomości marketingowej, lub kontaktując się z salonem.</p>
+<p>5.4. <strong>Odpowiedzialność za treść komunikatów marketingowych</strong> ponosi salon (administrator danych).</p>
+
+<h2>6. Odbiorcy danych</h2>
+<table><thead><tr><th>Odbiorca</th><th>Zakres</th><th>Podstawa</th></tr></thead><tbody>
+<tr><td><strong>Telegram Messenger Inc.</strong> (Dubaj/Londyn)</td><td>Dostarczanie wiadomości bota. Telegram działa jako niezależny administrator danych. Szczegóły: <a href="https://telegram.org/privacy" target="_blank">telegram.org/privacy</a></td><td>Dobrowolne korzystanie z Telegram</td></tr>
+<tr><td><strong>Google LLC</strong> (USA)</td><td>Synchronizacja kalendarza specjalisty — wyłącznie po wyrażeniu zgody</td><td>Zgoda (OAuth 2.0)</td></tr>
+<tr><td><strong>Railway Corp.</strong> (USA, serwery w UE)</td><td>Hosting aplikacji i bazy danych</td><td>Umowa powierzenia</td></tr>
+<tr><td><strong>Salon piękności</strong> (administrator)</td><td>Dostęp do danych swoich klientów via panel</td><td>Relacja administrator–procesor</td></tr>
+</tbody></table>
+<p>Nie sprzedajemy, nie wypożyczamy ani nie udostępniamy danych osobowych stronom trzecim w celach marketingowych.</p>
+
+<h2>7. Przekazywanie danych poza EOG</h2>
+<p>7.1. Baza danych i aplikacja SalonBot hostowane są na serwerach <strong>w Unii Europejskiej</strong> (Railway, region UE).</p>
+<p>7.2. <strong>Google LLC</strong> (USA) — na podstawie EU-US Data Privacy Framework oraz SCC i Google Cloud DPA.</p>
+<p>7.3. <strong>Telegram Messenger Inc.</strong> (Dubaj/Londyn) — dane mogą być przetwarzane poza EOG. Korzystanie z Telegram jest dobrowolną decyzją użytkownika. Szczegóły: <a href="https://telegram.org/privacy" target="_blank">telegram.org/privacy</a>.</p>
+<p>7.4. Procesor dokonuje okresowej oceny zgodności transferów danych poza EOG zgodnie z wytycznymi EDPB.</p>
+
+<h2>8. Bezpieczeństwo danych</h2>
+<ul>
+<li><strong>Szyfrowanie w transmisji:</strong> HTTPS/TLS (certyfikaty SSL automatycznie zarządzane przez Railway).</li>
+<li><strong>Szyfrowanie w spoczynku:</strong> tokeny botów i OAuth zaszyfrowane algorytmem <strong>Fernet</strong> (AES-128-CBC + HMAC-SHA256).</li>
+<li><strong>Haszowanie haseł:</strong> bcrypt.</li>
+<li><strong>Izolacja danych (multi-tenancy):</strong> filtr <code>salon_id</code> na poziomie zapytań do bazy danych.</li>
+<li><strong>Minimalizacja danych:</strong> zbieramy wyłącznie dane niezbędne do świadczenia usługi.</li>
+<li><strong>Kontrola dostępu:</strong> JWT z ograniczonym czasem ważności.</li>
+<li><strong>Logi diagnostyczne:</strong> adres IP, user agent, identyfikator użytkownika, data/czas, identyfikator salonu, komunikaty o błędach. Podstawa: art. 6 ust. 1 lit. f RODO.</li>
+</ul>
+
+<h2>9. Okres przechowywania danych</h2>
+<table><thead><tr><th>Kategoria danych</th><th>Okres przechowywania</th></tr></thead><tbody>
+<tr><td>Dane klientów</td><td>Ustalany przez Administratora (Salon). Domyślnie 3 lata od ostatniej wizyty. Mogą być usunięte wcześniej na żądanie.</td></tr>
+<tr><td>Historia wizyt</td><td>Jak wyżej; po usunięciu klienta — anonimizacja (zachowanie danych statystycznych)</td></tr>
+<tr><td>Dane specjalistów</td><td>Okres umowy z salonem + 30 dni</td></tr>
+<tr><td>Tokeny OAuth Google</td><td>Do momentu odłączenia Google Calendar</td></tr>
+<tr><td>Logi błędów</td><td>90 dni</td></tr>
+<tr><td>Kopie zapasowe</td><td>Do 30 dni, automatycznie nadpisywane</td></tr>
+</tbody></table>
+
+<h2>10. Prawa osób, których dane dotyczą</h2>
+<p>Na podstawie RODO przysługują Państwu następujące prawa:</p>
+<ul>
+<li><strong>a) Prawo dostępu</strong> (art. 15)</li>
+<li><strong>b) Prawo do sprostowania</strong> (art. 16)</li>
+<li><strong>c) Prawo do usunięcia</strong> (art. 17) — Klienci: przez salon lub komendę <code>/delete_my_data</code>. Specjaliści: odłączenie GCal lub żądanie do właściciela salonu. Właściciele: kontakt z Usługodawcą.</li>
+<li><strong>d) Prawo do ograniczenia przetwarzania</strong> (art. 18)</li>
+<li><strong>e) Prawo do przenoszenia danych</strong> (art. 20) — eksport CSV w panelu</li>
+<li><strong>f) Prawo do sprzeciwu</strong> (art. 21)</li>
+<li><strong>g) Prawo do wycofania zgody</strong> (art. 7 ust. 3)</li>
+</ul>
+<p><strong>Jak zrealizować prawa:</strong> Klienci — kontakt z salonem lub <code>/delete_my_data</code>. Specjaliści i właściciele — <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a> lub @SalonBotAlerts.</p>
+<p>Odpowiedź na żądanie — w terminie <strong>30 dni</strong>.</p>
+<p>Jeżeli Klient zwróci się bezpośrednio do Usługodawcy (poprzez kanały kontaktowe wskazane w Rozdziale 18), Usługodawca przekaże żądanie do właściwego Salonu w terminie 7 dni.</p>
+
+<h2>11. Prawo wniesienia skargi</h2>
+<p>Prezes Urzędu Ochrony Danych Osobowych (UODO)<br>ul. Stawki 2, 00-193 Warszawa<br><a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a></p>
+<p>Każda osoba przebywająca na terenie EOG może wnieść skargę do organu nadzorczego właściwego dla jej miejsca zamieszkania.</p>
+<p><em>Osoby przebywające na Ukrainie mogą zwrócić się do Уповноваженого Верховної Ради України з прав людини (<a href="https://ombudsman.gov.ua" target="_blank">ombudsman.gov.ua</a>).</em></p>
+
+<h2>12. Korzystanie z usług Google API</h2>
+<p>Niniejsza sekcja spełnia wymagania <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>.</p>
+
+<h3>12.1. Jakie dane uzyskujemy z Google API</h3>
+<ul>
+<li><strong>Freebusy:</strong> okresy „zajętości" z kalendarza specjalisty — bez szczegółów wydarzenia.</li>
+<li><strong>Zdarzenia utworzone przez SalonBot:</strong> SalonBot tworzy, aktualizuje i usuwa zdarzenia w kalendarzu osobistym specjalisty. Odczytuje wyłącznie zdarzenia, które sam utworzył.</li>
+</ul>
+
+<h3>12.2. Jak wykorzystujemy dane Google API</h3>
+<ul>
+<li><strong>Freebusy:</strong> sprawdzenie dostępności specjalisty — zapobiega podwójnym rezerwacjom.</li>
+<li><strong>Zdarzenia:</strong> synchronizacja rezerwacji z kalendarzem — tworzenie, aktualizacja, usuwanie.</li>
+</ul>
+
+<h3>12.3. Jak przechowujemy dane Google API</h3>
+<ul>
+<li><strong>Refresh token:</strong> w PostgreSQL, zaszyfrowany Fernet (AES-128-CBC + HMAC-SHA256). Klucz — zmienna środowiskowa serwera.</li>
+<li><strong>Freebusy:</strong> cache Redis 10 minut, potem automatycznie usuwane.</li>
+<li><strong>Zdarzenia:</strong> w bazie przechowywany tylko event_id. Treść generowana z danych rezerwacji.</li>
+</ul>
+
+<h3>12.4. Udostępnianie danych Google API</h3>
+<p>Dane z Google API <strong>nie są udostępniane stronom trzecim</strong>. Nie wykorzystujemy ich do reklamy, marketingu, profilowania ani łączenia z innymi danymi.</p>
+
+<h3>12.5. Sztuczna inteligencja i uczenie maszynowe</h3>
+<p>Dane z Google API <strong>nie są wykorzystywane</strong> do opracowywania, doskonalenia ani trenowania modeli AI/ML.</p>
+
+<h3>12.6. Odwołanie dostępu</h3>
+<p>Specjalista może odwołać dostęp w dowolnym momencie: w panelu SalonBot lub na <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a>. Refresh token jest natychmiast usuwany.</p>
+
+<h2>13. Pliki cookie i technologie śledzenia</h2>
+<p>Panel administracyjny (admin.salonbot.pl) wykorzystuje:</p>
+<table><thead><tr><th>Nazwa</th><th>Cel</th><th>Typ</th><th>Okres ważności</th></tr></thead><tbody>
+<tr><td><code>access_token</code></td><td>Uwierzytelnianie sesji (JWT)</td><td>Niezbędny</td><td>Do zamknięcia przeglądarki lub wygaśnięcia tokenu</td></tr>
+<tr><td><code>lang</code></td><td>Język interfejsu</td><td>Niezbędny (preferencje)</td><td>1 rok</td></tr>
+</tbody></table>
+<p>SalonBot <strong>nie wykorzystuje</strong> plików cookie marketingowych, analitycznych ani śledzących. <code>access_token</code>: HttpOnly, Secure, SameSite=Lax. Pliki niezbędne nie wymagają zgody (Dyrektywa ePrivacy, art. 5 ust. 3).</p>
+
+<h2>14. Osoby niepełnoletnie</h2>
+<p>Poniżej 16 roku życia — wymagane zaangażowanie rodzica/opiekuna (art. 8 RODO). W praktyce: rezerwacja przez rodzica lub kontakt telefoniczny z salonem.</p>
+
+<h2>15. Naruszenie ochrony danych (data breach)</h2>
+<p>15.1. Usługodawca powiadomi salon (administratora) <strong>w ciągu 72 godzin</strong> od potwierdzenia naruszenia i podejmie natychmiastowe działania naprawcze.</p>
+<p>15.2. W przypadku naruszenia danych specjalistów/właścicieli — Usługodawca zgłosi bezpośrednio do UODO.</p>
+
+<h2>16. Zautomatyzowane podejmowanie decyzji</h2>
+<p>Dane nie podlegają zautomatyzowanemu podejmowaniu decyzji ani profilowaniu (art. 22 RODO).</p>
+
+<h2>16a. Sztuczna inteligencja</h2>
+<p>Obecnie SalonBot nie wykorzystuje danych osobowych do trenowania modeli AI. W przypadku wdrożenia AI — Polityka zostanie zaktualizowana.</p>
+
+<h2>17. Zmiany Polityki Prywatności</h2>
+<p>O istotnych zmianach poinformujemy: właścicieli — e-mailem i w panelu; specjalistów — w bocie Telegram; klientów — w bocie przy następnej interakcji. Zmiany obowiązują od daty publikacji.</p>
+
+<h2>18. Kontakt</h2>
+<p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Strona: <a href="https://salonbot.pl">salonbot.pl</a></p>
+<p>Odpowiadamy w ciągu <strong>7 dni roboczych</strong>.</p>
+<p><em>Niniejsza Polityka Prywatności wchodzi w życie z dniem 24 czerwca 2026.</em></p>
+</div>
+
+<!-- ======================== EN ======================== -->
+<div data-lang="en">
+<h1>Privacy Policy</h1>
+<p class="subtitle">Last updated: 24 June 2026</p>
+
+<p>This Privacy Policy describes the principles of personal data processing by <strong>SalonBot</strong> — a SaaS platform for managing bookings in beauty salons via a Telegram bot, an administrative panel, and related services.</p>
+
+<h2>1. Data Controller and Service Provider</h2>
+<p>The Service Provider of the SalonBot platform is:</p>
+<p><strong>Olena Shevchenko</strong><br>conducting unregistered business activity within the meaning of Art. 5(1) of the Entrepreneurs' Law (Polish: działalność nierejestrowana)</p>
+<p>Correspondence address: Trzciana 206E, 36-071 Trzciana, Poland<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts</p>
+<p>SalonBot acts as a <strong>Data Processor</strong> (Art. 28 GDPR) with respect to salon client data. The <strong>Data Controller</strong> is the beauty salon using SalonBot under a SaaS Subscription Agreement and DPA.</p>
+<p>For Salon Owner and Specialist data, SalonBot acts as the <strong>Data Controller</strong>.</p>
+
+<h2>2. Definitions</h2>
+<ul>
+<li><strong>Client</strong> — a person using the salon's Telegram bot for booking.</li>
+<li><strong>Specialist (Master)</strong> — a person providing beauty services, using the specialist bot and/or admin panel.</li>
+<li><strong>Salon Owner</strong> — a person managing a beauty salon, using the admin panel.</li>
+<li><strong>User</strong> — a general term for a Client, Specialist, or Salon Owner.</li>
+<li><strong>Platform</strong> — all SalonBot services: Telegram bots, admin panel, API.</li>
+<li><strong>GDPR</strong> — Regulation (EU) 2016/679.</li>
+</ul>
+
+<h2>3. Scope of Processed Data</h2>
+<h3>3.1. Salon client data</h3>
+<table><thead><tr><th>Category</th><th>Data</th><th>Source</th></tr></thead><tbody>
+<tr><td>Identification</td><td>First and last name</td><td>Telegram profile</td></tr>
+<tr><td>Contact</td><td>Telegram ID, phone number (optional)</td><td>Telegram profile / provided by client</td></tr>
+<tr><td>Preferences</td><td>Language code</td><td>Telegram profile</td></tr>
+<tr><td>Appointment history</td><td>Date, time, specialist, services, price</td><td>Bookings in the system</td></tr>
+<tr><td>Reviews</td><td>Rating 1–5, comment</td><td>Post-appointment in the bot</td></tr>
+<tr><td>Questions</td><td>Questions to specialists and responses</td><td>Telegram bot</td></tr>
+<tr><td>Consents</td><td>Consent timestamps for data processing and marketing</td><td>Telegram bot</td></tr>
+</tbody></table>
+
+<h3>3.2. Specialist (Master) data</h3>
+<table><thead><tr><th>Category</th><th>Data</th><th>Source</th></tr></thead><tbody>
+<tr><td>Identification</td><td>First and last name</td><td>Entered by Salon Owner</td></tr>
+<tr><td>Contact</td><td>Telegram ID (specialist bot)</td><td>Salon configuration</td></tr>
+<tr><td>Calendar</td><td>Google email, OAuth 2.0 refresh token (encrypted)</td><td>Google OAuth 2.0</td></tr>
+<tr><td>Calendar — events</td><td>Freebusy info, events created by SalonBot</td><td>Google Calendar API</td></tr>
+</tbody></table>
+
+<h3>3.3. Salon Owner data</h3>
+<table><thead><tr><th>Category</th><th>Data</th><th>Source</th></tr></thead><tbody>
+<tr><td>Identification</td><td>First name, last name, salon name</td><td>Registration</td></tr>
+<tr><td>Contact</td><td>E-mail, salon phone, salon address</td><td>Registration</td></tr>
+<tr><td>Authentication</td><td>Password hash (bcrypt)</td><td>Admin panel</td></tr>
+</tbody></table>
+
+<h2>4. Purposes and Legal Basis for Processing</h2>
+<h3>4.1. Client data (SalonBot as Processor, salon as Controller)</h3>
+<table><thead><tr><th>Purpose</th><th>Legal basis</th></tr></thead><tbody>
+<tr><td>Booking and managing appointments</td><td>Art. 6(1)(b) GDPR (contract)</td></tr>
+<tr><td>Appointment reminders (24h, 2h before)</td><td>Art. 6(1)(b) GDPR</td></tr>
+<tr><td>Merging client history by phone number</td><td>Art. 6(1)(f) GDPR (legitimate interest)</td></tr>
+<tr><td>Marketing communications</td><td>Art. 6(1)(a) GDPR (separate consent)</td></tr>
+<tr><td>Salon analytics (aggregated)</td><td>Art. 6(1)(f) GDPR</td></tr>
+</tbody></table>
+
+<h3>4.2. Specialist and Salon Owner data (SalonBot as Controller)</h3>
+<table><thead><tr><th>Purpose</th><th>Legal basis</th></tr></thead><tbody>
+<tr><td>Provision of SalonBot service</td><td>Art. 6(1)(b) GDPR (contract)</td></tr>
+<tr><td>Google Calendar synchronisation</td><td>Art. 6(1)(a) GDPR (consent — OAuth)</td></tr>
+<tr><td>Platform monitoring (error logs)</td><td>Art. 6(1)(f) GDPR</td></tr>
+<tr><td>Invoicing and accounting</td><td>Art. 6(1)(c) GDPR (legal obligation)</td></tr>
+</tbody></table>
+
+<h2>5. Consent to Marketing Communications</h2>
+<p>5.1. A Client may give <strong>separate, voluntary consent</strong> to receive marketing communications from the salon via the Telegram bot.</p>
+<p>5.2. Marketing consent is <strong>independent</strong> of booking consent.</p>
+<p>5.3. Withdrawal: <code>/unsubscribe</code> command, "Unsubscribe" button, or contacting the salon.</p>
+<p>5.4. The salon is responsible for the content of marketing communications.</p>
+
+<h2>6. Data Recipients</h2>
+<table><thead><tr><th>Recipient</th><th>Scope</th><th>Basis</th></tr></thead><tbody>
+<tr><td><strong>Telegram Messenger Inc.</strong></td><td>Bot message delivery. Independent controller. <a href="https://telegram.org/privacy" target="_blank">Privacy</a></td><td>Voluntary use</td></tr>
+<tr><td><strong>Google LLC</strong> (USA)</td><td>Calendar sync — only after specialist consent</td><td>Consent (OAuth 2.0)</td></tr>
+<tr><td><strong>Railway Corp.</strong> (USA, EU servers)</td><td>Application and database hosting</td><td>DPA</td></tr>
+<tr><td><strong>Beauty salon</strong> (Controller)</td><td>Access to own client data via panel</td><td>Controller–Processor relationship</td></tr>
+</tbody></table>
+<p>We do not sell, rent, or disclose personal data to third parties for marketing purposes.</p>
+
+<h2>7. Transfer of Data Outside the EEA</h2>
+<p>7.1. Database hosted in the <strong>EU</strong> (Railway).</p>
+<p>7.2. <strong>Google LLC</strong> — EU-US DPF + SCC + Google Cloud DPA.</p>
+<p>7.3. <strong>Telegram</strong> — data may be processed outside the EEA. Use is voluntary. Details: <a href="https://telegram.org/privacy" target="_blank">telegram.org/privacy</a>.</p>
+<p>7.4. Periodic compliance assessment per EDPB guidelines.</p>
+
+<h2>8. Data Security</h2>
+<ul>
+<li><strong>Encryption in transit:</strong> HTTPS/TLS.</li>
+<li><strong>Encryption at rest:</strong> Fernet (AES-128-CBC + HMAC-SHA256) for bot tokens and OAuth tokens.</li>
+<li><strong>Password hashing:</strong> bcrypt.</li>
+<li><strong>Data isolation:</strong> multi-tenancy with <code>salon_id</code> filter.</li>
+<li><strong>Data minimisation:</strong> only necessary data collected.</li>
+<li><strong>Access control:</strong> JWT authentication with limited validity.</li>
+<li><strong>Diagnostic logs:</strong> IP, user agent, user ID, timestamps, salon ID, error messages. Basis: Art. 6(1)(f) GDPR.</li>
+</ul>
+
+<h2>9. Data Retention Period</h2>
+<table><thead><tr><th>Data category</th><th>Retention period</th></tr></thead><tbody>
+<tr><td>Client data</td><td>Determined by the Salon (Controller). Default: 3 years from last appointment.</td></tr>
+<tr><td>Appointment history</td><td>As above; upon client deletion — anonymisation</td></tr>
+<tr><td>Specialist data</td><td>Duration of agreement + 30 days</td></tr>
+<tr><td>Google OAuth tokens</td><td>Until disconnection of Google Calendar</td></tr>
+<tr><td>Error logs</td><td>90 days</td></tr>
+<tr><td>Backups</td><td>Up to 30 days, automatically overwritten</td></tr>
+</tbody></table>
+
+<h2>10. Rights of Data Subjects</h2>
+<ul>
+<li><strong>a) Right of access</strong> (Art. 15)</li>
+<li><strong>b) Right to rectification</strong> (Art. 16)</li>
+<li><strong>c) Right to erasure</strong> (Art. 17) — Clients: via salon or <code>/delete_my_data</code>. Specialists: disconnect GCal or request to Salon Owner. Owners: contact the Service Provider.</li>
+<li><strong>d) Right to restriction</strong> (Art. 18)</li>
+<li><strong>e) Right to data portability</strong> (Art. 20) — CSV export in the panel</li>
+<li><strong>f) Right to object</strong> (Art. 21)</li>
+<li><strong>g) Right to withdraw consent</strong> (Art. 7(3))</li>
+</ul>
+<p>Response within <strong>30 days</strong>. Contact: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a> or @SalonBotAlerts.</p>
+
+<h2>11. Right to Lodge a Complaint</h2>
+<p>President of the Personal Data Protection Office (UODO)<br>ul. Stawki 2, 00-193 Warszawa<br><a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a></p>
+<p><em>Persons in Ukraine may contact the Ukrainian Parliament Commissioner for Human Rights (<a href="https://ombudsman.gov.ua" target="_blank">ombudsman.gov.ua</a>).</em></p>
+
+<h2>12. Use of Google API Services</h2>
+<p>This section complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>.</p>
+<h3>12.1. What data we obtain</h3>
+<ul><li><strong>Freebusy:</strong> busy/free intervals — no event details.</li><li><strong>Events created by SalonBot:</strong> booking events in the specialist's personal calendar.</li></ul>
+<h3>12.2. How we use it</h3>
+<ul><li><strong>Freebusy:</strong> availability check to prevent double bookings.</li><li><strong>Events:</strong> create, update, delete booking events.</li></ul>
+<h3>12.3. How we store it</h3>
+<ul><li><strong>Refresh token:</strong> Fernet-encrypted in PostgreSQL (EU).</li><li><strong>Freebusy:</strong> Redis cache, 10 min, then deleted.</li><li><strong>Events:</strong> only event_id stored; content generated from booking data.</li></ul>
+<h3>12.4. Sharing</h3>
+<p>Google API data is <strong>not shared with third parties</strong>. Not used for advertising, marketing, or profiling.</p>
+<h3>12.5. AI and ML</h3>
+<p><strong>Not used</strong> for developing, improving, or training AI/ML models.</p>
+<h3>12.6. Revocation</h3>
+<p>Via SalonBot admin panel or <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a>. Token is immediately deleted.</p>
+
+<h2>13. Cookies and Tracking Technologies</h2>
+<table><thead><tr><th>Name</th><th>Purpose</th><th>Type</th><th>Validity</th></tr></thead><tbody>
+<tr><td><code>access_token</code></td><td>Session authentication (JWT)</td><td>Strictly necessary</td><td>Until browser close or token expiry</td></tr>
+<tr><td><code>lang</code></td><td>Interface language</td><td>Strictly necessary (preferences)</td><td>1 year</td></tr>
+</tbody></table>
+<p>No marketing, analytics, or tracking cookies. <code>access_token</code>: HttpOnly, Secure, SameSite=Lax.</p>
+
+<h2>14. Minors</h2>
+<p>Under 16 — parental involvement required (Art. 8 GDPR).</p>
+
+<h2>15. Personal Data Breach</h2>
+<p>15.1. Notification to salon within <strong>72 hours</strong> of confirmed breach.</p>
+<p>15.2. For specialist/owner data — direct report to UODO.</p>
+
+<h2>16. Automated Decision-Making</h2>
+<p>No automated decision-making or profiling (Art. 22 GDPR).</p>
+
+<h2>16a. Artificial Intelligence</h2>
+<p>SalonBot does not currently use personal data to train AI models.</p>
+
+<h2>17. Changes to the Privacy Policy</h2>
+<p>Material changes notified via e-mail, admin panel, and Telegram bot. Changes effective from publication date.</p>
+
+<h2>18. Contact</h2>
+<p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Website: <a href="https://salonbot.pl">salonbot.pl</a></p>
+<p>Response within <strong>7 business days</strong>.</p>
+<p><em>This Privacy Policy enters into force on 24 June 2026.</em></p>
+</div>
+
+<!-- ======================== RU ======================== -->
+<div data-lang="ru">
+<h1>Политика конфиденциальности</h1>
+<p class="subtitle">Дата последнего обновления: 24 июня 2026</p>
+
+<p>Настоящая Политика конфиденциальности описывает правила обработки персональных данных сервисом <strong>SalonBot</strong> — платформой SaaS для управления записями в салонах красоты посредством Telegram-бота, административной панели и связанных услуг.</p>
+
+<h2>1. Администратор данных и Поставщик услуг</h2>
+<p><strong>Olena Shevchenko</strong><br>осуществляющая незарегистрированную деятельность (<em>działalność nierejestrowana</em>) в соответствии со ст. 5 ч. 1 Закона «Право предпринимателей»</p>
+<p>Адрес для корреспонденции: Trzciana 206E, 36-071 Trzciana, Polska<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts</p>
+<p>SalonBot — <strong>обработчик данных (процессор)</strong> (ст. 28 GDPR) в отношении данных клиентов салонов. <strong>Администратор данных</strong> — салон красоты.</p>
+<p>В отношении данных владельцев салонов и специалистов SalonBot — <strong>администратор данных</strong>.</p>
+
+<h2>2. Определения</h2>
+<ul>
+<li><strong>Клиент</strong> — физическое лицо, использующее бота для записи.</li>
+<li><strong>Специалист (мастер)</strong> — лицо, оказывающее косметические услуги.</li>
+<li><strong>Владелец салона</strong> — лицо, управляющее салоном.</li>
+<li><strong>Пользователь</strong> — общее обозначение для всех категорий.</li>
+<li><strong>Платформа</strong> — совокупность услуг SalonBot.</li>
+<li><strong>GDPR</strong> — Регламент (ЕС) 2016/679.</li>
+</ul>
+
+<h2>3. Объём обрабатываемых данных</h2>
+<h3>3.1. Данные клиентов</h3>
+<table><thead><tr><th>Категория</th><th>Данные</th><th>Источник</th></tr></thead><tbody>
+<tr><td>Идентификационные</td><td>Имя и фамилия</td><td>Профиль Telegram</td></tr>
+<tr><td>Контактные</td><td>Telegram ID, номер телефона (опц.)</td><td>Профиль Telegram / клиент</td></tr>
+<tr><td>Предпочтения</td><td>Код языка</td><td>Профиль Telegram</td></tr>
+<tr><td>История визитов</td><td>Дата, время, специалист, услуги, цена</td><td>Записи в системе</td></tr>
+<tr><td>Отзывы</td><td>Оценка 1–5, комментарий</td><td>Бот после визита</td></tr>
+<tr><td>Вопросы</td><td>Вопросы специалистам и ответы</td><td>Telegram-бот</td></tr>
+<tr><td>Согласия</td><td>Дата/время согласия на обработку и маркетинг</td><td>Telegram-бот</td></tr>
+</tbody></table>
+<h3>3.2. Данные специалистов</h3>
+<table><thead><tr><th>Категория</th><th>Данные</th><th>Источник</th></tr></thead><tbody>
+<tr><td>Идентификационные</td><td>Имя и фамилия</td><td>Владелец салона</td></tr>
+<tr><td>Контактные</td><td>Telegram ID</td><td>Конфигурация</td></tr>
+<tr><td>Календарь</td><td>Email Google, refresh token (зашифр.)</td><td>Google OAuth</td></tr>
+<tr><td>Календарь — события</td><td>Freebusy, события SalonBot</td><td>Google Calendar API</td></tr>
+</tbody></table>
+<h3>3.3. Данные владельцев</h3>
+<table><thead><tr><th>Категория</th><th>Данные</th><th>Источник</th></tr></thead><tbody>
+<tr><td>Идентификационные</td><td>Имя, фамилия, название салона</td><td>Регистрация</td></tr>
+<tr><td>Контактные</td><td>E-mail, телефон, адрес</td><td>Регистрация</td></tr>
+<tr><td>Аутентификация</td><td>Хеш пароля (bcrypt)</td><td>Админ-панель</td></tr>
+</tbody></table>
+
+<h2>4. Цели и правовое основание обработки</h2>
+<h3>4.1. Данные клиентов</h3>
+<table><thead><tr><th>Цель</th><th>Основание</th></tr></thead><tbody>
+<tr><td>Запись и обслуживание визитов</td><td>Ст. 6(1)(b) GDPR (договор)</td></tr>
+<tr><td>Напоминания (24ч, 2ч)</td><td>Ст. 6(1)(b) GDPR</td></tr>
+<tr><td>Объединение истории по телефону</td><td>Ст. 6(1)(f) GDPR (законный интерес)</td></tr>
+<tr><td>Маркетинговые сообщения</td><td>Ст. 6(1)(a) GDPR (согласие)</td></tr>
+<tr><td>Аналитика (агрегированная)</td><td>Ст. 6(1)(f) GDPR</td></tr>
+</tbody></table>
+<h3>4.2. Данные специалистов и владельцев</h3>
+<table><thead><tr><th>Цель</th><th>Основание</th></tr></thead><tbody>
+<tr><td>Предоставление услуги SalonBot</td><td>Ст. 6(1)(b) GDPR</td></tr>
+<tr><td>Синхронизация с Google Calendar</td><td>Ст. 6(1)(a) GDPR (согласие)</td></tr>
+<tr><td>Мониторинг (журналы ошибок)</td><td>Ст. 6(1)(f) GDPR</td></tr>
+<tr><td>Выставление счетов</td><td>Ст. 6(1)(c) GDPR (обязанность)</td></tr>
+</tbody></table>
+
+<h2>5. Согласие на маркетинговые коммуникации</h2>
+<p>5.1. Клиент может дать <strong>отдельное, добровольное согласие</strong> на маркетинговые сообщения от салона.</p>
+<p>5.2. Маркетинговое согласие <strong>не зависит</strong> от согласия на запись.</p>
+<p>5.3. Отзыв: <code>/unsubscribe</code>, кнопка «Отписаться», или обращение в салон.</p>
+<p>5.4. Ответственность за содержание несёт салон.</p>
+
+<h2>6. Получатели данных</h2>
+<table><thead><tr><th>Получатель</th><th>Объём</th><th>Основание</th></tr></thead><tbody>
+<tr><td><strong>Telegram Messenger Inc.</strong></td><td>Доставка сообщений. Независимый контроллер. <a href="https://telegram.org/privacy" target="_blank">Политика</a></td><td>Добровольное использование</td></tr>
+<tr><td><strong>Google LLC</strong> (США)</td><td>Синхронизация календаря — только после согласия</td><td>Согласие (OAuth)</td></tr>
+<tr><td><strong>Railway Corp.</strong> (США, серверы в ЕС)</td><td>Хостинг</td><td>Договор поручения</td></tr>
+<tr><td><strong>Салон красоты</strong></td><td>Доступ к данным своих клиентов</td><td>Отношение администратор–процессор</td></tr>
+</tbody></table>
+<p>Мы не продаём и не предоставляем данные третьим лицам в маркетинговых целях.</p>
+
+<h2>7. Передача данных за пределы ЕЭП</h2>
+<p>7.1. Серверы в <strong>ЕС</strong> (Railway). 7.2. <strong>Google LLC</strong> — EU-US DPF + SCC. 7.3. <strong>Telegram</strong> — данные могут обрабатываться вне ЕЭП. 7.4. Периодическая оценка соответствия по рекомендациям EDPB.</p>
+
+<h2>8. Безопасность данных</h2>
+<ul>
+<li><strong>Шифрование при передаче:</strong> HTTPS/TLS.</li>
+<li><strong>Шифрование при хранении:</strong> Fernet (AES-128-CBC + HMAC-SHA256).</li>
+<li><strong>Хеширование паролей:</strong> bcrypt.</li>
+<li><strong>Изоляция данных:</strong> фильтр <code>salon_id</code>.</li>
+<li><strong>Минимизация данных.</strong></li>
+<li><strong>Контроль доступа:</strong> JWT.</li>
+<li><strong>Диагностические журналы:</strong> IP, user agent, идентификаторы, ошибки. Основание: ст. 6(1)(f) GDPR.</li>
+</ul>
+
+<h2>9. Сроки хранения данных</h2>
+<table><thead><tr><th>Категория</th><th>Срок</th></tr></thead><tbody>
+<tr><td>Данные клиентов</td><td>Устанавливается Салоном. По умолчанию 3 года от последнего визита.</td></tr>
+<tr><td>История визитов</td><td>После удаления клиента — анонимизация</td></tr>
+<tr><td>Данные специалистов</td><td>Срок договора + 30 дней</td></tr>
+<tr><td>Токены OAuth</td><td>До отключения Google Calendar</td></tr>
+<tr><td>Журналы ошибок</td><td>90 дней</td></tr>
+<tr><td>Резервные копии</td><td>До 30 дней</td></tr>
+</tbody></table>
+
+<h2>10. Права субъектов данных</h2>
+<ul>
+<li><strong>a) Право на доступ</strong> (ст. 15)</li>
+<li><strong>b) Право на исправление</strong> (ст. 16)</li>
+<li><strong>c) Право на удаление</strong> (ст. 17) — Клиенты: через салон или <code>/delete_my_data</code>. Специалисты: отключение GCal. Владельцы: обращение к Поставщику услуг.</li>
+<li><strong>d) Право на ограничение</strong> (ст. 18)</li>
+<li><strong>e) Право на переносимость</strong> (ст. 20) — экспорт CSV</li>
+<li><strong>f) Право на возражение</strong> (ст. 21)</li>
+<li><strong>g) Право на отзыв согласия</strong> (ст. 7(3))</li>
+</ul>
+<p>Ответ в течение <strong>30 дней</strong>. Контакт: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+
+<h2>11. Право на подачу жалобы</h2>
+<p>Председатель UODO<br>ul. Stawki 2, 00-193 Warszawa<br><a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a></p>
+<p><em>В Украине: Уполномоченный Верховной Рады Украины по правам человека (<a href="https://ombudsman.gov.ua" target="_blank">ombudsman.gov.ua</a>).</em></p>
+
+<h2>12. Использование сервисов Google API</h2>
+<p>Соответствует <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>.</p>
+<h3>12.1. Какие данные</h3>
+<ul><li><strong>Freebusy:</strong> периоды занятости — без деталей события.</li><li><strong>События SalonBot:</strong> создание, обновление, удаление в личном календаре.</li></ul>
+<h3>12.2. Как используем</h3>
+<ul><li><strong>Freebusy:</strong> проверка доступности для предотвращения двойных записей.</li><li><strong>События:</strong> синхронизация записей с календарём.</li></ul>
+<h3>12.3. Как храним</h3>
+<ul><li><strong>Refresh token:</strong> PostgreSQL, Fernet. <strong>Freebusy:</strong> Redis 10 мин. <strong>События:</strong> только event_id в базе.</li></ul>
+<h3>12.4. Передача третьим лицам</h3>
+<p><strong>Не передаются.</strong> Не для рекламы, маркетинга, профилирования.</p>
+<h3>12.5. ИИ и машинное обучение</h3>
+<p><strong>Не используются</strong> для тренировки моделей AI/ML.</p>
+<h3>12.6. Отзыв доступа</h3>
+<p>Через панель SalonBot или <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a>. Токен удаляется немедленно.</p>
+
+<h2>13. Файлы cookie</h2>
+<table><thead><tr><th>Название</th><th>Цель</th><th>Тип</th><th>Срок</th></tr></thead><tbody>
+<tr><td><code>access_token</code></td><td>Аутентификация (JWT)</td><td>Необходимый</td><td>До закрытия браузера</td></tr>
+<tr><td><code>lang</code></td><td>Язык интерфейса</td><td>Необходимый</td><td>1 год</td></tr>
+</tbody></table>
+<p>Маркетинговых, аналитических и отслеживающих cookie <strong>нет</strong>.</p>
+
+<h2>14. Несовершеннолетние</h2>
+<p>До 16 лет — участие родителя/опекуна (ст. 8 GDPR).</p>
+
+<h2>15. Нарушение защиты данных</h2>
+<p>Уведомление салона в течение <strong>72 часов</strong>. Для данных специалистов/владельцев — прямое обращение в UODO.</p>
+
+<h2>16. Автоматизированное принятие решений</h2>
+<p>Не применяется (ст. 22 GDPR).</p>
+
+<h2>16a. Искусственный интеллект</h2>
+<p>SalonBot не использует данные для тренировки моделей ИИ.</p>
+
+<h2>17. Изменения Политики</h2>
+<p>Об изменениях уведомляем по e-mail, в панели и через бот Telegram.</p>
+
+<h2>18. Контакт</h2>
+<p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Сайт: <a href="https://salonbot.pl">salonbot.pl</a></p>
+<p>Ответ в течение <strong>7 рабочих дней</strong>.</p>
+<p><em>Вступает в силу 24 июня 2026.</em></p>
+</div>
+
+<!-- ======================== UK ======================== -->
+<div data-lang="uk">
+<h1>Політика конфіденційності</h1>
+<p class="subtitle">Дата останнього оновлення: 24 червня 2026</p>
+
+<p>Ця Політика Конфіденційності описує правила обробки персональних даних сервісом <strong>SalonBot</strong> — платформою SaaS для управління бронюваннями в салонах краси через бота Telegram, адміністративну панель та пов'язані послуги.</p>
+
+<h2>1. Адміністратор даних та Постачальник послуг</h2>
+<p><strong>Olena Shevchenko</strong><br>що здійснює незареєстровану діяльність (<em>działalność nierejestrowana</em>) відповідно до ст. 5 ч. 1 Закону «Право підприємців»</p>
+<p>Адреса для кореспонденції: Trzciana 206E, 36-071 Trzciana, Polska<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts</p>
+<p>SalonBot — <strong>обробник даних (процесор)</strong> (ст. 28 GDPR) щодо даних клієнтів салонів. <strong>Адміністратор даних</strong> — салон краси.</p>
+<p>Щодо даних власників салонів і спеціалістів SalonBot — <strong>адміністратор даних</strong>.</p>
+
+<h2>2. Визначення</h2>
+<ul>
+<li><strong>Клієнт</strong> — фізична особа, яка користується ботом для бронювання.</li>
+<li><strong>Спеціаліст (майстер)</strong> — особа, яка надає косметичні послуги.</li>
+<li><strong>Власник салону</strong> — особа, яка управляє салоном.</li>
+<li><strong>Користувач</strong> — загальне позначення.</li>
+<li><strong>Платформа</strong> — сукупність послуг SalonBot.</li>
+<li><strong>GDPR</strong> — Регламент (ЄС) 2016/679.</li>
+</ul>
+
+<h2>3. Обсяг оброблюваних даних</h2>
+<h3>3.1. Дані клієнтів</h3>
+<table><thead><tr><th>Категорія</th><th>Дані</th><th>Джерело</th></tr></thead><tbody>
+<tr><td>Ідентифікаційні</td><td>Ім'я та прізвище</td><td>Профіль Telegram</td></tr>
+<tr><td>Контактні</td><td>Telegram ID, телефон (за бажанням)</td><td>Профіль Telegram / клієнт</td></tr>
+<tr><td>Вподобання</td><td>Код мови</td><td>Профіль Telegram</td></tr>
+<tr><td>Історія візитів</td><td>Дата, час, спеціаліст, послуги, ціна</td><td>Бронювання</td></tr>
+<tr><td>Відгуки</td><td>Оцінка 1–5, коментар</td><td>Бот після візиту</td></tr>
+<tr><td>Запитання</td><td>Запитання до спеціалістів та відповіді</td><td>Бот Telegram</td></tr>
+<tr><td>Згоди</td><td>Дата/час згоди на обробку та маркетинг</td><td>Бот Telegram</td></tr>
+</tbody></table>
+<h3>3.2. Дані спеціалістів</h3>
+<table><thead><tr><th>Категорія</th><th>Дані</th><th>Джерело</th></tr></thead><tbody>
+<tr><td>Ідентифікаційні</td><td>Ім'я та прізвище</td><td>Власник салону</td></tr>
+<tr><td>Контактні</td><td>Telegram ID</td><td>Конфігурація</td></tr>
+<tr><td>Календар</td><td>Email Google, refresh token (зашифр.)</td><td>Google OAuth</td></tr>
+<tr><td>Календар — події</td><td>Freebusy, події SalonBot</td><td>Google Calendar API</td></tr>
+</tbody></table>
+<h3>3.3. Дані власників</h3>
+<table><thead><tr><th>Категорія</th><th>Дані</th><th>Джерело</th></tr></thead><tbody>
+<tr><td>Ідентифікаційні</td><td>Ім'я, прізвище, назва салону</td><td>Реєстрація</td></tr>
+<tr><td>Контактні</td><td>E-mail, телефон, адреса</td><td>Реєстрація</td></tr>
+<tr><td>Автентифікація</td><td>Хеш пароля (bcrypt)</td><td>Адмін-панель</td></tr>
+</tbody></table>
+
+<h2>4. Цілі та правова підстава обробки</h2>
+<h3>4.1. Дані клієнтів</h3>
+<table><thead><tr><th>Ціль</th><th>Підстава</th></tr></thead><tbody>
+<tr><td>Бронювання та обслуговування візитів</td><td>Ст. 6(1)(b) GDPR (договір)</td></tr>
+<tr><td>Нагадування (24г, 2г)</td><td>Ст. 6(1)(b) GDPR</td></tr>
+<tr><td>Об'єднання історії за телефоном</td><td>Ст. 6(1)(f) GDPR (законний інтерес)</td></tr>
+<tr><td>Маркетингові повідомлення</td><td>Ст. 6(1)(a) GDPR (згода)</td></tr>
+<tr><td>Аналітика (агрегована)</td><td>Ст. 6(1)(f) GDPR</td></tr>
+</tbody></table>
+<h3>4.2. Дані спеціалістів і власників</h3>
+<table><thead><tr><th>Ціль</th><th>Підстава</th></tr></thead><tbody>
+<tr><td>Надання послуги SalonBot</td><td>Ст. 6(1)(b) GDPR</td></tr>
+<tr><td>Синхронізація з Google Calendar</td><td>Ст. 6(1)(a) GDPR (згода)</td></tr>
+<tr><td>Моніторинг (логи помилок)</td><td>Ст. 6(1)(f) GDPR</td></tr>
+<tr><td>Виставлення рахунків</td><td>Ст. 6(1)(c) GDPR</td></tr>
+</tbody></table>
+
+<h2>5. Згода на маркетингову комунікацію</h2>
+<p>5.1. Клієнт може надати <strong>окрему, добровільну згоду</strong> на маркетингові повідомлення.</p>
+<p>5.2. Маркетингова згода <strong>незалежна</strong> від згоди на бронювання.</p>
+<p>5.3. Відкликання: <code>/unsubscribe</code>, кнопка «Відписатися», або звернення до салону.</p>
+<p>5.4. Відповідальність за зміст несе салон.</p>
+
+<h2>6. Одержувачі даних</h2>
+<table><thead><tr><th>Одержувач</th><th>Обсяг</th><th>Підстава</th></tr></thead><tbody>
+<tr><td><strong>Telegram Messenger Inc.</strong></td><td>Доставка повідомлень. Незалежний контролер. <a href="https://telegram.org/privacy" target="_blank">Політика</a></td><td>Добровільне використання</td></tr>
+<tr><td><strong>Google LLC</strong> (США)</td><td>Синхронізація календаря — після згоди</td><td>Згода (OAuth)</td></tr>
+<tr><td><strong>Railway Corp.</strong> (США, сервери в ЄС)</td><td>Хостинг</td><td>Договір доручення</td></tr>
+<tr><td><strong>Салон краси</strong></td><td>Доступ до даних своїх клієнтів</td><td>Відносини адміністратор–процесор</td></tr>
+</tbody></table>
+<p>Ми не продаємо і не надаємо дані третім особам у маркетингових цілях.</p>
+
+<h2>7. Передача даних за межі ЄЕП</h2>
+<p>7.1. Сервери в <strong>ЄС</strong> (Railway). 7.2. <strong>Google LLC</strong> — EU-US DPF + SCC. 7.3. <strong>Telegram</strong> — дані можуть оброблятися поза ЄЕП. 7.4. Періодична оцінка відповідності за рекомендаціями EDPB.</p>
+
+<h2>8. Безпека даних</h2>
+<ul>
+<li><strong>Шифрування при передачі:</strong> HTTPS/TLS.</li>
+<li><strong>Шифрування при зберіганні:</strong> Fernet (AES-128-CBC + HMAC-SHA256).</li>
+<li><strong>Хешування паролів:</strong> bcrypt.</li>
+<li><strong>Ізоляція даних:</strong> фільтр <code>salon_id</code>.</li>
+<li><strong>Мінімізація даних.</strong></li>
+<li><strong>Контроль доступу:</strong> JWT.</li>
+<li><strong>Діагностичні логи:</strong> IP, user agent, ідентифікатори, помилки. Підстава: ст. 6(1)(f) GDPR.</li>
+</ul>
+
+<h2>9. Строк зберігання даних</h2>
+<table><thead><tr><th>Категорія</th><th>Строк</th></tr></thead><tbody>
+<tr><td>Дані клієнтів</td><td>Визначається Салоном. За замовчуванням 3 роки від останнього візиту.</td></tr>
+<tr><td>Історія візитів</td><td>Після видалення клієнта — анонімізація</td></tr>
+<tr><td>Дані спеціалістів</td><td>Строк договору + 30 днів</td></tr>
+<tr><td>Токени OAuth</td><td>До відключення Google Calendar</td></tr>
+<tr><td>Логи помилок</td><td>90 днів</td></tr>
+<tr><td>Резервні копії</td><td>До 30 днів</td></tr>
+</tbody></table>
+
+<h2>10. Права суб'єктів даних</h2>
+<ul>
+<li><strong>a) Право на доступ</strong> (ст. 15)</li>
+<li><strong>b) Право на виправлення</strong> (ст. 16)</li>
+<li><strong>c) Право на видалення</strong> (ст. 17) — Клієнти: через салон або <code>/delete_my_data</code>. Спеціалісти: відключення GCal. Власники: звернення до Постачальника.</li>
+<li><strong>d) Право на обмеження</strong> (ст. 18)</li>
+<li><strong>e) Право на перенесення</strong> (ст. 20) — експорт CSV</li>
+<li><strong>f) Право на заперечення</strong> (ст. 21)</li>
+<li><strong>g) Право на відкликання згоди</strong> (ст. 7(3))</li>
+</ul>
+<p>Відповідь протягом <strong>30 днів</strong>. Контакт: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+
+<h2>11. Право на подання скарги</h2>
+<p><strong>У Польщі:</strong> Prezes UODO, ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a></p>
+<p><strong>В Україні:</strong> Уповноважений Верховної Ради України з прав людини, вул. Інститутська, 21/8, 01008, Київ, <a href="https://ombudsman.gov.ua" target="_blank">ombudsman.gov.ua</a></p>
+
+<h2>12. Використання послуг Google API</h2>
+<p>Відповідає <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>.</p>
+<h3>12.1. Які дані</h3>
+<ul><li><strong>Freebusy:</strong> періоди зайнятості — без деталей події.</li><li><strong>Події SalonBot:</strong> створення, оновлення, видалення в особистому календарі.</li></ul>
+<h3>12.2. Як використовуємо</h3>
+<ul><li><strong>Freebusy:</strong> перевірка доступності для запобігання подвійним бронюванням.</li><li><strong>Події:</strong> синхронізація бронювань з календарем.</li></ul>
+<h3>12.3. Як зберігаємо</h3>
+<ul><li><strong>Refresh token:</strong> PostgreSQL, Fernet. <strong>Freebusy:</strong> Redis 10 хв. <strong>Події:</strong> тільки event_id в базі.</li></ul>
+<h3>12.4. Передача третім особам</h3>
+<p><strong>Не передаються.</strong> Не для реклами, маркетингу, профілювання.</p>
+<h3>12.5. ШІ та машинне навчання</h3>
+<p><strong>Не використовуються</strong> для тренування моделей AI/ML.</p>
+<h3>12.6. Відкликання доступу</h3>
+<p>Через панель SalonBot або <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a>. Токен видаляється негайно.</p>
+
+<h2>13. Файли cookie</h2>
+<table><thead><tr><th>Назва</th><th>Ціль</th><th>Тип</th><th>Строк</th></tr></thead><tbody>
+<tr><td><code>access_token</code></td><td>Автентифікація (JWT)</td><td>Необхідний</td><td>До закриття браузера</td></tr>
+<tr><td><code>lang</code></td><td>Мова інтерфейсу</td><td>Необхідний</td><td>1 рік</td></tr>
+</tbody></table>
+<p>Маркетингових, аналітичних та відстежувальних cookie <strong>немає</strong>.</p>
+
+<h2>14. Неповнолітні</h2>
+<p>До 16 років — участь батьків/опікуна (ст. 8 GDPR).</p>
+
+<h2>15. Порушення захисту даних</h2>
+<p>Повідомлення салону протягом <strong>72 годин</strong>. Для даних спеціалістів/власників — пряме звернення до UODO.</p>
+
+<h2>16. Автоматизоване прийняття рішень</h2>
+<p>Не застосовується (ст. 22 GDPR).</p>
+
+<h2>16a. Штучний інтелект</h2>
+<p>SalonBot не використовує дані для тренування моделей ШІ.</p>
+
+<h2>17. Зміни Політики</h2>
+<p>Про зміни повідомляємо e-mail, в панелі та через бот Telegram.</p>
+
+<h2>18. Контакти</h2>
+<p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Вебсайт: <a href="https://salonbot.pl">salonbot.pl</a></p>
+<p>Відповідаємо протягом <strong>7 робочих днів</strong>.</p>
+<p><em>Набирає чинності 24 червня 2026.</em></p>
+</div>
+
+  </div>
+
+  <footer>
+    <p>
+      &copy; 2026 SalonBot &middot;
+      <a href="/">Home</a> &middot;
+      <a href="/privacy">Privacy Policy</a> &middot;
+      <a href="/terms">Terms of Service</a> &middot;
+      <a href="mailto:salonbotpl@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(function(el) {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      ['pl', 'ru', 'uk', 'en'].forEach(function(l) {
+        document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+      });
+      document.documentElement.lang = lang;
+      try { localStorage.setItem('salonbot-lang', lang); } catch(e) {}
+    }
+    (function() {
+      try {
+        var saved = localStorage.getItem('salonbot-lang');
+        if (saved && ['pl', 'ru', 'uk', 'en'].indexOf(saved) !== -1) {
+          setLang(saved);
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+</body>
+</html>

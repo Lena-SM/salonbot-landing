@@ -337,6 +337,27 @@
     .form-result.error   { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.9); font-weight: 400; }
     .form-result [data-lang] { display: none; }
     .form-result [data-lang].visible { display: block; }
+    .form-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 16px 0 4px;
+    }
+    .form-consent input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: white;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .form-consent label {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+    .form-consent label a { color: rgba(255,255,255,0.95); }
 
     /* ─── MODALS ─── */
     .modal-overlay {
@@ -976,6 +997,15 @@
             data-ph-uk="наприклад, Студія краси Ганна"
             data-ph-en="e.g. Anna Beauty Studio">
         </div>
+        <div class="form-consent">
+          <input type="checkbox" id="f-consent" name="consent" required>
+          <label for="f-consent">
+            <span data-lang="pl">Wyra&#380;am zgod&#281; na przes&#322;anie mi informacji handlowej drog&#261; elektroniczn&#261; przez Olena Shevchenko (SalonBot) na podany adres e-mail, zgodnie z art.&nbsp;10 ustawy o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261;. Zgod&#281; mo&#380;na wycofa&#263; w ka&#380;dej chwili pisz&#261;c na <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+            <span data-lang="ru">&#1044;&#1072;&#1102; &#1089;&#1086;&#1075;&#1083;&#1072;&#1089;&#1080;&#1077; &#1085;&#1072; &#1087;&#1086;&#1083;&#1091;&#1095;&#1077;&#1085;&#1080;&#1077; &#1082;&#1086;&#1084;&#1084;&#1077;&#1088;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1080; &#1086;&#1090; Olena Shevchenko (SalonBot) &#1085;&#1072; &#1091;&#1082;&#1072;&#1079;&#1072;&#1085;&#1085;&#1099;&#1081; e-mail. &#1057;&#1086;&#1075;&#1083;&#1072;&#1089;&#1080;&#1077; &#1084;&#1086;&#1078;&#1085;&#1086; &#1086;&#1090;&#1086;&#1079;&#1074;&#1072;&#1090;&#1100; &#1074; &#1083;&#1102;&#1073;&#1086;&#1081; &#1084;&#1086;&#1084;&#1077;&#1085;&#1090;, &#1085;&#1072;&#1087;&#1080;&#1089;&#1072;&#1074; &#1085;&#1072; <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+            <span data-lang="uk">&#1053;&#1072;&#1076;&#1072;&#1102; &#1079;&#1075;&#1086;&#1076;&#1091; &#1085;&#1072; &#1086;&#1090;&#1088;&#1080;&#1084;&#1072;&#1085;&#1085;&#1103; &#1082;&#1086;&#1084;&#1077;&#1088;&#1094;&#1110;&#1081;&#1085;&#1086;&#1111; &#1110;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1110;&#1111; &#1074;&#1110;&#1076; Olena Shevchenko (SalonBot) &#1085;&#1072; &#1074;&#1082;&#1072;&#1079;&#1072;&#1085;&#1080;&#1081; e-mail. &#1047;&#1075;&#1086;&#1076;&#1091; &#1084;&#1086;&#1078;&#1085;&#1072; &#1074;&#1110;&#1076;&#1082;&#1083;&#1080;&#1082;&#1072;&#1090;&#1080; &#1073;&#1091;&#1076;&#1100;-&#1082;&#1086;&#1083;&#1080;, &#1085;&#1072;&#1087;&#1080;&#1089;&#1072;&#1074;&#1096;&#1080; &#1085;&#1072; <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+            <span data-lang="en">I consent to receiving commercial information from Olena Shevchenko (SalonBot) at the provided e-mail address. You can withdraw consent at any time by writing to <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+          </label>
+        </div>
         <button type="submit" class="btn-white form-submit" id="form-submit-btn">
           <span data-lang="pl">Wyślij zgłoszenie →</span>
           <span data-lang="ru">Отправить заявку →</span>
@@ -1458,31 +1488,52 @@
       <h2>Polityka prywatno&#347;ci</h2>
       <div class="modal-body">
         <h3>1. Administrator danych</h3>
-        <p>Administratorem danych osobowych jest <strong>Olena Shevchenko</strong>, e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+        <p>Administratorem danych osobowych jest <strong>Olena Shevchenko</strong>, prowadz&#261;ca dzia&#322;alno&#347;&#263; nierejestrowan&#261; w rozumieniu art.&nbsp;5 ust.&nbsp;1 ustawy Prawo przedsi&#281;biorc&#243;w.</p>
+        <p>Adres do korespondencji: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
 
         <h3>2. Jakie dane zbieramy</h3>
         <p>W pami&#281;ci lokalnej przegl&#261;darki (localStorage) przechowywana jest wy&#322;&#261;cznie preferencja j&#281;zykowa (PL/RU/UA/EN) &#8212; nie jest to dana osobowa i nie jest wysy&#322;ana na serwer.</p>
-        <p><strong>Formularz kontaktowy:</strong> Je&#347;li wype&#322;nisz formularz na stronie, zbieramy: imi&#281;, adres e-mail, opcjonalny identyfikator Telegram oraz nazw&#281; salonu &#8212; wy&#322;&#261;cznie w celu nawi&#261;zania kontaktu i przedstawienia oferty. Dane s&#261; przekazywane do us&#322;ugi Formspree (podmiot przetwarzaj&#261;cy dane w imieniu Administratora).</p>
+        <p><strong>Formularz kontaktowy:</strong> Je&#347;li wype&#322;nisz formularz na stronie, zbieramy: imi&#281;, adres e-mail, opcjonalny identyfikator Telegram oraz nazw&#281; salonu &#8212; w celu nawi&#261;zania kontaktu, odpowiedzi na zapytanie oraz &#8212; je&#380;eli wyrazisz na to zgod&#281; &#8212; przedstawienia oferty handlowej.</p>
         <p>Je&#347;li skontaktujesz si&#281; z nami bezpo&#347;rednio przez e-mail lub Telegram, przetwarzamy Tw&#243;j adres e-mail lub identyfikator Telegram wy&#322;&#261;cznie w celu udzielenia odpowiedzi.</p>
 
-        <h3>3. Podstawa prawna</h3>
-        <p>Art. 6 ust. 1 lit. f RODO &#8212; prawnie uzasadniony interes administratora (obs&#322;uga korespondencji).</p>
+        <h3>3. Odbiorcy danych (podmioty przetwarzaj&#261;ce)</h3>
+        <p>Dane mog&#261; by&#263; przekazywane nast&#281;puj&#261;cym podmiotom przetwarzaj&#261;cym, dzia&#322;aj&#261;cym na zlecenie Administratora:</p>
+        <ul>
+          <li><strong>Formspree Inc.</strong> &#8212; obs&#322;uga formularza kontaktowego (<a href="https://formspree.io/legal/privacy-policy" target="_blank">polityka prywatno&#347;ci</a>);</li>
+          <li><strong>Vercel Inc.</strong> &#8212; hosting strony internetowej, logi dost&#281;pu (<a href="https://vercel.com/legal/privacy-policy" target="_blank">polityka prywatno&#347;ci</a>).</li>
+        </ul>
+        <p>Dane nie s&#261; sprzedawane ani udost&#281;pniane innym osobom trzecim.</p>
 
-        <h3>4. Okres przechowywania</h3>
-        <p>Dane z korespondencji przechowywane s&#261; przez czas niezb&#281;dny do obs&#322;ugi zapytania, nie d&#322;u&#380;ej ni&#380; 12 miesi&#281;cy.</p>
+        <h3>4. Podstawa prawna</h3>
+        <ul>
+          <li><strong>Art. 6 ust. 1 lit. b RODO</strong> &#8212; podj&#281;cie dzia&#322;a&#324; na &#380;&#261;danie osoby, kt&#243;rej dane dotycz&#261;, przed zawarciem umowy (obs&#322;uga zapytania z formularza).</li>
+          <li><strong>Art. 6 ust. 1 lit. a RODO</strong> &#8212; Twoja zgoda na otrzymywanie informacji handlowych drog&#261; elektroniczn&#261; (je&#380;eli zosta&#322;a udzielona w formularzu).</li>
+          <li><strong>Art. 6 ust. 1 lit. f RODO</strong> &#8212; prawnie uzasadniony interes administratora (obs&#322;uga korespondencji e-mail / Telegram).</li>
+        </ul>
 
-        <h3>5. Twoje prawa</h3>
-        <p>Masz prawo do: dost&#281;pu do danych, sprostowania, usuni&#281;cia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia sprzeciwu.</p>
+        <h3>5. Okres przechowywania</h3>
+        <p>Dane z korespondencji przechowywane s&#261; przez czas niezb&#281;dny do obs&#322;ugi zapytania, nie d&#322;u&#380;ej ni&#380; 12 miesi&#281;cy. W przypadku udzielenia zgody marketingowej &#8212; do momentu jej wycofania.</p>
+
+        <h3>6. Twoje prawa</h3>
+        <p>Masz prawo do: dost&#281;pu do danych, sprostowania, usuni&#281;cia, ograniczenia przetwarzania, przenoszenia danych, wniesienia sprzeciwu oraz wycofania zgody w dowolnym momencie (bez wp&#322;ywu na zgodno&#347;&#263; z prawem przetwarzania dokonanego przed wycofaniem).</p>
         <p>Aby skorzysta&#263; z praw, napisz na: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <p>Masz prawo wniesienia skargi do Prezesa Urz&#281;du Ochrony Danych Osobowych (<a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a>).</p>
+        <p>U&#380;ytkownik ma prawo wycofa&#263; zgod&#281; na otrzymywanie informacji handlowych w dowolnym momencie poprzez kontakt na adres <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+        <p>Masz prawo wniesienia skargi do Prezesa Urz&#281;du Ochrony Danych Osobowych: ul.&nbsp;Stawki&nbsp;2, 00-193 Warszawa (<a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a>).</p>
 
-        <h3>6. Przekazywanie danych</h3>
-        <p>Dane nie s&#261; sprzedawane ani udost&#281;pniane osobom trzecim. Strona jest hostowana przez Vercel Inc. &#8212; logi dost&#281;pu mog&#261; by&#263; przetwarzane przez Vercel zgodnie z ich polityk&#261; prywatno&#347;ci.</p>
+        <h3>7. Przekazywanie danych poza EOG</h3>
+        <p>Niekt&#243;rzy dostawcy us&#322;ug (Formspree Inc., Vercel Inc.) mog&#261; przetwarza&#263; dane poza Europejskim Obszarem Gospodarczym, w szczeg&#243;lno&#347;ci w USA. Przekazywanie odbywa si&#281; na podstawie odpowiednich mechanizm&#243;w przewidzianych przez RODO: standardowych klauzul umownych (SCC) zatwierdzonych przez Komisj&#281; Europejsk&#261; oraz &#8212; w przypadku dostawc&#243;w certyfikowanych &#8212; programu EU-US Data Privacy Framework.</p>
 
-        <h3>7. Pliki cookies</h3>
+        <h3>8. Pliki cookies</h3>
         <p>Strona nie u&#380;ywa plik&#243;w cookies. Jedyne dane zapisywane lokalnie to preferencja j&#281;zykowa w localStorage przegl&#261;darki.</p>
 
-        <p class="modal-updated">Ostatnia aktualizacja: maj 2026</p>
+        <h3>9. Dobrowolno&#347;&#263; podania danych</h3>
+        <p>Podanie danych osobowych w formularzu kontaktowym jest dobrowolne, jednak niezb&#281;dne do tego, aby odpowiedzie&#263; na Twoje zapytanie lub przedstawi&#263; ofert&#281;. Brak podania danych uniemo&#380;liwi kontakt.</p>
+
+        <h3>10. &#377;r&#243;d&#322;o danych</h3>
+        <p>Dane osobowe pozyskujemy bezpo&#347;rednio od osoby, kt&#243;rej dane dotycz&#261;, za po&#347;rednictwem formularza kontaktowego, wiadomo&#347;ci e-mail lub komunikatora Telegram.</p>
+
+        <p style="margin-top:24px;font-size:13px;"><a href="/privacy" target="_blank" style="color:var(--rose);">Pe&#322;na wersja Polityki Prywatno&#347;ci platformy SalonBot &#8594;</a></p>
+        <p class="modal-updated">Ostatnia aktualizacja: czerwiec 2026</p>
       </div>
     </div>
   </div>
@@ -1494,30 +1545,39 @@
       <h2>Regulamin</h2>
       <div class="modal-body">
         <h3>1. Postanowienia og&#243;lne</h3>
-        <p>Niniejszy Regulamin okre&#347;la zasady korzystania z serwisu informacyjnego dost&#281;pnego pod adresem <strong>salonbot.pl</strong>, prowadzonego przez <strong>Olena Shevchenko</strong> (dalej: &#8222;Us&#322;ugodawca&#8221;), e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+        <p>Niniejszy Regulamin okre&#347;la zasady korzystania z serwisu informacyjnego dost&#281;pnego pod adresem <strong>salonbot.pl</strong>, prowadzonego przez <strong>Olena Shevchenko</strong>, prowadz&#261;c&#261; dzia&#322;alno&#347;&#263; nierejestrowan&#261; w rozumieniu art.&nbsp;5 ust.&nbsp;1 ustawy Prawo przedsi&#281;biorc&#243;w (dalej: &#8222;Us&#322;ugodawca&#8221;).</p>
+        <p>Adres do korespondencji: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
 
         <h3>2. Zakres us&#322;ug</h3>
-        <p>Serwis salonbot.pl jest stron&#261; informacyjn&#261; prezentuj&#261;c&#261; ofert&#281; bota Telegram do zarz&#261;dzania zapisami w salonach pi&#281;kno&#347;ci. Serwis nie &#347;wiadczy us&#322;ug bezpo&#347;rednio &#8212; kontakt z Us&#322;ugodawc&#261; odbywa si&#281; przez Telegram lub e-mail.</p>
+        <p>Serwis salonbot.pl jest stron&#261; informacyjn&#261; prezentuj&#261;c&#261; ofert&#281; bota Telegram do zarz&#261;dzania zapisami w salonach pi&#281;kno&#347;ci. Informacje zamieszczone w serwisie maj&#261; charakter informacyjny i nie stanowi&#261; oferty w rozumieniu art.&nbsp;66 Kodeksu cywilnego. Kontakt z Us&#322;ugodawc&#261; odbywa si&#281; przez Telegram lub e-mail.</p>
 
         <h3>3. Warunki korzystania</h3>
-        <p>Korzystanie z serwisu jest bezp&#322;atne i nie wymaga rejestracji. U&#380;ytkownik zobowi&#261;zuje si&#281; do korzystania z serwisu zgodnie z obowi&#261;zuj&#261;cym prawem i dobrymi obyczajami.</p>
+        <p>3.1. Korzystanie z serwisu jest bezp&#322;atne i nie wymaga rejestracji. U&#380;ytkownik zobowi&#261;zuje si&#281; do korzystania z serwisu zgodnie z obowi&#261;zuj&#261;cym prawem i dobrymi obyczajami.</p>
+        <p>3.2. Do korzystania z Serwisu wymagane jest: po&#322;&#261;czenie z sieci&#261; Internet, przegl&#261;darka internetowa zaktualizowana do najnowszej wersji z w&#322;&#261;czon&#261; obs&#322;ug&#261; JavaScript oraz aktywne konto e-mail lub Telegram (w przypadku ch&#281;ci kontaktu).</p>
+        <p>3.3. Zakazane jest dostarczanie przez U&#380;ytkownika tre&#347;ci o charakterze bezprawnym, w tym rozsy&#322;ania spamu, wprowadzania danych mog&#261;cych zak&#322;&#243;ci&#263; dzia&#322;anie Serwisu lub pr&#243;b nieautoryzowanego dost&#281;pu do system&#243;w Us&#322;ugodawcy.</p>
 
         <h3>4. Odpowiedzialno&#347;&#263;</h3>
         <p>Us&#322;ugodawca dok&#322;ada stara&#324;, aby informacje zamieszczone w serwisie by&#322;y aktualne i rzetelne, jednak nie ponosi odpowiedzialno&#347;ci za przerwy w dzia&#322;aniu serwisu wynikaj&#261;ce z przyczyn technicznych niezale&#380;nych od Us&#322;ugodawcy.</p>
+        <p>Serwis mo&#380;e zawiera&#263; odno&#347;niki do stron podmiot&#243;w trzecich (np. Telegram). Us&#322;ugodawca nie ponosi odpowiedzialno&#347;ci za tre&#347;ci ani polityki prywatno&#347;ci tych serwis&#243;w.</p>
 
         <h3>5. W&#322;asno&#347;&#263; intelektualna</h3>
         <p>Wszelkie tre&#347;ci zamieszczone w serwisie (teksty, grafiki, logotypy) stanowi&#261; w&#322;asno&#347;&#263; Us&#322;ugodawcy i s&#261; chronione prawem autorskim. Kopiowanie bez zgody jest zabronione.</p>
 
         <h3>6. Zmiany Regulaminu</h3>
-        <p>Us&#322;ugodawca zastrzega sobie prawo do zmiany Regulaminu. Zmiany wchodz&#261; w &#380;ycie z chwil&#261; opublikowania zaktualizowanej wersji na stronie.</p>
+        <p>Us&#322;ugodawca zastrzega sobie prawo do zmiany Regulaminu z wa&#380;nych przyczyn technicznych lub prawnych. Zmiany wchodz&#261; w &#380;ycie w terminie 7 dni od dnia ich opublikowania na stronie. Do zapyta&#324; z&#322;o&#380;onych przed zmian&#261; Regulaminu stosuje si&#281; wersj&#281; obowi&#261;zuj&#261;c&#261; w momencie sk&#322;adania zapytania.</p>
 
-        <h3>7. Kontakt</h3>
-        <p><a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a></p>
+        <h3>7. Post&#281;powanie reklamacyjne</h3>
+        <p>7.1. U&#380;ytkownik ma prawo do z&#322;o&#380;enia reklamacji dotycz&#261;cej dzia&#322;ania Serwisu drog&#261; elektroniczn&#261; na adres: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
+        <p>7.2. Us&#322;ugodawca rozpatruje reklamacj&#281; w terminie 14 dni od dnia jej otrzymania i informuje U&#380;ytkownika o decyzji w wiadomo&#347;ci zwrotnej.</p>
 
-        <h3>8. Prawo w&#322;a&#347;ciwe</h3>
-        <p>Regulamin podlega prawu polskiemu.</p>
+        <h3>8. Kontakt</h3>
+        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Strona: <a href="https://salonbot.pl">salonbot.pl</a></p>
 
-        <p class="modal-updated">Ostatnia aktualizacja: maj 2026</p>
+        <h3>9. Prawo w&#322;a&#347;ciwe</h3>
+        <p>Regulamin podlega prawu polskiemu. W sprawach nieuregulowanych stosuje si&#281; przepisy ustawy o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261; z dnia 18 lipca 2002 r. oraz Kodeksu cywilnego.</p>
+
+        <p style="margin-top:24px;font-size:13px;"><a href="/terms" target="_blank" style="color:var(--rose);">Pe&#322;na wersja Regulaminu platformy SalonBot &#8594;</a></p>
+        <p class="modal-updated">Ostatnia aktualizacja: czerwiec 2026</p>
       </div>
     </div>
   </div>

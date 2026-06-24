@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subprocessors / Podprocesory — SalonBot</title>
+  <meta name="description" content="List of subprocessors used by SalonBot platform." />
+  <style>
+    :root {
+      --rose: #c0506a;
+      --rose-light: #f8e8ec;
+      --rose-dark: #9a3d54;
+      --text: #2c2c2c;
+      --text-muted: #6b6b6b;
+      --bg: #fdfcfb;
+      --white: #ffffff;
+      --border: #ecdcdf;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    nav {
+      background: rgba(253,252,251,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--text); }
+    .lang-switch { display: flex; gap: 8px; }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      padding: 4px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .lang-btn.active { background: var(--rose); color: white; border-color: var(--rose); }
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+    }
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+    h1 { font-size: 32px; font-weight: 800; color: var(--rose); margin-bottom: 8px; }
+    .subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 40px; }
+    h2 { font-size: 22px; font-weight: 700; margin: 36px 0 16px; }
+    p { margin-bottom: 12px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px;
+      font-size: 14.5px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--rose-light);
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--rose-dark);
+    }
+    td { vertical-align: top; }
+    a { color: var(--rose); }
+    .note {
+      background: var(--rose-light);
+      border-left: 4px solid var(--rose);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    footer {
+      background: #1e1e1e;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 28px 40px;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: white; }
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .content { padding: 40px 20px 60px; }
+      h1 { font-size: 26px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Salon<span>Bot</span></a>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('pl')" id="btn-pl">PL</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <!-- PL -->
+    <div data-lang="pl" class="visible">
+      <h1>Podprocesory (podmioty przetwarzaj&#261;ce)</h1>
+      <p class="subtitle">Ostatnia aktualizacja: czerwiec 2026</p>
+
+      <p>Poni&#380;ej znajduje si&#281; lista podmiot&#243;w przetwarzaj&#261;cych (podprocesor&#243;w), kt&#243;rym SalonBot powierza przetwarzanie danych osobowych w ramach &#347;wiadczenia us&#322;ugi. Lista jest prowadzona zgodnie z art. 28 ust. 2 RODO.</p>
+
+      <h2>Podprocesory platformy SalonBot</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Podprocesor</th>
+            <th>Rola</th>
+            <th>Lokalizacja danych</th>
+            <th>Podstawa transferu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Railway Corp.</strong><br><a href="https://railway.app" target="_blank">railway.app</a></td>
+            <td>Hosting aplikacji i bazy danych PostgreSQL</td>
+            <td>Region Unii Europejskiej</td>
+            <td>Dane w EOG</td>
+          </tr>
+          <tr>
+            <td><strong>Google LLC</strong><br><a href="https://cloud.google.com" target="_blank">cloud.google.com</a></td>
+            <td>Synchronizacja kalendarza specjalisty (Google Calendar API, OAuth 2.0) — wy&#322;&#261;cznie po wyra&#380;eniu zgody przez specjalist&#281;</td>
+            <td>USA</td>
+            <td>EU-US Data Privacy Framework + SCC + Google Cloud DPA</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Telegram Messenger Inc.</strong> (Dubaj/Londyn) nie jest podprocesorem SalonBot. Telegram dzia&#322;a jako niezale&#380;ny administrator danych w zakresie w&#322;asnej infrastruktury komunikacyjnej. Korzystanie z platformy Telegram jest &#347;wiadom&#261; decyzj&#261; biznesow&#261; salonu. Szczeg&#243;&#322;y: <a href="https://telegram.org/privacy" target="_blank">telegram.org/privacy</a>.
+      </div>
+
+      <h2>Podprocesory strony salonbot.pl (landing page)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Podprocesor</th>
+            <th>Rola</th>
+            <th>Lokalizacja danych</th>
+            <th>Podstawa transferu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Vercel Inc.</strong><br><a href="https://vercel.com" target="_blank">vercel.com</a></td>
+            <td>Hosting strony internetowej salonbot.pl (logi dost&#281;pu)</td>
+            <td>USA</td>
+            <td>SCC + EU-US DPF (w przypadku certyfikacji)</td>
+          </tr>
+          <tr>
+            <td><strong>Formspree Inc.</strong><br><a href="https://formspree.io" target="_blank">formspree.io</a></td>
+            <td>Obs&#322;uga formularza kontaktowego</td>
+            <td>USA</td>
+            <td>SCC + EU-US DPF (w przypadku certyfikacji)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Powiadamianie o zmianach</h2>
+      <p>Zgodnie z Umow&#261; Powierzenia Przetwarzania Danych (DPA, &#167; 5 pkt 3), SalonBot poinformuje Administratora (salon) o zamiarze skorzystania z nowego podprocesora lub zmianie istniej&#261;cego <strong>z 14-dniowym wyprzedzeniem</strong> (e-mail lub powiadomienie w panelu). Administrator mo&#380;e zg&#322;osi&#263; uzasadniony sprzeciw w ci&#261;gu 14 dni.</p>
+
+      <p style="margin-top:32px;font-size:13px;color:var(--text-muted);">
+        Powi&#261;zane dokumenty:
+        <a href="/privacy">Polityka Prywatno&#347;ci</a> &middot;
+        <a href="/terms">Regulamin</a> &middot;
+        <a href="/google-api-disclosure">Google API Disclosure</a>
+      </p>
+    </div>
+
+    <!-- EN -->
+    <div data-lang="en">
+      <h1>Subprocessors</h1>
+      <p class="subtitle">Last updated: June 2026</p>
+
+      <p>Below is the list of subprocessors (sub-data processors) to whom SalonBot entrusts the processing of personal data as part of the service. This list is maintained in accordance with Art. 28(2) GDPR.</p>
+
+      <h2>SalonBot platform subprocessors</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Subprocessor</th>
+            <th>Role</th>
+            <th>Data location</th>
+            <th>Transfer basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Railway Corp.</strong><br><a href="https://railway.app" target="_blank">railway.app</a></td>
+            <td>Application and PostgreSQL database hosting</td>
+            <td>European Union region</td>
+            <td>Data within the EEA</td>
+          </tr>
+          <tr>
+            <td><strong>Google LLC</strong><br><a href="https://cloud.google.com" target="_blank">cloud.google.com</a></td>
+            <td>Specialist calendar synchronisation (Google Calendar API, OAuth 2.0) — only after the specialist grants consent</td>
+            <td>USA</td>
+            <td>EU-US Data Privacy Framework + SCC + Google Cloud DPA</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Telegram Messenger Inc.</strong> (Dubai/London) is not a subprocessor of SalonBot. Telegram acts as an independent data controller with respect to its own communication infrastructure. The use of the Telegram platform is a conscious business decision of the salon. Details: <a href="https://telegram.org/privacy" target="_blank">telegram.org/privacy</a>.
+      </div>
+
+      <h2>Subprocessors of salonbot.pl (landing page)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Subprocessor</th>
+            <th>Role</th>
+            <th>Data location</th>
+            <th>Transfer basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Vercel Inc.</strong><br><a href="https://vercel.com" target="_blank">vercel.com</a></td>
+            <td>Hosting of the salonbot.pl website (access logs)</td>
+            <td>USA</td>
+            <td>SCC + EU-US DPF (where certified)</td>
+          </tr>
+          <tr>
+            <td><strong>Formspree Inc.</strong><br><a href="https://formspree.io" target="_blank">formspree.io</a></td>
+            <td>Contact form processing</td>
+            <td>USA</td>
+            <td>SCC + EU-US DPF (where certified)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Change notification</h2>
+      <p>In accordance with the Data Processing Agreement (DPA, &sect; 5(3)), SalonBot will notify the Data Controller (salon) of its intention to engage a new subprocessor or change an existing one <strong>with 14 days' advance notice</strong> (by e-mail or notification in the admin panel). The Data Controller may raise a reasoned objection within 14 days.</p>
+
+      <p style="margin-top:32px;font-size:13px;color:var(--text-muted);">
+        Related documents:
+        <a href="/privacy">Privacy Policy</a> &middot;
+        <a href="/terms">Terms of Service</a> &middot;
+        <a href="/google-api-disclosure">Google API Disclosure</a>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      &copy; 2026 SalonBot &middot;
+      <a href="/">Home</a> &middot;
+      <a href="/privacy">Privacy Policy</a> &middot;
+      <a href="/terms">Terms of Service</a> &middot;
+      <a href="mailto:salonbotpl@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      document.getElementById('btn-pl').classList.toggle('active', lang === 'pl');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+    }
+  </script>
+
+</body>
+</html>
