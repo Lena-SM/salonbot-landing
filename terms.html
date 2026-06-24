@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regulamin / Terms of Service — SalonBot</title>
+  <meta name="description" content="Terms of Service for SalonBot beauty salon booking platform." />
+  <style>
+    :root {
+      --rose: #c0506a;
+      --rose-light: #f8e8ec;
+      --rose-dark: #9a3d54;
+      --text: #2c2c2c;
+      --text-muted: #6b6b6b;
+      --bg: #fdfcfb;
+      --white: #ffffff;
+      --border: #ecdcdf;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    nav {
+      background: rgba(253,252,251,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo { font-size: 22px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--text); }
+    .lang-switch { display: flex; gap: 8px; }
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      padding: 4px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .lang-btn.active { background: var(--rose); color: white; border-color: var(--rose); }
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 40px 80px;
+    }
+    [data-lang] { display: none; }
+    [data-lang].visible { display: block; }
+    h1 { font-size: 32px; font-weight: 800; color: var(--rose); margin-bottom: 8px; }
+    .subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 40px; }
+    h2 { font-size: 22px; font-weight: 700; margin: 36px 0 16px; }
+    h3 { font-size: 18px; font-weight: 700; margin: 28px 0 12px; }
+    p { margin-bottom: 12px; }
+    ul, ol { margin: 0 0 12px 24px; }
+    li { margin-bottom: 6px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 28px;
+      font-size: 14.5px;
+    }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--rose-light);
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--rose-dark);
+    }
+    td { vertical-align: top; }
+    a { color: var(--rose); }
+    .note {
+      background: var(--rose-light);
+      border-left: 4px solid var(--rose);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    .section { margin-bottom: 32px; }
+    .section p:last-child { margin-bottom: 0; }
+    .def-list { margin: 8px 0 12px 0; }
+    .def-list li { margin-bottom: 8px; }
+    code { background: var(--rose-light); padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+    footer {
+      background: #1e1e1e;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 28px 40px;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer a:hover { color: white; }
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .lang-switch { gap: 5px; }
+      .lang-btn { padding: 4px 10px; font-size: 12px; }
+      .content { padding: 40px 20px 60px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 19px; }
+      table { font-size: 13px; }
+      th, td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Salon<span>Bot</span></a>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('pl')" id="btn-pl">PL</button>
+      <button class="lang-btn" onclick="setLang('ru')" id="btn-ru">RU</button>
+      <button class="lang-btn" onclick="setLang('uk')" id="btn-uk">UA</button>
+      <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <!-- ==================== PL ==================== -->
+    <div data-lang="pl" class="visible">
+      <h1>Regulamin platformy SalonBot</h1>
+      <p class="subtitle">Data ostatniej aktualizacji: 24 czerwca 2026</p>
+
+      <div class="section">
+        <h2>1. Postanowienia og&oacute;lne</h2>
+        <p>1.1. Niniejszy Regulamin okre&#347;la zasady korzystania z platformy <strong>SalonBot</strong> &mdash; us&#322;ugi SaaS (Software as a Service) umo&#380;liwiaj&#261;cej salonom pi&#281;kno&#347;ci i specjalistom zarz&#261;dzanie rezerwacjami wizyt za po&#347;rednictwem bota Telegram, panelu administracyjnego oraz powi&#261;zanych us&#322;ug.</p>
+        <p>1.2. Us&#322;ugodawc&#261; platformy jest:</p>
+        <p><strong>Olena Shevchenko</strong><br>
+        prowadz&#261;ca dzia&#322;alno&#347;&#263; nierejestrovan&#261; w rozumieniu art. 5 ust. 1 ustawy z dnia 6 marca 2018 r. &mdash; Prawo przedsi&#281;biorc&oacute;w (Dz.U. z 2024 r. poz. 236 ze zm.)<br>
+        Adres: Trzciana 206E, 36-071 Trzciana, Polska<br>
+        Kontakt: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a> | Telegram: @SalonBotAlerts</p>
+        <p>zwana dalej &bdquo;<strong>Us&#322;ugodawc&#261;</strong>&rdquo; lub &bdquo;<strong>SalonBot</strong>&rdquo;.</p>
+        <p>1.3. Regulamin jest regulaminem &#347;wiadczenia us&#322;ug drog&#261; elektroniczn&#261; w rozumieniu art. 8 ustawy z dnia 18 lipca 2002 r. o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261; (Dz.U. z 2020 r. poz. 344 ze zm.).</p>
+        <p>1.4. Korzystanie z platformy oznacza akceptacj&#281; niniejszego Regulaminu.</p>
+      </div>
+
+      <div class="section">
+        <h2>2. Definicje</h2>
+        <ul class="def-list">
+          <li><strong>Platforma</strong> &mdash; og&oacute;&#322; us&#322;ug SalonBot: boty Telegram (kliencki i specjalisty), panel administracyjny (admin.salonbot.pl), API.</li>
+          <li><strong>Salon</strong> &mdash; osoba fizyczna prowadz&#261;ca dzia&#322;alno&#347;&#263; (w tym nierejestrovan&#261;) lub osoba prawna, prowadz&#261;ca salon pi&#281;kno&#347;ci lub &#347;wiadcz&#261;ca us&#322;ugi kosmetyczne, korzystaj&#261;ca z Platformy na podstawie Umowy Subskrypcji.</li>
+          <li><strong>Specjalista (Mistrz)</strong> &mdash; osoba fizyczna &#347;wiadcz&#261;ca us&#322;ugi kosmetyczne w ramach Salonu, korzystaj&#261;ca z bota specjalisty i/lub panelu administracyjnego.</li>
+          <li><strong>Klient</strong> &mdash; osoba fizyczna korzystaj&#261;ca z bota Telegram Salonu w celu rezerwacji wizyt.</li>
+          <li><strong>Umowa Subskrypcji</strong> &mdash; odr&#281;bna umowa mi&#281;dzy SalonBot a Salonem, okre&#347;laj&#261;ca zakres us&#322;ug, plan taryfowy i warunki finansowe.</li>
+          <li><strong>Panel</strong> &mdash; panel administracyjny dost&#281;pny pod adresem admin.salonbot.pl.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>3. Zakres us&#322;ug</h2>
+        <p>3.1. SalonBot &#347;wiadczy na rzecz Salon&oacute;w nast&#281;puj&#261;ce us&#322;ugi:</p>
+        <p><strong>a) Bot kliencki Telegram</strong> &mdash; automatyczna rezerwacja wizyt przez klient&oacute;w (wyb&oacute;r specjalisty, us&#322;ugi, terminu), potwierdzenia, przypomnienia (24h i 2h przed wizyt&#261;), anulowanie i przeniesienie wizyt, zbieranie opinii po wizytach.</p>
+        <p><strong>b) Bot specjalisty Telegram</strong> &mdash; powiadomienia o nowych rezerwacjach, przeniesieniach i anulowaniach, rozplanowanie dnia, statystyki (tygodniowy digest), portf&oacute;lio prac.</p>
+        <p><strong>c) Panel administracyjny</strong> &mdash; kalendarz (widoki dzie&#324;/tydzie&#324;/miesi&#261;c), zarz&#261;dzanie specjalistami i us&#322;ugami, baza klient&oacute;w z histori&#261; wizyt, analityka (wykresy przychod&oacute;w, obci&#261;&#380;enia), masowa wysy&#322;ka wiadomo&#347;ci do klient&oacute;w, eksport danych (CSV).</p>
+        <p><strong>d) Integracja z Google Calendar</strong> &mdash; synchronizacja rezerwacji z kalendarzem osobistym specjalisty, sprawdzanie zaj&#281;to&#347;ci (freebusy) w celu zapobiegania podw&oacute;jnym rezerwacjom.</p>
+        <p>3.2. Szczeg&oacute;&#322;owy zakres us&#322;ug zale&#380;y od wybranego planu taryfowego okre&#347;lonego w Umowie Subskrypcji.</p>
+      </div>
+
+      <div class="section">
+        <h2>4. Wymagania techniczne</h2>
+        <p>4.1. Do korzystania z bota Telegram wymagane jest:</p>
+        <ul>
+          <li>konto Telegram,</li>
+          <li>urz&#261;dzenie z dost&#281;pem do internetu.</li>
+        </ul>
+        <p>4.2. Do korzystania z panelu administracyjnego wymagane jest:</p>
+        <ul>
+          <li>przegl&#261;darka internetowa (aktualna wersja Chrome, Safari, Firefox, Edge),</li>
+          <li>sta&#322;e po&#322;&#261;czenie z internetem.</li>
+        </ul>
+        <p>4.3. Do integracji z Google Calendar wymagane jest:</p>
+        <ul>
+          <li>konto Google z aktywnym kalendarzem,</li>
+          <li>wyra&#380;enie zgody OAuth na dost&#281;p SalonBot do kalendarza.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>5. Rejestracja i konto</h2>
+        <p>5.1. <strong>Salon:</strong> rejestracja odbywa si&#281; po kontakcie z Us&#322;ugodawc&#261; i podpisaniu Umowy Subskrypcji. Us&#322;ugodawca konfiguruje bota i panel, przekazuje dane dost&#281;powe.</p>
+        <p>5.2. <strong>Klient:</strong> korzystanie z bota nie wymaga odr&#281;bnej rejestracji. Konto klienta tworzone jest automatycznie przy pierwszej interakcji z botem po wyra&#380;eniu zgody na przetwarzanie danych.</p>
+        <p>5.3. Salon zobowi&#261;zuje si&#281; do zabezpieczenia danych dost&#281;powych do panelu administracyjnego (login, has&#322;o) przed dost&#281;pem os&oacute;b nieuprawnionych.</p>
+      </div>
+
+      <div class="section">
+        <h2>6. Rezerwacja wizyt</h2>
+        <p>6.1. Rezerwacja odbywa si&#281; przez wyb&oacute;r specjalisty, us&#322;ugi oraz dost&#281;pnego terminu w bocie Telegram.</p>
+        <p>6.2. Po potwierdzeniu rezerwacji klient otrzymuje automatyczne przypomnienia &mdash; 24 godziny i 2 godziny przed wizyt&#261;.</p>
+        <p>6.3. Rezerwacja jest wi&#261;&#380;&#261;ca z chwil&#261; jej potwierdzenia. Salon przygotowuje zarezerwowany czas i zasoby specjalisty.</p>
+        <p>6.4. SalonBot sprawdza dost&#281;pno&#347;&#263; terminu na podstawie:</p>
+        <ul>
+          <li>grafiku pracy specjalisty skonfigurowanego w panelu,</li>
+          <li>istniej&#261;cych rezerwacji w systemie,</li>
+          <li>zaj&#281;to&#347;ci w Google Calendar specjalisty (je&#347;li pod&#322;&#261;czony) &mdash; w celu zapobiegania konfliktom z zewn&#281;trznymi systemami rezerwacji (Booksy, Fresha i in.).</li>
+        </ul>
+        <p>6.5. W przypadku wykrycia konfliktu z zewn&#281;trznym kalendarzem bot informuje klienta o niedost&#281;pno&#347;ci terminu i proponuje alternatywne godziny.</p>
+      </div>
+
+      <div class="section">
+        <h2>7. Anulowanie i przeniesienie wizyt</h2>
+        <p>7.1. Klient mo&#380;e anulowa&#263; lub przenie&#347;&#263; wizyt&#281; w dowolnym momencie za po&#347;rednictwem bota lub kontaktu z salonem.</p>
+        <p>7.2. Prosimy o anulowanie wizyty z wyprzedzeniem co najmniej 4 godzin, aby umo&#380;liwi&#263; innym klientom rezerwacj&#281;.</p>
+        <p>7.3. Wielokrotne nieprzychodzenie na wizyty (no-show) bez powiadomienia mo&#380;e skutkowa&#263; ograniczeniem mo&#380;liwo&#347;ci rezerwacji przez Salon.</p>
+        <p>7.4. Salon mo&#380;e anulowa&#263; lub przenie&#347;&#263; wizyt&#281; klienta za po&#347;rednictwem panelu administracyjnego lub bota specjalisty. W takim przypadku klient otrzymuje powiadomienie przez bota Telegram.</p>
+      </div>
+
+      <div class="section">
+        <h2>8. Komunikacja marketingowa (rasy&#322;ki)</h2>
+        <p>8.1. Salon mo&#380;e wysy&#322;a&#263; klientom komunikaty marketingowe (akcje, oferty, informacje o nowych us&#322;ugach) za po&#347;rednictwem funkcji masowej wysy&#322;ki wiadomo&#347;ci w panelu administracyjnym.</p>
+        <p>8.2. Komunikaty marketingowe wysy&#322;ane s&#261; <strong>wy&#322;&#261;cznie</strong> klientom, kt&oacute;rzy wyrazili odr&#281;bn&#261; zgod&#281; na otrzymywanie takich komunikat&oacute;w (zgodnie z art. 6 ust. 1 lit. a RODO, art. 10 ustawy o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261; oraz Prawem komunikacji elektronicznej).</p>
+        <p>8.3. <strong>Salon ponosi pe&#322;n&#261; odpowiedzialno&#347;&#263;</strong> za:</p>
+        <ul>
+          <li>tre&#347;&#263; komunikat&oacute;w marketingowych,</li>
+          <li>zgodno&#347;&#263; tre&#347;ci z obowi&#261;zuj&#261;cym prawem (w tym prawem ochrony konsument&oacute;w, zakazem reklamy wprowadzaj&#261;cej w b&#322;&#261;d),</li>
+          <li>posiadanie podstawy prawnej do wysy&#322;ki (zgoda klienta).</li>
+        </ul>
+        <p>8.4. SalonBot udost&#281;pnia wy&#322;&#261;cznie <strong>narz&#281;dzie techniczne</strong> do dystrybucji komunikat&oacute;w i nie ponosi odpowiedzialno&#347;ci za tre&#347;&#263; komunikat&oacute;w redagowanych przez Salon.</p>
+        <p>8.5. Ka&#380;dy komunikat marketingowy zawiera przycisk &bdquo;Wypisz si&#281;&rdquo;, umo&#380;liwiaj&#261;cy klientowi natychmiastowe wycofanie zgody.</p>
+      </div>
+
+      <div class="section">
+        <h2>9. P&#322;atno&#347;ci</h2>
+        <p>9.1. <strong>Klienci salonu:</strong> w obecnej wersji bota nie obs&#322;ugujemy p&#322;atno&#347;ci online. Op&#322;ata za us&#322;ug&#281; kosmetyczn&#261; pobierana jest bezpo&#347;rednio w salonie po jej wykonaniu, zgodnie z aktualnym cennikiem salonu.</p>
+        <p>9.2. <strong>Salony (subskrypcja SalonBot):</strong> warunki finansowe okre&#347;lone s&#261; w Umowie Subskrypcji. Op&#322;ata abonamentowa pobierana jest miesi&#281;cznie zgodnie z wybranym planem taryfowym.</p>
+      </div>
+
+      <div class="section">
+        <h2>10. Opinie i pytania do specjalist&oacute;w</h2>
+        <p>10.1. Po wizycie klient mo&#380;e wystawi&#263; opini&#281; (ocen&#281; 1&ndash;5 i/lub komentarz) za po&#347;rednictwem bota.</p>
+        <p>10.2. Opinie s&#261; widoczne dla specjalisty i w&#322;a&#347;ciciela salonu w panelu administracyjnym i bocie specjalisty. Opinie nie s&#261; publicznie dost&#281;pne w internecie.</p>
+        <p>10.3. Funkcja &bdquo;Zapytaj specjalist&#281;&rdquo; umo&#380;liwia klientowi zadanie pytania przed rezerwacj&#261;. Odpowiedzi nie stanowi&#261; porady medycznej.</p>
+      </div>
+
+      <div class="section">
+        <h2>11. Odpowiedzialno&#347;&#263;</h2>
+        <p>11.1. SalonBot dok&#322;ada wszelkich stara&#324;, aby Platforma dzia&#322;a&#322;a niezawodnie i nieprzerwanie. Jednak&#380;e SalonBot <strong>nie gwarantuje</strong> dost&#281;pno&#347;ci Platformy przez 100% czasu i nie ponosi odpowiedzialno&#347;ci za:</p>
+        <ul>
+          <li>przerwy wynikaj&#261;ce z awarii infrastruktury Telegram, Google, dostawcy hostingu (Railway) lub dostawcy internetu,</li>
+          <li>przerwy planowane (konserwacja, aktualizacje) &mdash; o ile to mo&#380;liwe, z wyprzedzeniem 24h,</li>
+          <li>szkody po&#347;rednie, w tym utracone korzy&#347;ci, wynikaj&#261;ce z czasowej niedost&#281;pno&#347;ci Platformy.</li>
+        </ul>
+        <p>11.2. <strong>Odpowiedzialno&#347;&#263; SalonBot wobec Salonu (U&#380;ytkownika B2B)</strong> z tytu&#322;u wszelkich roszcze&#324; jest ograniczona do wi&#281;kszej z kwot: (a) 500 PLN lub (b) sumy op&#322;at abonamentowych uiszczonych przez Salon w okresie 3 miesi&#281;cy poprzedzaj&#261;cych zdarzenie. Ograniczenie to nie ma zastosowania w przypadkach, w kt&oacute;rych odpowiedzialno&#347;&#263; nie mo&#380;e by&#263; ograniczona zgodnie z bezwzgl&#281;dnie obowi&#261;zuj&#261;cymi przepisami prawa (w tym za szkod&#281; wyrz&#261;dzon&#261; z winy umy&#347;lnej).</p>
+        <p>11.2a. <strong>Wobec Klient&oacute;w (Konsument&oacute;w):</strong> SalonBot &#347;wiadczy us&#322;ug&#281; bota Telegram nieodp&#322;atnie, w imieniu i na rzecz Salonu. SalonBot nie jest stron&#261; umowy o &#347;wiadczenie us&#322;ug kosmetycznych mi&#281;dzy Salonem a Klientem i nie ponosi odpowiedzialno&#347;ci za niewykonanie lub nienale&#380;yte wykonanie us&#322;ugi kosmetycznej przez Salon. Prawa Klient&oacute;w jako konsument&oacute;w okre&#347;lone w bezwzgl&#281;dnie obowi&#261;zuj&#261;cych przepisach prawa pozostaj&#261; nienaruszone.</p>
+        <p>11.3. Salon ponosi odpowiedzialno&#347;&#263; za:</p>
+        <ul>
+          <li>prawid&#322;owo&#347;&#263; danych wprowadzonych do systemu (grafik, us&#322;ugi, ceny),</li>
+          <li>tre&#347;&#263; komunikat&oacute;w marketingowych wysy&#322;anych do klient&oacute;w,</li>
+          <li>przestrzeganie przepis&oacute;w o ochronie danych osobowych w zakresie, w jakim pe&#322;ni rol&#281; administratora danych,</li>
+          <li>prawid&#322;owo&#347;&#263; &#347;wiadczonych us&#322;ug kosmetycznych (SalonBot nie jest stron&#261; umowy mi&#281;dzy Salonem a klientem dotycz&#261;cej us&#322;ugi kosmetycznej).</li>
+        </ul>
+        <p>11.4. Specjali&#347;ci salonu posiadaj&#261; wymagane uprawnienia i do&#347;wiadczenie. SalonBot nie weryfikuje kwalifikacji specjalist&oacute;w &mdash; odpowiedzialno&#347;&#263; w tym zakresie spoczywa na Salonie.</p>
+      </div>
+
+      <div class="section">
+        <h2>12. Prawo do usuni&#281;cia danych</h2>
+        <p>12.1. <strong>Klient</strong> ma prawo &#380;&#261;da&#263; usuni&#281;cia swoich danych osobowych od Salonu (administratora danych):</p>
+        <ul>
+          <li>za po&#347;rednictwem komendy <code>/delete_my_data</code> w bocie Telegram,</li>
+          <li>kontaktuj&#261;c si&#281; bezpo&#347;rednio z salonem,</li>
+          <li>kontaktuj&#261;c si&#281; z Us&#322;ugodawc&#261;: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</li>
+        </ul>
+        <p>12.2. <strong>Salon</strong> mo&#380;e usun&#261;&#263; dane klienta za po&#347;rednictwem panelu administracyjnego (przycisk &bdquo;Usu&#324; klienta&rdquo;). Usuni&#281;cie klienta powoduje:</p>
+        <ul>
+          <li>usuni&#281;cie danych identyfikacyjnych i kontaktowych (imi&#281;, telefon, Telegram ID),</li>
+          <li>anonimizacj&#281; historii wizyt: usuni&#281;cie imienia, numeru telefonu, Telegram ID oraz wszelkich danych umo&#380;liwiaj&#261;cych identyfikacj&#281; klienta; zachowane zostaj&#261; wy&#322;&#261;cznie dane statystyczne wizyty (data, us&#322;uga, cena) bez powi&#261;zania z osob&#261; &mdash; dla cel&oacute;w statystycznych i ksi&#281;gowych Salonu,</li>
+          <li>usuni&#281;cie opinii i pyta&#324;.</li>
+        </ul>
+        <p>12.3. <strong>Salon</strong> mo&#380;e &#380;&#261;da&#263; usuni&#281;cia swojego konta i wszystkich danych salonu (w tym danych klient&oacute;w, specjalist&oacute;w, wizyt) kontaktuj&#261;c si&#281; z Us&#322;ugodawc&#261;. Us&#322;ugodawca zrealizuje &#380;&#261;danie w terminie 30 dni.</p>
+        <p>12.4. Us&#322;ugodawca mo&#380;e odm&oacute;wi&#263; usuni&#281;cia danych, je&#380;eli ich przechowywanie jest wymagane przez przepisy prawa (np. dokumentacja ksi&#281;gowa &mdash; 5 lat zgodnie z art. 74 ustawy o rachunkowo&#347;ci). W takim przypadku dane zostan&#261; zanonimizowane po up&#322;ywie wymaganego okresu.</p>
+      </div>
+
+      <div class="section">
+        <h2>13. Reklamacje</h2>
+        <p>13.1. Reklamacje dotycz&#261;ce funkcjonowania Platformy mo&#380;na zg&#322;asza&#263;:</p>
+        <ul>
+          <li>e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>,</li>
+          <li>Telegram: @SalonBotAlerts.</li>
+        </ul>
+        <p>13.2. Reklamacja powinna zawiera&#263;: opis problemu, dat&#281; wyst&#261;pienia, dane kontaktowe zg&#322;aszaj&#261;cego.</p>
+        <p>13.3. Reklamacje rozpatrywane s&#261; w terminie <strong>14 dni</strong> od zg&#322;oszenia.</p>
+      </div>
+
+      <div class="section">
+        <h2>14. Prawa w&#322;asno&#347;ci intelektualnej</h2>
+        <p>14.1. Platforma SalonBot, jej kod &#378;r&oacute;d&#322;owy, interfejs graficzny, logo, nazwa i dokumentacja stanowi&#261; w&#322;asno&#347;&#263; Us&#322;ugodawcy i s&#261; chronione prawem autorskim.</p>
+        <p>14.2. Salon otrzymuje niewy&#322;&#261;czn&#261;, niezbywaln&#261; licencj&#281; na korzystanie z Platformy w zakresie okre&#347;lonym Umow&#261; Subskrypcji, na czas obowi&#261;zywania umowy.</p>
+        <p>14.3. Salon nie ma prawa do kopiowania, modyfikowania, dekompilowania, in&#380;ynierii wstecznej ani sublicencjonowania Platformy.</p>
+      </div>
+
+      <div class="section">
+        <h2>15. Rozwi&#261;zanie umowy</h2>
+        <p>15.1. <strong>Klient</strong> mo&#380;e zaprzesta&#263; korzystania z bota w dowolnym momencie &mdash; wystarczy usun&#261;&#263; histori&#281; czatu z botem w Telegram. Na &#380;&#261;danie klienta dane zostan&#261; usuni&#281;te (patrz &sect;12).</p>
+        <p>15.2. <strong>Salon</strong> mo&#380;e rozwi&#261;za&#263; Umow&#281; Subskrypcji zgodnie z warunkami tej umowy. Po rozwi&#261;zaniu:</p>
+        <ul>
+          <li>dost&#281;p do panelu administracyjnego zostanie zablokowany,</li>
+          <li>boty Telegram salonu zostan&#261; wy&#322;&#261;czone,</li>
+          <li>dane zostan&#261; usuni&#281;te lub przekazane Salonowi (do wyboru) w terminie 30 dni.</li>
+        </ul>
+        <p>15.3. Us&#322;ugodawca mo&#380;e rozwi&#261;za&#263; Umow&#281; Subskrypcji ze skutkiem natychmiastowym w przypadku:</p>
+        <ul>
+          <li>naruszenia Regulaminu przez Salon,</li>
+          <li>wykorzystywania Platformy do cel&oacute;w niezgodnych z prawem,</li>
+          <li>zalegania z op&#322;atami abonamentowymi przez wi&#281;cej ni&#380; 60 dni.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>16. Zmiany regulaminu</h2>
+        <p>16.1. Us&#322;ugodawca zastrzega sobie prawo do zmiany Regulaminu. O istotnych zmianach U&#380;ytkownicy zostan&#261; poinformowani:</p>
+        <ul>
+          <li>Salony: e-mailem i w panelu administracyjnym, z 14-dniowym wyprzedzeniem,</li>
+          <li>Klienci: wiadomo&#347;ci&#261; w bocie Telegram przy nast&#281;pnej interakcji.</li>
+        </ul>
+        <p>16.2. Dalsze korzystanie z Platformy po wprowadzeniu zmian oznacza ich akceptacj&#281;.</p>
+        <p>16.3. W przypadku braku akceptacji zmian Salon mo&#380;e rozwi&#261;za&#263; Umow&#281; Subskrypcji w terminie 30 dni od powiadomienia o zmianach, bez ponoszenia dodatkowych op&#322;at.</p>
+      </div>
+
+      <div class="section">
+        <h2>17. Postanowienia ko&#324;cowe</h2>
+        <p>17.1. W sprawach nieuregulowanych niniejszym Regulaminem stosuje si&#281; przepisy prawa polskiego, w szczeg&oacute;lno&#347;ci:</p>
+        <ul>
+          <li>Kodeks cywilny,</li>
+          <li>Ustaw&#281; o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261;,</li>
+          <li>Rozporz&#261;dzenie RODO,</li>
+          <li>Ustaw&#281; o ochronie danych osobowych.</li>
+        </ul>
+        <p>17.2. Spory wynikaj&#261;ce z niniejszego Regulaminu b&#281;d&#261; rozstrzygane przez s&#261;dy polskie w&#322;a&#347;ciwe miejscowo zgodnie z przepisami Kodeksu post&#281;powania cywilnego.</p>
+        <p>17.3. Je&#380;eli kt&oacute;rekolwiek postanowienie Regulaminu zostanie uznane za niewa&#380;ne lub niewykonalne, pozosta&#322;e postanowienia pozostaj&#261; w mocy.</p>
+      </div>
+
+      <div class="section">
+        <h2>18. Kontakt</h2>
+        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Strona: <a href="https://salonbot.pl">salonbot.pl</a></p>
+      </div>
+
+      <p><em>Niniejszy Regulamin wchodzi w &#380;ycie z dniem 24 czerwca 2026.</em></p>
+
+      <p style="margin-top:32px;font-size:13px;color:var(--text-muted);">
+        Powi&#261;zane dokumenty:
+        <a href="/privacy">Polityka Prywatno&#347;ci</a> &middot;
+        <a href="/subprocessors">Podprocesory</a> &middot;
+        <a href="/google-api-disclosure">Google API Disclosure</a>
+      </p>
+    </div>
+
+    <!-- ==================== EN ==================== -->
+    <div data-lang="en">
+      <h1>Terms of Service &mdash; SalonBot Platform</h1>
+      <p class="subtitle">Last updated: 24 June 2026</p>
+
+      <div class="section">
+        <h2>1. General Provisions</h2>
+        <p>1.1. These Terms of Service set forth the rules for using the <strong>SalonBot</strong> Platform &mdash; a SaaS (Software as a Service) solution enabling beauty salons and specialists to manage appointment bookings via a Telegram bot, an administrative panel, and related services.</p>
+        <p>1.2. The Service Provider of the Platform is:</p>
+        <p><strong>Olena Shevchenko</strong><br>
+        conducting unregistered business activity within the meaning of Article 5(1) of the Act of 6 March 2018 &mdash; Entrepreneurs' Law (Journal of Laws of 2024, item 236, as amended)<br>
+        Address: Trzciana 206E, 36-071 Trzciana, Poland<br>
+        Contact: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a> | Telegram: @SalonBotAlerts</p>
+        <p>hereinafter referred to as the &ldquo;<strong>Service Provider</strong>&rdquo; or &ldquo;<strong>SalonBot</strong>&rdquo;.</p>
+        <p>1.3. These Terms of Service constitute the terms and conditions for the provision of electronic services within the meaning of Article 8 of the Act on Provision of Electronic Services of 18 July 2002 (Journal of Laws of 2020, item 344, as amended).</p>
+        <p>1.4. Use of the Platform constitutes acceptance of these Terms of Service.</p>
+      </div>
+
+      <div class="section">
+        <h2>2. Definitions</h2>
+        <ul class="def-list">
+          <li><strong>Platform</strong> &mdash; the entirety of SalonBot services: Telegram bots (client-facing and specialist-facing), the administrative panel (admin.salonbot.pl), and the API.</li>
+          <li><strong>Salon</strong> &mdash; a natural person conducting business activity (including unregistered business activity) or a legal entity operating a beauty salon or providing cosmetic services, using the Platform under a Subscription Agreement.</li>
+          <li><strong>Specialist (Master)</strong> &mdash; a natural person providing cosmetic services within the Salon, using the specialist bot and/or the administrative panel.</li>
+          <li><strong>Client</strong> &mdash; a natural person using the Salon's Telegram bot for the purpose of booking appointments.</li>
+          <li><strong>Subscription Agreement</strong> &mdash; a separate agreement between SalonBot and the Salon, defining the scope of services, pricing plan, and financial terms.</li>
+          <li><strong>Panel</strong> &mdash; the administrative panel available at admin.salonbot.pl.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>3. Scope of Services</h2>
+        <p>3.1. SalonBot provides the following services to Salons:</p>
+        <p><strong>a) Client Telegram Bot</strong> &mdash; automated appointment booking by clients (selection of specialist, service, and time slot), confirmations, reminders (24h and 2h before the appointment), cancellation and rescheduling of appointments, post-appointment review collection.</p>
+        <p><strong>b) Specialist Telegram Bot</strong> &mdash; notifications about new bookings, reschedulings, and cancellations, daily schedule overview, statistics (weekly digest), portfolio of work.</p>
+        <p><strong>c) Administrative Panel</strong> &mdash; calendar (day/week/month views), management of specialists and services, client database with appointment history, analytics (revenue and workload charts), broadcast messaging to clients, data export (CSV).</p>
+        <p><strong>d) Google Calendar Integration</strong> &mdash; synchronization of bookings with the specialist's personal calendar, freebusy availability checks to prevent double bookings.</p>
+        <p>3.2. The specific scope of services depends on the selected pricing plan as defined in the Subscription Agreement.</p>
+      </div>
+
+      <div class="section">
+        <h2>4. Technical Requirements</h2>
+        <p>4.1. To use the Telegram bot, the following is required:</p>
+        <ul>
+          <li>a Telegram account,</li>
+          <li>a device with internet access.</li>
+        </ul>
+        <p>4.2. To use the administrative panel, the following is required:</p>
+        <ul>
+          <li>a web browser (current version of Chrome, Safari, Firefox, or Edge),</li>
+          <li>a stable internet connection.</li>
+        </ul>
+        <p>4.3. To use the Google Calendar integration, the following is required:</p>
+        <ul>
+          <li>a Google account with an active calendar,</li>
+          <li>granting OAuth consent for SalonBot to access the calendar.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>5. Registration and Account</h2>
+        <p>5.1. <strong>Salon:</strong> registration takes place upon contacting the Service Provider and signing a Subscription Agreement. The Service Provider configures the bot and the panel and provides access credentials.</p>
+        <p>5.2. <strong>Client:</strong> use of the bot does not require separate registration. A client account is created automatically upon the first interaction with the bot, after the client consents to data processing.</p>
+        <p>5.3. The Salon undertakes to secure administrative panel access credentials (login and password) against unauthorized access.</p>
+      </div>
+
+      <div class="section">
+        <h2>6. Appointment Booking</h2>
+        <p>6.1. Booking is performed by selecting a specialist, a service, and an available time slot in the Telegram bot.</p>
+        <p>6.2. Upon confirmation of a booking, the client receives automatic reminders &mdash; 24 hours and 2 hours before the appointment.</p>
+        <p>6.3. A booking is binding from the moment of its confirmation. The Salon prepares the reserved time and specialist resources.</p>
+        <p>6.4. SalonBot checks time slot availability based on:</p>
+        <ul>
+          <li>the specialist's work schedule configured in the panel,</li>
+          <li>existing bookings in the system,</li>
+          <li>the specialist's Google Calendar availability (if connected) &mdash; to prevent conflicts with external booking systems (Booksy, Fresha, etc.).</li>
+        </ul>
+        <p>6.5. If a conflict with an external calendar is detected, the bot informs the client that the time slot is unavailable and suggests alternative times.</p>
+      </div>
+
+      <div class="section">
+        <h2>7. Cancellation and Rescheduling</h2>
+        <p>7.1. The Client may cancel or reschedule an appointment at any time via the bot or by contacting the salon directly.</p>
+        <p>7.2. We kindly request that cancellations be made at least 4 hours in advance to allow other clients to book the time slot.</p>
+        <p>7.3. Repeated failure to attend appointments (no-show) without prior notice may result in the Salon restricting the client's ability to make bookings.</p>
+        <p>7.4. The Salon may cancel or reschedule a client's appointment via the administrative panel or the specialist bot. In such cases, the client receives a notification through the Telegram bot.</p>
+      </div>
+
+      <div class="section">
+        <h2>8. Marketing Communications (Broadcasts)</h2>
+        <p>8.1. The Salon may send marketing communications (promotions, offers, information about new services) to clients via the broadcast messaging feature in the administrative panel.</p>
+        <p>8.2. Marketing communications are sent <strong>exclusively</strong> to clients who have given separate consent to receive such communications (in accordance with Article 6(1)(a) of the GDPR, Article 10 of the Act on Provision of Electronic Services, and the PKE (Polish Electronic Communications Act)).</p>
+        <p>8.3. <strong>The Salon bears full responsibility</strong> for:</p>
+        <ul>
+          <li>the content of marketing communications,</li>
+          <li>compliance of the content with applicable law (including consumer protection law and the prohibition of misleading advertising),</li>
+          <li>having the legal basis for sending such communications (client consent).</li>
+        </ul>
+        <p>8.4. SalonBot provides solely the <strong>technical tool</strong> for distributing communications and bears no responsibility for the content of communications composed by the Salon.</p>
+        <p>8.5. Every marketing communication includes an &ldquo;Unsubscribe&rdquo; button, enabling the client to withdraw consent immediately.</p>
+      </div>
+
+      <div class="section">
+        <h2>9. Payments</h2>
+        <p>9.1. <strong>Salon clients:</strong> the current version of the bot does not support online payments. Payment for cosmetic services is collected directly at the salon upon completion of the service, in accordance with the salon's current price list.</p>
+        <p>9.2. <strong>Salons (SalonBot subscription):</strong> financial terms are defined in the Subscription Agreement. The subscription fee is charged monthly in accordance with the selected pricing plan.</p>
+      </div>
+
+      <div class="section">
+        <h2>10. Reviews and Questions to Specialists</h2>
+        <p>10.1. After an appointment, the client may submit a review (a rating of 1&ndash;5 and/or a comment) via the bot.</p>
+        <p>10.2. Reviews are visible to the specialist and the salon owner in the administrative panel and the specialist bot. Reviews are not publicly accessible on the internet.</p>
+        <p>10.3. The &ldquo;Ask the Specialist&rdquo; feature allows the client to ask a question before booking. Responses do not constitute medical advice.</p>
+      </div>
+
+      <div class="section">
+        <h2>11. Liability</h2>
+        <p>11.1. SalonBot makes every effort to ensure the Platform operates reliably and without interruption. However, SalonBot <strong>does not guarantee</strong> 100% Platform availability and is not liable for:</p>
+        <ul>
+          <li>outages resulting from failures of the Telegram, Google, hosting provider (Railway), or internet service provider infrastructure,</li>
+          <li>planned outages (maintenance, updates) &mdash; with 24-hour advance notice where possible,</li>
+          <li>indirect damages, including lost profits, arising from temporary Platform unavailability.</li>
+        </ul>
+        <p>11.2. <strong>SalonBot's liability to the Salon (B2B User)</strong> for any and all claims is limited to the greater of: (a) PLN 500 or (b) the total subscription fees paid by the Salon during the 3 months preceding the event. This limitation does not apply in cases where liability cannot be limited under mandatory provisions of law (including liability for damages caused by intentional fault).</p>
+        <p>11.2a. <strong>With respect to Clients (Consumers):</strong> SalonBot provides the Telegram bot service free of charge, on behalf of and for the account of the Salon. SalonBot is not a party to the cosmetic service agreement between the Salon and the Client and bears no liability for the non-performance or improper performance of cosmetic services by the Salon. The rights of Clients as consumers under mandatory provisions of law remain unaffected.</p>
+        <p>11.3. The Salon is liable for:</p>
+        <ul>
+          <li>the accuracy of data entered into the system (schedule, services, prices),</li>
+          <li>the content of marketing communications sent to clients,</li>
+          <li>compliance with data protection regulations insofar as the Salon acts as a data controller,</li>
+          <li>the proper provision of cosmetic services (SalonBot is not a party to the agreement between the Salon and the client regarding cosmetic services).</li>
+        </ul>
+        <p>11.4. Salon specialists hold the required qualifications and experience. SalonBot does not verify specialist qualifications &mdash; responsibility in this regard rests with the Salon.</p>
+      </div>
+
+      <div class="section">
+        <h2>12. Right to Data Deletion</h2>
+        <p>12.1. <strong>The Client</strong> has the right to request deletion of their personal data from the Salon (the data controller):</p>
+        <ul>
+          <li>via the <code>/delete_my_data</code> command in the Telegram bot,</li>
+          <li>by contacting the salon directly,</li>
+          <li>by contacting the Service Provider: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</li>
+        </ul>
+        <p>12.2. <strong>The Salon</strong> may delete client data via the administrative panel (&ldquo;Delete Client&rdquo; button). Deletion of a client results in:</p>
+        <ul>
+          <li>deletion of identification and contact data (name, phone number, Telegram ID),</li>
+          <li>anonymization of appointment history: removal of the name, phone number, Telegram ID, and any data enabling client identification; only statistical appointment data (date, service, price) is retained without association to any individual &mdash; for the Salon's statistical and accounting purposes,</li>
+          <li>deletion of reviews and questions.</li>
+        </ul>
+        <p>12.3. <strong>The Salon</strong> may request deletion of its account and all salon data (including client, specialist, and appointment data) by contacting the Service Provider. The Service Provider shall fulfill the request within 30 days.</p>
+        <p>12.4. The Service Provider may refuse to delete data if retention is required by law (e.g., accounting documentation &mdash; 5 years pursuant to Article 74 of the Accounting Act). In such cases, the data will be anonymized upon expiry of the required retention period.</p>
+      </div>
+
+      <div class="section">
+        <h2>13. Complaints</h2>
+        <p>13.1. Complaints regarding Platform functionality may be submitted via:</p>
+        <ul>
+          <li>email: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>,</li>
+          <li>Telegram: @SalonBotAlerts.</li>
+        </ul>
+        <p>13.2. A complaint should include: a description of the issue, the date of occurrence, and the complainant's contact details.</p>
+        <p>13.3. Complaints are processed within <strong>14 days</strong> of submission.</p>
+      </div>
+
+      <div class="section">
+        <h2>14. Intellectual Property Rights</h2>
+        <p>14.1. The SalonBot Platform, its source code, graphical interface, logo, name, and documentation are the property of the Service Provider and are protected by copyright law.</p>
+        <p>14.2. The Salon receives a non-exclusive, non-transferable license to use the Platform within the scope defined by the Subscription Agreement, for the duration of the agreement.</p>
+        <p>14.3. The Salon is not permitted to copy, modify, decompile, reverse-engineer, or sublicense the Platform.</p>
+      </div>
+
+      <div class="section">
+        <h2>15. Termination of Agreement</h2>
+        <p>15.1. <strong>The Client</strong> may cease using the bot at any time &mdash; it is sufficient to delete the chat history with the bot in Telegram. Upon the client's request, data will be deleted (see &sect;12).</p>
+        <p>15.2. <strong>The Salon</strong> may terminate the Subscription Agreement in accordance with the terms of that agreement. Upon termination:</p>
+        <ul>
+          <li>access to the administrative panel will be revoked,</li>
+          <li>the Salon's Telegram bots will be deactivated,</li>
+          <li>data will be deleted or provided to the Salon (at the Salon's choice) within 30 days.</li>
+        </ul>
+        <p>15.3. The Service Provider may terminate the Subscription Agreement with immediate effect in the event of:</p>
+        <ul>
+          <li>breach of these Terms of Service by the Salon,</li>
+          <li>use of the Platform for unlawful purposes,</li>
+          <li>subscription fee arrears exceeding 60 days.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>16. Amendments to the Terms of Service</h2>
+        <p>16.1. The Service Provider reserves the right to amend these Terms of Service. Users will be notified of material changes as follows:</p>
+        <ul>
+          <li>Salons: by email and in the administrative panel, with 14 days' advance notice,</li>
+          <li>Clients: by a message in the Telegram bot upon the next interaction.</li>
+        </ul>
+        <p>16.2. Continued use of the Platform after changes have been introduced constitutes acceptance of those changes.</p>
+        <p>16.3. If the Salon does not accept the changes, the Salon may terminate the Subscription Agreement within 30 days of notification of the changes, without incurring additional fees.</p>
+      </div>
+
+      <div class="section">
+        <h2>17. Final Provisions</h2>
+        <p>17.1. In matters not regulated by these Terms of Service, the provisions of Polish law shall apply, in particular:</p>
+        <ul>
+          <li>the Civil Code,</li>
+          <li>the Act on Provision of Electronic Services,</li>
+          <li>the GDPR,</li>
+          <li>the Personal Data Protection Act.</li>
+        </ul>
+        <p>17.2. Disputes arising from these Terms of Service shall be resolved by Polish courts having territorial jurisdiction in accordance with the provisions of the Code of Civil Procedure.</p>
+        <p>17.3. If any provision of these Terms of Service is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.</p>
+      </div>
+
+      <div class="section">
+        <h2>18. Contact</h2>
+        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Website: <a href="https://salonbot.pl">salonbot.pl</a></p>
+      </div>
+
+      <p><em>These Terms of Service shall enter into force on 24 June 2026.</em></p>
+
+      <p style="margin-top:32px;font-size:13px;color:var(--text-muted);">
+        Related documents:
+        <a href="/privacy">Privacy Policy</a> &middot;
+        <a href="/subprocessors">Subprocessors</a> &middot;
+        <a href="/google-api-disclosure">Google API Disclosure</a>
+      </p>
+    </div>
+
+    <!-- ==================== RU ==================== -->
+    <div data-lang="ru">
+      <h1>Правила пользования платформой SalonBot</h1>
+      <p class="subtitle">Дата последнего обновления: 24 июня 2026</p>
+
+      <div class="section">
+        <h2>1. Общие положения</h2>
+        <p>1.1. Настоящие Правила пользования определяют порядок использования платформы <strong>SalonBot</strong> — сервиса SaaS (Software as a Service), позволяющего салонам красоты и специалистам управлять записями на приём посредством бота Telegram, административной панели и сопутствующих сервисов.</p>
+        <p>1.2. Поставщиком услуг платформы является:</p>
+        <p><strong>Olena Shevchenko</strong><br>
+        осуществляющая незарегистрированную предпринимательскую деятельность (польск. <em>dzia&#322;alno&#347;&#263; nierejestrowana</em>) в значении ст. 5 п. 1 Закона от 6 марта 2018 г. — Право предпринимателей (Dz.U. z 2024 r. poz. 236 ze zm.)<br>
+        Адрес: Trzciana 206E, 36-071 Trzciana, Polska (Польша)<br>
+        Контакт: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a> | Telegram: @SalonBotAlerts</p>
+        <p>далее именуемая «<strong>Поставщик услуг</strong>» или «<strong>SalonBot</strong>».</p>
+        <p>1.3. Настоящие Правила пользования являются правилами оказания услуг в электронной форме в значении ст. 8 Закона от 18 июля 2002 г. об оказании услуг электронным путём (Dz.U. z 2020 r. poz. 344 ze zm.).</p>
+        <p>1.4. Использование платформы означает принятие настоящих Правил пользования.</p>
+      </div>
+
+      <div class="section">
+        <h2>2. Определения</h2>
+        <ul class="def-list">
+          <li><strong>Платформа</strong> — совокупность сервисов SalonBot: боты Telegram (клиентский и бот специалиста), административная панель (admin.salonbot.pl), API.</li>
+          <li><strong>Салон</strong> — физическое лицо, осуществляющее предпринимательскую деятельность (в том числе незарегистрированную), или юридическое лицо, ведущее салон красоты или оказывающее косметические услуги, использующее Платформу на основании Договора подписки.</li>
+          <li><strong>Специалист (мастер)</strong> — физическое лицо, оказывающее косметические услуги в рамках Салона, использующее бот специалиста и/или административную панель.</li>
+          <li><strong>Клиент</strong> — физическое лицо, использующее бот Telegram Салона для записи на приём.</li>
+          <li><strong>Договор подписки</strong> — отдельный договор между SalonBot и Салоном, определяющий объём услуг, тарифный план и финансовые условия.</li>
+          <li><strong>Панель</strong> — административная панель, доступная по адресу admin.salonbot.pl.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>3. Объём услуг</h2>
+        <p>3.1. SalonBot оказывает Салонам следующие услуги:</p>
+        <p><strong>a) Клиентский бот Telegram</strong> — автоматическая запись на приём клиентами (выбор специалиста, услуги, времени), подтверждения, напоминания (за 24 часа и за 2 часа до визита), отмена и перенос записей, сбор отзывов после визитов.</p>
+        <p><strong>b) Бот специалиста Telegram</strong> — уведомления о новых записях, переносах и отменах, расписание дня, статистика (еженедельный дайджест), портфолио работ.</p>
+        <p><strong>c) Административная панель</strong> — календарь (режимы просмотра: день/неделя/месяц), управление специалистами и услугами, база клиентов с историей визитов, аналитика (графики выручки, загрузки), массовая рассылка сообщений клиентам, экспорт данных (CSV).</p>
+        <p><strong>d) Интеграция с Google Calendar</strong> — синхронизация записей с личным календарём специалиста, проверка занятости (freebusy) для предотвращения двойных записей.</p>
+        <p>3.2. Подробный объём услуг зависит от выбранного тарифного плана, определённого в Договоре подписки.</p>
+      </div>
+
+      <div class="section">
+        <h2>4. Технические требования</h2>
+        <p>4.1. Для использования бота Telegram необходимы:</p>
+        <ul>
+          <li>аккаунт Telegram,</li>
+          <li>устройство с доступом в интернет.</li>
+        </ul>
+        <p>4.2. Для использования административной панели необходимы:</p>
+        <ul>
+          <li>интернет-браузер (актуальная версия Chrome, Safari, Firefox, Edge),</li>
+          <li>стабильное подключение к интернету.</li>
+        </ul>
+        <p>4.3. Для интеграции с Google Calendar необходимы:</p>
+        <ul>
+          <li>аккаунт Google с активным календарём,</li>
+          <li>предоставление OAuth-согласия на доступ SalonBot к календарю.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>5. Регистрация и учётная запись</h2>
+        <p>5.1. <strong>Салон:</strong> регистрация осуществляется после обращения к Поставщику услуг и подписания Договора подписки. Поставщик услуг настраивает бота и панель, передаёт данные для доступа.</p>
+        <p>5.2. <strong>Клиент:</strong> для использования бота отдельная регистрация не требуется. Учётная запись клиента создаётся автоматически при первом взаимодействии с ботом после выражения согласия на обработку данных.</p>
+        <p>5.3. Салон обязуется обеспечить защиту данных для доступа к административной панели (логин, пароль) от доступа посторонних лиц.</p>
+      </div>
+
+      <div class="section">
+        <h2>6. Запись на приём</h2>
+        <p>6.1. Запись осуществляется путём выбора специалиста, услуги и доступного времени в боте Telegram.</p>
+        <p>6.2. После подтверждения записи клиент получает автоматические напоминания — за 24 часа и за 2 часа до визита.</p>
+        <p>6.3. Запись является обязательной с момента её подтверждения. Салон резервирует выбранное время и ресурсы специалиста.</p>
+        <p>6.4. SalonBot проверяет доступность времени на основании:</p>
+        <ul>
+          <li>графика работы специалиста, настроенного в панели,</li>
+          <li>существующих записей в системе,</li>
+          <li>занятости в Google Calendar специалиста (если подключён) — для предотвращения конфликтов с внешними системами бронирования (Booksy, Fresha и др.).</li>
+        </ul>
+        <p>6.5. В случае обнаружения конфликта с внешним календарём бот информирует клиента о недоступности выбранного времени и предлагает альтернативные варианты.</p>
+      </div>
+
+      <div class="section">
+        <h2>7. Отмена и перенос записей</h2>
+        <p>7.1. Клиент может отменить или перенести запись в любой момент через бот или обратившись в салон.</p>
+        <p>7.2. Просим отменять запись не менее чем за 4 часа, чтобы дать возможность другим клиентам записаться на это время.</p>
+        <p>7.3. Многократные неявки (no-show) без предупреждения могут повлечь ограничение возможности записи со стороны Салона.</p>
+        <p>7.4. Салон может отменить или перенести запись клиента через административную панель или бот специалиста. В этом случае клиент получает уведомление через бот Telegram.</p>
+      </div>
+
+      <div class="section">
+        <h2>8. Маркетинговые рассылки</h2>
+        <p>8.1. Салон может направлять клиентам маркетинговые сообщения (акции, предложения, информация о новых услугах) посредством функции массовой рассылки сообщений в административной панели.</p>
+        <p>8.2. Маркетинговые сообщения направляются <strong>исключительно</strong> клиентам, которые дали отдельное согласие на получение таких сообщений (в соответствии со ст. 6 п. 1 лит. a GDPR, а также законодательством Польши).</p>
+        <p>8.3. <strong>Салон несёт полную ответственность</strong> за:</p>
+        <ul>
+          <li>содержание маркетинговых сообщений,</li>
+          <li>соответствие содержания действующему законодательству (в том числе законодательству о защите прав потребителей, запрету вводящей в заблуждение рекламы),</li>
+          <li>наличие правового основания для рассылки (согласие клиента).</li>
+        </ul>
+        <p>8.4. SalonBot предоставляет исключительно <strong>техническое средство</strong> для рассылки сообщений и не несёт ответственности за содержание сообщений, составленных Салоном.</p>
+        <p>8.5. Каждое маркетинговое сообщение содержит кнопку «Отписаться», позволяющую клиенту немедленно отозвать своё согласие.</p>
+      </div>
+
+      <div class="section">
+        <h2>9. Оплата</h2>
+        <p>9.1. <strong>Клиенты салона:</strong> в текущей версии бота онлайн-оплата не поддерживается. Оплата за косметическую услугу производится непосредственно в салоне после её оказания, в соответствии с действующим прайс-листом салона.</p>
+        <p>9.2. <strong>Салоны (подписка SalonBot):</strong> финансовые условия определены в Договоре подписки. Абонентская плата взимается ежемесячно в соответствии с выбранным тарифным планом.</p>
+      </div>
+
+      <div class="section">
+        <h2>10. Отзывы и вопросы специалистам</h2>
+        <p>10.1. После визита клиент может оставить отзыв (оценка от 1 до 5 и/или комментарий) через бот.</p>
+        <p>10.2. Отзывы доступны специалисту и владельцу салона в административной панели и боте специалиста. Отзывы не являются общедоступными в интернете.</p>
+        <p>10.3. Функция «Задать вопрос специалисту» позволяет клиенту задать вопрос до записи. Ответы не являются медицинской консультацией.</p>
+      </div>
+
+      <div class="section">
+        <h2>11. Ответственность</h2>
+        <p>11.1. SalonBot прилагает все усилия для обеспечения надёжной и бесперебойной работы Платформы. Однако SalonBot <strong>не гарантирует</strong> доступность Платформы в 100% времени и не несёт ответственности за:</p>
+        <ul>
+          <li>перерывы, вызванные сбоями инфраструктуры Telegram, Google, хостинг-провайдера (Railway) или интернет-провайдера,</li>
+          <li>плановые перерывы (обслуживание, обновления) — по возможности с предупреждением за 24 часа,</li>
+          <li>косвенные убытки, включая упущенную выгоду, возникшие вследствие временной недоступности Платформы.</li>
+        </ul>
+        <p>11.2. <strong>Ответственность SalonBot перед Салоном (B2B-пользователем)</strong> по всем претензиям ограничена большей из сумм: (a) 500 PLN или (b) совокупность абонентских платежей, уплаченных Салоном за 3 месяца, предшествующих событию. Данное ограничение не применяется в случаях, когда ответственность не может быть ограничена в соответствии с императивными нормами права (в том числе за ущерб, причинённый умышленно).</p>
+        <p>11.2a. <strong>В отношении Клиентов (потребителей):</strong> SalonBot предоставляет услугу бота Telegram безвозмездно, от имени и в интересах Салона. SalonBot не является стороной договора об оказании косметических услуг между Салоном и Клиентом и не несёт ответственности за неисполнение или ненадлежащее исполнение косметической услуги Салоном. Права Клиентов как потребителей, установленные императивными нормами права, остаются в силе.</p>
+        <p>11.3. Салон несёт ответственность за:</p>
+        <ul>
+          <li>правильность данных, внесённых в систему (график работы, услуги, цены),</li>
+          <li>содержание маркетинговых сообщений, направляемых клиентам,</li>
+          <li>соблюдение законодательства о защите персональных данных в части, в которой Салон выступает в роли администратора данных,</li>
+          <li>надлежащее оказание косметических услуг (SalonBot не является стороной договора между Салоном и клиентом в отношении косметической услуги).</li>
+        </ul>
+        <p>11.4. Специалисты салона обладают необходимой квалификацией и опытом. SalonBot не проверяет квалификацию специалистов — ответственность в этой части несёт Салон.</p>
+      </div>
+
+      <div class="section">
+        <h2>12. Право на удаление данных</h2>
+        <p>12.1. <strong>Клиент</strong> имеет право потребовать удаления своих персональных данных от Салона (администратора данных):</p>
+        <ul>
+          <li>посредством команды <code>/delete_my_data</code> в боте Telegram,</li>
+          <li>обратившись непосредственно в салон,</li>
+          <li>обратившись к Поставщику услуг: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</li>
+        </ul>
+        <p>12.2. <strong>Салон</strong> может удалить данные клиента через административную панель (кнопка «Удалить клиента»). Удаление клиента влечёт:</p>
+        <ul>
+          <li>удаление идентификационных и контактных данных (имя, телефон, Telegram ID),</li>
+          <li>анонимизацию истории визитов: удаление имени, номера телефона, Telegram ID и любых данных, позволяющих идентифицировать клиента; сохраняются исключительно статистические данные визита (дата, услуга, цена) без привязки к личности — для статистических и бухгалтерских целей Салона,</li>
+          <li>удаление отзывов и вопросов.</li>
+        </ul>
+        <p>12.3. <strong>Салон</strong> может потребовать удаления своей учётной записи и всех данных салона (включая данные клиентов, специалистов, записей), обратившись к Поставщику услуг. Поставщик услуг выполнит запрос в течение 30 дней.</p>
+        <p>12.4. Поставщик услуг вправе отказать в удалении данных, если их хранение требуется в силу закона (например, бухгалтерская документация — 5 лет). В таком случае данные будут анонимизированы по истечении установленного срока.</p>
+      </div>
+
+      <div class="section">
+        <h2>13. Претензии</h2>
+        <p>13.1. Претензии, касающиеся функционирования Платформы, можно направлять:</p>
+        <ul>
+          <li>e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>,</li>
+          <li>Telegram: @SalonBotAlerts.</li>
+        </ul>
+        <p>13.2. Претензия должна содержать: описание проблемы, дату возникновения, контактные данные заявителя.</p>
+        <p>13.3. Претензии рассматриваются в течение <strong>14 дней</strong> с момента подачи.</p>
+      </div>
+
+      <div class="section">
+        <h2>14. Права интеллектуальной собственности</h2>
+        <p>14.1. Платформа SalonBot, её исходный код, графический интерфейс, логотип, наименование и документация являются собственностью Поставщика услуг и защищены авторским правом.</p>
+        <p>14.2. Салон получает неисключительную, непередаваемую лицензию на использование Платформы в объёме, определённом Договором подписки, на срок действия договора.</p>
+        <p>14.3. Салон не вправе копировать, модифицировать, декомпилировать, осуществлять обратную разработку или сублицензировать Платформу.</p>
+      </div>
+
+      <div class="section">
+        <h2>15. Расторжение договора</h2>
+        <p>15.1. <strong>Клиент</strong> может прекратить пользование ботом в любой момент — достаточно удалить историю чата с ботом в Telegram. По требованию клиента данные будут удалены (см. &sect;12).</p>
+        <p>15.2. <strong>Салон</strong> может расторгнуть Договор подписки в соответствии с условиями данного договора. После расторжения:</p>
+        <ul>
+          <li>доступ к административной панели будет заблокирован,</li>
+          <li>боты Telegram салона будут отключены,</li>
+          <li>данные будут удалены или переданы Салону (по выбору) в течение 30 дней.</li>
+        </ul>
+        <p>15.3. Поставщик услуг вправе расторгнуть Договор подписки с немедленным вступлением в силу в случае:</p>
+        <ul>
+          <li>нарушения Правил пользования Салоном,</li>
+          <li>использования Платформы в целях, противоречащих закону,</li>
+          <li>задолженности по абонентской плате свыше 60 дней.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>16. Изменение Правил пользования</h2>
+        <p>16.1. Поставщик услуг оставляет за собой право вносить изменения в Правила пользования. О существенных изменениях Пользователи будут уведомлены:</p>
+        <ul>
+          <li>Салоны: по электронной почте и в административной панели, за 14 дней до вступления в силу,</li>
+          <li>Клиенты: сообщением в боте Telegram при следующем взаимодействии.</li>
+        </ul>
+        <p>16.2. Дальнейшее использование Платформы после внесения изменений означает их принятие.</p>
+        <p>16.3. В случае несогласия с изменениями Салон может расторгнуть Договор подписки в течение 30 дней с момента уведомления об изменениях без несения дополнительных расходов.</p>
+      </div>
+
+      <div class="section">
+        <h2>17. Заключительные положения</h2>
+        <p>17.1. В вопросах, не урегулированных настоящими Правилами пользования, применяется законодательство Республики Польша, в частности:</p>
+        <ul>
+          <li>Гражданский кодекс (<em>Kodeks cywilny</em>),</li>
+          <li>Закон об оказании услуг электронным путём (<em>Ustawa o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261;</em>),</li>
+          <li>Регламент GDPR (<em>RODO</em>),</li>
+          <li>Закон о защите персональных данных (<em>Ustawa o ochronie danych osobowych</em>).</li>
+        </ul>
+        <p>17.2. Споры, вытекающие из настоящих Правил пользования, подлежат разрешению польскими судами по месту юрисдикции в соответствии с положениями Гражданского процессуального кодекса.</p>
+        <p>17.3. Если какое-либо положение Правил пользования будет признано недействительным или неисполнимым, остальные положения сохраняют силу.</p>
+      </div>
+
+      <div class="section">
+        <h2>18. Контакт</h2>
+        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Сайт: <a href="https://salonbot.pl">salonbot.pl</a></p>
+      </div>
+
+      <p><em>Настоящие Правила пользования вступают в силу с 24 июня 2026.</em></p>
+
+      <p style="margin-top:32px;font-size:13px;color:var(--text-muted);">
+        Связанные документы:
+        <a href="/privacy">Политика конфиденциальности</a> &middot;
+        <a href="/subprocessors">Подпроцессоры</a> &middot;
+        <a href="/google-api-disclosure">Google API Disclosure</a>
+      </p>
+    </div>
+
+    <!-- ==================== UK ==================== -->
+    <div data-lang="uk">
+      <h1>Правила користування платформою SalonBot</h1>
+      <p class="subtitle">Дата останнього оновлення: 24 червня 2026</p>
+
+      <div class="section">
+        <h2>1. Загальні положення</h2>
+        <p>1.1. Ці Правила користування визначають засади користування платформою <strong>SalonBot</strong> — послугою SaaS (Software as a Service), що надає салонам краси та спеціалістам можливість управління бронюванням візитів через бота Telegram, адміністративну панель та пов'язані послуги.</p>
+        <p>1.2. Постачальником послуг платформи є:</p>
+        <p><strong>Olena Shevchenko</strong><br>
+        яка провадить незареєстровану підприємницьку діяльність у розумінні ст. 5 ч. 1 Закону від 6 березня 2018 р. — Prawo przedsi&#281;biorc&oacute;w (Dz.U. z 2024 r. poz. 236 ze zm.), Республіка Польща<br>
+        Адреса: Trzciana 206E, 36-071 Trzciana, Polska (Польща)<br>
+        Контакт: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a> | Telegram: @SalonBotAlerts</p>
+        <p>далі іменований «<strong>Постачальник послуг</strong>» або «<strong>SalonBot</strong>».</p>
+        <p>1.3. Правила користування є регламентом надання послуг електронним шляхом у розумінні ст. 8 Закону від 18 липня 2002 р. про надання послуг електронним шляхом (Dz.U. z 2020 r. poz. 344 ze zm., Республіка Польща).</p>
+        <p>1.4. Користування платформою означає прийняття цих Правил користування.</p>
+      </div>
+
+      <div class="section">
+        <h2>2. Визначення</h2>
+        <ul class="def-list">
+          <li><strong>Платформа</strong> — сукупність послуг SalonBot: боти Telegram (клієнтський та бот спеціаліста), адміністративна панель (admin.salonbot.pl), API.</li>
+          <li><strong>Салон</strong> — фізична особа, яка провадить підприємницьку діяльність (у тому числі незареєстровану), або юридична особа, що надає послуги салону краси або косметичні послуги та користується Платформою на підставі Договору підписки.</li>
+          <li><strong>Спеціаліст (майстер)</strong> — фізична особа, яка надає косметичні послуги в рамках Салону та користується ботом спеціаліста та/або адміністративною панеллю.</li>
+          <li><strong>Клієнт</strong> — фізична особа, яка користується ботом Telegram Салону з метою бронювання візитів.</li>
+          <li><strong>Договір підписки</strong> — окремий договір між SalonBot та Салоном, що визначає обсяг послуг, тарифний план і фінансові умови.</li>
+          <li><strong>Панель</strong> — адміністративна панель, доступна за адресою admin.salonbot.pl.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>3. Обсяг послуг</h2>
+        <p>3.1. SalonBot надає Салонам такі послуги:</p>
+        <p><strong>a) Клієнтський бот Telegram</strong> — автоматичне бронювання візитів клієнтами (вибір спеціаліста, послуги, терміну), підтвердження, нагадування (за 24 год. та 2 год. до візиту), скасування та перенесення візитів, збирання відгуків після візитів.</p>
+        <p><strong>b) Бот спеціаліста Telegram</strong> — сповіщення про нові бронювання, перенесення та скасування, розклад дня, статистика (тижневий дайджест), портфоліо робіт.</p>
+        <p><strong>c) Адміністративна панель</strong> — календар (вигляди день/тиждень/місяць), управління спеціалістами та послугами, база клієнтів з історією візитів, аналітика (графіки доходів, завантаженості), масова розсилка повідомлень клієнтам, експорт даних (CSV).</p>
+        <p><strong>d) Інтеграція з Google Calendar</strong> — синхронізація бронювань з особистим календарем спеціаліста, перевірка зайнятості (freebusy) для запобігання подвійним бронюванням.</p>
+        <p>3.2. Детальний обсяг послуг залежить від обраного тарифного плану, визначеного у Договорі підписки.</p>
+      </div>
+
+      <div class="section">
+        <h2>4. Технічні вимоги</h2>
+        <p>4.1. Для користування ботом Telegram необхідні:</p>
+        <ul>
+          <li>обліковий запис Telegram,</li>
+          <li>пристрій з доступом до Інтернету.</li>
+        </ul>
+        <p>4.2. Для користування адміністративною панеллю необхідні:</p>
+        <ul>
+          <li>веб-браузер (актуальна версія Chrome, Safari, Firefox, Edge),</li>
+          <li>постійне підключення до Інтернету.</li>
+        </ul>
+        <p>4.3. Для інтеграції з Google Calendar необхідні:</p>
+        <ul>
+          <li>обліковий запис Google з активним календарем,</li>
+          <li>надання згоди OAuth на доступ SalonBot до календаря.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>5. Реєстрація та обліковий запис</h2>
+        <p>5.1. <strong>Салон:</strong> реєстрація здійснюється після зв'язку з Постачальником послуг та підписання Договору підписки. Постачальник послуг налаштовує бота і панель, передає дані для доступу.</p>
+        <p>5.2. <strong>Клієнт:</strong> користування ботом не потребує окремої реєстрації. Обліковий запис клієнта створюється автоматично при першій взаємодії з ботом після надання згоди на обробку даних.</p>
+        <p>5.3. Салон зобов'язується забезпечити захист даних для доступу до адміністративної панелі (логін, пароль) від доступу сторонніх осіб.</p>
+      </div>
+
+      <div class="section">
+        <h2>6. Бронювання візитів</h2>
+        <p>6.1. Бронювання здійснюється шляхом вибору спеціаліста, послуги та доступного терміну в боті Telegram.</p>
+        <p>6.2. Після підтвердження бронювання клієнт отримує автоматичні нагадування — за 24 години та 2 години до візиту.</p>
+        <p>6.3. Бронювання є обов'язковим з моменту його підтвердження. Салон готує заброньований час та ресурси спеціаліста.</p>
+        <p>6.4. SalonBot перевіряє доступність терміну на підставі:</p>
+        <ul>
+          <li>графіка роботи спеціаліста, налаштованого в панелі,</li>
+          <li>наявних бронювань у системі,</li>
+          <li>зайнятості в Google Calendar спеціаліста (якщо підключений) — для запобігання конфліктам із зовнішніми системами бронювання (Booksy, Fresha та ін.).</li>
+        </ul>
+        <p>6.5. У разі виявлення конфлікту із зовнішнім календарем бот інформує клієнта про недоступність терміну та пропонує альтернативний час.</p>
+      </div>
+
+      <div class="section">
+        <h2>7. Скасування та перенесення візитів</h2>
+        <p>7.1. Клієнт може скасувати або перенести візит у будь-який момент через бота або зв'язавшись із салоном.</p>
+        <p>7.2. Просимо скасовувати візит щонайменше за 4 години, щоб дати можливість іншим клієнтам забронювати цей час.</p>
+        <p>7.3. Багаторазова неявка на візити (no-show) без попередження може призвести до обмеження можливості бронювання з боку Салону.</p>
+        <p>7.4. Салон може скасувати або перенести візит клієнта через адміністративну панель або бота спеціаліста. У такому разі клієнт отримує сповіщення через бота Telegram.</p>
+      </div>
+
+      <div class="section">
+        <h2>8. Маркетингові комунікації (розсилки)</h2>
+        <p>8.1. Салон може надсилати клієнтам маркетингові повідомлення (акції, пропозиції, інформацію про нові послуги) за допомогою функції масової розсилки повідомлень в адміністративній панелі.</p>
+        <p>8.2. Маркетингові повідомлення надсилаються <strong>виключно</strong> клієнтам, які надали окрему згоду на отримання таких повідомлень (відповідно до ст. 6 ч. 1 літ. a GDPR (RODO), ст. 10 Закону про надання послуг електронним шляхом та Закону про електронні комунікації, Республіка Польща).</p>
+        <p>8.3. <strong>Салон несе повну відповідальність</strong> за:</p>
+        <ul>
+          <li>зміст маркетингових повідомлень,</li>
+          <li>відповідність змісту чинному законодавству (у тому числі законодавству про захист прав споживачів, забороні оманливої реклами),</li>
+          <li>наявність правової підстави для розсилки (згода клієнта).</li>
+        </ul>
+        <p>8.4. SalonBot надає виключно <strong>технічний інструмент</strong> для розповсюдження повідомлень і не несе відповідальності за зміст повідомлень, складених Салоном.</p>
+        <p>8.5. Кожне маркетингове повідомлення містить кнопку «Відписатися», що дає клієнту можливість негайно відкликати згоду.</p>
+      </div>
+
+      <div class="section">
+        <h2>9. Оплата</h2>
+        <p>9.1. <strong>Клієнти салону:</strong> у поточній версії бота онлайн-оплата не підтримується. Оплата за косметичну послугу стягується безпосередньо в салоні після її виконання, відповідно до чинного прейскуранта салону.</p>
+        <p>9.2. <strong>Салони (підписка SalonBot):</strong> фінансові умови визначені у Договорі підписки. Абонентська плата стягується щомісяця відповідно до обраного тарифного плану.</p>
+      </div>
+
+      <div class="section">
+        <h2>10. Відгуки та запитання до спеціалістів</h2>
+        <p>10.1. Після візиту клієнт може залишити відгук (оцінку 1&ndash;5 та/або коментар) через бота.</p>
+        <p>10.2. Відгуки доступні спеціалісту та власнику салону в адміністративній панелі та боті спеціаліста. Відгуки не є публічно доступними в Інтернеті.</p>
+        <p>10.3. Функція «Запитати спеціаліста» дає клієнту можливість поставити запитання перед бронюванням. Відповіді не є медичною порадою.</p>
+      </div>
+
+      <div class="section">
+        <h2>11. Відповідальність</h2>
+        <p>11.1. SalonBot докладає всіх зусиль для надійної та безперебійної роботи Платформи. Проте SalonBot <strong>не гарантує</strong> доступності Платформи 100% часу і не несе відповідальності за:</p>
+        <ul>
+          <li>перерви, спричинені збоями інфраструктури Telegram, Google, хостинг-провайдера (Railway) або інтернет-провайдера,</li>
+          <li>планові перерви (обслуговування, оновлення) — за можливості з попередженням за 24 год.,</li>
+          <li>непрямі збитки, у тому числі упущену вигоду, що виникли внаслідок тимчасової недоступності Платформи.</li>
+        </ul>
+        <p>11.2. <strong>Відповідальність SalonBot перед Салоном (B2B-користувачем)</strong> за будь-якими претензіями обмежується більшою з сум: (a) 500 PLN або (b) сумою абонентських платежів, сплачених Салоном за 3 місяці, що передують події. Це обмеження не застосовується у випадках, коли відповідальність не може бути обмежена відповідно до імперативних норм права (у тому числі за шкоду, заподіяну умисно).</p>
+        <p>11.2a. <strong>Щодо Клієнтів (споживачів):</strong> SalonBot надає послугу бота Telegram безоплатно, від імені та за дорученням Салону. SalonBot не є стороною договору про надання косметичних послуг між Салоном та Клієнтом і не несе відповідальності за невиконання або неналежне виконання косметичної послуги Салоном. Права Клієнтів як споживачів, визначені імперативними нормами чинного законодавства, залишаються непорушними.</p>
+        <p>11.3. Салон несе відповідальність за:</p>
+        <ul>
+          <li>правильність даних, внесених до системи (графік, послуги, ціни),</li>
+          <li>зміст маркетингових повідомлень, надісланих клієнтам,</li>
+          <li>дотримання законодавства про захист персональних даних у межах, в яких Салон виступає адміністратором даних,</li>
+          <li>належну якість косметичних послуг (SalonBot не є стороною договору між Салоном та клієнтом щодо косметичної послуги).</li>
+        </ul>
+        <p>11.4. Спеціалісти салону мають необхідну кваліфікацію та досвід. SalonBot не перевіряє кваліфікації спеціалістів — відповідальність у цій сфері покладається на Салон.</p>
+      </div>
+
+      <div class="section">
+        <h2>12. Право на видалення даних</h2>
+        <p>12.1. <strong>Клієнт</strong> має право вимагати видалення своїх персональних даних від Салону (адміністратора даних):</p>
+        <ul>
+          <li>за допомогою команди <code>/delete_my_data</code> у боті Telegram,</li>
+          <li>звернувшись безпосередньо до салону,</li>
+          <li>звернувшись до Постачальника послуг: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</li>
+        </ul>
+        <p>12.2. <strong>Салон</strong> може видалити дані клієнта через адміністративну панель (кнопка «Видалити клієнта»). Видалення клієнта призводить до:</p>
+        <ul>
+          <li>видалення ідентифікаційних та контактних даних (ім'я, телефон, Telegram ID),</li>
+          <li>анонімізації історії візитів: видалення імені, номера телефону, Telegram ID та будь-яких даних, що дають змогу ідентифікувати клієнта; зберігаються виключно статистичні дані візиту (дата, послуга, ціна) без прив'язки до особи — для статистичних та бухгалтерських потреб Салону,</li>
+          <li>видалення відгуків та запитань.</li>
+        </ul>
+        <p>12.3. <strong>Салон</strong> може вимагати видалення свого облікового запису та всіх даних салону (у тому числі даних клієнтів, спеціалістів, візитів), звернувшись до Постачальника послуг. Постачальник послуг виконає запит протягом 30 днів.</p>
+        <p>12.4. Постачальник послуг може відмовити у видаленні даних, якщо їх зберігання вимагається чинним законодавством (наприклад, бухгалтерська документація — 5 років). У такому разі дані будуть анонімізовані після закінчення встановленого строку.</p>
+      </div>
+
+      <div class="section">
+        <h2>13. Рекламації</h2>
+        <p>13.1. Рекламації щодо функціонування Платформи можна подавати:</p>
+        <ul>
+          <li>e-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>,</li>
+          <li>Telegram: @SalonBotAlerts.</li>
+        </ul>
+        <p>13.2. Рекламація повинна містити: опис проблеми, дату виникнення, контактні дані заявника.</p>
+        <p>13.3. Рекламації розглядаються протягом <strong>14 днів</strong> від подання.</p>
+      </div>
+
+      <div class="section">
+        <h2>14. Права інтелектуальної власності</h2>
+        <p>14.1. Платформа SalonBot, її вихідний код, графічний інтерфейс, логотип, назва та документація є власністю Постачальника послуг і захищені авторським правом.</p>
+        <p>14.2. Салон отримує невиключну, невідчужувану ліцензію на користування Платформою в обсязі, визначеному Договором підписки, на строк дії договору.</p>
+        <p>14.3. Салон не має права копіювати, модифікувати, декомпілювати, здійснювати зворотну інженерію або субліцензувати Платформу.</p>
+      </div>
+
+      <div class="section">
+        <h2>15. Розірвання договору</h2>
+        <p>15.1. <strong>Клієнт</strong> може припинити користування ботом у будь-який момент — достатньо видалити історію чату з ботом у Telegram. На вимогу клієнта дані будуть видалені (див. &sect;12).</p>
+        <p>15.2. <strong>Салон</strong> може розірвати Договір підписки відповідно до умов цього договору. Після розірвання:</p>
+        <ul>
+          <li>доступ до адміністративної панелі буде заблокований,</li>
+          <li>боти Telegram салону будуть вимкнені,</li>
+          <li>дані будуть видалені або передані Салону (на вибір) протягом 30 днів.</li>
+        </ul>
+        <p>15.3. Постачальник послуг може розірвати Договір підписки з негайним набранням чинності у разі:</p>
+        <ul>
+          <li>порушення Правил користування Салоном,</li>
+          <li>використання Платформи в цілях, що суперечать закону,</li>
+          <li>заборгованості з абонентськими платежами більше ніж 60 днів.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>16. Зміни до Правил користування</h2>
+        <p>16.1. Постачальник послуг залишає за собою право на внесення змін до Правил користування. Про суттєві зміни Користувачі будуть проінформовані:</p>
+        <ul>
+          <li>Салони: електронною поштою та в адміністративній панелі, за 14 днів,</li>
+          <li>Клієнти: повідомленням у боті Telegram при наступній взаємодії.</li>
+        </ul>
+        <p>16.2. Подальше користування Платформою після внесення змін означає їх прийняття.</p>
+        <p>16.3. У разі неприйняття змін Салон може розірвати Договір підписки протягом 30 днів від повідомлення про зміни, без додаткових платежів.</p>
+      </div>
+
+      <div class="section">
+        <h2>17. Прикінцеві положення</h2>
+        <p>17.1. У питаннях, не врегульованих цими Правилами користування, застосовується законодавство Республіки Польща, зокрема:</p>
+        <ul>
+          <li>Цивільний кодекс (<em>Kodeks cywilny</em>),</li>
+          <li>Закон про надання послуг електронним шляхом (<em>ustawa o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261;</em>),</li>
+          <li>Регламент GDPR,</li>
+          <li>Закон про захист персональних даних (<em>ustawa o ochronie danych osobowych</em>).</li>
+        </ul>
+        <p>17.2. Спори, що виникають із цих Правил користування, розглядатимуться польськими судами за місцем юрисдикції відповідно до положень Цивільного процесуального кодексу.</p>
+        <p>17.3. Якщо будь-яке положення Правил користування буде визнане недійсним або таким, що не підлягає виконанню, решта положень залишаються чинними.</p>
+      </div>
+
+      <div class="section">
+        <h2>18. Контакти</h2>
+        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Вебсайт: <a href="https://salonbot.pl">salonbot.pl</a></p>
+      </div>
+
+      <p><em>Ці Правила користування набирають чинності з дня 24 червня 2026.</em></p>
+
+      <p style="margin-top:32px;font-size:13px;color:var(--text-muted);">
+        Пов'язані документи:
+        <a href="/privacy">Політика конфіденційності</a> &middot;
+        <a href="/subprocessors">Підпроцесори</a> &middot;
+        <a href="/google-api-disclosure">Google API Disclosure</a>
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>
+      &copy; 2026 SalonBot &middot;
+      <a href="/">Home</a> &middot;
+      <a href="/privacy">Privacy Policy</a> &middot;
+      <a href="/terms">Terms of Service</a> &middot;
+      <a href="mailto:salonbotpl@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('[data-lang]').forEach(function(el) {
+        el.classList.toggle('visible', el.dataset.lang === lang);
+      });
+      ['pl', 'ru', 'uk', 'en'].forEach(function(l) {
+        document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+      });
+      document.documentElement.lang = lang;
+      try { localStorage.setItem('salonbot-lang', lang); } catch(e) {}
+    }
+    (function() {
+      try {
+        var saved = localStorage.getItem('salonbot-lang');
+        if (saved && ['pl', 'ru', 'uk', 'en'].indexOf(saved) !== -1) {
+          setLang(saved);
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+</body>
+</html>
