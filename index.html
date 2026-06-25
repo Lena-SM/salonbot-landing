@@ -1528,14 +1528,15 @@
 
       btn.disabled = true;
 
+      const lang = localStorage.getItem('salonbot-lang') || 'pl';
+
       const data = {
         name:     document.getElementById('f-name').value.trim(),
         email:    document.getElementById('f-email').value.trim(),
         telegram: document.getElementById('f-telegram').value.trim(),
         salon:    document.getElementById('f-salon').value.trim(),
+        lang:     lang,
       };
-
-      const lang = localStorage.getItem('salonbot-lang') || 'pl';
 
       try {
         const resp = await fetch('/api/submit', {

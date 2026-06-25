@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, telegram, salon, _honey } = req.body || {};
+  const { name, email, telegram, salon, lang, _honey } = req.body || {};
 
   // Honeypot — boty fill this, humans don't
   if (_honey) return res.status(200).json({ ok: true });
@@ -21,13 +21,20 @@ export default async function handler(req, res) {
   const botToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId   = process.env.TELEGRAM_CHAT_ID;
   if (botToken && chatId) {
+    const t = {
+      pl: { title: 'Nowe zgłoszenie z salonbot.pl', name: 'Imię', email: 'Email', tg: 'Telegram', salon: 'Salon' },
+      ru: { title: 'Новая заявка с salonbot.pl', name: 'Имя', email: 'Email', tg: 'Telegram', salon: 'Салон' },
+      uk: { title: 'Нова заявка з salonbot.pl', name: "Ім'я", email: 'Email', tg: 'Telegram', salon: 'Салон' },
+      en: { title: 'New enquiry from salonbot.pl', name: 'Name', email: 'Email', tg: 'Telegram', salon: 'Salon' },
+    };
+    const l = t[lang] || t['pl'];
     const text = [
-      '🆕 <b>Nova zayavka z salonbot.pl</b>',
+      `🆕 <b>${l.title}</b>`,
       '',
-      `👤 Imya: ${name}`,
-      `📧 Email: ${email}`,
-      `📱 Telegram: ${telegram || '—'}`,
-      `💇 Salon: ${salon}`,
+      `👤 ${l.name}: ${name}`,
+      `📧 ${l.email}: ${email}`,
+      `📱 ${l.tg}: ${telegram || '—'}`,
+      `💇 ${l.salon}: ${salon}`,
     ].join('\n');
     try {
       const r = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
