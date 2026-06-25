@@ -65,10 +65,11 @@
       align-items: center;
       justify-content: space-between;
     }
-    .logo { font-size: 22px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; }
-    .logo span { color: var(--text); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 15px; }
+    .logo { font-size: 26px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
+    .logo-text span { color: var(--text); }
+    .logo-icon { width: 38px; height: 38px; border-radius: 8px; }
+    .nav-links { display: flex; gap: 56px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 22px; font-weight: 600; }
     .nav-links a:hover { color: var(--rose); }
     .nav-cta {
       background: var(--rose);
@@ -83,7 +84,7 @@
     .nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
 
     /* ─── SECTIONS ─── */
-    section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+    section { padding: 80px 40px; max-width: 1240px; margin: 0 auto; }
 
     /* ─── HERO ─── */
     .hero-wrap {
@@ -92,12 +93,12 @@
       padding: 0;
     }
     .hero {
-      max-width: 1100px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 80px 40px 70px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
       align-items: center;
     }
     .hero-badge {
@@ -173,7 +174,7 @@
       padding: 0;
     }
     .stats-inner {
-      max-width: 1100px;
+      max-width: 1240px;
       margin: 0 auto;
       padding: 32px 40px;
       display: grid;
@@ -190,7 +191,7 @@
     .features .subtitle { text-align: center; color: var(--text-muted); font-size: 17px; margin-bottom: 52px; }
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 24px;
     }
     .feature-card {
@@ -203,11 +204,11 @@
     .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
     .feature-icon { font-size: 36px; margin-bottom: 16px; }
     .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .feature-card p { color: var(--text-muted); font-size: 15px; }
+    .feature-card p { color: var(--text-muted); font-size: 16px; }
 
     /* ─── HOW IT WORKS ─── */
     .how-wrap { background: var(--rose-light); padding: 0; }
-    .how { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+    .how { max-width: 1240px; margin: 0 auto; padding: 80px 40px; }
     .how h2 { font-size: 34px; font-weight: 800; text-align: center; margin-bottom: 12px; }
     .how .subtitle { text-align: center; color: var(--text-muted); font-size: 17px; margin-bottom: 52px; }
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
@@ -228,7 +229,7 @@
       margin: 0 auto 20px;
     }
     .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .step p { color: var(--text-muted); font-size: 15px; }
+    .step p { color: var(--text-muted); font-size: 16px; }
 
     /* ─── PRICE ─── */
     .price {
@@ -249,7 +250,7 @@
     .price-card .price-value { font-size: 52px; font-weight: 900; color: var(--rose); margin-bottom: 6px; }
     .price-card .price-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; }
     .price-features { text-align: left; list-style: none; margin-bottom: 36px; }
-    .price-features li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+    .price-features li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 16px; }
     .price-features li::before { content: "✓ "; color: var(--rose); font-weight: 700; }
 
     /* ─── CONTACT ─── */
@@ -474,9 +475,9 @@
 
     /* ─── SIMULATOR ─── */
     .sim-wrap { background: var(--rose-light); padding: 60px 40px; }
-    .sim-section { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .sim-section { max-width: 1240px; margin: 0 auto; text-align: center; }
     .sim-section h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); color: var(--rose); margin-bottom: 12px; }
-    .sim-section .subtitle { color: var(--text-muted); margin-bottom: 36px; font-size: 15px; }
+    .sim-section .subtitle { color: var(--text-muted); margin-bottom: 36px; font-size: 16px; }
     .phone-outer { display: flex; justify-content: center; }
     .phone-mockup {
       width: 300px;
@@ -610,7 +611,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">Salon<span>Bot</span></div>
+    <div class="logo"><svg class="logo-icon" viewBox="-15 -15 230 230" xmlns="http://www.w3.org/2000/svg"><rect x="-15" y="-15" width="230" height="230" rx="36" fill="#1a1a1a"/><circle cx="100" cy="100" r="88" fill="none" stroke="#c0506a" stroke-width="9"/><circle cx="100" cy="100" r="72" fill="none" stroke="#9a3d54" stroke-width="4.5"/><text x="70" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">S</text><text x="134" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">B</text><g transform="translate(101,94)"><ellipse cx="-10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><ellipse cx="10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><line x1="-8" y1="-5" x2="11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="-5" x2="-11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><circle cx="0" cy="9" r="2.5" fill="#c0506a"/></g></svg><span class="logo-text">Salon<span>Bot</span></span></div>
     <ul class="nav-links">
       <li><a href="#features" data-lang="pl" class="visible">Funkcje</a><a href="#features" data-lang="ru">Функции</a><a href="#features" data-lang="uk">Функції</a><a href="#features" data-lang="en">Features</a></li>
       <li><a href="#how" data-lang="pl" class="visible">Jak działa</a><a href="#how" data-lang="ru">Как работает</a><a href="#how" data-lang="uk">Як це працює</a><a href="#how" data-lang="en">How it works</a></li>
@@ -630,10 +631,10 @@
     <div class="hero">
       <div class="hero-content">
         <div class="hero-badge">
-          <span data-lang="pl" class="visible">🤖 Bot na Telegram dla salonu piękności</span>
-          <span data-lang="ru">🤖 Telegram-бот для салона красоты</span>
-          <span data-lang="uk">🤖 Telegram-бот для салону краси</span>
-          <span data-lang="en">🤖 Telegram bot for beauty salons</span>
+          <span data-lang="pl" class="visible">🤖 Bot na Telegram dla salonu piękności lub prywatnego mistrza</span>
+          <span data-lang="ru">🤖 Telegram-бот для салона красоты или частного мастера</span>
+          <span data-lang="uk">🤖 Telegram-бот для салону краси або приватного майстра</span>
+          <span data-lang="en">🤖 Telegram bot for beauty salons or independent masters</span>
         </div>
         <h1>
           <span data-lang="pl" class="visible">Klienci zapisują się sami —<br /><em>24 godziny na dobę</em></span>
@@ -699,12 +700,12 @@
         </div>
       </div>
       <div class="stat-item">
-        <div class="stat-num"><span data-lang="pl" class="visible">4 języki</span><span data-lang="ru">4 языка</span><span data-lang="uk">4 мови</span><span data-lang="en">4 languages</span></div>
+        <div class="stat-num"><span data-lang="pl" class="visible">3 języki</span><span data-lang="ru">3 языка</span><span data-lang="uk">3 мови</span><span data-lang="en">3 languages</span></div>
         <div class="stat-label">
-          <span data-lang="pl" class="visible">PL / UA / RU / EN</span>
-          <span data-lang="ru">PL / UA / RU / EN</span>
-          <span data-lang="uk">PL / UA / RU / EN</span>
-          <span data-lang="en">PL / UA / RU / EN</span>
+          <span data-lang="pl" class="visible">PL / UA / RU</span>
+          <span data-lang="ru">PL / UA / RU</span>
+          <span data-lang="uk">PL / UA / RU</span>
+          <span data-lang="en">PL / UA / RU</span>
         </div>
       </div>
     </div>
@@ -752,10 +753,10 @@
         <div class="feature-icon">📆</div>
         <h3><span data-lang="pl" class="visible">Google Calendar</span><span data-lang="ru">Google Calendar</span><span data-lang="uk">Google Calendar</span><span data-lang="en">Google Calendar</span></h3>
         <p>
-          <span data-lang="pl" class="visible">Każda wizyta pojawia się w kalendarzu mistrza automatycznie. Anulowanie też się synchronizuje.</span>
-          <span data-lang="ru">Каждый визит автоматически появляется в календаре мастера. Отмены тоже синхронизируются.</span>
-          <span data-lang="uk">Кожен візит автоматично з'являється в календарі майстра. Скасування теж синхронізується.</span>
-          <span data-lang="en">Every appointment appears in the master's calendar automatically. Cancellations sync too.</span>
+          <span data-lang="pl" class="visible">Każda wizyta pojawia się w kalendarzu mistrza automatycznie. Przeniesienia i anulowania też się synchronizują. Żadnych notatników.</span>
+          <span data-lang="ru">Каждый визит автоматически появляется в календаре мастера. Переносы и отмены тоже синхронизируются. Никаких записей в блокнотах.</span>
+          <span data-lang="uk">Кожен візит автоматично з'являється в календарі майстра. Перенесення та скасування теж синхронізуються. Жодних записів у блокнотах.</span>
+          <span data-lang="en">Every appointment appears in the master's calendar automatically. Reschedules and cancellations sync too. No more notebooks.</span>
         </p>
       </div>
 
@@ -774,10 +775,10 @@
         <div class="feature-icon">📊</div>
         <h3><span data-lang="pl" class="visible">Statystyki mistrza</span><span data-lang="ru">Статистика мастера</span><span data-lang="uk">Статистика майстра</span><span data-lang="en">Master statistics</span></h3>
         <p>
-          <span data-lang="pl" class="visible">Wizyty, przychody, nowi vs. stali klienci — za tydzień, miesiąc. Co niedziela digest na cały tydzień.</span>
-          <span data-lang="ru">Визиты, выручка, новые vs. постоянные клиенты — за неделю, месяц. Каждое воскресенье — план на неделю.</span>
-          <span data-lang="uk">Візити, виручка, нові vs. постійні клієнти — за тиждень, місяць. Щонеділі — дайджест на тиждень.</span>
-          <span data-lang="en">Visits, revenue, new vs. returning clients — weekly and monthly. Every Sunday — a weekly digest.</span>
+          <span data-lang="pl" class="visible">Wizyty, przychody, nowi vs. stali klienci — za tydzień, miesiąc. Co niedzielę — plan zapisów na następny tydzień.</span>
+          <span data-lang="ru">Визиты, выручка, новые vs. постоянные клиенты — за неделю, месяц. Каждое воскресенье — план записей на следующую неделю.</span>
+          <span data-lang="uk">Візити, виручка, нові vs. постійні клієнти — за тиждень, місяць. Щонеділі — план записів на наступний тиждень.</span>
+          <span data-lang="en">Visits, revenue, new vs. returning clients — weekly and monthly. Every Sunday — a booking plan for the coming week.</span>
         </p>
       </div>
 
@@ -796,10 +797,10 @@
         <div class="feature-icon">🖥️</div>
         <h3><span data-lang="pl" class="visible">Panel właściciela</span><span data-lang="ru">Панель управления</span><span data-lang="uk">Панель власника</span><span data-lang="en">Owner dashboard</span></h3>
         <p>
-          <span data-lang="pl" class="visible">Webowy panel dla właściciela — harmonogram, baza klientów, analityka przychodów i obłożenie mistrzów w przeglądarce.</span>
-          <span data-lang="ru">Веб-панель для владельца — расписание, база клиентов, аналитика выручки и загрузка мастеров прямо в браузере.</span>
-          <span data-lang="uk">Веб-панель для власника — розклад, база клієнтів, аналітика виручки та завантаження майстрів у браузері.</span>
-          <span data-lang="en">A web panel for the owner — schedule, client database, revenue analytics and master workload in the browser.</span>
+          <span data-lang="pl" class="visible">Webowy panel dla właściciela — harmonogram, baza klientów, analityka przychodów i obłożenie mistrzów w przeglądarce i telefonie.</span>
+          <span data-lang="ru">Веб-панель для владельца — расписание, база клиентов, аналитика выручки и загрузка мастеров прямо в браузере и телефоне.</span>
+          <span data-lang="uk">Веб-панель для власника — розклад, база клієнтів, аналітика виручки та завантаження майстрів у браузері й телефоні.</span>
+          <span data-lang="en">A web panel for the owner — schedule, client database, revenue analytics and master workload in your browser and phone.</span>
         </p>
       </div>
 
@@ -811,6 +812,28 @@
           <span data-lang="ru">Мастер публикует фото работ прямо в боте. Клиент смотрит портфолио до записи — больше доверия, больше записей.</span>
           <span data-lang="uk">Майстер публікує фото робіт прямо в боті. Клієнт переглядає портфоліо до запису — більше довіри, більше записів.</span>
           <span data-lang="en">Masters publish their work photos right in the bot. Clients browse the portfolio before booking — more trust, more bookings.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📢</div>
+        <h3><span data-lang="pl" class="visible">Wysyłka wiadomości</span><span data-lang="ru">Рассылка сообщений</span><span data-lang="uk">Розсилка повідомлень</span><span data-lang="en">Broadcast messages</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Promocje, zniżki, nowości — wyślij wszystkim klientom lub wybranym prosto w Telegram. Jeden klik — i setki klientów wiedzą.</span>
+          <span data-lang="ru">Акции, скидки, новости — отправьте всем клиентам или выбранным прямо в Telegram. Один клик — и сотни клиентов в курсе.</span>
+          <span data-lang="uk">Акції, знижки, новини — надішліть усім клієнтам або обраним прямо в Telegram. Один клік — і сотні клієнтів у курсі.</span>
+          <span data-lang="en">Promotions, discounts, news — send to all clients or selected ones right in Telegram. One click — hundreds of clients informed.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3><span data-lang="pl" class="visible">3 języki</span><span data-lang="ru">3 языка</span><span data-lang="uk">3 мови</span><span data-lang="en">3 languages</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Bot automatycznie dostosowuje się do języka klienta lub mistrza — polski, ukraiński, rosyjski. Potrzebujesz kolejny? Dodamy na życzenie.</span>
+          <span data-lang="ru">Бот автоматически подстраивается под язык клиента или мастера — польский, украинский, русский. Нужен ещё один язык? Добавим по запросу.</span>
+          <span data-lang="uk">Бот автоматично підлаштовується під мову клієнта або майстра — польська, українська, російська. Потрібна ще одна мова? Додамо на запит.</span>
+          <span data-lang="en">The bot automatically adapts to the client's or master's language — Polish, Ukrainian, Russian. Need another one? We'll add it on request.</span>
         </p>
       </div>
 
@@ -847,10 +870,10 @@
           <div class="step-num">2</div>
           <h3><span data-lang="pl" class="visible">Wybiera termin</span><span data-lang="ru">Выбирает время</span><span data-lang="uk">Обирає час</span><span data-lang="en">Picks a time</span></h3>
           <p>
-            <span data-lang="pl" class="visible">Wybiera mistrza, usługę i wolny termin. Czas rezerwacji: 2 minuty.</span>
-            <span data-lang="ru">Выбирает мастера, услугу и свободное время. Время на запись: 2 минуты.</span>
-            <span data-lang="uk">Обирає майстра, послугу і вільний час. Час запису: 2 хвилини.</span>
-            <span data-lang="en">Picks a master, service and free slot. Booking takes 2 minutes.</span>
+            <span data-lang="pl" class="visible">Wybiera mistrza, usługę i wolny termin. Czas rezerwacji: 30 sekund.</span>
+            <span data-lang="ru">Выбирает мастера, услугу и свободное время. Время на запись: 30 секунд.</span>
+            <span data-lang="uk">Обирає майстра, послугу і вільний час. Час запису: 30 секунд.</span>
+            <span data-lang="en">Picks a master, service and free slot. Booking takes 30 seconds.</span>
           </p>
         </div>
         <div class="step">
@@ -907,10 +930,10 @@
       <span data-lang="en">Pricing</span>
     </h2>
     <p class="subtitle">
-      <span data-lang="pl" class="visible">Indywidualna wycena dla każdego salonu</span>
-      <span data-lang="ru">Индивидуальная цена для каждого салона</span>
-      <span data-lang="uk">Індивідуальна ціна для кожного салону</span>
-      <span data-lang="en">Individual pricing for each salon</span>
+      <span data-lang="pl" class="visible">Elastyczne plany dla każdego salonu lub prywatnego mistrza</span>
+      <span data-lang="ru">Гибкие тарифы для каждого салона или частного мастера</span>
+      <span data-lang="uk">Гнучкі тарифи для кожного салону або приватного майстра</span>
+      <span data-lang="en">Flexible plans for every salon or independent master</span>
     </p>
     <div class="price-card">
       <p class="price-label">
@@ -926,18 +949,18 @@
         <span data-lang="en">On request</span>
       </p>
       <p class="price-sub">
-        <span data-lang="pl" class="visible">Tarify są w opracowaniu. Napisz — dobierzemy plan dla Twojego salonu.</span>
-        <span data-lang="ru">Тарифы в разработке. Напиши — подберём план для твоего салона.</span>
-        <span data-lang="uk">Тарифи в розробці. Напишіть — підберемо план для вашого салону.</span>
-        <span data-lang="en">Pricing is being finalised. Write to us — we'll find the right plan for your salon.</span>
+        <span data-lang="pl" class="visible">Każdy salon i każdy mistrz jest inny. Skontaktuj się — dobierzemy plan idealnie pod Twoje potrzeby.</span>
+        <span data-lang="ru">Каждый салон или мастер уникален. Напишите — подберём план именно под ваши потребности.</span>
+        <span data-lang="uk">Кожен салон або майстер унікальний. Напишіть — підберемо план саме під ваші потреби.</span>
+        <span data-lang="en">Every salon and master is unique. Get in touch — we'll find the perfect plan for your needs.</span>
       </p>
       <ul class="price-features">
         <li><span data-lang="pl" class="visible">Bot gotowy w 1–2 dni robocze</span><span data-lang="ru">Бот готов за 1–2 рабочих дня</span><span data-lang="uk">Бот готовий за 1–2 робочі дні</span><span data-lang="en">Bot ready in 1–2 business days</span></li>
         <li><span data-lang="pl" class="visible">Konfiguracja mistrzów, usług i godzin pracy</span><span data-lang="ru">Настройка мастеров, услуг и расписания</span><span data-lang="uk">Налаштування майстрів, послуг і розкладу</span><span data-lang="en">Setup of masters, services and working hours</span></li>
         <li><span data-lang="pl" class="visible">Integracja z Google Calendar</span><span data-lang="ru">Интеграция с Google Calendar</span><span data-lang="uk">Інтеграція з Google Calendar</span><span data-lang="en">Google Calendar integration</span></li>
         <li><span data-lang="pl" class="visible">Wsparcie techniczne w Telegram</span><span data-lang="ru">Техническая поддержка в Telegram</span><span data-lang="uk">Технічна підтримка в Telegram</span><span data-lang="en">Technical support via Telegram</span></li>
-        <li><span data-lang="pl" class="visible">Bot w 4 językach: PL, UA, RU, EN</span><span data-lang="ru">Бот на 4 языках: PL, UA, RU, EN</span><span data-lang="uk">Бот на 4 мовах: PL, UA, RU, EN</span><span data-lang="en">Bot in 4 languages: PL, UA, RU, EN</span></li>
-        <li><span data-lang="pl" class="visible">Miesiąc testowy dla pierwszych klientów</span><span data-lang="ru">Тестовый месяц для первых клиентов</span><span data-lang="uk">Тестовий місяць для перших клієнтів</span><span data-lang="en">Trial month for early clients</span></li>
+        <li><span data-lang="pl" class="visible">Bot w 3 językach: PL, UA, RU + możliwość rozszerzenia</span><span data-lang="ru">Бот на 3 языках: PL, UA, RU + возможность добавления</span><span data-lang="uk">Бот на 3 мовах: PL, UA, RU + можливість розширення</span><span data-lang="en">Bot in 3 languages: PL, UA, RU + more on request</span></li>
+        <li><span data-lang="pl" class="visible">Pierwszy miesiąc — za darmo</span><span data-lang="ru">Первый месяц — бесплатно</span><span data-lang="uk">Перший місяць — безкоштовно</span><span data-lang="en">First month — free</span></li>
       </ul>
       <a href="#contact" class="btn-primary" style="display:block;text-align:center;">
         <span data-lang="pl" class="visible">Zapytaj o cenę →</span>
@@ -952,14 +975,14 @@
   <div class="contact-wrap">
     <div class="contact" id="contact">
       <h2>
-        <span data-lang="pl" class="visible">Zainteresowana? Napisz!</span>
+        <span data-lang="pl" class="visible">Chcesz wiedzieć więcej? Napisz!</span>
         <span data-lang="ru">Заинтересованы? Напишите!</span>
         <span data-lang="uk">Зацікавлені? Напишіть!</span>
         <span data-lang="en">Interested? Get in touch!</span>
       </h2>
       <p>
         <span data-lang="pl" class="visible">Odpiszę w ciągu kilku godzin. Opowiem jak działa bot, ustalimy szczegóły i uruchomimy Twój salon.</span>
-        <span data-lang="ru">Отвечу в течение нескольких часов. Расскажу как работает бот, обсудим детали и запустим твой салон.</span>
+        <span data-lang="ru">Отвечу в течение нескольких часов. Расскажу как работает бот, обсудим детали и запустим ваш салон.</span>
         <span data-lang="uk">Відповім протягом кількох годин. Розповім як працює бот, обговоримо деталі й запустимо ваш салон.</span>
         <span data-lang="en">I'll reply within a few hours. I'll explain how the bot works, we'll discuss the details and launch your salon.</span>
       </p>
@@ -1034,10 +1057,17 @@
           <span data-lang="en">Send request →</span>
         </button>
         <div id="form-success" class="form-result success" style="display:none">
-          <span data-lang="pl">✅ Dziękujemy! Odezwę się w ciągu kilku godzin.</span>
-          <span data-lang="ru">✅ Спасибо! Свяжусь с вами в течение нескольких часов.</span>
-          <span data-lang="uk">✅ Дякуємо! Зв'яжуся з вами протягом кількох годин.</span>
-          <span data-lang="en">✅ Thank you! I'll be in touch within a few hours.</span>
+          <span data-lang="pl">✅ Dziękujemy za zainteresowanie SalonBot! Twoje zgłoszenie zostało przyjęte — skontaktujemy się w najbliższym czasie, aby omówić szczegóły.</span>
+          <span data-lang="ru">✅ Спасибо за интерес к SalonBot! Ваша заявка принята — мы свяжемся с вами в ближайшее время для обсуждения деталей.</span>
+          <span data-lang="uk">✅ Дякуємо за інтерес до SalonBot! Вашу заявку прийнято — ми зв'яжемося з вами найближчим часом для обговорення деталей.</span>
+          <span data-lang="en">✅ Thank you for your interest in SalonBot! Your request has been received — we'll be in touch soon to discuss the details.</span>
+          <br>
+          <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="btn-white" style="display:inline-block;margin-top:16px;padding:12px 28px;font-size:15px;">
+            <span data-lang="pl">← Na stronę główną</span>
+            <span data-lang="ru">← На главную</span>
+            <span data-lang="uk">← На головну</span>
+            <span data-lang="en">← Back to homepage</span>
+          </a>
         </div>
         <div id="form-error" class="form-result error" style="display:none">
           <span data-lang="pl">❌ Coś poszło nie tak. Napisz bezpośrednio:<br>
@@ -1072,17 +1102,41 @@
       <a href="mailto:salonbotpl@gmail.com">Email</a>
     </p>
     <p style="margin-top:10px;">
-      <a href="#" onclick="openModal('modal-privacy');return false;">Polityka prywatności</a>
-      &nbsp;·&nbsp;
-      <a href="#" onclick="openModal('modal-terms');return false;">Regulamin</a>
+      <span data-lang="pl" class="visible">
+        <a href="#" onclick="openModal('modal-privacy');return false;">Polityka prywatności</a> &nbsp;·&nbsp;
+        <a href="#" onclick="openModal('modal-terms');return false;">Regulamin</a>
+      </span>
+      <span data-lang="ru">
+        <a href="#" onclick="openModal('modal-privacy');return false;">Политика конфиденциальности</a> &nbsp;·&nbsp;
+        <a href="#" onclick="openModal('modal-terms');return false;">Правила пользования</a>
+      </span>
+      <span data-lang="uk">
+        <a href="#" onclick="openModal('modal-privacy');return false;">Політика конфіденційності</a> &nbsp;·&nbsp;
+        <a href="#" onclick="openModal('modal-terms');return false;">Правила користування</a>
+      </span>
+      <span data-lang="en">
+        <a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="#" onclick="openModal('modal-terms');return false;">Terms of Service</a>
+      </span>
     </p>
     <p style="margin-top:6px;">
-      <a href="/privacy">Privacy Policy</a>
-      &nbsp;·&nbsp;
-      <a href="/terms">Terms of Service</a>
-      &nbsp;·&nbsp;
-      <a href="/google-api-disclosure">Google API Disclosure</a>
-      &nbsp;·&nbsp;
+      <span data-lang="pl" class="visible">
+        <a href="/privacy">Pełna polityka prywatności</a> &nbsp;·&nbsp;
+        <a href="/terms">Pełny regulamin</a> &nbsp;·&nbsp;
+      </span>
+      <span data-lang="ru">
+        <a href="/privacy">Полная политика конфиденциальности</a> &nbsp;·&nbsp;
+        <a href="/terms">Полные правила пользования</a> &nbsp;·&nbsp;
+      </span>
+      <span data-lang="uk">
+        <a href="/privacy">Повна політика конфіденційності</a> &nbsp;·&nbsp;
+        <a href="/terms">Повні правила користування</a> &nbsp;·&nbsp;
+      </span>
+      <span data-lang="en">
+        <a href="/privacy">Full Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="/terms">Full Terms of Service</a> &nbsp;·&nbsp;
+      </span>
+      <a href="/google-api-disclosure">Google API</a> &nbsp;·&nbsp;
       <a href="/subprocessors">Subprocessors</a>
     </p>
   </footer>
