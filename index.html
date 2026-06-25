@@ -1070,17 +1070,8 @@
           <span data-lang="en">Send request →</span>
         </button>
         <div id="form-success" class="form-result success" style="display:none">
-          <span data-lang="pl">🎉 <b>Dziękujemy za zainteresowanie SalonBot!</b><br><br>Twoje zgłoszenie zostało przyjęte. Skontaktujemy się w najbliższym czasie, aby omówić, jak SalonBot może pomóc Twojemu salonowi.<br><br>A tymczasem — wypróbuj naszego demo-bota:</span>
-          <span data-lang="ru">🎉 <b>Спасибо за интерес к SalonBot!</b><br><br>Ваша заявка принята. Мы свяжемся с вами в ближайшее время, чтобы обсудить, как SalonBot может помочь вашему салону.<br><br>А пока — попробуйте нашего демо-бота:</span>
-          <span data-lang="uk">🎉 <b>Дякуємо за інтерес до SalonBot!</b><br><br>Вашу заявку прийнято. Ми зв'яжемося з вами найближчим часом, щоб обговорити, як SalonBot може допомогти вашому салону.<br><br>А поки — спробуйте нашого демо-бота:</span>
-          <span data-lang="en">🎉 <b>Thank you for your interest in SalonBot!</b><br><br>Your request has been received. We'll be in touch soon to discuss how SalonBot can help your salon.<br><br>In the meantime — try our demo bot:</span>
-          <br>
-          <a href="https://t.me/lena_salon_bot" target="_blank" class="btn-white" style="display:inline-block;margin-top:12px;padding:12px 28px;font-size:15px;">
-            <span data-lang="pl">💬 Wypróbuj demo-bota →</span>
-            <span data-lang="ru">💬 Попробовать демо-бота →</span>
-            <span data-lang="uk">💬 Спробувати демо-бота →</span>
-            <span data-lang="en">💬 Try the demo bot →</span>
-          </a>
+          <div id="form-success-text" style="margin-bottom:16px;"></div>
+          <a href="https://t.me/lena_salon_bot" target="_blank" class="btn-white" id="form-success-btn" style="display:inline-block;padding:12px 28px;font-size:15px;"></a>
         </div>
         <div id="form-error" class="form-result error" style="display:none">
           <span data-lang="pl">❌ Coś poszło nie tak. Napisz bezpośrednio:<br>
@@ -1562,14 +1553,16 @@
           const form = document.getElementById('contact-form');
           form.style.display = 'none';
           const el = document.getElementById('form-success');
+          var msgs = {
+            pl: '🎉 <b>Dziękujemy za zainteresowanie SalonBot!</b><br><br>Twoje zgłoszenie zostało przyjęte. Skontaktujemy się w najbliższym czasie, aby omówić, jak SalonBot może pomóc Twojemu salonowi.<br><br>A tymczasem — wypróbuj naszego demo-bota:',
+            ru: '🎉 <b>Спасибо за интерес к SalonBot!</b><br><br>Ваша заявка принята. Мы свяжемся с вами в ближайшее время, чтобы обсудить, как SalonBot может помочь вашему салону.<br><br>А пока — попробуйте нашего демо-бота:',
+            uk: '🎉 <b>Дякуємо за інтерес до SalonBot!</b><br><br>Вашу заявку прийнято. Ми зв\'яжемося з вами найближчим часом, щоб обговорити, як SalonBot може допомогти вашому салону.<br><br>А поки — спробуйте нашого демо-бота:',
+            en: '🎉 <b>Thank you for your interest in SalonBot!</b><br><br>Your request has been received. We\'ll be in touch soon to discuss how SalonBot can help your salon.<br><br>In the meantime — try our demo bot:'
+          };
+          var btns = { pl: '💬 Wypróbuj demo-bota →', ru: '💬 Попробовать демо-бота →', uk: '💬 Спробувати демо-бота →', en: '💬 Try the demo bot →' };
+          document.getElementById('form-success-text').innerHTML = msgs[lang] || msgs['pl'];
+          document.getElementById('form-success-btn').textContent = btns[lang] || btns['pl'];
           el.style.display = 'block';
-          el.querySelectorAll('[data-lang]').forEach(s => {
-            if (s.dataset.lang === lang) {
-              s.style.display = 'inline';
-            } else {
-              s.style.display = 'none';
-            }
-          });
           setTimeout(function() {
             el.style.display = 'none';
             form.style.display = '';
