@@ -1559,12 +1559,19 @@
           body: JSON.stringify(data),
         });
         if (resp.ok) {
-          document.getElementById('contact-form').style.display = 'none';
+          const form = document.getElementById('contact-form');
+          form.style.display = 'none';
           const el = document.getElementById('form-success');
           el.style.display = 'block';
           el.querySelectorAll('[data-lang]').forEach(s => {
             s.classList.toggle('visible', s.dataset.lang === lang);
           });
+          setTimeout(function() {
+            el.style.display = 'none';
+            form.style.display = '';
+            form.reset();
+            btn.disabled = false;
+          }, 10000);
         } else {
           throw new Error('status ' + resp.status);
         }
@@ -1576,6 +1583,9 @@
         el.querySelectorAll('[data-lang]').forEach(s => {
           s.classList.toggle('visible', s.dataset.lang === lang);
         });
+        setTimeout(function() {
+          el.style.display = 'none';
+        }, 10000);
       }
     }
   </script>
