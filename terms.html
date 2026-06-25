@@ -33,8 +33,9 @@
       align-items: center;
       justify-content: space-between;
     }
-    .logo { font-size: 22px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; text-decoration: none; }
-    .logo span { color: var(--text); }
+    .logo { font-size: 26px; font-weight: 700; color: var(--rose); letter-spacing: -0.5px; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-text span { color: var(--text); }
+    .logo-icon { width: 38px; height: 38px; border-radius: 8px; }
     .lang-switch { display: flex; gap: 8px; }
     .lang-btn {
       background: transparent;
@@ -119,7 +120,7 @@
 <body>
 
   <nav>
-    <a href="/" class="logo">Salon<span>Bot</span></a>
+    <a href="/" class="logo"><svg class="logo-icon" viewBox="-15 -15 230 230" xmlns="http://www.w3.org/2000/svg"><rect x="-15" y="-15" width="230" height="230" rx="36" fill="#1a1a1a"/><circle cx="100" cy="100" r="88" fill="none" stroke="#c0506a" stroke-width="9"/><circle cx="100" cy="100" r="72" fill="none" stroke="#9a3d54" stroke-width="4.5"/><text x="70" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">S</text><text x="134" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">B</text><g transform="translate(101,94)"><ellipse cx="-10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><ellipse cx="10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><line x1="-8" y1="-5" x2="11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="-5" x2="-11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><circle cx="0" cy="9" r="2.5" fill="#c0506a"/></g></svg><span class="logo-text">Salon<span>Bot</span></span></a>
     <div style="display:flex;align-items:center;gap:20px;">
       <a href="/" style="color:var(--rose);text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap;">&larr; Home</a>
       <div class="lang-switch">
@@ -1045,7 +1046,7 @@
 
   <footer>
     <p>
-      &copy; 2026 SalonBot &middot;
+      &copy; 2026 SalonBot. All rights reserved. &middot;
       <a href="/">Home</a> &middot;
       <a href="/privacy">Privacy Policy</a> &middot;
       <a href="/terms">Terms of Service</a> &middot;
