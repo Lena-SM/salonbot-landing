@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, telegram, salon, lang, _honey } = req.body || {};
+  const { name, email, telegram, salon, comment, lang, _honey } = req.body || {};
 
   // Honeypot — boty fill this, humans don't
   if (_honey) return res.status(200).json({ ok: true });
@@ -28,14 +28,16 @@ export default async function handler(req, res) {
       en: { title: 'New enquiry from salonbot.pl', name: 'Name', email: 'Email', tg: 'Telegram', salon: 'Salon' },
     };
     const l = t[lang] || t['pl'];
-    const text = [
+    const lines = [
       `🆕 <b>${l.title}</b>`,
       '',
       `👤 ${l.name}: ${name}`,
       `📧 ${l.email}: ${email}`,
       `📱 ${l.tg}: ${telegram || '—'}`,
       `💇 ${l.salon}: ${salon}`,
-    ].join('\n');
+    ];
+    if (comment) lines.push(`💬 ${comment}`);
+    const text = lines.join('\n');
     try {
       const r = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
@@ -58,7 +60,7 @@ export default async function handler(req, res) {
       const r = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ name, email, telegram, salon }),
+        body: JSON.stringify({ name, email, telegram, salon, comment }),
       });
       results.email = r.ok;
     } catch (e) {

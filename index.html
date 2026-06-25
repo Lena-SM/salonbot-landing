@@ -1041,6 +1041,19 @@
             data-ph-uk="наприклад, Студія краси Ганна"
             data-ph-en="e.g. Anna Beauty Studio">
         </div>
+        <div class="form-row">
+          <label class="form-label" for="f-comment">
+            <span data-lang="pl">Komentarz (opcjonalnie)</span>
+            <span data-lang="ru">Комментарий (необязательно)</span>
+            <span data-lang="uk">Коментар (необов'язково)</span>
+            <span data-lang="en">Comment (optional)</span>
+          </label>
+          <textarea id="f-comment" name="comment" rows="3" style="width:100%;padding:13px 16px;border:2px solid rgba(255,255,255,0.3);border-radius:10px;background:rgba(255,255,255,0.15);color:white;font-size:15px;font-family:inherit;outline:none;resize:vertical;"
+            data-ph-pl="np. Mam 3 mistrzów, interesuje mnie integracja z Booksy..."
+            data-ph-ru="например, у меня 3 мастера, интересует интеграция с Booksy..."
+            data-ph-uk="наприклад, у мене 3 майстри, цікавить інтеграція з Booksy..."
+            data-ph-en="e.g. I have 3 masters, interested in Booksy integration..."></textarea>
+        </div>
         <div class="form-consent">
           <input type="checkbox" id="f-consent" name="consent" required>
           <label for="f-consent">
@@ -1057,16 +1070,16 @@
           <span data-lang="en">Send request →</span>
         </button>
         <div id="form-success" class="form-result success" style="display:none">
-          <span data-lang="pl">✅ Dziękujemy za zainteresowanie SalonBot! Twoje zgłoszenie zostało przyjęte — skontaktujemy się w najbliższym czasie, aby omówić szczegóły.</span>
-          <span data-lang="ru">✅ Спасибо за интерес к SalonBot! Ваша заявка принята — мы свяжемся с вами в ближайшее время для обсуждения деталей.</span>
-          <span data-lang="uk">✅ Дякуємо за інтерес до SalonBot! Вашу заявку прийнято — ми зв'яжемося з вами найближчим часом для обговорення деталей.</span>
-          <span data-lang="en">✅ Thank you for your interest in SalonBot! Your request has been received — we'll be in touch soon to discuss the details.</span>
+          <span data-lang="pl">🎉 <b>Dziękujemy za zainteresowanie SalonBot!</b><br><br>Twoje zgłoszenie zostało przyjęte. Skontaktujemy się w najbliższym czasie, aby omówić, jak SalonBot może pomóc Twojemu salonowi.<br><br>A tymczasem — wypróbuj naszego demo-bota:</span>
+          <span data-lang="ru">🎉 <b>Спасибо за интерес к SalonBot!</b><br><br>Ваша заявка принята. Мы свяжемся с вами в ближайшее время, чтобы обсудить, как SalonBot может помочь вашему салону.<br><br>А пока — попробуйте нашего демо-бота:</span>
+          <span data-lang="uk">🎉 <b>Дякуємо за інтерес до SalonBot!</b><br><br>Вашу заявку прийнято. Ми зв'яжемося з вами найближчим часом, щоб обговорити, як SalonBot може допомогти вашому салону.<br><br>А поки — спробуйте нашого демо-бота:</span>
+          <span data-lang="en">🎉 <b>Thank you for your interest in SalonBot!</b><br><br>Your request has been received. We'll be in touch soon to discuss how SalonBot can help your salon.<br><br>In the meantime — try our demo bot:</span>
           <br>
-          <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="btn-white" style="display:inline-block;margin-top:16px;padding:12px 28px;font-size:15px;">
-            <span data-lang="pl">← Na stronę główną</span>
-            <span data-lang="ru">← На главную</span>
-            <span data-lang="uk">← На головну</span>
-            <span data-lang="en">← Back to homepage</span>
+          <a href="https://t.me/lena_salon_bot" target="_blank" class="btn-white" style="display:inline-block;margin-top:12px;padding:12px 28px;font-size:15px;">
+            <span data-lang="pl">💬 Wypróbuj demo-bota →</span>
+            <span data-lang="ru">💬 Попробовать демо-бота →</span>
+            <span data-lang="uk">💬 Спробувати демо-бота →</span>
+            <span data-lang="en">💬 Try the demo bot →</span>
           </a>
         </div>
         <div id="form-error" class="form-result error" style="display:none">
@@ -1535,6 +1548,7 @@
         email:    document.getElementById('f-email').value.trim(),
         telegram: document.getElementById('f-telegram').value.trim(),
         salon:    document.getElementById('f-salon').value.trim(),
+        comment:  document.getElementById('f-comment').value.trim(),
         lang:     lang,
       };
 
