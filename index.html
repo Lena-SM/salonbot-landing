@@ -1564,7 +1564,11 @@
           const el = document.getElementById('form-success');
           el.style.display = 'block';
           el.querySelectorAll('[data-lang]').forEach(s => {
-            s.classList.toggle('visible', s.dataset.lang === lang);
+            if (s.dataset.lang === lang) {
+              s.style.display = 'inline';
+            } else {
+              s.style.display = 'none';
+            }
           });
           setTimeout(function() {
             el.style.display = 'none';
