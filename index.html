@@ -1069,25 +1069,14 @@
           <span data-lang="uk">Надіслати заявку →</span>
           <span data-lang="en">Send request →</span>
         </button>
-        <div id="form-success" class="form-result success" style="display:none">
-          <div id="form-success-text" style="margin-bottom:16px;"></div>
-          <a href="https://t.me/lena_salon_bot" target="_blank" class="btn-white" id="form-success-btn" style="display:inline-block;padding:12px 28px;font-size:15px;"></a>
-        </div>
-        <div id="form-error" class="form-result error" style="display:none">
-          <span data-lang="pl">❌ Coś poszło nie tak. Napisz bezpośrednio:<br>
-            <a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> &nbsp;·&nbsp;
-            <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a></span>
-          <span data-lang="ru">❌ Что-то пошло не так. Напиши напрямую:<br>
-            <a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> &nbsp;·&nbsp;
-            <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a></span>
-          <span data-lang="uk">❌ Щось пішло не так. Напишіть напряму:<br>
-            <a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> &nbsp;·&nbsp;
-            <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a></span>
-          <span data-lang="en">❌ Something went wrong. Please reach out directly:<br>
-            <a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> &nbsp;·&nbsp;
-            <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a></span>
-        </div>
       </form>
+      <div id="form-success" class="form-result success" style="display:none;">
+        <div id="form-success-text" style="margin-bottom:16px;"></div>
+        <a href="https://t.me/lena_salon_bot" target="_blank" class="btn-white" id="form-success-btn" style="display:inline-block;padding:12px 28px;font-size:15px;"></a>
+      </div>
+      <div id="form-error" class="form-result error" style="display:none;">
+        <div id="form-error-text"></div>
+      </div>
     </div>
   </div>
   </div>
@@ -1576,10 +1565,14 @@
         console.error('Form error:', err);
         btn.disabled = false;
         const el = document.getElementById('form-error');
+        var errs = {
+          pl: '❌ Coś poszło nie tak. Napisz bezpośrednio:<br><a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> · <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a>',
+          ru: '❌ Что-то пошло не так. Напишите напрямую:<br><a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> · <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a>',
+          uk: '❌ Щось пішло не так. Напишіть напряму:<br><a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> · <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a>',
+          en: '❌ Something went wrong. Please reach out directly:<br><a href="https://t.me/ElenaSheffchenko" style="color:white">✈️ Telegram</a> · <a href="mailto:salonbotpl@gmail.com" style="color:white">📧 Email</a>'
+        };
+        document.getElementById('form-error-text').innerHTML = errs[lang] || errs['pl'];
         el.style.display = 'block';
-        el.querySelectorAll('[data-lang]').forEach(s => {
-          s.classList.toggle('visible', s.dataset.lang === lang);
-        });
         setTimeout(function() {
           el.style.display = 'none';
         }, 10000);
