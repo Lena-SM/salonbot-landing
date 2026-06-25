@@ -459,7 +459,7 @@
       .hero-visual { max-height: 300px; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); padding: 28px 20px; }
       section { padding: 56px 20px; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
       .how { padding: 56px 20px; }
       .contact { padding: 56px 20px; }
@@ -1091,11 +1091,11 @@
   <!-- FOOTER -->
   <footer>
     <p>
-      © 2026 SalonBot &nbsp;·&nbsp;
-      <span data-lang="pl" class="visible">Telegram bot do zapisów dla salonów piękności w Polsce</span>
-      <span data-lang="ru">Telegram-бот для записи в салоны красоты в Польше</span>
-      <span data-lang="uk">Telegram-бот для запису в салони краси в Польщі</span>
-      <span data-lang="en">Telegram booking bot for beauty salons in Poland</span>
+      © 2026 SalonBot.
+      <span data-lang="pl" class="visible">Wszelkie prawa zastrzeżone.</span>
+      <span data-lang="ru">Все права защищены.</span>
+      <span data-lang="uk">Всі права захищені.</span>
+      <span data-lang="en">All rights reserved.</span>
       &nbsp;·&nbsp;
       <a href="https://t.me/ElenaSheffchenko">Telegram</a>
       &nbsp;·&nbsp;
@@ -1164,7 +1164,7 @@
         inp.placeholder = map[lang] || inp.dataset.phPl;
       });
 
-      localStorage.setItem('lang', lang);
+      localStorage.setItem('salonbot-lang', lang);
       if (window.simUpdateLang) window.simUpdateLang(lang);
     }
 
@@ -1492,13 +1492,13 @@
       };
 
       // ── Инициализация ────────────────────────────────────────────────────────
-      simLang = localStorage.getItem('lang') || 'pl';
+      simLang = localStorage.getItem('salonbot-lang') || 'pl';
       simReset();
 
     })();
 
     // Init
-    const savedLang = localStorage.getItem('lang') || 'pl';
+    const savedLang = localStorage.getItem('salonbot-lang') || 'pl';
     setLang(savedLang);
 
     // Modal helpers
@@ -1535,7 +1535,7 @@
         salon:    document.getElementById('f-salon').value.trim(),
       };
 
-      const lang = localStorage.getItem('lang') || 'pl';
+      const lang = localStorage.getItem('salonbot-lang') || 'pl';
 
       try {
         const resp = await fetch('/api/submit', {
