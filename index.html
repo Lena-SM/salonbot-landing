@@ -664,7 +664,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <img src="demo.gif" alt="Demo bota SalonBot" style="width:100%;height:100%;object-fit:cover;border-radius:24px;">
+        <img id="heroDemoGif" src="demo.gif" alt="Demo bota SalonBot" style="width:100%;height:100%;object-fit:cover;border-radius:24px;">
       </div>
     </div>
   </div>
@@ -1156,6 +1156,11 @@
                      uk: inp.dataset.phUk, en: inp.dataset.phEn};
         inp.placeholder = map[lang] || inp.dataset.phPl;
       });
+
+      // Hero demo gif: dedicated recordings for ru/uk, pl gif reused for pl/en.
+      const gifByLang = { ru: 'demo-ru.gif', uk: 'demo-uk.gif' };
+      const heroGif = document.getElementById('heroDemoGif');
+      if (heroGif) heroGif.src = gifByLang[lang] || 'demo.gif';
 
       localStorage.setItem('salonbot-lang', lang);
       if (window.simUpdateLang) window.simUpdateLang(lang);
