@@ -191,10 +191,14 @@
     .features .subtitle { text-align: center; color: var(--text-muted); font-size: 17px; margin-bottom: 52px; }
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
     }
+    @media (max-width: 1100px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     .feature-card {
+      position: relative;
       background: white;
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -205,6 +209,12 @@
     .feature-icon { font-size: 36px; margin-bottom: 16px; }
     .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
     .feature-card p { color: var(--text-muted); font-size: 16px; }
+    .feature-badge {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--rose-light); color: var(--rose);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.3px;
+      padding: 4px 10px; border-radius: 999px;
+    }
 
     /* ─── HOW IT WORKS ─── */
     .how-wrap { background: var(--rose-light); padding: 0; }
@@ -727,6 +737,7 @@
     </p>
     <div class="features-grid">
 
+      <!-- Ряд 1: запись -->
       <div class="feature-card">
         <div class="feature-icon">📅</div>
         <h3><span data-lang="pl" class="visible">Automatyczne zapisy</span><span data-lang="ru">Автоматические записи</span><span data-lang="uk">Автоматичні записи</span><span data-lang="en">Automatic bookings</span></h3>
@@ -739,46 +750,14 @@
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">⏰</div>
-        <h3><span data-lang="pl" class="visible">Automatyczne przypomnienia</span><span data-lang="ru">Автоматические напоминания</span><span data-lang="uk">Автоматичні нагадування</span><span data-lang="en">Automatic reminders</span></h3>
+        <span class="feature-badge"><span data-lang="pl" class="visible">Wkrótce</span><span data-lang="ru">Скоро</span><span data-lang="uk">Незабаром</span><span data-lang="en">Coming soon</span></span>
+        <div class="feature-icon">⏳</div>
+        <h3><span data-lang="pl" class="visible">Lista oczekujących</span><span data-lang="ru">Лист ожидания</span><span data-lang="uk">Лист очікування</span><span data-lang="en">Waitlist</span></h3>
         <p>
-          <span data-lang="pl" class="visible">Bot sam wysyła przypomnienie na 24h i 2h przed wizytą. Klienci nie zapominają, Ty nie tracisz czasu.</span>
-          <span data-lang="ru">Бот сам отправляет напоминание за 24ч и 2ч до визита. Клиенты не забывают, ты не теряешь деньги.</span>
-          <span data-lang="uk">Бот сам надсилає нагадування за 24г і 2г до візиту. Клієнти не забувають — ви не втрачаєте гроші.</span>
-          <span data-lang="en">The bot sends reminders 24h and 2h before the appointment. Clients don't forget, you don't lose money.</span>
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">📆</div>
-        <h3><span data-lang="pl" class="visible">Google Calendar</span><span data-lang="ru">Google Calendar</span><span data-lang="uk">Google Calendar</span><span data-lang="en">Google Calendar</span></h3>
-        <p>
-          <span data-lang="pl" class="visible">Każda wizyta pojawia się w kalendarzu mistrza automatycznie. Przeniesienia i anulowania też się synchronizują. Żadnych notatników.</span>
-          <span data-lang="ru">Каждый визит автоматически появляется в календаре мастера. Переносы и отмены тоже синхронизируются. Никаких записей в блокнотах.</span>
-          <span data-lang="uk">Кожен візит автоматично з'являється в календарі майстра. Перенесення та скасування теж синхронізуються. Жодних записів у блокнотах.</span>
-          <span data-lang="en">Every appointment appears in the master's calendar automatically. Reschedules and cancellations sync too. No more notebooks.</span>
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">⭐</div>
-        <h3><span data-lang="pl" class="visible">Recenzje klientów</span><span data-lang="ru">Отзывы клиентов</span><span data-lang="uk">Відгуки клієнтів</span><span data-lang="en">Client reviews</span></h3>
-        <p>
-          <span data-lang="pl" class="visible">Po wizycie bot automatycznie prosi o ocenę 1–5 ⭐. Mistrz widzi swoje oceny w aplikacji.</span>
-          <span data-lang="ru">После визита бот автоматически просит оценку 1–5 ⭐. Мастер видит свои отзывы прямо в боте.</span>
-          <span data-lang="uk">Після візиту бот автоматично просить оцінку 1–5 ⭐. Майстер бачить свої відгуки прямо в боті.</span>
-          <span data-lang="en">After each visit the bot requests a 1–5 ⭐ rating. Masters see their reviews right in the bot.</span>
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3><span data-lang="pl" class="visible">Statystyki mistrza</span><span data-lang="ru">Статистика мастера</span><span data-lang="uk">Статистика майстра</span><span data-lang="en">Master statistics</span></h3>
-        <p>
-          <span data-lang="pl" class="visible">Wizyty, przychody, nowi vs. stali klienci — za tydzień, miesiąc. Co niedzielę — plan zapisów na następny tydzień.</span>
-          <span data-lang="ru">Визиты, выручка, новые vs. постоянные клиенты — за неделю, месяц. Каждое воскресенье — план записей на следующую неделю.</span>
-          <span data-lang="uk">Візити, виручка, нові vs. постійні клієнти — за тиждень, місяць. Щонеділі — план записів на наступний тиждень.</span>
-          <span data-lang="en">Visits, revenue, new vs. returning clients — weekly and monthly. Every Sunday — a booking plan for the coming week.</span>
+          <span data-lang="pl" class="visible">Mistrz nie ma wolnych terminów? Bot zaproponuje zapis na listę oczekujących i sam napisze do klienta, gdy ktoś odwoła lub przełoży wizytę.</span>
+          <span data-lang="ru">У мастера нет свободного времени? Бот предложит встать в лист ожидания и сам напишет клиенту, когда кто-то отменит или перенесёт запись.</span>
+          <span data-lang="uk">У майстра немає вільного часу? Бот запропонує стати в лист очікування і сам напише клієнту, коли хтось скасує або перенесе запис.</span>
+          <span data-lang="en">No free slots with the master? The bot offers to join the waitlist and messages the client when someone cancels or reschedules.</span>
         </p>
       </div>
 
@@ -794,24 +773,47 @@
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🖥️</div>
-        <h3><span data-lang="pl" class="visible">Panel właściciela</span><span data-lang="ru">Панель управления</span><span data-lang="uk">Панель власника</span><span data-lang="en">Owner dashboard</span></h3>
+        <div class="feature-icon">📆</div>
+        <h3><span data-lang="pl" class="visible">Google Calendar</span><span data-lang="ru">Google Calendar</span><span data-lang="uk">Google Calendar</span><span data-lang="en">Google Calendar</span></h3>
         <p>
-          <span data-lang="pl" class="visible">Webowy panel dla właściciela — harmonogram, baza klientów, analityka przychodów i obłożenie mistrzów w przeglądarce i telefonie.</span>
-          <span data-lang="ru">Веб-панель для владельца — расписание, база клиентов, аналитика выручки и загрузка мастеров прямо в браузере и телефоне.</span>
-          <span data-lang="uk">Веб-панель для власника — розклад, база клієнтів, аналітика виручки та завантаження майстрів у браузері й телефоні.</span>
-          <span data-lang="en">A web panel for the owner — schedule, client database, revenue analytics and master workload in your browser and phone.</span>
+          <span data-lang="pl" class="visible">Każda wizyta pojawia się w kalendarzu mistrza automatycznie. Przeniesienia i anulowania też się synchronizują. Żadnych notatników.</span>
+          <span data-lang="ru">Каждый визит автоматически появляется в календаре мастера. Переносы и отмены тоже синхронизируются. Никаких записей в блокнотах.</span>
+          <span data-lang="uk">Кожен візит автоматично з'являється в календарі майстра. Перенесення та скасування теж синхронізуються. Жодних записів у блокнотах.</span>
+          <span data-lang="en">Every appointment appears in the master's calendar automatically. Reschedules and cancellations sync too. No more notebooks.</span>
+        </p>
+      </div>
+
+      <!-- Ряд 2: возвращаем клиентов -->
+      <div class="feature-card">
+        <div class="feature-icon">⏰</div>
+        <h3><span data-lang="pl" class="visible">Automatyczne przypomnienia</span><span data-lang="ru">Автоматические напоминания</span><span data-lang="uk">Автоматичні нагадування</span><span data-lang="en">Automatic reminders</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Bot przypomina o wizycie 24h i 2h wcześniej, a po odpowiednim czasie zaprasza ponownie: pora odświeżyć strzyżenie, koloryzację czy manicure. Klienci wracają częściej.</span>
+          <span data-lang="ru">Бот напоминает о визите за 24 ч и 2 ч, а через нужное время приглашает снова: пора обновить стрижку, окрашивание или маникюр. Клиенты возвращаются чаще.</span>
+          <span data-lang="uk">Бот нагадує про візит за 24 год і 2 год, а через потрібний час запрошує знову: пора оновити стрижку, фарбування чи манікюр. Клієнти повертаються частіше.</span>
+          <span data-lang="en">The bot reminds clients 24h and 2h before the visit and later invites them back: time to refresh the haircut, colour or manicure. Clients return more often.</span>
         </p>
       </div>
 
       <div class="feature-card">
-        <div class="feature-icon">🖼️</div>
-        <h3><span data-lang="pl" class="visible">Portfolio mistrzów</span><span data-lang="ru">Портфолио мастеров</span><span data-lang="uk">Портфоліо майстрів</span><span data-lang="en">Master portfolio</span></h3>
+        <div class="feature-icon">🎂</div>
+        <h3><span data-lang="pl" class="visible">Życzenia urodzinowe</span><span data-lang="ru">Поздравления с днём рождения</span><span data-lang="uk">Привітання з днем народження</span><span data-lang="en">Birthday greetings</span></h3>
         <p>
-          <span data-lang="pl" class="visible">Mistrz publikuje zdjęcia swoich prac bezpośrednio w bocie. Klient przegląda portfolio przed zapisem.</span>
-          <span data-lang="ru">Мастер публикует фото работ прямо в боте. Клиент смотрит портфолио до записи — больше доверия, больше записей.</span>
-          <span data-lang="uk">Майстер публікує фото робіт прямо в боті. Клієнт переглядає портфоліо до запису — більше довіри, більше записів.</span>
-          <span data-lang="en">Masters publish their work photos right in the bot. Clients browse the portfolio before booking — more trust, more bookings.</span>
+          <span data-lang="pl" class="visible">Bot sam złoży klientowi życzenia przed urodzinami i wyśle mu prezent. Prezent i termin jego ważności ustawisz w panelu admina.</span>
+          <span data-lang="ru">Бот сам поздравит клиента перед праздником и пришлёт ему подарок. Подарок и срок его действия можно настроить в панели управления.</span>
+          <span data-lang="uk">Бот сам привітає клієнта перед святом і надішле йому подарунок. Подарунок і термін його дії можна налаштувати в панелі управління.</span>
+          <span data-lang="en">The bot greets clients before their birthday and sends them a gift. You set the gift and how long it's valid in the admin panel.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3><span data-lang="pl" class="visible">Recenzje klientów</span><span data-lang="ru">Отзывы клиентов</span><span data-lang="uk">Відгуки клієнтів</span><span data-lang="en">Client reviews</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Po wizycie bot automatycznie prosi o ocenę 1–5 ⭐. Mistrz widzi swoje oceny w aplikacji.</span>
+          <span data-lang="ru">После визита бот автоматически просит оценку 1–5 ⭐. Мастер видит свои отзывы прямо в боте.</span>
+          <span data-lang="uk">Після візиту бот автоматично просить оцінку 1–5 ⭐. Майстер бачить свої відгуки прямо в боті.</span>
+          <span data-lang="en">After each visit the bot requests a 1–5 ⭐ rating. Masters see their reviews right in the bot.</span>
         </p>
       </div>
 
@@ -823,6 +825,40 @@
           <span data-lang="ru">Акции, скидки, новости — отправьте всем клиентам или выбранным прямо в Telegram. Один клик — и сотни клиентов в курсе.</span>
           <span data-lang="uk">Акції, знижки, новини — надішліть усім клієнтам або обраним прямо в Telegram. Один клік — і сотні клієнтів у курсі.</span>
           <span data-lang="en">Promotions, discounts, news — send to all clients or selected ones right in Telegram. One click — hundreds of clients informed.</span>
+        </p>
+      </div>
+
+      <!-- Ряд 3: управление -->
+      <div class="feature-card">
+        <div class="feature-icon">🖥️</div>
+        <h3><span data-lang="pl" class="visible">Panel admina</span><span data-lang="ru">Панель управления</span><span data-lang="uk">Панель управління</span><span data-lang="en">Admin panel</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Webowy panel dla właściciela — harmonogram, baza klientów, analityka przychodów i obłożenie mistrzów w przeglądarce i telefonie.</span>
+          <span data-lang="ru">Веб-панель для владельца — расписание, база клиентов, аналитика выручки и загрузка мастеров прямо в браузере и телефоне.</span>
+          <span data-lang="uk">Веб-панель для власника — розклад, база клієнтів, аналітика виручки та завантаження майстрів у браузері й телефоні.</span>
+          <span data-lang="en">A web panel for the owner — schedule, client database, revenue analytics and master workload in your browser and phone.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3><span data-lang="pl" class="visible">Statystyki mistrza</span><span data-lang="ru">Статистика мастера</span><span data-lang="uk">Статистика майстра</span><span data-lang="en">Master statistics</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Wizyty, przychody, nowi vs. stali klienci — za tydzień, miesiąc. Co niedzielę — plan zapisów na następny tydzień.</span>
+          <span data-lang="ru">Визиты, выручка, новые vs. постоянные клиенты — за неделю, месяц. Каждое воскресенье — план записей на следующую неделю.</span>
+          <span data-lang="uk">Візити, виручка, нові vs. постійні клієнти — за тиждень, місяць. Щонеділі — план записів на наступний тиждень.</span>
+          <span data-lang="en">Visits, revenue, new vs. returning clients — weekly and monthly. Every Sunday — a booking plan for the coming week.</span>
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🖼️</div>
+        <h3><span data-lang="pl" class="visible">Portfolio mistrzów</span><span data-lang="ru">Портфолио мастеров</span><span data-lang="uk">Портфоліо майстрів</span><span data-lang="en">Master portfolio</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Mistrz publikuje zdjęcia swoich prac bezpośrednio w bocie. Klient przegląda portfolio przed zapisem.</span>
+          <span data-lang="ru">Мастер публикует фото работ прямо в боте. Клиент смотрит портфолио до записи — больше доверия, больше записей.</span>
+          <span data-lang="uk">Майстер публікує фото робіт прямо в боті. Клієнт переглядає портфоліо до запису — більше довіри, більше записів.</span>
+          <span data-lang="en">Masters publish their work photos right in the bot. Clients browse the portfolio before booking — more trust, more bookings.</span>
         </p>
       </div>
 
