@@ -166,7 +166,6 @@
     }
     .hero-visual-placeholder .phone-icon { font-size: 64px; margin-bottom: 16px; }
     .hero-visual-placeholder p { font-size: 14px; line-height: 1.5; }
-    /* When GIF is added, replace placeholder with: <img src="demo.gif" style="width:100%;height:100%;object-fit:cover"> */
 
     .hero-tagline { font-size: 22px; font-weight: 700; color: var(--rose-dark); line-height: 1.4; margin-bottom: 18px; max-width: 620px; }
     .hero-tagline [data-lang].visible { display: inline; }
@@ -222,6 +221,7 @@
     .feature-icon { font-size: 36px; margin-bottom: 16px; }
     .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
     .feature-card p { color: var(--text-muted); font-size: 16px; }
+    .feature-card.wide { grid-column: 1 / -1; }
     .feature-badge {
       position: absolute; top: 16px; right: 16px;
       background: var(--rose-light); color: var(--rose);
@@ -648,6 +648,9 @@
       .phone-mockup { width: 280px; }
     }
   </style>
+  <!-- Vercel Web Analytics: без cookie, только счёт посещений и откуда пришли -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -711,7 +714,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <img id="heroDemoGif" src="demo.gif" alt="Demo bota SalonBot" style="width:100%;height:100%;object-fit:cover;border-radius:24px;">
+        <video id="heroDemoVideo" src="demo-pl.mp4" autoplay muted loop playsinline preload="auto" aria-label="Demo bota SalonBot" style="width:100%;height:100%;object-fit:cover;border-radius:24px;"></video>
       </div>
     </div>
   </div>
@@ -824,6 +827,19 @@
           <span data-lang="ru">Каждый визит автоматически появляется в календаре мастера. Переносы и отмены тоже синхронизируются. Никаких записей в блокнотах.</span>
           <span data-lang="uk">Кожен візит автоматично з'являється в календарі майстра. Перенесення та скасування теж синхронізуються. Жодних записів у блокнотах.</span>
           <span data-lang="en">Every appointment appears in the master's calendar automatically. Reschedules and cancellations sync too. No more notebooks.</span>
+        </p>
+      </div>
+
+      <!-- Скоро: онлайн-запись без Telegram (сайт записи салона, #131) -->
+      <div class="feature-card wide">
+        <span class="feature-badge"><span data-lang="pl" class="visible">Wkrótce</span><span data-lang="ru">Скоро</span><span data-lang="uk">Незабаром</span><span data-lang="en">Coming soon</span></span>
+        <div class="feature-icon">🌐</div>
+        <h3><span data-lang="pl" class="visible">Rezerwacja online — bez Telegrama</span><span data-lang="ru">Онлайн-запись без Telegram</span><span data-lang="uk">Онлайн-запис без Telegram</span><span data-lang="en">Online booking without Telegram</span></h3>
+        <p>
+          <span data-lang="pl" class="visible">Klientki zapisują się przez stronę salonu — bez instalowania aplikacji i bez Telegrama. Ikonę strony można po prostu dodać na ekran telefonu i otwierać ją jednym dotknięciem.</span>
+          <span data-lang="ru">Клиентки записываются через страницу салона — без установки приложений и без Telegram. Иконку страницы можно просто добавить на экран телефона и переходить на неё одним нажатием.</span>
+          <span data-lang="uk">Клієнтки записуються через сторінку салону — без встановлення застосунків і без Telegram. Іконку сторінки можна просто додати на екран телефону й переходити на неї одним натисканням.</span>
+          <span data-lang="en">Clients book through the salon's page — no app to install, no Telegram. They can add the page's icon to their phone's home screen and open it with one tap.</span>
         </p>
       </div>
 
@@ -983,7 +999,7 @@
           <div class="phone-btns" id="sim-btns"></div>
         </div>
       </div>
-      <a href="https://t.me/lena_salon_bot" target="_blank" rel="noopener" class="btn-primary sim-cta"><span data-lang="pl" class="visible">Otwórz pełne demo w Telegramie →</span><span data-lang="ru">Открыть полное демо в Telegram →</span><span data-lang="uk">Відкрити повне демо в Telegram →</span><span data-lang="en">Open the full demo in Telegram →</span></a>
+      <a href="https://t.me/lena_salon_bot?start=site" target="_blank" rel="noopener" class="btn-primary sim-cta"><span data-lang="pl" class="visible">Otwórz pełne demo w Telegramie →</span><span data-lang="ru">Открыть полное демо в Telegram →</span><span data-lang="uk">Відкрити повне демо в Telegram →</span><span data-lang="en">Open the full demo in Telegram →</span></a>
     </section>
   </div>
 
@@ -1114,7 +1130,7 @@
       </form>
       <div id="form-success" class="form-result success" style="display:none;">
         <div id="form-success-text" style="margin-bottom:16px;"></div>
-        <a href="https://t.me/lena_salon_bot" target="_blank" class="btn-white" id="form-success-btn" style="display:inline-block;padding:12px 28px;font-size:15px;"></a>
+        <a href="https://t.me/lena_salon_bot?start=site" target="_blank" class="btn-white" id="form-success-btn" style="display:inline-block;padding:12px 28px;font-size:15px;"></a>
       </div>
       <div id="form-error" class="form-result error" style="display:none;">
         <div id="form-error-text"></div>
@@ -1203,10 +1219,14 @@
         inp.placeholder = map[lang] || inp.dataset.phPl;
       });
 
-      // Hero demo gif: dedicated recordings for ru/uk, pl gif reused for pl/en.
-      const gifByLang = { ru: 'demo-ru.gif', uk: 'demo-uk.gif' };
-      const heroGif = document.getElementById('heroDemoGif');
-      if (heroGif) heroGif.src = gifByLang[lang] || 'demo.gif';
+      // Hero demo video: own recording for pl/uk/ru, en uses the pl one.
+      const videoByLang = { pl: 'demo-pl.mp4', uk: 'demo-uk.mp4', ru: 'demo-ru.mp4' };
+      const heroVideo = document.getElementById('heroDemoVideo');
+      const videoSrc = videoByLang[lang] || 'demo-pl.mp4';
+      if (heroVideo && !heroVideo.src.endsWith(videoSrc)) {
+        heroVideo.src = videoSrc;
+        heroVideo.play().catch(() => {});   // autoplay заблокирован — останется первый кадр
+      }
 
       localStorage.setItem('salonbot-lang', lang);
       if (window.simUpdateLang) window.simUpdateLang(lang);
@@ -1474,7 +1494,7 @@
 
           case 6: // Финал
             btnsEl.appendChild(mkBtn(tStr('btn_tg'), 'sim-tg', function() {
-              window.open('https://t.me/lena_salon_bot', '_blank');
+              window.open('https://t.me/lena_salon_bot?start=site', '_blank');
             }));
             btnsEl.appendChild(mkBtn(tStr('btn_restart'), 'sim-ghost', simReset));
             break;
@@ -1563,6 +1583,23 @@
       }
     });
 
+    // Откуда пришёл посетитель: метка из ссылки (?utm_source=instagram&utm_medium=bio)
+    // важнее всего; без метки — сайт, с которого перешли, при первом заходе за сессию.
+    // Уходит в заявку с формы строкой «Откуда».
+    (function rememberSource() {
+      try {
+        const p = new URLSearchParams(location.search);
+        let src = [p.get('utm_source'), p.get('utm_medium'), p.get('utm_campaign')]
+          .filter(Boolean).join(' / ');
+        if (!src && sessionStorage.getItem('sb-src')) return;
+        if (!src && document.referrer) {
+          const host = new URL(document.referrer).hostname.replace(/^www\./, '');
+          if (host && !host.endsWith('salonbot.pl')) src = host;
+        }
+        sessionStorage.setItem('sb-src', (src || 'direct').slice(0, 80));
+      } catch (e) { /* закрытое хранилище — без «Откуда» */ }
+    })();
+
     // Contact form submission
     async function submitForm(e) {
       e.preventDefault();
@@ -1581,6 +1618,7 @@
         salon:    document.getElementById('f-salon').value.trim(),
         comment:  document.getElementById('f-comment').value.trim(),
         lang:     lang,
+        source:   (function () { try { return sessionStorage.getItem('sb-src') || ''; } catch (e) { return ''; } })(),
       };
 
       try {
