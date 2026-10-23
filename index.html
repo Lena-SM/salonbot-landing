@@ -81,6 +81,14 @@
       font-weight: 600;
       transition: background 0.2s, transform 0.15s;
     }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .nav-social { display: flex; align-items: center; gap: 6px; }
+    .nav-social a { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: transform 0.15s, filter 0.2s; }
+    .nav-social a:hover { transform: translateY(-1px); filter: brightness(1.08); }
+    .nav-social .s-fb { background: #1877F2; }
+    .nav-social .s-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .nav-social .s-tg { background: #26A5E4; }
+    .nav-social svg { width: 18px; height: 18px; fill: currentColor; }
     .nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
 
     /* ─── SECTIONS ─── */
@@ -260,6 +268,8 @@
     }
     .price h2 { font-size: 34px; font-weight: 800; margin-bottom: 12px; }
     .price .subtitle { color: var(--text-muted); font-size: 17px; margin-bottom: 48px; }
+    .price-abroad { max-width: 680px; margin: -28px auto 40px; color: var(--text-muted); font-size: 15px; }
+    .price-abroad .btn-secondary { display: inline-block; margin-top: 12px; padding: 9px 22px; font-size: 14px; }
     .price-card {
       background: white;
       border: 2px solid var(--rose);
@@ -500,6 +510,11 @@
     @media (max-width: 768px) {
       nav { padding: 12px 20px; }
       .nav-links { display: none; }
+      .nav-right { flex-direction: column-reverse; align-items: stretch; gap: 6px; }
+      .nav-social { justify-content: space-between; padding: 0 4px; }
+      .nav-social a { width: 30px; height: 30px; }
+      .nav-social svg { width: 16px; height: 16px; }
+      .nav-cta { white-space: nowrap; }
       .hero { grid-template-columns: 1fr; padding: 50px 20px; gap: 40px; }
       .hero h1 { font-size: 32px; }
       .hero-visual { max-height: 300px; }
@@ -672,12 +687,19 @@
       <li><a href="#price" data-lang="pl" class="visible">Cennik</a><a href="#price" data-lang="ru">Цены</a><a href="#price" data-lang="uk">Ціни</a><a href="#price" data-lang="en">Pricing</a></li>
       <li><a href="#bonuses" data-lang="pl" class="visible">Bonusy</a><a href="#bonuses" data-lang="ru">Бонусы</a><a href="#bonuses" data-lang="uk">Бонуси</a><a href="#bonuses" data-lang="en">Bonuses</a></li>
     </ul>
+    <div class="nav-right">
+    <div class="nav-social">
+      <a href="https://www.facebook.com/salonbot.app" target="_blank" rel="noopener" class="s-fb" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.6c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22h3.4z"/></svg></a>
+      <a href="https://www.instagram.com/salonbot.app" target="_blank" rel="noopener" class="s-ig" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM12 4.6c2.4 0 2.7 0 3.6.1 2.4.1 3.6 1.3 3.7 3.7.1.9.1 1.2.1 3.6s0 2.7-.1 3.6c-.1 2.4-1.3 3.6-3.7 3.7-.9.1-1.2.1-3.6.1s-2.7 0-3.6-.1c-2.4-.1-3.6-1.3-3.7-3.7-.1-.9-.1-1.2-.1-3.6s0-2.7.1-3.6C4.8 6 6 4.8 8.4 4.7c.9-.1 1.2-.1 3.6-.1zM12 3c-2.4 0-2.7 0-3.7.1C5 3.2 3.2 5 3.1 8.3 3 9.3 3 9.6 3 12s0 2.7.1 3.7c.1 3.3 1.9 5.1 5.2 5.2 1 .1 1.3.1 3.7.1s2.7 0 3.7-.1c3.3-.1 5.1-1.9 5.2-5.2.1-1 .1-1.3.1-3.7s0-2.7-.1-3.7C20.8 5 19 3.2 15.7 3.1 14.7 3 14.4 3 12 3z"/></svg></a>
+      <a href="https://t.me/ElenaSheffchenko" target="_blank" rel="noopener" class="s-tg" aria-label="Telegram" title="Telegram"><svg viewBox="0 0 24 24"><path d="M21.4 4.2 2.9 11.3c-1.3.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.5c.3-1.3-.5-1.8-1.4-1.5zM8.8 13.9l9.3-5.9c.4-.3.8-.1.5.2l-7.6 6.9-.3 3.2-1.9-4.4z"/></svg></a>
+    </div>
     <a href="#contact" class="nav-cta">
       <span data-lang="pl" class="visible">Napisz do nas</span>
       <span data-lang="ru">Написать нам</span>
       <span data-lang="uk">Написати нам</span>
       <span data-lang="en">Contact us</span>
     </a>
+    </div>
   </nav>
   </div>
 
@@ -985,7 +1007,7 @@
   <div class="sim-wrap">
     <section class="sim-section" id="simulator">
       <h2><span data-lang="pl" class="visible">Wypróbuj, jak to wygląda</span><span data-lang="ru">Попробуй, как это выглядит</span><span data-lang="uk">Спробуй, як це виглядає</span><span data-lang="en">Try it and see how it looks</span></h2>
-      <p class="subtitle"><span data-lang="pl" class="visible">Możesz klikać przyciski bezpośrednio na ekranie telefonu poniżej. Demo salonu „Beauty Salon Rzeszów”.</span><span data-lang="ru">Можно нажимать кнопки прямо на экране телефона ниже. Демо салона «Beauty Salon Rzeszów».</span><span data-lang="uk">Можна натискати кнопки прямо на екрані телефону нижче. Демо салону «Beauty Salon Rzeszów».</span><span data-lang="en">Tap the buttons right on the phone screen below. Demo of “Beauty Salon Rzeszów”.</span></p>
+      <p class="subtitle"><span data-lang="pl" class="visible">To uproszczony przykład: tak wyglądają kroki rezerwacji i tak szybko klient może się umówić. Prawdziwy bot — pod przyciskiem poniżej.</span><span data-lang="ru">Это упрощённый пример: так выглядят шаги записи и как быстро клиент может записаться. Настоящий бот — по кнопке ниже.</span><span data-lang="uk">Це спрощений приклад: так виглядають кроки запису і як швидко клієнт може записатися. Справжній бот — за кнопкою нижче.</span><span data-lang="en">This is a simplified example: it shows the booking steps and how fast a client can book. The real bot is behind the button below.</span></p>
       <div class="phone-outer">
         <div class="phone-mockup">
           <div class="phone-tg-header">
@@ -1017,6 +1039,10 @@
       <span data-lang="uk">Гнучкі тарифи для кожного салону або приватного майстра</span>
       <span data-lang="en">Flexible plans for every salon or independent master</span>
     </p>
+    <div class="price-abroad">
+      <p><span data-lang="pl" class="visible">Jeśli nie jesteś w Polsce, ale chcesz wypróbować SalonBot — napisz do nas, uzgodnimy cenę i włączymy darmowy miesiąc.</span><span data-lang="ru">Если вы находитесь не в Польше, но хотите попробовать SalonBot — напишите нам, мы согласуем цену и подключим бесплатный месяц.</span><span data-lang="uk">Якщо ви не в Польщі, але хочете спробувати SalonBot — напишіть нам, ми узгодимо ціну й підключимо безкоштовний місяць.</span><span data-lang="en">If you're outside Poland but want to try SalonBot — write to us, we'll agree on a price and start your free month.</span></p>
+      <a href="#contact" class="btn-secondary" onclick="askCountryPrice()"><span data-lang="pl" class="visible">Poznaj cenę →</span><span data-lang="ru">Узнать цену →</span><span data-lang="uk">Дізнатися ціну →</span><span data-lang="en">Get a price →</span></a>
+    </div>
     <div class="easy-start"><h3><span data-lang="pl" class="visible">Maksymalnie łatwy start — wszystko zrobimy za Ciebie</span><span data-lang="ru">Максимально лёгкий старт — мы всё сделаем сами</span><span data-lang="uk">Максимально легкий старт — ми все зробимо самі</span><span data-lang="en">The easiest start — we do everything for you</span></h3><p><span data-lang="pl" class="visible">Instalacja i konfiguracja + 1 miesiąc testów za darmo. Wystarczy, że dasz klientom link do swojego asystenta.</span><span data-lang="ru">Установка и настройка + 1 месяц тестирования бесплатно. Вам останется только дать ссылку на ассистента клиентам.</span><span data-lang="uk">Встановлення та налаштування + 1 місяць тестування безкоштовно. Вам залишиться лише дати посилання на асистента клієнтам.</span><span data-lang="en">Installation and setup + 1 month free trial. All you do is share your assistant's link with clients.</span></p></div>
     <div class="plans"><div class="price-card"><p class="price-label"><span data-lang="pl" class="visible">Prywatny mistrz</span><span data-lang="ru">Частный мастер</span><span data-lang="uk">Приватний майстер</span><span data-lang="en">Independent master</span></p><p class="price-value">89 zł</p><p class="price-sub"><span data-lang="pl" class="visible">miesięcznie · 2 boty + panel zarządzania</span><span data-lang="ru">в месяц · 2 бота + панель управления</span><span data-lang="uk">на місяць · 2 боти + панель керування</span><span data-lang="en">per month · 2 bots + dashboard</span></p></div><div class="price-card"><p class="price-label"><span data-lang="pl" class="visible">Salon do 5 mistrzów</span><span data-lang="ru">Салон до 5 мастеров</span><span data-lang="uk">Салон до 5 майстрів</span><span data-lang="en">Salon up to 5 masters</span></p><p class="price-value">109 zł</p><p class="price-sub"><span data-lang="pl" class="visible">miesięcznie · 2 boty + panel zarządzania</span><span data-lang="ru">в месяц · 2 бота + панель управления</span><span data-lang="uk">на місяць · 2 боти + панель керування</span><span data-lang="en">per month · 2 bots + dashboard</span></p></div></div>
     <p class="price-note"><span data-lang="pl" class="visible">Ceny netto, sprzedawca zwolniony z VAT</span><span data-lang="ru">Цены нетто, фактура без VAT</span><span data-lang="uk">Ціни нетто, фактура без VAT</span><span data-lang="en">Net prices, invoice without VAT</span></p>
@@ -1197,6 +1223,18 @@
   </footer>
 
   <script>
+    // «Дізнатися ціну» для другої країни: підставляємо коментар у форму
+    function askCountryPrice() {
+      const texts = {
+        pl: 'Chcę poznać cenę dla mojego kraju: ',
+        ru: 'Хочу узнать цену для своей страны: ',
+        uk: 'Хочу дізнатися ціну для своєї країни: ',
+        en: "I'd like to know the price for my country: "
+      };
+      const c = document.getElementById('f-comment');
+      if (c && !c.value.trim()) c.value = texts[document.documentElement.lang] || texts.pl;
+    }
+
     // Language switcher
     function setLang(lang) {
       // Update buttons
