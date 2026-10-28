@@ -48,6 +48,17 @@
       transition: background 0.2s;
     }
     .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,0.25); }
+    /* на телефоне вместо строки языков — кнопка с флагом и выпадающим списком */
+    .lang-drop { display: none; position: relative; }
+    .lang-drop-btn { width: 100%; height: 30px; display: flex; align-items: center; justify-content: center; gap: 4px;
+      background: var(--rose); color: #fff; border: 1.5px solid var(--rose); border-radius: 999px; padding: 4px 12px;
+      font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .lang-drop-menu { display: none; position: absolute; left: 0; top: 36px; min-width: 150px; z-index: 300; background: #fff;
+      border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.15); padding: 4px; }
+    .lang-drop.open .lang-drop-menu { display: block; }
+    .lang-drop-menu button { display: block; width: 100%; text-align: left; background: none; border: none; padding: 9px 12px;
+      font: inherit; font-size: 15px; border-radius: 8px; cursor: pointer; color: var(--text); }
+    .lang-drop-menu button.on { background: var(--rose-light); color: var(--rose-dark); font-weight: 700; }
 
     /* ─── NAV ─── */
     .sticky-top {
@@ -508,9 +519,17 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      nav { padding: 12px 20px; }
+      .lang-bar { display: none; }
+      nav { padding: 8px 16px; align-items: stretch; }
+      .logo { font-size: 22px; }
+      .logo-icon { width: 30px; height: 30px; }
+      /* логотип раскладываем в сетку: кнопка языка — во 2-й колонке, ровно по ширине «SalonBot» */
+      .nav-left { display: grid; grid-template-columns: auto auto; column-gap: 8px; row-gap: 6px; align-items: center; align-self: center; }
+      .nav-left .logo { display: contents; }
+      .lang-drop { display: block; grid-column: 2; }
+      .nav-cta { padding: 6px 14px; font-size: 14px; text-align: center; }
       .nav-links { display: none; }
-      .nav-right { flex-direction: column-reverse; align-items: stretch; gap: 6px; }
+      .nav-right { flex-direction: column-reverse; align-items: stretch; justify-content: space-between; gap: 6px; }
       .nav-social { justify-content: space-between; padding: 0 4px; }
       .nav-social a { width: 30px; height: 30px; }
       .nav-social svg { width: 16px; height: 16px; }
@@ -622,6 +641,8 @@
       .sim-col.active { display: flex; }
       .sim-label { display: none; }
       .sim-phone, .sim-demo-btn { width: 300px; max-width: 100%; }
+      .sim-msgs { height: 260px; }
+      .sim-kb { height: 150px; }
       .sim-sub-desktop { display: none; }
       .sim-sub-mobile { display: inline; }
     }
@@ -643,7 +664,18 @@
 
   <!-- NAV -->
   <nav>
+    <div class="nav-left">
     <div class="logo"><svg class="logo-icon" viewBox="-15 -15 230 230" xmlns="http://www.w3.org/2000/svg"><rect x="-15" y="-15" width="230" height="230" rx="36" fill="#1a1a1a"/><circle cx="100" cy="100" r="88" fill="none" stroke="#c0506a" stroke-width="9"/><circle cx="100" cy="100" r="72" fill="none" stroke="#9a3d54" stroke-width="4.5"/><text x="70" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">S</text><text x="134" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">B</text><g transform="translate(101,94)"><ellipse cx="-10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><ellipse cx="10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><line x1="-8" y1="-5" x2="11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="-5" x2="-11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><circle cx="0" cy="9" r="2.5" fill="#c0506a"/></g></svg><span class="logo-text">Salon<span>Bot</span></span></div>
+    <div class="lang-drop" id="langDrop">
+      <button type="button" class="lang-drop-btn" id="langDropBtn" aria-haspopup="true">🇵🇱 PL ▾</button>
+      <div class="lang-drop-menu">
+        <button type="button" data-l="pl">🇵🇱 Polski</button>
+        <button type="button" data-l="uk">🇺🇦 Українська</button>
+        <button type="button" data-l="ru">🇷🇺 Русский</button>
+        <button type="button" data-l="en">🇬🇧 English</button>
+      </div>
+    </div>
+    </div>
     <ul class="nav-links">
       <li><a href="#features" data-lang="pl" class="visible">Funkcje</a><a href="#features" data-lang="ru">Функции</a><a href="#features" data-lang="uk">Функції</a><a href="#features" data-lang="en">Features</a></li>
       <li><a href="#how" data-lang="pl" class="visible">Jak działa</a><a href="#how" data-lang="ru">Как работает</a><a href="#how" data-lang="uk">Як це працює</a><a href="#how" data-lang="en">How it works</a></li>
@@ -1227,6 +1259,9 @@
       ['pl','ru','uk','en'].forEach(l => {
         document.getElementById('btn-' + l).classList.toggle('active', lang === l);
       });
+      const langFlag = { pl: '🇵🇱 PL', ru: '🇷🇺 RU', uk: '🇺🇦 UA', en: '🇬🇧 EN' };
+      document.getElementById('langDropBtn').textContent = (langFlag[lang] || langFlag.pl) + ' ▾';
+      document.querySelectorAll('#langDrop [data-l]').forEach(b => b.classList.toggle('on', b.dataset.l === lang));
 
       // Update all lang elements
       document.querySelectorAll('[data-lang]').forEach(el => {
@@ -1255,6 +1290,12 @@
       localStorage.setItem('salonbot-lang', lang);
       if (window.simUpdateLang) window.simUpdateLang(lang);
     }
+
+    // Выпадающий язык (телефон)
+    const langDrop = document.getElementById('langDrop');
+    document.getElementById('langDropBtn').addEventListener('click', e => { e.stopPropagation(); langDrop.classList.toggle('open'); });
+    langDrop.querySelectorAll('[data-l]').forEach(b => b.addEventListener('click', () => { setLang(b.dataset.l); langDrop.classList.remove('open'); }));
+    document.addEventListener('click', () => langDrop.classList.remove('open'));
 
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
