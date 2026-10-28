@@ -48,6 +48,17 @@
       transition: background 0.2s;
     }
     .lang-btn.active, .lang-btn:hover { background: rgba(255,255,255,0.25); }
+    /* на телефоне вместо строки языков — кнопка с флагом и выпадающим списком */
+    .lang-drop { display: none; position: relative; }
+    .lang-drop-btn { width: 100%; height: 30px; display: flex; align-items: center; justify-content: center; gap: 4px;
+      background: var(--rose); color: #fff; border: 1.5px solid var(--rose); border-radius: 999px; padding: 4px 12px;
+      font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .lang-drop-menu { display: none; position: absolute; left: 0; top: 36px; min-width: 150px; z-index: 300; background: #fff;
+      border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.15); padding: 4px; }
+    .lang-drop.open .lang-drop-menu { display: block; }
+    .lang-drop-menu button { display: block; width: 100%; text-align: left; background: none; border: none; padding: 9px 12px;
+      font: inherit; font-size: 15px; border-radius: 8px; cursor: pointer; color: var(--text); }
+    .lang-drop-menu button.on { background: var(--rose-light); color: var(--rose-dark); font-weight: 700; }
 
     /* ─── NAV ─── */
     .sticky-top {
@@ -508,9 +519,17 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      nav { padding: 12px 20px; }
+      .lang-bar { display: none; }
+      nav { padding: 8px 16px; align-items: stretch; }
+      .logo { font-size: 22px; }
+      .logo-icon { width: 30px; height: 30px; }
+      /* логотип раскладываем в сетку: кнопка языка — во 2-й колонке, ровно по ширине «SalonBot» */
+      .nav-left { display: grid; grid-template-columns: auto auto; column-gap: 8px; row-gap: 6px; align-items: center; align-self: center; }
+      .nav-left .logo { display: contents; }
+      .lang-drop { display: block; grid-column: 2; }
+      .nav-cta { padding: 6px 14px; font-size: 14px; text-align: center; }
       .nav-links { display: none; }
-      .nav-right { flex-direction: column-reverse; align-items: stretch; gap: 6px; }
+      .nav-right { flex-direction: column-reverse; align-items: stretch; justify-content: space-between; gap: 6px; }
       .nav-social { justify-content: space-between; padding: 0 4px; }
       .nav-social a { width: 30px; height: 30px; }
       .nav-social svg { width: 16px; height: 16px; }
@@ -539,128 +558,93 @@
     .hero h1 [data-lang], .hero p [data-lang] { display: none; }
     .hero h1 [data-lang].visible, .hero p [data-lang].visible { display: inline; }
 
-    /* ─── SIMULATOR ─── */
+    /* ─── SIMULATOR: бот клиентки + мастер-бот ─── */
     .sim-wrap { background: var(--rose-light); padding: 60px 40px; }
     .sim-section { max-width: 1240px; margin: 0 auto; text-align: center; }
     .sim-section h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); color: var(--rose); margin-bottom: 12px; }
-    .sim-section .subtitle { color: var(--text-muted); margin-bottom: 36px; font-size: 16px; }
-    .phone-outer { display: flex; justify-content: center; }
-    .phone-mockup {
-      width: 300px;
-      background: #fff;
-      border-radius: 36px;
-      box-shadow: 0 20px 60px rgba(192,80,106,0.22), 0 0 0 7px #1c1c1e, 0 0 0 9px #3a3a3c;
-      overflow: hidden;
-      font-size: 14px;
-    }
-    .phone-tg-header {
-      background: #2ca5e0;
-      color: white;
-      padding: 11px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .phone-tg-avatar {
-      width: 36px; height: 36px;
-      background: rgba(255,255,255,0.22);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0;
-    }
-    .phone-tg-info { line-height: 1.2; }
-    .phone-tg-name { font-weight: 700; font-size: 14px; }
-    .phone-tg-status { font-size: 11px; opacity: 0.85; }
-    .phone-msgs {
-      height: 380px;
-      overflow-y: auto;
-      padding: 12px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      background: #eae6df;
-      scroll-behavior: smooth;
-    }
-    .msg-bot, .msg-user {
-      max-width: 83%;
-      padding: 8px 11px;
-      border-radius: 14px;
-      line-height: 1.45;
-      font-size: 13px;
-    }
-    .msg-bot {
-      background: #fff;
-      align-self: flex-start;
-      border-bottom-left-radius: 3px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .msg-user {
-      background: #d9fdd3;
-      color: #1a1a1a;
-      align-self: flex-end;
-      border-bottom-right-radius: 3px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .msg-typing {
-      background: #fff;
-      align-self: flex-start;
-      border-radius: 14px;
-      border-bottom-left-radius: 3px;
-      padding: 10px 14px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      display: flex; gap: 5px; align-items: center;
-    }
-    .msg-typing span {
-      width: 7px; height: 7px;
-      background: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      animation: simDot 1.3s infinite ease-in-out;
-    }
-    .msg-typing span:nth-child(2) { animation-delay: 0.22s; }
-    .msg-typing span:nth-child(3) { animation-delay: 0.44s; }
-    @keyframes simDot {
-      0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-      30% { transform: translateY(-5px); opacity: 1; }
-    }
-    @keyframes simFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-    .msg-bot, .msg-user { animation: simFadeIn 0.25s ease; }
-    .phone-btns {
-      background: #fff;
-      padding: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      min-height: 68px;
-      border-top: 1px solid #f0f0f0;
-    }
-    .phone-btn-row { display: flex; gap: 5px; }
-    .phone-btn {
-      flex: 1;
-      background: var(--rose-light);
-      color: var(--rose-dark);
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 8px 5px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: background 0.15s, transform 0.1s;
-      font-family: inherit;
-      line-height: 1.3;
-      text-align: center;
-      font-weight: 500;
-    }
-    .phone-btn:active { transform: scale(0.96); }
-    .phone-btn:hover { background: #f0d8de; }
-    .phone-btn.sim-primary { background: var(--rose); color: white; border-color: var(--rose-dark); }
-    .phone-btn.sim-primary:hover { background: var(--rose-dark); }
-    .phone-btn.sim-tg { background: #2ca5e0; color: white; border-color: #1a8bc4; font-size: 12.5px; padding: 9px 5px; }
-    .phone-btn.sim-tg:hover { background: #1a8bc4; }
-    .phone-btn.sim-ghost { background: transparent; color: var(--text-muted); border-color: var(--border); font-size: 11px; }
-    .phone-btn.sim-ghost:hover { background: var(--rose-light); color: var(--rose-dark); }
-    @media (max-width: 480px) {
-      .sim-wrap { padding: 50px 20px; }
-      .phone-mockup { width: 280px; }
+    .sim-section .subtitle { color: var(--text-muted); margin: 0 auto 32px; font-size: 16px; max-width: 760px; }
+    .sim-section [data-lang].visible { display: inline; }
+    .sim-sub-mobile { display: none; }
+
+    .sim-phones { display: flex; justify-content: center; gap: 48px; align-items: flex-start; }
+    .sim-col { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .sim-label { font-weight: 700; color: var(--rose-dark); font-size: 15px; }
+    .sim-master .sim-label { color: #4e3790; }
+
+    .sim-tabs { display: none; gap: 6px; justify-content: center; margin-bottom: 16px; }
+    .sim-tab { background: #fff; border: 1.5px solid var(--border); border-radius: 999px; padding: 8px 16px; font: inherit; font-size: 14px;
+      cursor: pointer; color: var(--text); position: relative; font-weight: 600; }
+    .sim-tab.on { background: var(--rose); color: #fff; border-color: var(--rose-dark); }
+    .sim-tab[data-tab="master"].on { background: #6a4fb3; border-color: #4e3790; }
+    .sim-badge { position: absolute; top: -6px; right: -6px; background: #e53935; color: #fff; border-radius: 999px; font-size: 11px;
+      min-width: 20px; height: 20px; line-height: 20px; padding: 0 5px; display: none; }
+    .sim-badge.show { display: inline-block; animation: simPop .3s ease; }
+    @keyframes simPop { from { transform: scale(.4); } to { transform: scale(1); } }
+
+    .sim-phone { position: relative; width: 320px; background: #fff; border-radius: 36px; overflow: hidden; font-size: 13px; text-align: left;
+      box-shadow: 0 20px 60px rgba(192,80,106,0.22), 0 0 0 7px #1c1c1e, 0 0 0 9px #3a3a3c; transition: box-shadow .3s; }
+    .sim-phone.ping { box-shadow: 0 20px 60px rgba(106,79,179,0.45), 0 0 0 7px #1c1c1e, 0 0 0 9px #6a4fb3; }
+    .sim-toast { position: absolute; left: 10px; right: 10px; top: 64px; z-index: 3; background: #fff; border-radius: 12px; padding: 9px 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.22); font-size: 12.5px; display: none; cursor: pointer; border-left: 4px solid #6a4fb3; animation: simFadeIn .25s ease; }
+    .sim-toast.show { display: block; }
+    .sim-toast b { display: block; }
+    .sim-toast .sim-go { color: #4e3790; font-weight: 700; }
+    .sim-toast.sim-to-client { border-left-color: #2ca5e0; }
+    .sim-toast.sim-to-client .sim-go { color: #1a8bc4; }
+    .sim-head { background: #2ca5e0; color: #fff; padding: 11px 16px; display: flex; align-items: center; gap: 10px; }
+    .sim-master .sim-head { background: #6a4fb3; }
+    .sim-ava { width: 36px; height: 36px; background: rgba(255,255,255,.22); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .sim-name { font-weight: 700; font-size: 14px; line-height: 1.2; }
+    .sim-status { font-size: 11px; opacity: .85; }
+    .sim-msgs { height: 400px; overflow-y: auto; padding: 12px 10px; display: flex; flex-direction: column; gap: 7px; background: #eae6df; scroll-behavior: smooth; }
+    .sim-m { max-width: 86%; padding: 8px 11px; border-radius: 14px; line-height: 1.45; box-shadow: 0 1px 3px rgba(0,0,0,.1); animation: simFadeIn .25s ease; }
+    .sim-bot { background: #fff; align-self: flex-start; border-bottom-left-radius: 3px; }
+    .sim-me { background: #d9fdd3; color: #1a1a1a; align-self: flex-end; border-bottom-right-radius: 3px; }
+    .sim-push { border-left: 3px solid #6a4fb3; }
+    .sim-ik { display: grid; gap: 4px; margin-top: 8px; }
+    .sim-ik.sim-two { grid-template-columns: 1fr 1fr; }
+    .sim-ik button { background: #eef6fb; color: #1a6f9c; border: 1px solid #cfe5f2; border-radius: 8px; padding: 6px 4px; font: inherit; font-size: 12px; cursor: pointer; }
+    .sim-master .sim-ik button { background: #f1edf9; color: #4e3790; border-color: #ddd3f0; }
+    .sim-ik button:disabled { opacity: .45; cursor: default; }
+    .sim-hint { display: block; margin-top: 6px; font-size: 11.5px; color: var(--text-muted); font-style: italic; }
+    .sim-pf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 6px; }
+    .sim-pf div { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+    .sim-typing { background: #fff; align-self: flex-start; border-radius: 14px; border-bottom-left-radius: 3px; padding: 10px 14px; display: flex; gap: 5px; }
+    .sim-typing span { width: 7px; height: 7px; background: #bbb; border-radius: 50%; animation: simDot 1.3s infinite ease-in-out; }
+    .sim-typing span:nth-child(2) { animation-delay: .22s; }
+    .sim-typing span:nth-child(3) { animation-delay: .44s; }
+    @keyframes simDot { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-5px); opacity: 1; } }
+    @keyframes simFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+
+    /* меню внизу: одна высота у обоих телефонов, ряды растягиваются */
+    .sim-kb { background: #f4f4f5; padding: 6px; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 5px; border-top: 1px solid #e5e5e5; height: 170px; }
+    .sim-kb button { background: #fff; border: none; border-radius: 8px; padding: 6px 4px; font: inherit; font-size: 12px; font-weight: 600; cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,.12); color: #222; line-height: 1.25; }
+    .sim-kb button:active { transform: scale(.97); }
+    .sim-kb button.sim-wide { grid-column: 1 / -1; }
+
+    .sim-demo-btn { display: flex; align-items: center; justify-content: center; width: 320px; min-height: 48px; margin-top: 10px; padding: 10px 16px;
+      background: var(--rose); color: #fff; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 14.5px; line-height: 1.3; }
+    .sim-demo-btn:hover { background: var(--rose-dark); }
+    .sim-demo-master { background: #6a4fb3; }
+    .sim-demo-master:hover { background: #4e3790; }
+    .sim-below { margin-top: 24px; display: flex; justify-content: center; }
+    .sim-restart { background: transparent; border: 1.5px solid var(--border); color: var(--text-muted); padding: 11px 18px; border-radius: 12px; font: inherit; cursor: pointer; }
+    .sim-restart:hover { background: #fff; color: var(--rose-dark); }
+
+    /* телефон: один экран + переключатель «Клиентка / Мастер» */
+    @media (max-width: 760px) {
+      .sim-wrap { padding: 44px 16px; }
+      .sim-tabs { display: flex; }
+      .sim-phones { gap: 0; }
+      .sim-col { display: none; }
+      .sim-col.active { display: flex; }
+      .sim-label { display: none; }
+      .sim-phone, .sim-demo-btn { width: 300px; max-width: 100%; }
+      .sim-msgs { height: 260px; }
+      .sim-kb { height: 150px; }
+      .sim-sub-desktop { display: none; }
+      .sim-sub-mobile { display: inline; }
     }
   </style>
   <!-- Vercel Web Analytics: без cookie, только счёт посещений и откуда пришли -->
@@ -680,7 +664,18 @@
 
   <!-- NAV -->
   <nav>
+    <div class="nav-left">
     <div class="logo"><svg class="logo-icon" viewBox="-15 -15 230 230" xmlns="http://www.w3.org/2000/svg"><rect x="-15" y="-15" width="230" height="230" rx="36" fill="#1a1a1a"/><circle cx="100" cy="100" r="88" fill="none" stroke="#c0506a" stroke-width="9"/><circle cx="100" cy="100" r="72" fill="none" stroke="#9a3d54" stroke-width="4.5"/><text x="70" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">S</text><text x="134" y="116" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#c0506a" text-anchor="middle">B</text><g transform="translate(101,94)"><ellipse cx="-10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><ellipse cx="10" cy="-14" rx="6.5" ry="8.5" fill="none" stroke="#c0506a" stroke-width="2"/><line x1="-8" y1="-5" x2="11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="-5" x2="-11" y2="24" stroke="#c0506a" stroke-width="2" stroke-linecap="round"/><circle cx="0" cy="9" r="2.5" fill="#c0506a"/></g></svg><span class="logo-text">Salon<span>Bot</span></span></div>
+    <div class="lang-drop" id="langDrop">
+      <button type="button" class="lang-drop-btn" id="langDropBtn" aria-haspopup="true">🇵🇱 PL ▾</button>
+      <div class="lang-drop-menu">
+        <button type="button" data-l="pl">🇵🇱 Polski</button>
+        <button type="button" data-l="uk">🇺🇦 Українська</button>
+        <button type="button" data-l="ru">🇷🇺 Русский</button>
+        <button type="button" data-l="en">🇬🇧 English</button>
+      </div>
+    </div>
+    </div>
     <ul class="nav-links">
       <li><a href="#features" data-lang="pl" class="visible">Funkcje</a><a href="#features" data-lang="ru">Функции</a><a href="#features" data-lang="uk">Функції</a><a href="#features" data-lang="en">Features</a></li>
       <li><a href="#how" data-lang="pl" class="visible">Jak działa</a><a href="#how" data-lang="ru">Как работает</a><a href="#how" data-lang="uk">Як це працює</a><a href="#how" data-lang="en">How it works</a></li>
@@ -1003,25 +998,48 @@
     </div>
   </div>
 
-  <!-- SIMULATOR -->
+  <!-- SIMULATOR: бот клиентки + мастер-бот -->
   <div class="sim-wrap">
     <section class="sim-section" id="simulator">
-      <h2><span data-lang="pl" class="visible">Wypróbuj, jak to wygląda</span><span data-lang="ru">Попробуй, как это выглядит</span><span data-lang="uk">Спробуй, як це виглядає</span><span data-lang="en">Try it and see how it looks</span></h2>
-      <p class="subtitle"><span data-lang="pl" class="visible">To uproszczony przykład: tak wyglądają kroki rezerwacji i tak szybko klient może się umówić. Prawdziwy bot — pod przyciskiem poniżej.</span><span data-lang="ru">Это упрощённый пример: так выглядят шаги записи и как быстро клиент может записаться. Настоящий бот — по кнопке ниже.</span><span data-lang="uk">Це спрощений приклад: так виглядають кроки запису і як швидко клієнт може записатися. Справжній бот — за кнопкою нижче.</span><span data-lang="en">This is a simplified example: it shows the booking steps and how fast a client can book. The real bot is behind the button below.</span></p>
-      <div class="phone-outer">
-        <div class="phone-mockup">
-          <div class="phone-tg-header">
-            <div class="phone-tg-avatar">💅</div>
-            <div class="phone-tg-info">
-              <div class="phone-tg-name">Beauty Salon Rzeszów</div>
-              <div class="phone-tg-status" id="sim-tg-status">bot</div>
-            </div>
+      <h2><span data-lang="pl" class="visible">Wypróbuj, jak to wygląda</span><span data-lang="ru">Попробуйте, как это выглядит</span><span data-lang="uk">Спробуйте, як це виглядає</span><span data-lang="en">Try it and see how it looks</span></h2>
+      <p class="subtitle">
+        <span class="sim-sub-desktop"><span data-lang="pl" class="visible">Po lewej — bot klientki, po prawej — bot specjalistki. Umów wizytę i zobacz, co od razu dostaje specjalistka.</span><span data-lang="ru">Слева — бот клиентки, справа — бот мастера. Запишитесь — и посмотрите, что сразу приходит мастеру.</span><span data-lang="uk">Зліва — бот клієнтки, справа — бот майстра. Запишіться — і подивіться, що одразу приходить майстру.</span><span data-lang="en">On the left — the client's bot, on the right — the specialist's bot. Book a visit and see what the specialist gets right away.</span></span>
+        <span class="sim-sub-mobile"><span data-lang="pl" class="visible">Umów wizytę jako klientka i przełącz na «💅 Specjalistka»: zobacz, co od razu dostaje specjalistka.</span><span data-lang="ru">Запишитесь как клиентка — и переключите на «💅 Мастер»: посмотрите, что сразу приходит мастеру.</span><span data-lang="uk">Запишіться як клієнтка — і перемкніть на «💅 Майстер»: подивіться, що одразу приходить майстру.</span><span data-lang="en">Book as a client, then switch to «💅 Specialist» to see what the specialist gets right away.</span></span>
+        <span data-lang="pl" class="visible">To uproszczony przykład, prawdziwy bot — pod przyciskiem poniżej.</span><span data-lang="ru">Это упрощённый пример, настоящий бот — по кнопке ниже.</span><span data-lang="uk">Це спрощений приклад, справжній бот — за кнопкою нижче.</span><span data-lang="en">This is a simplified example; the real bot is behind the button below.</span>
+      </p>
+
+      <div class="sim-tabs">
+        <button type="button" class="sim-tab on" data-tab="client"><span id="sim-tab-client">👩 Klientka</span><span class="sim-badge" id="sim-badge-client"></span></button>
+        <button type="button" class="sim-tab" data-tab="master"><span id="sim-tab-master">💅 Specjalistka</span><span class="sim-badge" id="sim-badge-master"></span></button>
+      </div>
+
+      <div class="sim-phones">
+        <div class="sim-col sim-client active" id="sim-col-client">
+          <div class="sim-label"><span data-lang="pl" class="visible">👩 Klientka</span><span data-lang="ru">👩 Клиентка</span><span data-lang="uk">👩 Клієнтка</span><span data-lang="en">👩 Client</span></div>
+          <div class="sim-phone" id="sim-phone-client">
+            <div class="sim-toast" id="sim-toast-client"></div>
+            <div class="sim-head"><div class="sim-ava">💅</div><div><div class="sim-name">Beauty Salon Rzeszów</div><div class="sim-status">bot</div></div></div>
+            <div class="sim-msgs" id="sim-msgs-client"></div>
+            <div class="sim-kb" id="sim-kb-client"></div>
           </div>
-          <div class="phone-msgs" id="sim-msgs"></div>
-          <div class="phone-btns" id="sim-btns"></div>
+          <a class="sim-demo-btn" href="https://t.me/lena_salon_bot?start=site" target="_blank" rel="noopener"><span data-lang="pl" class="visible">Otwórz pełne demo klientki</span><span data-lang="ru">Открыть полное демо клиентки</span><span data-lang="uk">Відкрити повне демо клієнтки</span><span data-lang="en">Open the full client demo</span></a>
+        </div>
+
+        <div class="sim-col sim-master" id="sim-col-master">
+          <div class="sim-label"><span data-lang="pl" class="visible">💅 Bot specjalistki</span><span data-lang="ru">💅 Мастер-бот</span><span data-lang="uk">💅 Майстер-бот</span><span data-lang="en">💅 Specialist bot</span></div>
+          <div class="sim-phone" id="sim-phone-master">
+            <div class="sim-toast sim-to-client" id="sim-toast-master"></div>
+            <div class="sim-head"><div class="sim-ava">💼</div><div><div class="sim-name" id="sim-head-master">Beauty Salon · Specjalistka</div><div class="sim-status" id="sim-status-master">bot · Karolina</div></div></div>
+            <div class="sim-msgs" id="sim-msgs-master"></div>
+            <div class="sim-kb" id="sim-kb-master"></div>
+          </div>
+          <a class="sim-demo-btn sim-demo-master" href="#contact"><span data-lang="pl" class="visible">Demo specjalistki — zostaw zgłoszenie</span><span data-lang="ru">Полное демо мастера — оставьте заявку</span><span data-lang="uk">Повне демо майстра — залиште заявку</span><span data-lang="en">Specialist demo — leave a request</span></a>
         </div>
       </div>
-      <a href="https://t.me/lena_salon_bot?start=site" target="_blank" rel="noopener" class="btn-primary sim-cta"><span data-lang="pl" class="visible">Otwórz pełne demo w Telegramie →</span><span data-lang="ru">Открыть полное демо в Telegram →</span><span data-lang="uk">Відкрити повне демо в Telegram →</span><span data-lang="en">Open the full demo in Telegram →</span></a>
+
+      <div class="sim-below">
+        <button type="button" class="sim-restart" id="sim-restart"><span data-lang="pl" class="visible">🔄 Zacznij od nowa</span><span data-lang="ru">🔄 Начать заново</span><span data-lang="uk">🔄 Почати знову</span><span data-lang="en">🔄 Start over</span></button>
+      </div>
     </section>
   </div>
 
@@ -1241,6 +1259,9 @@
       ['pl','ru','uk','en'].forEach(l => {
         document.getElementById('btn-' + l).classList.toggle('active', lang === l);
       });
+      const langFlag = { pl: '🇵🇱 PL', ru: '🇷🇺 RU', uk: '🇺🇦 UA', en: '🇬🇧 EN' };
+      document.getElementById('langDropBtn').textContent = (langFlag[lang] || langFlag.pl) + ' ▾';
+      document.querySelectorAll('#langDrop [data-l]').forEach(b => b.classList.toggle('on', b.dataset.l === lang));
 
       // Update all lang elements
       document.querySelectorAll('[data-lang]').forEach(el => {
@@ -1270,6 +1291,12 @@
       if (window.simUpdateLang) window.simUpdateLang(lang);
     }
 
+    // Выпадающий язык (телефон)
+    const langDrop = document.getElementById('langDrop');
+    document.getElementById('langDropBtn').addEventListener('click', e => { e.stopPropagation(); langDrop.classList.toggle('open'); });
+    langDrop.querySelectorAll('[data-l]').forEach(b => b.addEventListener('click', () => { setLang(b.dataset.l); langDrop.classList.remove('open'); }));
+    document.addEventListener('click', () => langDrop.classList.remove('open'));
+
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
@@ -1282,321 +1309,578 @@
     });
 
 
-    // ─── SIMULATOR ───────────────────────────────────────────────────────────
-    (function() {
+    // ─── SIMULATOR: бот клиентки + мастер-бот ────────────────────────────────
+    // Всё происходит только на странице. Тексты кнопок меню — как в настоящих ботах.
+    (function () {
       'use strict';
 
-      // ── Данные демо-салона ──────────────────────────────────────────────────
-      var MASTERS = {
-        pl: ['Karolina', 'Marta'],
-        ru: ['Каролина', 'Марта'],
-        uk: ['Кароліна', 'Марта'],
-        en: ['Karolina', 'Marta']
-      };
-
-      var SERVICES = [
-        { pl: 'Manicure — 80 zł',          ru: 'Маникюр — 80 zł',          uk: 'Манікюр — 80 zł',          en: 'Manicure — 80 zł' },
-        { pl: 'Pedicure — 90 zł',          ru: 'Педикюр — 90 zł',          uk: 'Педикюр — 90 zł',          en: 'Pedicure — 90 zł' },
-        { pl: 'Stylizacja brwi — 60 zł',   ru: 'Коррекция бровей — 60 zł',   uk: 'Корекція брів — 60 zł',   en: 'Eyebrow styling — 60 zł' },
-        { pl: 'Koloryzacja — 180 zł',      ru: 'Окрашивание — 180 zł',      uk: 'Фарбування — 180 zł',      en: 'Hair coloring — 180 zł' }
+      const PRICES = ['80 zł', '90 zł', '60 zł', '180 zł'];
+      const TIMES = ['10:00', '12:00', '15:00', '17:00'];
+      // «Сегодня» у мастера — заранее заполненные визиты демо-салона (s — индекс услуги)
+      const FIXED = [
+        { off: 0, t: '10:00', c: 0, s: 0 }, { off: 0, t: '13:30', c: 1, s: 1 },
+        { off: 0, t: '16:30', c: 2, s: 2 }, { off: 1, t: '11:00', c: 3, s: 3 },
+        { off: 2, t: '09:30', c: 4, s: 0 }
       ];
+      const PF = [['#f7c6d0', '💅'], ['#e9b7e3', '✨'], ['#cfe3f7', '💎'], ['#f9dcb7', '🌸'], ['#d9f0d3', '🍃'], ['#f3c1c1', '❤️']];
 
-      var DATES = [
-        { k: 'today',    pl: '📅 Dziś',       ru: '📅 Сегодня',    uk: '📅 Сьогодні',   en: '📅 Today'      },
-        { k: 'tomorrow', pl: '📅 Jutro',           ru: '📅 Завтра',           uk: '📅 Завтра',               en: '📅 Tomorrow'   },
-        { k: 'after',    pl: '📅 Pojutrze',        ru: '📅 Послезавтра', uk: '📅 Післязавтра', en: '📅 Day after' }
-      ];
+      const L = {
+        uk: {
+          locale: 'uk-UA',
+          masters: ['Кароліна', 'Марта'],
+          services: ['Манікюр', 'Педикюр', 'Корекція брів', 'Фарбування'],
+          wd: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+          dayNames: ['Сьогодні', 'Завтра', 'Післязавтра'],
+          client: 'Анна',
+          fixedClients: ['Оксана Д.', 'Ірина К.', 'Наталія М.', 'Олена В.', 'Марія П.'],
+          headM: 'Beauty Salon · Майстер', statusM: 'bot · Кароліна',
+          tabC: '👩 Клієнтка', tabM: '💅 Майстер',
+          cMenu: ['📅 Записатися на візит', '🔄 Перенести запис', '❌ Скасувати запис', '❓ Запитати майстра', '🎨 Портфоліо', '⚙️ Налаштування', '📞 Контакти салону'],
+          mMenu: ['📅 Сьогодні', '🗓 На тиждень', '🚫 Блокування', '🖼 Портфоліо', '📊 Статистика', '⚙️ Налаштування'],
+          fullTg: '👉 Повністю — у демо в Telegram', showMe: '👉 Повністю — покажемо на вашому телефоні',
+          welcomeC: '👋 Ласкаво просимо до <b>Beauty Salon Rzeszów</b>!<br><br>Записуйтеся 24/7 — натисніть «📅 Записатися на візит» у меню знизу.',
+          welcomeM: '👋 Це <b>майстер-бот</b>. Сюди одразу приходять нові записи, переноси, скасування і питання клієнтів.<br><br>Запишіться як клієнтка — і подивіться, що прийде сюди.',
+          hasAppt: (s, d) => `У вас уже є запис: <b>${s}</b>, ${d}.<br>У демо — один запис. Його можна перенести або скасувати в меню.`,
+          chooseMaster: '👩‍🎨 Оберіть майстра:',
+          masterOk: n => `✅ Майстер: <b>${n}</b><br><br>💅 Оберіть послугу:`,
+          serviceOk: s => `✅ Послуга: <b>${s}</b><br><br>📅 Коли зручно?`,
+          chooseTime: '⏰ Оберіть час:',
+          confirm: (m, s, d) => `📋 <b>Підтвердження запису:</b><br><br>👩‍🎨 ${m}<br>💅 ${s}<br>📅 ${d}<br><br>Підтвердити?`,
+          btnConfirm: '✅ Підтвердити', btnChange: '« Змінити',
+          confirmed: '✅ <b>Запис підтверджено!</b><br><br>До зустрічі в салоні 💅<br>Нагадаємо за 24 год і за 2 год до візиту.',
+          noAppt: 'У вас немає майбутніх записів. Запишіться через «📅 Записатися на візит».',
+          reschPrompt: (s, d) => `Ваш запис: <b>${s}</b>, ${d}.<br><br>Оберіть новий час (завтра):`,
+          reschDone: d => `✅ Запис перенесено на <b>${d}</b>.`,
+          mReschNotice: (c, s, o, n) => `🔄 <b>Клієнт переніс запис</b><br>Клієнт: ${c}<br>${s}<br>Було: ${o}<br>Стало: <b>${n}</b>`,
+          cancelAsk: (s, d) => `Скасувати запис <b>${s}</b>, ${d}?`,
+          btnYesCancel: '❌ Так, скасувати', btnNo: '« Ні',
+          cancelled: '✅ Запис скасовано. Будемо раді бачити вас знову!', keepIt: 'Добре, запис залишається 👌',
+          mCancelNotice: (c, s, d) => `❌ <b>Клієнт скасував запис</b><br>Клієнт: ${c}<br>${s}, ${d}<br><span class="sim-hint">Час знову вільний для запису.</span>`,
+          questions: ['Чи можна прийти з дитиною?', 'Скільки триває манікюр?', 'Чи є паркування?'],
+          answers: ['Так, звичайно! У нас є куточок з іграшками 🧸', 'Приблизно 1,5 години з покриттям 💅', 'Так, безкоштовне паркування біля входу 🚗'],
+          askPrompt: '❓ Напишіть питання майстру. У демо — оберіть готове:',
+          askSent: '✅ Питання надіслано майстру. Відповідь прийде сюди.',
+          mQuestion: (c, q) => `📩 <b>Питання від клієнта</b><br>Клієнт: ${c}<br><br>«${q}»`,
+          btnAnswer: '✏️ Відповісти',
+          pfTitle: '🎨 <b>Портфоліо — Кароліна</b>',
+          settingsC: '⚙️ <b>Налаштування</b><br><br>🌐 Мова: Українська<br>🎂 День народження: не вказано<br>📱 Мій телефон: +48 600 *** 456<br>🔔 Акції салону: увімкнено',
+          contacts: '📞 <b>Beauty Salon Rzeszów</b><br><br>📍 ul. Marszałkowska 12, Rzeszów<br>☎️ +48 600 000 000<br>🕘 Пн–Сб 9:00–20:00<br><br>🗺 Як дістатися',
+          newBooking: (d, c, s, p) => `🆕 <b>Новий запис!</b><br><br>${d}<br>Клієнт: ${c}<br>Послуги:<br>• ${s} — ${p}<br>Разом: ${p}<br><br>📋 <i>Це перший візит клієнта у вас.</i>`,
+          btnResch: '🔄 Перенести', btnCancel: '❌ Скасувати',
+          alreadyCancelled: 'Цей запис уже скасовано.',
+          mReschPrompt: (c, s, d) => `Перенести запис ${c} (${s}, ${d}). Оберіть новий час (завтра):`,
+          mReschDone: d => `✅ Запис перенесено на <b>${d}</b>. Клієнт отримав сповіщення.`,
+          cReschByMaster: (s, d) => `🔄 <b>Майстер переніс ваш запис</b><br><br>💅 ${s}<br>📅 Новий час: <b>${d}</b><br><br>Не підходить? Перенесіть або скасуйте в меню.`,
+          reasons: ['Захворіла', 'Термінові справи', 'Технічна перерва'],
+          mCancelPrompt: 'Надішліть <b>причину скасування</b> — я додам її до сповіщення клієнту. У демо — оберіть готову:',
+          mCancelDone: r => `✅ Запис скасовано з причиною «${r}». Клієнт отримав сповіщення.`,
+          cCancelByMaster: (s, d, r) => `❌ <b>Майстер скасував ваш запис</b><br><br>💅 ${s}, ${d}<br>Причина: ${r}<br><br>Вибачте за незручності! Оберіть інший час — «📅 Записатися на візит».`,
+          answerPrompt: '✏️ Надішліть відповідь. У демо — готова:',
+          answerSent: '✅ Відповідь надіслана клієнту.',
+          cAnswer: a => `💬 <b>Відповідь майстра Кароліни</b><br><br>${a}`,
+          todayTitle: (d, n) => `📅 <b>Сьогодні, ${d}</b> · записів: ${n}`,
+          onlyOwn: (c, d) => `У демо змінювати можна тільки свій запис: ${c}, ${d}.`,
+          bookFirst: 'Спершу запишіться як клієнтка — і змінюйте свій запис тут 👈',
+          weekTitle: '🗓 <b>Найближчі дні</b>',
+          blockTitle: '🚫 <b>Блокування</b><br>Закрийте день або години — клієнти не побачать цей час.',
+          btnBlockDay: d => '🗓 Закрити цілий день — ' + d, blockDayEcho: '🗓 Закрити цілий день',
+          blockDayDone: d => `✅ ${d} закрито для запису.`,
+          btnBlockHours: '⏰ Закрити години (14:00–16:00 завтра)', blockHoursEcho: '⏰ Закрити години',
+          blockHoursDone: '✅ Завтра 14:00–16:00 закрито. Решта дня відкрита.',
+          mPortfolio: '🖼 <b>Портфоліо</b><br>Надішліть фото — воно одразу з\'явиться у клієнтів у «🎨 Портфоліо». Можна розкласти по розділах: манікюр, педикюр, брови.',
+          stats: m => `📊 <b>Статистика — ${m}</b><br><br>Записів: 64 (+12 до минулого місяця)<br>Нових клієнтів: 9<br>💰 Отримано: 5 120 zł<br>📈 Очікується: 1 340 zł<br>⭐ Оцінка: 4.8 (32 відгуки)<br>Звідки нові: Instagram 5 · Google 3 · рекомендації 1`,
+          mSettings: '⚙️ <b>Налаштування</b><br><br>🕘 Графік: Пн–Сб 9:00–20:00<br>🔔 Зведення на завтра: о 20:00<br>📅 Google Календар: підключено<br>🌐 Мова: Українська',
+          toastM: '🔔 Майстру прийшло', toastC: '🔔 Клієнтці прийшло', toastGo: 'Подивитися →'
+        },
 
-      var TIMES = ['10:00', '12:00', '15:00', '17:00'];
+        ru: {
+          locale: 'ru-RU',
+          masters: ['Каролина', 'Марта'],
+          services: ['Маникюр', 'Педикюр', 'Коррекция бровей', 'Окрашивание'],
+          wd: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+          dayNames: ['Сегодня', 'Завтра', 'Послезавтра'],
+          client: 'Анна',
+          fixedClients: ['Оксана Д.', 'Ирина К.', 'Наталья М.', 'Елена В.', 'Мария П.'],
+          headM: 'Beauty Salon · Мастер', statusM: 'bot · Каролина',
+          tabC: '👩 Клиентка', tabM: '💅 Мастер',
+          cMenu: ['📅 Записаться на визит', '🔄 Перенести запись', '❌ Отменить запись', '❓ Уточнить у мастера', '🎨 Портфолио', '⚙️ Настройки', '📞 Контакты салона'],
+          mMenu: ['📅 Сегодня', '🗓 На неделю', '🚫 Блокировки', '🖼 Портфолио', '📊 Статистика', '⚙️ Настройки'],
+          fullTg: '👉 Полностью — в демо в Telegram', showMe: '👉 Полностью — покажем на вашем телефоне',
+          welcomeC: '👋 Добро пожаловать в <b>Beauty Salon Rzeszów</b>!<br><br>Записывайтесь 24/7 — нажмите «📅 Записаться на визит» в меню внизу.',
+          welcomeM: '👋 Это <b>мастер-бот</b>. Сюда сразу приходят новые записи, переносы, отмены и вопросы клиентов.<br><br>Запишитесь как клиентка — и посмотрите, что придёт сюда.',
+          hasAppt: (s, d) => `У вас уже есть запись: <b>${s}</b>, ${d}.<br>В демо — одна запись. Её можно перенести или отменить в меню.`,
+          chooseMaster: '👩‍🎨 Выберите мастера:',
+          masterOk: n => `✅ Мастер: <b>${n}</b><br><br>💅 Выберите услугу:`,
+          serviceOk: s => `✅ Услуга: <b>${s}</b><br><br>📅 Когда удобно?`,
+          chooseTime: '⏰ Выберите время:',
+          confirm: (m, s, d) => `📋 <b>Подтверждение записи:</b><br><br>👩‍🎨 ${m}<br>💅 ${s}<br>📅 ${d}<br><br>Подтвердить?`,
+          btnConfirm: '✅ Подтвердить', btnChange: '« Изменить',
+          confirmed: '✅ <b>Запись подтверждена!</b><br><br>До встречи в салоне 💅<br>Напомним за 24 ч и за 2 ч до визита.',
+          noAppt: 'У вас нет будущих записей. Запишитесь через «📅 Записаться на визит».',
+          reschPrompt: (s, d) => `Ваша запись: <b>${s}</b>, ${d}.<br><br>Выберите новое время (завтра):`,
+          reschDone: d => `✅ Запись перенесена на <b>${d}</b>.`,
+          mReschNotice: (c, s, o, n) => `🔄 <b>Клиент перенёс запись</b><br>Клиент: ${c}<br>${s}<br>Было: ${o}<br>Стало: <b>${n}</b>`,
+          cancelAsk: (s, d) => `Отменить запись <b>${s}</b>, ${d}?`,
+          btnYesCancel: '❌ Да, отменить', btnNo: '« Нет',
+          cancelled: '✅ Запись отменена. Будем рады видеть вас снова!', keepIt: 'Хорошо, запись остаётся 👌',
+          mCancelNotice: (c, s, d) => `❌ <b>Клиент отменил запись</b><br>Клиент: ${c}<br>${s}, ${d}<br><span class="sim-hint">Время снова свободно для записи.</span>`,
+          questions: ['Можно прийти с ребёнком?', 'Сколько длится маникюр?', 'Есть ли парковка?'],
+          answers: ['Да, конечно! У нас есть уголок с игрушками 🧸', 'Примерно 1,5 часа с покрытием 💅', 'Да, бесплатная парковка у входа 🚗'],
+          askPrompt: '❓ Напишите вопрос мастеру. В демо — выберите готовый:',
+          askSent: '✅ Вопрос отправлен мастеру. Ответ придёт сюда.',
+          mQuestion: (c, q) => `📩 <b>Вопрос от клиента</b><br>Клиент: ${c}<br><br>«${q}»`,
+          btnAnswer: '✏️ Ответить',
+          pfTitle: '🎨 <b>Портфолио — Каролина</b>',
+          settingsC: '⚙️ <b>Настройки</b><br><br>🌐 Язык: Русский<br>🎂 День рождения: не указан<br>📱 Мой телефон: +48 600 *** 456<br>🔔 Акции салона: включены',
+          contacts: '📞 <b>Beauty Salon Rzeszów</b><br><br>📍 ul. Marszałkowska 12, Rzeszów<br>☎️ +48 600 000 000<br>🕘 Пн–Сб 9:00–20:00<br><br>🗺 Как добраться',
+          newBooking: (d, c, s, p) => `🆕 <b>Новая запись!</b><br><br>${d}<br>Клиент: ${c}<br>Услуги:<br>• ${s} — ${p}<br>Итого: ${p}<br><br>📋 <i>Это первый визит клиента к вам.</i>`,
+          btnResch: '🔄 Перенести', btnCancel: '❌ Отменить',
+          alreadyCancelled: 'Эта запись уже отменена.',
+          mReschPrompt: (c, s, d) => `Перенести запись: ${c} (${s}, ${d}). Выберите новое время (завтра):`,
+          mReschDone: d => `✅ Запись перенесена на <b>${d}</b>. Клиент получил уведомление.`,
+          cReschByMaster: (s, d) => `🔄 <b>Мастер перенёс вашу запись</b><br><br>💅 ${s}<br>📅 Новое время: <b>${d}</b><br><br>Не подходит? Перенесите или отмените в меню.`,
+          reasons: ['Заболела', 'Срочные дела', 'Технический перерыв'],
+          mCancelPrompt: 'Отправьте <b>причину отмены</b> — я добавлю её в уведомление клиенту. В демо — выберите готовую:',
+          mCancelDone: r => `✅ Запись отменена с причиной «${r}». Клиент получил уведомление.`,
+          cCancelByMaster: (s, d, r) => `❌ <b>Мастер отменил вашу запись</b><br><br>💅 ${s}, ${d}<br>Причина: ${r}<br><br>Извините за неудобства! Выберите другое время — «📅 Записаться на визит».`,
+          answerPrompt: '✏️ Отправьте ответ. В демо — готовый:',
+          answerSent: '✅ Ответ отправлен клиенту.',
+          cAnswer: a => `💬 <b>Ответ мастера Каролины</b><br><br>${a}`,
+          todayTitle: (d, n) => `📅 <b>Сегодня, ${d}</b> · записей: ${n}`,
+          onlyOwn: (c, d) => `В демо менять можно только свою запись: ${c}, ${d}.`,
+          bookFirst: 'Сначала запишитесь как клиентка — и меняйте свою запись здесь 👈',
+          weekTitle: '🗓 <b>Ближайшие дни</b>',
+          blockTitle: '🚫 <b>Блокировки</b><br>Закройте день или часы — клиенты не увидят это время.',
+          btnBlockDay: d => '🗓 Закрыть весь день — ' + d, blockDayEcho: '🗓 Закрыть весь день',
+          blockDayDone: d => `✅ ${d} закрыт для записи.`,
+          btnBlockHours: '⏰ Закрыть часы (14:00–16:00 завтра)', blockHoursEcho: '⏰ Закрыть часы',
+          blockHoursDone: '✅ Завтра 14:00–16:00 закрыто. Остальной день открыт.',
+          mPortfolio: '🖼 <b>Портфолио</b><br>Отправьте фото — оно сразу появится у клиентов в «🎨 Портфолио». Можно разложить по разделам: маникюр, педикюр, брови.',
+          stats: m => `📊 <b>Статистика — ${m}</b><br><br>Записей: 64 (+12 к прошлому месяцу)<br>Новых клиентов: 9<br>💰 Получено: 5 120 zł<br>📈 Ожидается: 1 340 zł<br>⭐ Оценка: 4.8 (32 отзыва)<br>Откуда новые: Instagram 5 · Google 3 · рекомендации 1`,
+          mSettings: '⚙️ <b>Настройки</b><br><br>🕘 График: Пн–Сб 9:00–20:00<br>🔔 Сводка на завтра: в 20:00<br>📅 Google Календарь: подключён<br>🌐 Язык: Русский',
+          toastM: '🔔 Мастеру пришло', toastC: '🔔 Клиентке пришло', toastGo: 'Посмотреть →'
+        },
 
-      // ── Переводы ────────────────────────────────────────────────────────────
-      var T = {
-        welcome: {
-          pl: '👋 Witaj w <b>Beauty Salon Rzeszów</b>!\n\nRezerwuj wizyty 24/7 przez Telegram.\nZacznijmy! ✨',
-          ru: '👋 Добро пожаловать в <b>Beauty Salon Rzeszów</b>!\n\nЗаписывайся 24/7 через Telegram.\nНачнём! ✨',
-          uk: '👋 Ласкаво просимо до <b>Beauty Salon Rzeszów</b>!\n\nЗаписуйся 24/7 через Telegram.\nПочнімо! ✨',
-          en: '👋 Welcome to <b>Beauty Salon Rzeszów</b>!\n\nBook appointments 24/7 via Telegram.\nLet\'s start! ✨'
+        pl: {
+          locale: 'pl-PL',
+          masters: ['Karolina', 'Marta'],
+          services: ['Manicure', 'Pedicure', 'Stylizacja brwi', 'Koloryzacja'],
+          wd: ['nd', 'pn', 'wt', 'śr', 'cz', 'pt', 'sb'],
+          dayNames: ['Dziś', 'Jutro', 'Pojutrze'],
+          client: 'Anna',
+          fixedClients: ['Oksana D.', 'Irena K.', 'Natalia M.', 'Olena W.', 'Maria P.'],
+          headM: 'Beauty Salon · Specjalistka', statusM: 'bot · Karolina',
+          tabC: '👩 Klientka', tabM: '💅 Specjalistka',
+          cMenu: ['📅 Umów wizytę', '🔄 Przenieś wizytę', '❌ Anuluj wizytę', '❓ Zapytaj specjalistę', '🎨 Portfolio', '⚙️ Ustawienia', '📞 Kontakty salonu'],
+          mMenu: ['📅 Dziś', '🗓 Na tydzień', '🚫 Blokady', '🖼 Portfolio', '📊 Statystyki', '⚙️ Ustawienia'],
+          fullTg: '👉 W całości — w demo w Telegramie', showMe: '👉 W całości — pokażemy na Twoim telefonie',
+          welcomeC: '👋 Witaj w <b>Beauty Salon Rzeszów</b>!<br><br>Umawiaj się 24/7 — kliknij «📅 Umów wizytę» w menu na dole.',
+          welcomeM: '👋 To <b>bot specjalistki</b>. Tu od razu przychodzą nowe wizyty, przeniesienia, anulowania i pytania klientek.<br><br>Umów się jako klientka i zobacz, co tu przyjdzie.',
+          hasAppt: (s, d) => `Masz już wizytę: <b>${s}</b>, ${d}.<br>W demo — jedna wizyta. Możesz ją przenieść lub anulować w menu.`,
+          chooseMaster: '👩‍🎨 Wybierz specjalistkę:',
+          masterOk: n => `✅ Specjalistka: <b>${n}</b><br><br>💅 Wybierz usługę:`,
+          serviceOk: s => `✅ Usługa: <b>${s}</b><br><br>📅 Kiedy Ci pasuje?`,
+          chooseTime: '⏰ Wybierz godzinę:',
+          confirm: (m, s, d) => `📋 <b>Potwierdzenie wizyty:</b><br><br>👩‍🎨 ${m}<br>💅 ${s}<br>📅 ${d}<br><br>Potwierdzić?`,
+          btnConfirm: '✅ Potwierdź', btnChange: '« Zmień',
+          confirmed: '✅ <b>Wizyta potwierdzona!</b><br><br>Do zobaczenia w salonie 💅<br>Przypomnimy 24 h i 2 h przed wizytą.',
+          noAppt: 'Nie masz przyszłych wizyt. Umów się przez «📅 Umów wizytę».',
+          reschPrompt: (s, d) => `Twoja wizyta: <b>${s}</b>, ${d}.<br><br>Wybierz nową godzinę (jutro):`,
+          reschDone: d => `✅ Wizyta przeniesiona na <b>${d}</b>.`,
+          mReschNotice: (c, s, o, n) => `🔄 <b>Klientka przeniosła wizytę</b><br>Klientka: ${c}<br>${s}<br>Było: ${o}<br>Jest: <b>${n}</b>`,
+          cancelAsk: (s, d) => `Anulować wizytę <b>${s}</b>, ${d}?`,
+          btnYesCancel: '❌ Tak, anuluj', btnNo: '« Nie',
+          cancelled: '✅ Wizyta anulowana. Chętnie zobaczymy Cię znowu!', keepIt: 'Dobrze, wizyta zostaje 👌',
+          mCancelNotice: (c, s, d) => `❌ <b>Klientka anulowała wizytę</b><br>Klientka: ${c}<br>${s}, ${d}<br><span class="sim-hint">Termin znów jest wolny.</span>`,
+          questions: ['Czy mogę przyjść z dzieckiem?', 'Ile trwa manicure?', 'Czy jest parking?'],
+          answers: ['Tak, oczywiście! Mamy kącik z zabawkami 🧸', 'Około 1,5 godziny z lakierem 💅', 'Tak, bezpłatny parking przy wejściu 🚗'],
+          askPrompt: '❓ Napisz pytanie do specjalistki. W demo — wybierz gotowe:',
+          askSent: '✅ Pytanie wysłane. Odpowiedź przyjdzie tutaj.',
+          mQuestion: (c, q) => `📩 <b>Pytanie od klientki</b><br>Klientka: ${c}<br><br>«${q}»`,
+          btnAnswer: '✏️ Odpowiedz',
+          pfTitle: '🎨 <b>Portfolio — Karolina</b>',
+          settingsC: '⚙️ <b>Ustawienia</b><br><br>🌐 Język: Polski<br>🎂 Urodziny: nie podano<br>📱 Mój telefon: +48 600 *** 456<br>🔔 Promocje salonu: włączone',
+          contacts: '📞 <b>Beauty Salon Rzeszów</b><br><br>📍 ul. Marszałkowska 12, Rzeszów<br>☎️ +48 600 000 000<br>🕘 Pn–Sb 9:00–20:00<br><br>🗺 Jak dojechać',
+          newBooking: (d, c, s, p) => `🆕 <b>Nowa rezerwacja!</b><br><br>${d}<br>Klientka: ${c}<br>Usługi:<br>• ${s} — ${p}<br>Razem: ${p}<br><br>📋 <i>To pierwsza wizyta tej klientki u Ciebie.</i>`,
+          btnResch: '🔄 Przenieś', btnCancel: '❌ Anuluj',
+          alreadyCancelled: 'Ta wizyta jest już anulowana.',
+          mReschPrompt: (c, s, d) => `Przenieś wizytę: ${c} (${s}, ${d}). Wybierz nową godzinę (jutro):`,
+          mReschDone: d => `✅ Wizyta przeniesiona na <b>${d}</b>. Klientka dostała powiadomienie.`,
+          cReschByMaster: (s, d) => `🔄 <b>Specjalistka przeniosła Twoją wizytę</b><br><br>💅 ${s}<br>📅 Nowy termin: <b>${d}</b><br><br>Nie pasuje? Przenieś lub anuluj w menu.`,
+          reasons: ['Choroba', 'Pilne sprawy', 'Przerwa techniczna'],
+          mCancelPrompt: 'Wyślij <b>powód anulowania</b> — dodam go do powiadomienia dla klientki. W demo — wybierz gotowy:',
+          mCancelDone: r => `✅ Wizyta anulowana z powodem «${r}». Klientka dostała powiadomienie.`,
+          cCancelByMaster: (s, d, r) => `❌ <b>Specjalistka anulowała Twoją wizytę</b><br><br>💅 ${s}, ${d}<br>Powód: ${r}<br><br>Przepraszamy! Wybierz inny termin — «📅 Umów wizytę».`,
+          answerPrompt: '✏️ Wyślij odpowiedź. W demo — gotowa:',
+          answerSent: '✅ Odpowiedź wysłana do klientki.',
+          cAnswer: a => `💬 <b>Odpowiedź od Karoliny</b><br><br>${a}`,
+          todayTitle: (d, n) => `📅 <b>Dziś, ${d}</b> · wizyt: ${n}`,
+          onlyOwn: (c, d) => `W demo możesz zmienić tylko swoją wizytę: ${c}, ${d}.`,
+          bookFirst: 'Najpierw umów się jako klientka — potem zmieniaj swoją wizytę tutaj 👈',
+          weekTitle: '🗓 <b>Najbliższe dni</b>',
+          blockTitle: '🚫 <b>Blokady</b><br>Zamknij dzień lub godziny — klientki nie zobaczą tego terminu.',
+          btnBlockDay: d => '🗓 Zamknij cały dzień — ' + d, blockDayEcho: '🗓 Zamknij cały dzień',
+          blockDayDone: d => `✅ ${d} zamknięty dla zapisów.`,
+          btnBlockHours: '⏰ Zamknij godziny (14:00–16:00 jutro)', blockHoursEcho: '⏰ Zamknij godziny',
+          blockHoursDone: '✅ Jutro 14:00–16:00 zamknięte. Reszta dnia otwarta.',
+          mPortfolio: '🖼 <b>Portfolio</b><br>Wyślij zdjęcie — od razu pojawi się u klientek w «🎨 Portfolio». Możesz podzielić na działy: manicure, pedicure, brwi.',
+          stats: m => `📊 <b>Statystyki — ${m}</b><br><br>Wizyt: 64 (+12 do poprzedniego miesiąca)<br>Nowych klientek: 9<br>💰 Otrzymano: 5 120 zł<br>📈 Oczekiwane: 1 340 zł<br>⭐ Ocena: 4.8 (32 opinie)<br>Skąd nowe: Instagram 5 · Google 3 · polecenia 1`,
+          mSettings: '⚙️ <b>Ustawienia</b><br><br>🕘 Grafik: Pn–Sb 9:00–20:00<br>🔔 Podsumowanie na jutro: o 20:00<br>📅 Kalendarz Google: podłączony<br>🌐 Język: Polski',
+          toastM: '🔔 Specjalistka dostała', toastC: '🔔 Klientka dostała', toastGo: 'Zobacz →'
         },
-        choose_master: {
-          pl: '👩‍🎨 Wybierz mistrzynię:',
-          ru: '👩‍🎨 Выбери мастера:',
-          uk: '👩‍🎨 Обери майстра:',
-          en: '👩‍🎨 Choose a master:'
-        },
-        choose_service: {
-          pl: function(m) { return '✅ Mistrzyni: <b>' + m + '</b>\n\n💅 Wybierz usługę:'; },
-          ru: function(m) { return '✅ Мастер: <b>' + m + '</b>\n\n💅 Выбери услугу:'; },
-          uk: function(m) { return '✅ Майстер: <b>' + m + '</b>\n\n💅 Обери послугу:'; },
-          en: function(m) { return '✅ Master: <b>' + m + '</b>\n\n💅 Choose a service:'; }
-        },
-        choose_date: {
-          pl: function(s) { return '✅ Usługa: <b>' + s + '</b>\n\n📅 Kiedy chcesz przyjść?'; },
-          ru: function(s) { return '✅ Услуга: <b>' + s + '</b>\n\n📅 Когда удобно?'; },
-          uk: function(s) { return '✅ Послуга: <b>' + s + '</b>\n\n📅 Коли зручно?'; },
-          en: function(s) { return '✅ Service: <b>' + s + '</b>\n\n📅 When would you like to come?'; }
-        },
-        choose_time: {
-          pl: function(d) { return '✅ Data: <b>' + d + '</b>\n\n⏰ Wybierz godzinę:'; },
-          ru: function(d) { return '✅ Дата: <b>' + d + '</b>\n\n⏰ Выбери время:'; },
-          uk: function(d) { return '✅ Дата: <b>' + d + '</b>\n\n⏰ Обери час:'; },
-          en: function(d) { return '✅ Date: <b>' + d + '</b>\n\n⏰ Choose a time slot:'; }
-        },
-        confirm_msg: {
-          pl: function(m,s,d,t) { return '📋 <b>Potwierdzenie wizyty:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nPotwierdzić?'; },
-          ru: function(m,s,d,t) { return '📋 <b>Подтверждение записи:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nПодтвердить?'; },
-          uk: function(m,s,d,t) { return '📋 <b>Підтвердження запису:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nПідтвердити?'; },
-          en: function(m,s,d,t) { return '📋 <b>Booking confirmation:</b>\n\n👩‍🎨 ' + m + '\n💅 ' + s + '\n📅 ' + d + '\n⏰ ' + t + '\n\nConfirm?'; }
-        },
-        success: {
-          pl: '✅ <b>Wizyta potwierdzona!</b>\n\nDo zobaczenia w salonie! 💅\nPrzypomnimy 24h i 2h przed wizytą.',
-          ru: '✅ <b>Запись подтверждён!</b>\n\nДо встречи в салоне! 💅\nНапомним за 24ч и 2ч до визита.',
-          uk: '✅ <b>Запис підтверджено!</b>\n\nДо зустрічі в салоні! 💅\nНагадаємо за 24г і 2г до візиту.',
-          en: '✅ <b>Appointment confirmed!</b>\n\nSee you at the salon! 💅\nReminders: 24h and 2h before.'
-        },
-        btn_book:    { pl: '💅 Zapisz się',              ru: '💅 Записаться',       uk: '💅 Записатися',       en: '💅 Book now' },
-        btn_confirm: { pl: '✅ Potwierdź',                   ru: '✅ Подтвердить',      uk: '✅ Підтвердити',      en: '✅ Confirm' },
-        btn_restart: { pl: '🔄 Zacznij od nowa',              ru: '🔄 Начать заново', uk: '🔄 Почати знову', en: '🔄 Start over' },
-        btn_tg:      { pl: '🚀 Otwórz bota w Telegram',  ru: '🚀 Открыть бота в Telegram', uk: '🚀 Відкрити бота в Telegram', en: '🚀 Open bot in Telegram' }
+
+        en: {
+          locale: 'en-GB',
+          masters: ['Karolina', 'Marta'],
+          services: ['Manicure', 'Pedicure', 'Eyebrow styling', 'Hair coloring'],
+          wd: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          dayNames: ['Today', 'Tomorrow', 'Day after'],
+          client: 'Anna',
+          fixedClients: ['Oksana D.', 'Irena K.', 'Natalia M.', 'Olena W.', 'Maria P.'],
+          headM: 'Beauty Salon · Specialist', statusM: 'bot · Karolina',
+          tabC: '👩 Client', tabM: '💅 Specialist',
+          cMenu: ['📅 Book appointment', '🔄 Reschedule', '❌ Cancel booking', '❓ Ask specialist', '🎨 Portfolio', '⚙️ Settings', '📞 Salon contacts'],
+          mMenu: ['📅 Today', '🗓 This week', '🚫 Blocks', '🖼 Portfolio', '📊 Statistics', '⚙️ Settings'],
+          fullTg: '👉 Full version — in the Telegram demo', showMe: '👉 Full version — we\'ll show you on your phone',
+          welcomeC: '👋 Welcome to <b>Beauty Salon Rzeszów</b>!<br><br>Book 24/7 — tap «📅 Book appointment» in the menu below.',
+          welcomeM: '👋 This is the <b>specialist bot</b>. New bookings, reschedules, cancellations and client questions arrive here instantly.<br><br>Book as a client and see what arrives here.',
+          hasAppt: (s, d) => `You already have a booking: <b>${s}</b>, ${d}.<br>The demo allows one booking. You can reschedule or cancel it in the menu.`,
+          chooseMaster: '👩‍🎨 Choose a specialist:',
+          masterOk: n => `✅ Specialist: <b>${n}</b><br><br>💅 Choose a service:`,
+          serviceOk: s => `✅ Service: <b>${s}</b><br><br>📅 When suits you?`,
+          chooseTime: '⏰ Choose a time:',
+          confirm: (m, s, d) => `📋 <b>Booking confirmation:</b><br><br>👩‍🎨 ${m}<br>💅 ${s}<br>📅 ${d}<br><br>Confirm?`,
+          btnConfirm: '✅ Confirm', btnChange: '« Change',
+          confirmed: '✅ <b>Booking confirmed!</b><br><br>See you at the salon 💅<br>We\'ll remind you 24 h and 2 h before.',
+          noAppt: 'You have no upcoming bookings. Book via «📅 Book appointment».',
+          reschPrompt: (s, d) => `Your booking: <b>${s}</b>, ${d}.<br><br>Choose a new time (tomorrow):`,
+          reschDone: d => `✅ Booking moved to <b>${d}</b>.`,
+          mReschNotice: (c, s, o, n) => `🔄 <b>Client rescheduled</b><br>Client: ${c}<br>${s}<br>Was: ${o}<br>Now: <b>${n}</b>`,
+          cancelAsk: (s, d) => `Cancel the booking <b>${s}</b>, ${d}?`,
+          btnYesCancel: '❌ Yes, cancel', btnNo: '« No',
+          cancelled: '✅ Booking cancelled. We\'ll be happy to see you again!', keepIt: 'OK, the booking stays 👌',
+          mCancelNotice: (c, s, d) => `❌ <b>Client cancelled</b><br>Client: ${c}<br>${s}, ${d}<br><span class="sim-hint">The slot is free again.</span>`,
+          questions: ['Can I come with my child?', 'How long does a manicure take?', 'Is there parking?'],
+          answers: ['Yes, of course! We have a kids\' corner with toys 🧸', 'About 1.5 hours with polish 💅', 'Yes, free parking by the entrance 🚗'],
+          askPrompt: '❓ Write your question to the specialist. In the demo — pick a ready one:',
+          askSent: '✅ Question sent. The answer will arrive here.',
+          mQuestion: (c, q) => `📩 <b>Question from a client</b><br>Client: ${c}<br><br>«${q}»`,
+          btnAnswer: '✏️ Reply',
+          pfTitle: '🎨 <b>Portfolio — Karolina</b>',
+          settingsC: '⚙️ <b>Settings</b><br><br>🌐 Language: English<br>🎂 Birthday: not set<br>📱 My phone: +48 600 *** 456<br>🔔 Salon offers: on',
+          contacts: '📞 <b>Beauty Salon Rzeszów</b><br><br>📍 ul. Marszałkowska 12, Rzeszów<br>☎️ +48 600 000 000<br>🕘 Mon–Sat 9:00–20:00<br><br>🗺 How to get there',
+          newBooking: (d, c, s, p) => `🆕 <b>New booking!</b><br><br>${d}<br>Client: ${c}<br>Services:<br>• ${s} — ${p}<br>Total: ${p}<br><br>📋 <i>This is the client's first visit with you.</i>`,
+          btnResch: '🔄 Reschedule', btnCancel: '❌ Cancel',
+          alreadyCancelled: 'This booking is already cancelled.',
+          mReschPrompt: (c, s, d) => `Reschedule ${c} (${s}, ${d}). Choose a new time (tomorrow):`,
+          mReschDone: d => `✅ Booking moved to <b>${d}</b>. The client has been notified.`,
+          cReschByMaster: (s, d) => `🔄 <b>Your specialist rescheduled your booking</b><br><br>💅 ${s}<br>📅 New time: <b>${d}</b><br><br>Doesn't suit you? Reschedule or cancel in the menu.`,
+          reasons: ['I\'m ill', 'Urgent matters', 'Technical break'],
+          mCancelPrompt: 'Send the <b>reason for cancelling</b> — I\'ll add it to the client\'s notice. In the demo — pick a ready one:',
+          mCancelDone: r => `✅ Booking cancelled with the reason «${r}». The client has been notified.`,
+          cCancelByMaster: (s, d, r) => `❌ <b>Your specialist cancelled your booking</b><br><br>💅 ${s}, ${d}<br>Reason: ${r}<br><br>Sorry for the trouble! Pick another time — «📅 Book appointment».`,
+          answerPrompt: '✏️ Send your reply. In the demo — a ready one:',
+          answerSent: '✅ Reply sent to the client.',
+          cAnswer: a => `💬 <b>Reply from Karolina</b><br><br>${a}`,
+          todayTitle: (d, n) => `📅 <b>Today, ${d}</b> · bookings: ${n}`,
+          onlyOwn: (c, d) => `In the demo you can only change your own booking: ${c}, ${d}.`,
+          bookFirst: 'First book as a client — then change your booking here 👈',
+          weekTitle: '🗓 <b>Next few days</b>',
+          blockTitle: '🚫 <b>Blocks</b><br>Close a day or some hours — clients won\'t see that time.',
+          btnBlockDay: d => '🗓 Close the whole day — ' + d, blockDayEcho: '🗓 Close the whole day',
+          blockDayDone: d => `✅ ${d} is closed for booking.`,
+          btnBlockHours: '⏰ Close hours (14:00–16:00 tomorrow)', blockHoursEcho: '⏰ Close hours',
+          blockHoursDone: '✅ Tomorrow 14:00–16:00 is closed. The rest of the day stays open.',
+          mPortfolio: '🖼 <b>Portfolio</b><br>Send a photo — it appears at once in clients\' «🎨 Portfolio». You can sort them into sections: manicure, pedicure, brows.',
+          stats: m => `📊 <b>Statistics — ${m}</b><br><br>Bookings: 64 (+12 vs last month)<br>New clients: 9<br>💰 Received: 5 120 zł<br>📈 Expected: 1 340 zł<br>⭐ Rating: 4.8 (32 reviews)<br>Where new ones came from: Instagram 5 · Google 3 · referrals 1`,
+          mSettings: '⚙️ <b>Settings</b><br><br>🕘 Schedule: Mon–Sat 9:00–20:00<br>🔔 Tomorrow\'s summary: at 20:00<br>📅 Google Calendar: connected<br>🌐 Language: English',
+          toastM: '🔔 Specialist got', toastC: '🔔 Client got', toastGo: 'View →'
+        }
       };
 
-      // ── Состояние ───────────────────────────────────────────────────────────
-      var simLang = 'pl';
-      var simState = 0;
-      var sel = { mi: null, si: null, dk: null, time: null };
-      var history = [];
-      var typingTimer = null;
+      let T = L.pl;
+      let appt = null;       // запись клиентки: { m, s, off, t } (m, s — индексы)
+      let draft = {};
+      let activeTab = 'client';
+      let gen = 0;           // поколение: после «Почати знову» / смены языка старые таймеры молчат
+      let toastTimer = null;
+      const unread = { client: 0, master: 0 };
 
-      var msgsEl = document.getElementById('sim-msgs');
-      var btnsEl = document.getElementById('sim-btns');
-
-      // ── Утилиты ─────────────────────────────────────────────────────────────
-      function tStr(key) {
-        var e = T[key];
-        if (!e) return key;
-        return e[simLang] || e['pl'];
+      const $ = id => document.getElementById(id);
+      const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const narrow = () => window.matchMedia('(max-width: 760px)').matches;
+      function dayLabel(off) {
+        const d = new Date(); d.setDate(d.getDate() + off);
+        return T.wd[d.getDay()] + ' ' + String(d.getDate()).padStart(2, '0') + '.' + String(d.getMonth() + 1).padStart(2, '0');
       }
+      const apptLine = a => `${dayLabel(a.off)}, ${a.t}`;
+      const svc = i => esc(T.services[i]);
+      const later = (fn, ms) => { const g = gen; setTimeout(() => { if (g === gen) fn(); }, ms); };
 
-      function tFn(key, a, b, c, d) {
-        var e = T[key];
-        if (!e) return key;
-        var fn = e[simLang] || e['pl'];
-        return (typeof fn === 'function') ? fn(a, b, c, d) : fn;
-      }
-
-      function mName(i) {
-        if (i === null) return '';
-        return (MASTERS[simLang] || MASTERS['pl'])[i];
-      }
-
-      function sName(i) {
-        if (i === null) return '';
-        var s = SERVICES[i];
-        return s[simLang] || s['pl'];
-      }
-
-      function dName(k) {
-        if (!k) return '';
-        for (var i = 0; i < DATES.length; i++) {
-          if (DATES[i].k === k) return DATES[i][simLang] || DATES[i]['pl'];
+      // ── вывод сообщений ──
+      function add(side, html, opts = {}) {
+        const box = $('sim-msgs-' + side);
+        const m = document.createElement('div');
+        m.className = 'sim-m ' + (opts.me ? 'sim-me' : 'sim-bot') + (opts.push ? ' sim-push' : '');
+        m.innerHTML = html;
+        if (opts.buttons) {
+          const ik = document.createElement('div');
+          ik.className = 'sim-ik' + (opts.two ? ' sim-two' : '');
+          opts.buttons.forEach(([label, fn]) => {
+            const b = document.createElement('button');
+            b.type = 'button'; b.textContent = label;
+            b.addEventListener('click', () => {
+              ik.querySelectorAll('button').forEach(x => { x.disabled = true; });
+              fn(label);
+            });
+            ik.appendChild(b);
+          });
+          m.appendChild(ik);
         }
-        return k;
+        box.appendChild(m);
+        box.scrollTop = box.scrollHeight;
+        if (!opts.me && !opts.quiet) notify(side, m);
       }
-
-      // ── Получение HTML сообщения ─────────────────────────────────────────────
-      function getMsgHtml(entry) {
-        var txt = '';
-        switch (entry.type) {
-          case 'welcome':        txt = tStr('welcome'); break;
-          case 'choose_master':  txt = tStr('choose_master'); break;
-          case 'choose_service': txt = tFn('choose_service', mName(sel.mi)); break;
-          case 'choose_date':    txt = tFn('choose_date', sName(sel.si)); break;
-          case 'choose_time':    txt = tFn('choose_time', dName(sel.dk)); break;
-          case 'confirm_msg':    txt = tFn('confirm_msg', mName(sel.mi), sName(sel.si), dName(sel.dk), sel.time); break;
-          case 'success':        txt = tStr('success'); break;
-          case 'u_book':         txt = tStr('btn_book'); break;
-          case 'u_master':       txt = mName(sel.mi); break;
-          case 'u_service':      txt = sName(sel.si); break;
-          case 'u_date':         txt = dName(sel.dk); break;
-          case 'u_time':         txt = '⏰ ' + (sel.time || ''); break;
-          case 'u_confirm':      txt = tStr('btn_confirm'); break;
-          default:               txt = entry.text || '';
-        }
-        return txt.replace(/\n/g, '<br>');
+      function me(side, text) { add(side, esc(text), { me: true }); }
+      function bot(side, html, opts) {
+        const box = $('sim-msgs-' + side);
+        const ty = document.createElement('div');
+        ty.className = 'sim-typing'; ty.innerHTML = '<span></span><span></span><span></span>';
+        box.appendChild(ty); box.scrollTop = box.scrollHeight;
+        later(() => { ty.remove(); add(side, html, opts); }, 650);
       }
+      const hint = h => `<span class="sim-hint">${h}</span>`;
 
-      // ── Рендер истории ───────────────────────────────────────────────────────
-      function renderHistory() {
-        msgsEl.innerHTML = '';
-        for (var i = 0; i < history.length; i++) {
-          var e = history[i];
-          var div = document.createElement('div');
-          div.className = e.role === 'bot' ? 'msg-bot' : 'msg-user';
-          div.innerHTML = getMsgHtml(e);
-          msgsEl.appendChild(div);
-        }
-        msgsEl.scrollTop = msgsEl.scrollHeight;
-      }
-
-      // ── Рендер кнопок ────────────────────────────────────────────────────────
-      function renderBtns() {
-        btnsEl.innerHTML = '';
-        var row, i;
-
-        switch (simState) {
-          case 0: // Приветствие
-            btnsEl.appendChild(mkBtn(tStr('btn_book'), 'sim-primary', function() {
-              addU('u_book');
-              renderHistory();
-              botMsg('choose_master', function() { simState = 1; renderBtns(); });
-            }));
-            break;
-
-          case 1: // Выбор мастера
-            row = mkRow();
-            var masters = MASTERS[simLang] || MASTERS['pl'];
-            for (i = 0; i < masters.length; i++) {
-              (function(idx) {
-                row.appendChild(mkBtn(masters[idx], '', function() {
-                  sel.mi = idx;
-                  addU('u_master');
-                  renderHistory();
-                  botMsg('choose_service', function() { simState = 2; renderBtns(); });
-                }));
-              })(i);
-            }
-            btnsEl.appendChild(row);
-            break;
-
-          case 2: // Выбор услуги (2 ряда по 2)
-            var pairs = [[0, 1], [2, 3]];
-            for (var p = 0; p < pairs.length; p++) {
-              row = mkRow();
-              for (var q = 0; q < pairs[p].length; q++) {
-                (function(idx) {
-                  var svc = SERVICES[idx];
-                  row.appendChild(mkBtn(svc[simLang] || svc['pl'], '', function() {
-                    sel.si = idx;
-                    addU('u_service');
-                    renderHistory();
-                    botMsg('choose_date', function() { simState = 3; renderBtns(); });
-                  }));
-                })(pairs[p][q]);
-              }
-              btnsEl.appendChild(row);
-            }
-            break;
-
-          case 3: // Выбор даты
-            row = mkRow();
-            for (i = 0; i < DATES.length; i++) {
-              (function(dt) {
-                row.appendChild(mkBtn(dt[simLang] || dt['pl'], '', function() {
-                  sel.dk = dt.k;
-                  addU('u_date');
-                  renderHistory();
-                  botMsg('choose_time', function() { simState = 4; renderBtns(); });
-                }));
-              })(DATES[i]);
-            }
-            btnsEl.appendChild(row);
-            break;
-
-          case 4: // Выбор времени (2 ряда по 2)
-            var timePairs = [TIMES.slice(0, 2), TIMES.slice(2)];
-            for (var tp = 0; tp < timePairs.length; tp++) {
-              row = mkRow();
-              for (var tq = 0; tq < timePairs[tp].length; tq++) {
-                (function(tm) {
-                  row.appendChild(mkBtn('⏰ ' + tm, '', function() {
-                    sel.time = tm;
-                    addU('u_time');
-                    renderHistory();
-                    botMsg('confirm_msg', function() { simState = 5; renderBtns(); });
-                  }));
-                })(timePairs[tp][tq]);
-              }
-              btnsEl.appendChild(row);
-            }
-            break;
-
-          case 5: // Подтверждение
-            row = mkRow();
-            row.appendChild(mkBtn(tStr('btn_confirm'), 'sim-primary', function() {
-              addU('u_confirm');
-              renderHistory();
-              botMsg('success', function() { simState = 6; renderBtns(); });
-            }));
-            row.appendChild(mkBtn(tStr('btn_restart'), 'sim-ghost', simReset));
-            btnsEl.appendChild(row);
-            break;
-
-          case 6: // Финал
-            btnsEl.appendChild(mkBtn(tStr('btn_tg'), 'sim-tg', function() {
-              window.open('https://t.me/lena_salon_bot?start=site', '_blank');
-            }));
-            btnsEl.appendChild(mkBtn(tStr('btn_restart'), 'sim-ghost', simReset));
-            break;
+      // Сообщение «на другой телефон»: на компьютере — подсветка телефона мастера,
+      // на телефоне — 🔔 на вкладке и плашка прямо в видимом телефоне (вкладки могут быть за краем экрана)
+      function notify(side, m) {
+        if (narrow() && activeTab !== side) {
+          unread[side] += 1;
+          const b = $('sim-badge-' + side);
+          b.textContent = '🔔 ' + unread[side]; b.classList.remove('show'); void b.offsetWidth; b.classList.add('show');
+          const toast = $('sim-toast-' + (side === 'master' ? 'client' : 'master'));
+          const title = (m.querySelector('b') || m).textContent.trim();
+          toast.innerHTML = `<b>${side === 'master' ? T.toastM : T.toastC}: ${esc(title)}</b><span class="sim-go">${T.toastGo}</span>`;
+          toast.classList.add('show');
+          clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('show'), 6000);
+        } else if (side === 'master') {
+          const p = $('sim-phone-master'); p.classList.add('ping'); setTimeout(() => p.classList.remove('ping'), 900);
         }
       }
 
-      // ── Вспомогательные функции ──────────────────────────────────────────────
-      function mkRow() {
-        var r = document.createElement('div');
-        r.className = 'phone-btn-row';
-        return r;
+      // ── бот клиентки ──
+      function startBooking(label) {
+        me('client', label);
+        if (appt) { bot('client', T.hasAppt(svc(appt.s), apptLine(appt))); return; }
+        askMaster();
+      }
+      function askMaster() {
+        draft = {};
+        bot('client', T.chooseMaster, { two: true, buttons: T.masters.map((n, i) => [n, () => pickMaster(i)]) });
+      }
+      function pickMaster(i) {
+        draft.m = i; me('client', T.masters[i]);
+        bot('client', T.masterOk(esc(T.masters[i])), {
+          two: true, buttons: T.services.map((n, j) => [`${n} — ${PRICES[j]}`, () => pickService(j)])
+        });
+      }
+      function pickService(j) {
+        draft.s = j; me('client', `${T.services[j]} — ${PRICES[j]}`);
+        bot('client', T.serviceOk(svc(j)), {
+          buttons: [0, 1, 2].map(i => [`${T.dayNames[i]} · ${dayLabel(i)}`, () => pickDay(i)])
+        });
+      }
+      function pickDay(i) {
+        draft.off = i; me('client', `${T.dayNames[i]} · ${dayLabel(i)}`);
+        bot('client', T.chooseTime, { two: true, buttons: TIMES.map(t => ['⏰ ' + t, () => pickTime(t)]) });
+      }
+      function pickTime(t) {
+        draft.t = t; me('client', '⏰ ' + t);
+        bot('client', T.confirm(esc(T.masters[draft.m]), svc(draft.s), apptLine(draft)), {
+          two: true, buttons: [[T.btnConfirm, confirmBooking], [T.btnChange, () => { me('client', T.btnChange); askMaster(); }]]
+        });
+      }
+      function confirmBooking() {
+        me('client', T.btnConfirm);
+        appt = { ...draft };
+        bot('client', T.confirmed);
+        later(masterNewBooking, 1400);
+      }
+      function newTimes() { return TIMES.filter(t => !(appt.off === 1 && t === appt.t)); }
+      function clientReschedule(label) {
+        me('client', label);
+        if (!appt) { bot('client', T.noAppt); return; }
+        bot('client', T.reschPrompt(svc(appt.s), apptLine(appt)), {
+          two: true, buttons: newTimes().map(t => ['⏰ ' + t, () => {
+            me('client', '⏰ ' + t);
+            const old = apptLine(appt); appt.off = 1; appt.t = t;
+            bot('client', T.reschDone(apptLine(appt)));
+            later(() => bot('master', T.mReschNotice(T.client, svc(appt.s), old, apptLine(appt)), { push: true }), 1100);
+          }])
+        });
+      }
+      function clientCancel(label) {
+        me('client', label);
+        if (!appt) { bot('client', T.noAppt); return; }
+        bot('client', T.cancelAsk(svc(appt.s), apptLine(appt)), {
+          two: true, buttons: [[T.btnYesCancel, () => {
+            me('client', T.btnYesCancel);
+            const a = appt; appt = null;
+            bot('client', T.cancelled);
+            later(() => bot('master', T.mCancelNotice(T.client, svc(a.s), apptLine(a)), { push: true }), 1100);
+          }], [T.btnNo, () => { me('client', T.btnNo); bot('client', T.keepIt); }]]
+        });
+      }
+      function clientAsk(label) {
+        me('client', label);
+        bot('client', T.askPrompt, {
+          buttons: T.questions.map((q, i) => [q, () => {
+            me('client', q);
+            bot('client', T.askSent);
+            later(() => bot('master', T.mQuestion(T.client, esc(q)), {
+              push: true, buttons: [[T.btnAnswer, () => masterAnswer(i)]]
+            }), 1100);
+          }])
+        });
+      }
+      function clientPortfolio(label) {
+        me('client', label);
+        bot('client', T.pfTitle + '<div class="sim-pf">' + PF.map(([c, e]) => `<div style="background:${c}">${e}</div>`).join('') + '</div>' + hint(T.fullTg));
+      }
+      function clientSettings(label) { me('client', label); bot('client', T.settingsC + hint(T.fullTg)); }
+      function clientContacts(label) { me('client', label); bot('client', T.contacts); }
+
+      // ── мастер-бот ──
+      function masterNewBooking() {
+        bot('master', T.newBooking(apptLine(appt), T.client, svc(appt.s), PRICES[appt.s]), {
+          push: true, two: true, buttons: [[T.btnResch, masterReschedule], [T.btnCancel, masterCancel]]
+        });
+      }
+      function masterReschedule(label) {
+        me('master', label);
+        if (!appt) { bot('master', T.alreadyCancelled); return; }
+        bot('master', T.mReschPrompt(T.client, svc(appt.s), apptLine(appt)), {
+          two: true, buttons: newTimes().map(t => ['⏰ ' + t, () => {
+            me('master', '⏰ ' + t);
+            appt.off = 1; appt.t = t;
+            bot('master', T.mReschDone(apptLine(appt)));
+            later(() => bot('client', T.cReschByMaster(svc(appt.s), apptLine(appt))), 1100);
+          }])
+        });
+      }
+      function masterCancel(label) {
+        me('master', label);
+        if (!appt) { bot('master', T.alreadyCancelled); return; }
+        bot('master', T.mCancelPrompt, {
+          buttons: T.reasons.map(r => [r, () => {
+            me('master', r);
+            const a = appt; appt = null;
+            bot('master', T.mCancelDone(esc(r)));
+            later(() => bot('client', T.cCancelByMaster(svc(a.s), apptLine(a), esc(r))), 1100);
+          }])
+        });
+      }
+      function masterAnswer(i) {
+        me('master', T.btnAnswer);
+        const a = T.answers[i];
+        bot('master', T.answerPrompt, {
+          buttons: [[a, () => {
+            me('master', a);
+            bot('master', T.answerSent);
+            later(() => bot('client', T.cAnswer(esc(a))), 1100);
+          }]]
+        });
+      }
+      function rowsFor(off) {
+        const list = FIXED.filter(x => x.off === off).map(x => ({ t: x.t, c: T.fixedClients[x.c], s: x.s }));
+        if (appt && appt.off === off) list.push({ t: appt.t, c: T.client + ' 🆕', s: appt.s });
+        return list.sort((a, b) => a.t.localeCompare(b.t));
+      }
+      function masterToday(label) {
+        me('master', label);
+        const list = rowsFor(0);
+        bot('master', T.todayTitle(dayLabel(0), list.length) + '<br><br>' +
+          list.map(x => `${x.t} · ${esc(x.c)} — ${svc(x.s)}`).join('<br>'), {
+          two: true, buttons: [[T.btnResch, masterPickFromList], [T.btnCancel, masterPickFromList]]
+        });
+      }
+      function masterPickFromList() {
+        if (appt) bot('master', T.onlyOwn(T.client, apptLine(appt)), { two: true, buttons: [[T.btnResch, masterReschedule], [T.btnCancel, masterCancel]] });
+        else bot('master', T.bookFirst);
+      }
+      function masterWeek(label) {
+        me('master', label);
+        bot('master', T.weekTitle + '<br><br>' + [0, 1, 2].map(i => {
+          const r = rowsFor(i);
+          return `<b>${T.dayNames[i]}, ${dayLabel(i)}</b> — ${r.length}<br>` + r.map(x => `&nbsp;&nbsp;${x.t} · ${esc(x.c)}`).join('<br>');
+        }).join('<br><br>') + hint(T.showMe));
+      }
+      function masterBlock(label) {
+        me('master', label);
+        bot('master', T.blockTitle, {
+          buttons: [[T.btnBlockDay(dayLabel(2)), () => {
+            me('master', T.blockDayEcho);
+            bot('master', T.blockDayDone(dayLabel(2)) + hint(T.showMe));
+          }], [T.btnBlockHours, () => {
+            me('master', T.blockHoursEcho);
+            bot('master', T.blockHoursDone + hint(T.showMe));
+          }]]
+        });
+      }
+      function masterPortfolio(label) { me('master', label); bot('master', T.mPortfolio + hint(T.showMe)); }
+      function masterStats(label) {
+        me('master', label);
+        const month = new Intl.DateTimeFormat(T.locale, { month: 'long' }).format(new Date());
+        bot('master', T.stats(month) + hint(T.showMe));
+      }
+      function masterSettings(label) { me('master', label); bot('master', T.mSettings + hint(T.showMe)); }
+
+      // ── меню внизу телефона ──
+      function menu(side, labels, fns) {
+        const kb = $('sim-kb-' + side); kb.innerHTML = '';
+        labels.forEach((label, i) => {
+          const b = document.createElement('button');
+          b.type = 'button'; b.textContent = label;
+          if (side === 'client' && i === 0) b.className = 'sim-wide';
+          b.addEventListener('click', () => fns[i](label));
+          kb.appendChild(b);
+        });
       }
 
-      function mkBtn(txt, cls, cb) {
-        var b = document.createElement('button');
-        b.className = 'phone-btn ' + (cls || '');
-        b.textContent = txt;
-        b.onclick = cb;
-        return b;
+      // ── вкладки «Клиентка / Мастер» (только на телефоне) ──
+      function setTab(side) {
+        activeTab = side;
+        document.querySelectorAll('.sim-tab').forEach(t => t.classList.toggle('on', t.dataset.tab === side));
+        $('sim-col-client').classList.toggle('active', side === 'client');
+        $('sim-col-master').classList.toggle('active', side === 'master');
+        unread[side] = 0; $('sim-badge-' + side).classList.remove('show');
+        document.querySelectorAll('.sim-toast').forEach(x => x.classList.remove('show'));
       }
+      $('sim-toast-client').addEventListener('click', () => setTab('master'));
+      $('sim-toast-master').addEventListener('click', () => setTab('client'));
+      document.querySelectorAll('.sim-tab').forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
 
-      function addU(type) {
-        history.push({ role: 'user', type: type });
+      function reset() {
+        gen += 1;
+        appt = null; draft = {};
+        $('sim-msgs-client').innerHTML = ''; $('sim-msgs-master').innerHTML = '';
+        unread.client = unread.master = 0;
+        document.querySelectorAll('.sim-badge, .sim-toast').forEach(b => b.classList.remove('show'));
+        $('sim-tab-client').textContent = T.tabC; $('sim-tab-master').textContent = T.tabM;
+        $('sim-head-master').textContent = T.headM; $('sim-status-master').textContent = T.statusM;
+        add('client', T.welcomeC, { quiet: true });
+        add('master', T.welcomeM, { quiet: true });
+        menu('client', T.cMenu, [startBooking, clientReschedule, clientCancel, clientAsk, clientPortfolio, clientSettings, clientContacts]);
+        menu('master', T.mMenu, [masterToday, masterWeek, masterBlock, masterPortfolio, masterStats, masterSettings]);
       }
+      $('sim-restart').addEventListener('click', reset);
 
-      function botMsg(type, cb) {
-        if (typingTimer) clearTimeout(typingTimer);
-        btnsEl.innerHTML = '';
-        var typing = document.createElement('div');
-        typing.className = 'msg-typing';
-        typing.innerHTML = '<span></span><span></span><span></span>';
-        msgsEl.appendChild(typing);
-        msgsEl.scrollTop = msgsEl.scrollHeight;
-        typingTimer = setTimeout(function() {
-          if (typing.parentNode) msgsEl.removeChild(typing);
-          history.push({ role: 'bot', type: type });
-          renderHistory();
-          if (cb) cb();
-        }, 800);
-      }
-
-      // ── Сброс / старт ────────────────────────────────────────────────────────
-      function simReset() {
-        if (typingTimer) clearTimeout(typingTimer);
-        simState = 0;
-        sel = { mi: null, si: null, dk: null, time: null };
-        history = [{ role: 'bot', type: 'welcome' }];
-        renderHistory();
-        renderBtns();
-      }
-
-      // ── Обновление языка (вызывается из setLang) ─────────────────────────────
-      window.simUpdateLang = function(lang) {
-        simLang = lang;
-        renderHistory();
-        renderBtns();
-        var statusEl = document.getElementById('sim-tg-status');
-        if (statusEl) statusEl.textContent = 'bot';
+      // Смена языка (вызывается из setLang) — демо начинается заново на новом языке
+      window.simUpdateLang = function (lang) {
+        T = L[lang] || L.pl;
+        reset();
       };
-
-      // ── Инициализация ────────────────────────────────────────────────────────
-      simLang = localStorage.getItem('salonbot-lang') || 'pl';
-      simReset();
-
+      window.simUpdateLang(localStorage.getItem('salonbot-lang') || 'pl');
     })();
 
     // Init
