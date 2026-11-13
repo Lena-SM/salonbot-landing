@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, telegram, salon, comment, lang, source, _honey } = req.body || {};
+  const { name, email, telegram, phone, salon, comment, lang, source, marketing, _honey } = req.body || {};
 
   // Honeypot — boty fill this, humans don't
   if (_honey) return res.status(200).json({ ok: true });
@@ -38,10 +38,13 @@ export default async function handler(req, res) {
       `👤 ${l.name}: ${esc(name)}`,
       `📧 ${l.email}: ${esc(email)}`,
       `📱 ${l.tg}: ${esc(telegram) || '—'}`,
+      `📞 ${esc(String(phone || '').slice(0, 30)) || '—'}`,
       `💇 ${l.salon}: ${esc(salon)}`,
       `🔗 ${from[lang] || from.pl}: ${esc(String(source || '').slice(0, 80)) || '—'}`,
     ];
     if (comment) lines.push(`💬 ${esc(comment)}`);
+    // Необязательная галочка «новости и предложения» (art. 398 PKE): писать о новостях — только «так».
+    lines.push(`📣 Новини / Nowości: ${marketing === true ? '✅ так / tak' : '— ні / nie'}`);
     const text = lines.join('\n');
     try {
       const r = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
@@ -65,7 +68,7 @@ export default async function handler(req, res) {
       const r = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ name, email, telegram, salon, comment, source: String(source || '').slice(0, 80) }),
+        body: JSON.stringify({ name, email, telegram, phone: String(phone || '').slice(0, 30), salon, comment, source: String(source || '').slice(0, 80), marketing: marketing === true ? 'tak' : 'nie' }),
       });
       results.email = r.ok;
     } catch (e) {

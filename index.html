@@ -447,6 +447,11 @@
       cursor: pointer;
     }
     .form-consent label a { color: rgba(255,255,255,0.95); }
+    footer .inl[data-lang].visible { display: inline; }
+    .contact .contact-phone { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+    .contact .contact-phone a { color: white; text-decoration: none; white-space: nowrap; }
+    .contact .form-note { margin-top: 12px; font-size: 12.5px; color: rgba(255,255,255,0.75); text-align: center; }
+    .contact .form-note a { color: rgba(255,255,255,0.95); }
 
     /* ─── MODALS ─── */
     .modal-overlay {
@@ -1082,12 +1087,13 @@
   <div class="contact-wrap">
     <div class="contact" id="contact">
       <h2>
-        <span data-lang="pl" class="visible">Chcesz wiedzieć więcej? Napisz!</span>
-        <span data-lang="ru">Заинтересованы? Напишите!</span>
-        <span data-lang="uk">Зацікавлені? Напишіть!</span>
-        <span data-lang="en">Interested? Get in touch!</span>
+        <span data-lang="pl" class="visible">Chcesz wiedzieć więcej? Zadzwoń lub napisz!</span>
+        <span data-lang="ru">Заинтересованы? Позвоните или напишите!</span>
+        <span data-lang="uk">Зацікавлені? Подзвоніть або напишіть!</span>
+        <span data-lang="en">Interested? Call or write!</span>
       </h2>
-      <p><span data-lang="pl" class="visible">Odpowiemy w ciągu kilku godzin. Opowiemy, jak działa bot, omówimy szczegóły i uruchomimy Twój salon.</span><span data-lang="ru">Ответим в течение нескольких часов. Расскажем, как работает бот, обсудим детали и запустим ваш салон.</span><span data-lang="uk">Відповімо протягом кількох годин. Розповімо, як працює бот, обговоримо деталі й запустимо ваш салон.</span><span data-lang="en">We'll reply within a few hours, explain how the bot works, discuss the details and launch your salon.</span></p>
+      <p class="contact-phone">📞 <a href="tel:+48536893687">+48 536 893 687</a></p>
+      <p><span data-lang="pl" class="visible">Pn–sob 9:00–19:00 — opowiem o wszystkim szczegółowo.<br>Albo zostaw zgłoszenie — w godzinach pracy odpowiem w ciągu godziny, opowiem, jak działa bot, i omówimy uruchomienie Twojego salonu.</span><span data-lang="ru">Пн–Сб 9:00–19:00 — расскажу всё подробно.<br>Или оставьте заявку — в рабочее время отвечу в течение часа, расскажу, как работает бот, и обсудим запуск вашего салона.</span><span data-lang="uk">Пн–Сб 9:00–19:00 — розповім усе докладно.<br>Або залиште заявку — у робочий час відповім протягом години, розповім, як працює бот, і обговоримо запуск вашого салону.</span><span data-lang="en">Mon–Sat 9:00–19:00 — I'll tell you everything in detail.<br>Or leave a request — during working hours I'll reply within an hour, explain how the bot works and we'll discuss launching your salon.</span></p>
             <form id="contact-form" class="contact-form" onsubmit="submitForm(event)" novalidate>
         <!-- Honeypot -->
         <div style="display:none"><input type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
@@ -1131,6 +1137,19 @@
             data-ph-en="@Username or number">
         </div>
         <div class="form-row">
+          <label class="form-label" for="f-phone">
+            <span data-lang="pl">Telefon (opcjonalnie) — oddzwonię</span>
+            <span data-lang="ru">Телефон (необязательно) — перезвоню</span>
+            <span data-lang="uk">Телефон (необов'язково) — передзвоню</span>
+            <span data-lang="en">Phone (optional) — I'll call you back</span>
+          </label>
+          <input type="tel" id="f-phone" name="phone" autocomplete="tel" maxlength="30"
+            data-ph-pl="+48 …"
+            data-ph-ru="+48 …"
+            data-ph-uk="+48 …"
+            data-ph-en="+48 …">
+        </div>
+        <div class="form-row">
           <label class="form-label" for="f-salon">
             <span data-lang="pl">Nazwa salonu *</span>
             <span data-lang="ru">Название салона *</span>
@@ -1157,12 +1176,12 @@
             data-ph-en="e.g. I have 3 masters, interested in Booksy integration..."></textarea>
         </div>
         <div class="form-consent">
-          <input type="checkbox" id="f-consent" name="consent" required>
+          <input type="checkbox" id="f-consent" name="consent">
           <label for="f-consent">
-            <span data-lang="pl">Wyra&#380;am zgod&#281; na przes&#322;anie mi informacji handlowej drog&#261; elektroniczn&#261; przez Olena Shevchenko (SalonBot) na podany adres e-mail, zgodnie z art.&nbsp;10 ustawy o &#347;wiadczeniu us&#322;ug drog&#261; elektroniczn&#261;. Zgod&#281; mo&#380;na wycofa&#263; w ka&#380;dej chwili pisz&#261;c na <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
-            <span data-lang="ru">&#1044;&#1072;&#1102; &#1089;&#1086;&#1075;&#1083;&#1072;&#1089;&#1080;&#1077; &#1085;&#1072; &#1087;&#1086;&#1083;&#1091;&#1095;&#1077;&#1085;&#1080;&#1077; &#1082;&#1086;&#1084;&#1084;&#1077;&#1088;&#1095;&#1077;&#1089;&#1082;&#1086;&#1081; &#1080;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1080;&#1080; &#1086;&#1090; Olena Shevchenko (SalonBot) &#1085;&#1072; &#1091;&#1082;&#1072;&#1079;&#1072;&#1085;&#1085;&#1099;&#1081; e-mail. &#1057;&#1086;&#1075;&#1083;&#1072;&#1089;&#1080;&#1077; &#1084;&#1086;&#1078;&#1085;&#1086; &#1086;&#1090;&#1086;&#1079;&#1074;&#1072;&#1090;&#1100; &#1074; &#1083;&#1102;&#1073;&#1086;&#1081; &#1084;&#1086;&#1084;&#1077;&#1085;&#1090;, &#1085;&#1072;&#1087;&#1080;&#1089;&#1072;&#1074; &#1085;&#1072; <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
-            <span data-lang="uk">&#1053;&#1072;&#1076;&#1072;&#1102; &#1079;&#1075;&#1086;&#1076;&#1091; &#1085;&#1072; &#1086;&#1090;&#1088;&#1080;&#1084;&#1072;&#1085;&#1085;&#1103; &#1082;&#1086;&#1084;&#1077;&#1088;&#1094;&#1110;&#1081;&#1085;&#1086;&#1111; &#1110;&#1085;&#1092;&#1086;&#1088;&#1084;&#1072;&#1094;&#1110;&#1111; &#1074;&#1110;&#1076; Olena Shevchenko (SalonBot) &#1085;&#1072; &#1074;&#1082;&#1072;&#1079;&#1072;&#1085;&#1080;&#1081; e-mail. &#1047;&#1075;&#1086;&#1076;&#1091; &#1084;&#1086;&#1078;&#1085;&#1072; &#1074;&#1110;&#1076;&#1082;&#1083;&#1080;&#1082;&#1072;&#1090;&#1080; &#1073;&#1091;&#1076;&#1100;-&#1082;&#1086;&#1083;&#1080;, &#1085;&#1072;&#1087;&#1080;&#1089;&#1072;&#1074;&#1096;&#1080; &#1085;&#1072; <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
-            <span data-lang="en">I consent to receiving commercial information from Olena Shevchenko (SalonBot) at the provided e-mail address. You can withdraw consent at any time by writing to <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+            <span data-lang="pl">Chcę otrzymywać nowości i oferty SalonBot (Olena Shevchenko) na podany e-mail i przez Telegram (art.&nbsp;398 Prawa komunikacji elektronicznej). Dobrowolne — możesz wycofać zgodę w każdej chwili, pisząc na <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+            <span data-lang="ru">Хочу получать новости и предложения SalonBot (Olena Shevchenko) на указанный e-mail и в Telegram (art.&nbsp;398 Prawo komunikacji elektronicznej). По желанию — согласие можно отозвать в любой момент, написав на <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+            <span data-lang="uk">Хочу отримувати новини та пропозиції SalonBot (Olena Shevchenko) на вказаний e-mail і в Telegram (art.&nbsp;398 Prawo komunikacji elektronicznej). За бажанням — згоду можна відкликати будь-коли, написавши на <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
+            <span data-lang="en">I want to receive SalonBot (Olena Shevchenko) news and offers at the e-mail provided and via Telegram (Art.&nbsp;398 of the Polish Electronic Communications Law). Optional — you can withdraw consent at any time by writing to <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</span>
           </label>
         </div>
         <button type="submit" class="btn-white form-submit" id="form-submit-btn">
@@ -1171,6 +1190,12 @@
           <span data-lang="uk">Надіслати заявку →</span>
           <span data-lang="en">Send request →</span>
         </button>
+        <p class="form-note">
+          <span data-lang="pl">Wysyłając zgłoszenie, potwierdzasz zapoznanie się z <a href="/privacy" target="_blank">Polityką prywatności</a>.</span>
+          <span data-lang="ru">Отправляя заявку, вы подтверждаете ознакомление с <a href="/privacy" target="_blank">Политикой конфиденциальности</a>.</span>
+          <span data-lang="uk">Надсилаючи заявку, ви підтверджуєте ознайомлення з <a href="/privacy" target="_blank">Політикою конфіденційності</a>.</span>
+          <span data-lang="en">By sending the request, you confirm you have read the <a href="/privacy" target="_blank">Privacy Policy</a>.</span>
+        </p>
       </form>
       <div id="form-success" class="form-result success" style="display:none;">
         <div id="form-success-text" style="margin-bottom:16px;"></div>
@@ -1196,47 +1221,37 @@
       &nbsp;·&nbsp;
       <a href="mailto:salonbotpl@gmail.com">Email</a>
       &nbsp;·&nbsp;
+      <a href="tel:+48536893687">+48 536 893 687</a> <span data-lang="pl" class="inl visible">(pn–sob 9–19)</span><span data-lang="ru" class="inl">(Пн–Сб 9–19)</span><span data-lang="uk" class="inl">(Пн–Сб 9–19)</span><span data-lang="en" class="inl">(Mon–Sat 9–19)</span>
+      &nbsp;·&nbsp;
       <a href="https://www.facebook.com/salonbot.app" target="_blank" rel="noopener">Facebook</a>
       &nbsp;·&nbsp;
       <a href="https://www.instagram.com/salonbot.app" target="_blank" rel="noopener">Instagram</a>
     </p>
     <p style="margin-top:10px;">
       <span data-lang="pl" class="visible">
-        <a href="#" onclick="openModal('modal-privacy');return false;">Polityka prywatności</a> &nbsp;·&nbsp;
-        <a href="#" onclick="openModal('modal-terms');return false;">Regulamin</a>
+        <a href="/privacy">Polityka prywatności</a> &nbsp;·&nbsp;
+        <a href="/terms">Regulamin</a> &nbsp;·&nbsp;
+        <a href="/google-api-disclosure">Google API</a> &nbsp;·&nbsp;
+        <a href="/subprocessors">Podmioty przetwarzające</a>
       </span>
       <span data-lang="ru">
-        <a href="#" onclick="openModal('modal-privacy');return false;">Политика конфиденциальности</a> &nbsp;·&nbsp;
-        <a href="#" onclick="openModal('modal-terms');return false;">Правила пользования</a>
+        <a href="/privacy">Политика конфиденциальности</a> &nbsp;·&nbsp;
+        <a href="/terms">Правила пользования</a> &nbsp;·&nbsp;
+        <a href="/google-api-disclosure">Google API</a> &nbsp;·&nbsp;
+        <a href="/subprocessors">Субобработчики</a>
       </span>
       <span data-lang="uk">
-        <a href="#" onclick="openModal('modal-privacy');return false;">Політика конфіденційності</a> &nbsp;·&nbsp;
-        <a href="#" onclick="openModal('modal-terms');return false;">Правила користування</a>
+        <a href="/privacy">Політика конфіденційності</a> &nbsp;·&nbsp;
+        <a href="/terms">Правила користування</a> &nbsp;·&nbsp;
+        <a href="/google-api-disclosure">Google API</a> &nbsp;·&nbsp;
+        <a href="/subprocessors">Субобробники</a>
       </span>
       <span data-lang="en">
-        <a href="#" onclick="openModal('modal-privacy');return false;">Privacy Policy</a> &nbsp;·&nbsp;
-        <a href="#" onclick="openModal('modal-terms');return false;">Terms of Service</a>
+        <a href="/privacy">Privacy Policy</a> &nbsp;·&nbsp;
+        <a href="/terms">Terms of Service</a> &nbsp;·&nbsp;
+        <a href="/google-api-disclosure">Google API</a> &nbsp;·&nbsp;
+        <a href="/subprocessors">Subprocessors</a>
       </span>
-    </p>
-    <p style="margin-top:6px;">
-      <span data-lang="pl" class="visible">
-        <a href="/privacy">Pełna polityka prywatności</a> &nbsp;·&nbsp;
-        <a href="/terms">Pełny regulamin</a> &nbsp;·&nbsp;
-      </span>
-      <span data-lang="ru">
-        <a href="/privacy">Полная политика конфиденциальности</a> &nbsp;·&nbsp;
-        <a href="/terms">Полные правила пользования</a> &nbsp;·&nbsp;
-      </span>
-      <span data-lang="uk">
-        <a href="/privacy">Повна політика конфіденційності</a> &nbsp;·&nbsp;
-        <a href="/terms">Повні правила користування</a> &nbsp;·&nbsp;
-      </span>
-      <span data-lang="en">
-        <a href="/privacy">Full Privacy Policy</a> &nbsp;·&nbsp;
-        <a href="/terms">Full Terms of Service</a> &nbsp;·&nbsp;
-      </span>
-      <a href="/google-api-disclosure">Google API</a> &nbsp;·&nbsp;
-      <a href="/subprocessors">Subprocessors</a>
     </p>
   </footer>
 
@@ -1937,10 +1952,12 @@
         name:     document.getElementById('f-name').value.trim(),
         email:    document.getElementById('f-email').value.trim(),
         telegram: document.getElementById('f-telegram').value.trim(),
+        phone:    document.getElementById('f-phone').value.trim(),
         salon:    document.getElementById('f-salon').value.trim(),
         comment:  document.getElementById('f-comment').value.trim(),
         lang:     lang,
         source:   (function () { try { return sessionStorage.getItem('sb-src') || ''; } catch (e) { return ''; } })(),
+        marketing: document.getElementById('f-consent').checked,
       };
 
       try {
@@ -1991,265 +2008,6 @@
     }
   </script>
 
-  <!-- MODAL: Polityka prywatności -->
-  <div class="modal-overlay" id="modal-privacy" onclick="closeModal('modal-privacy')">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal('modal-privacy')">&#10005;</button>
-      <div class="modal-body">
-
-      <!-- PL -->
-      <div data-lang="pl" class="visible">
-        <h2>Polityka prywatności</h2>
-        <h3>1. Administrator danych</h3>
-        <p>Administratorem danych osobowych jest <strong>Olena Shevchenko</strong>, prowadząca działalność nierejestrowaną w rozumieniu art.&nbsp;5 ust.&nbsp;1 ustawy Prawo przedsiębiorców.</p>
-        <p>Adres do korespondencji: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. Jakie dane zbieramy</h3>
-        <p>W pamięci lokalnej przeglądarki (localStorage) przechowywana jest wyłącznie preferencja językowa — nie jest to dana osobowa.</p>
-        <p><strong>Formularz kontaktowy:</strong> imię, adres e-mail, opcjonalny identyfikator Telegram oraz nazwę salonu — w celu nawiązania kontaktu, odpowiedzi na zapytanie oraz — jeżeli wyrazisz na to zgodę — przedstawienia oferty handlowej.</p>
-        <p>Jeśli skontaktujesz się z nami przez e-mail lub Telegram, przetwarzamy Twój adres e-mail lub identyfikator Telegram wyłącznie w celu udzielenia odpowiedzi.</p>
-        <h3>3. Odbiorcy danych</h3>
-        <ul><li><strong>Formspree Inc.</strong> — obsługa formularza (<a href="https://formspree.io/legal/privacy-policy" target="_blank">polityka prywatności</a>)</li><li><strong>Vercel Inc.</strong> — hosting strony (<a href="https://vercel.com/legal/privacy-policy" target="_blank">polityka prywatności</a>)</li></ul>
-        <p>Dane nie są sprzedawane ani udostępniane innym osobom trzecim.</p>
-        <h3>4. Podstawa prawna</h3>
-        <ul><li><strong>Art. 6(1)(b) RODO</strong> — obsługa zapytania z formularza</li><li><strong>Art. 6(1)(a) RODO</strong> — zgoda na informacje handlowe</li><li><strong>Art. 6(1)(f) RODO</strong> — obsługa korespondencji</li></ul>
-        <h3>5. Okres przechowywania</h3>
-        <p>Nie dłużej niż 12 miesięcy. Zgoda marketingowa — do momentu wycofania.</p>
-        <h3>6. Twoje prawa</h3>
-        <p>Dostęp, sprostowanie, usunięcie, ograniczenie, przenoszenie, sprzeciw, wycofanie zgody. Kontakt: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <p>Skarga: Prezes UODO, ul.&nbsp;Stawki&nbsp;2, 00-193 Warszawa (<a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a>).</p>
-        <h3>7. Przekazywanie danych poza EOG</h3>
-        <p>Formspree Inc. i Vercel Inc. mogą przetwarzać dane w USA — na podstawie SCC oraz EU-US Data Privacy Framework.</p>
-        <h3>8. Pliki cookies</h3>
-        <p>Strona nie używa plików cookies.</p>
-        <h3>9. Dobrowolność podania danych</h3>
-        <p>Podanie danych jest dobrowolne, ale niezbędne do odpowiedzi na zapytanie.</p>
-        <h3>10. Źródło danych</h3>
-        <p>Dane pozyskujemy bezpośrednio od osoby — formularz, e-mail lub Telegram.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/privacy" target="_blank" style="color:var(--rose);">Pełna wersja Polityki Prywatności platformy SalonBot →</a></p>
-        <p class="modal-updated">Ostatnia aktualizacja: czerwiec 2026</p>
-      </div>
-
-      <!-- RU -->
-      <div data-lang="ru">
-        <h2>Политика конфиденциальности</h2>
-        <h3>1. Администратор данных</h3>
-        <p>Администратором данных является <strong>Olena Shevchenko</strong>, осуществляющая незарегистрированную деятельность (<em>działalność nierejestrowana</em>).</p>
-        <p>Адрес для корреспонденции: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. Какие данные мы собираем</h3>
-        <p>В localStorage хранится только языковая настройка — это не персональные данные.</p>
-        <p><strong>Контактная форма:</strong> имя, e-mail, Telegram (опционально) и название салона — для связи, ответа на запрос и — при вашем согласии — отправки коммерческой информации.</p>
-        <p>При обращении напрямую по e-mail или Telegram мы обрабатываем ваши данные только для ответа.</p>
-        <h3>3. Получатели данных</h3>
-        <ul><li><strong>Formspree Inc.</strong> — обработка формы (<a href="https://formspree.io/legal/privacy-policy" target="_blank">политика</a>)</li><li><strong>Vercel Inc.</strong> — хостинг сайта (<a href="https://vercel.com/legal/privacy-policy" target="_blank">политика</a>)</li></ul>
-        <p>Данные не продаются и не передаются третьим лицам.</p>
-        <h3>4. Правовое основание</h3>
-        <ul><li><strong>Ст. 6(1)(b) GDPR</strong> — обработка запроса из формы</li><li><strong>Ст. 6(1)(a) GDPR</strong> — согласие на коммерческую информацию</li><li><strong>Ст. 6(1)(f) GDPR</strong> — обработка корреспонденции</li></ul>
-        <h3>5. Срок хранения</h3>
-        <p>Не более 12 месяцев. Маркетинговое согласие — до момента отзыва.</p>
-        <h3>6. Ваши права</h3>
-        <p>Доступ, исправление, удаление, ограничение, перенос, возражение, отзыв согласия. Контакт: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <p>Жалоба: Председатель UODO, ul.&nbsp;Stawki&nbsp;2, 00-193 Warszawa (<a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a>).</p>
-        <h3>7. Передача данных за пределы ЕЭП</h3>
-        <p>Formspree Inc. и Vercel Inc. могут обрабатывать данные в США — на основании SCC и EU-US Data Privacy Framework.</p>
-        <h3>8. Файлы cookie</h3>
-        <p>Сайт не использует файлы cookie.</p>
-        <h3>9. Добровольность предоставления данных</h3>
-        <p>Предоставление данных добровольно, но необходимо для ответа на запрос.</p>
-        <h3>10. Источник данных</h3>
-        <p>Данные получаем непосредственно от вас — через форму, e-mail или Telegram.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/privacy" target="_blank" style="color:var(--rose);">Полная версия Политики конфиденциальности платформы SalonBot →</a></p>
-        <p class="modal-updated">Последнее обновление: июнь 2026</p>
-      </div>
-
-      <!-- UK -->
-      <div data-lang="uk">
-        <h2>Політика конфіденційності</h2>
-        <h3>1. Адміністратор даних</h3>
-        <p>Адміністратором даних є <strong>Olena Shevchenko</strong>, що здійснює незареєстровану діяльність (<em>działalność nierejestrowana</em>).</p>
-        <p>Адреса для кореспонденції: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. Які дані ми збираємо</h3>
-        <p>У localStorage зберігається лише мовна настройка — це не персональні дані.</p>
-        <p><strong>Контактна форма:</strong> ім'я, e-mail, Telegram (за бажанням) та назва салону — для зв'язку, відповіді на запит та — за вашою згодою — надсилання комерційної інформації.</p>
-        <p>При зверненні напряму через e-mail або Telegram ми обробляємо ваші дані лише для відповіді.</p>
-        <h3>3. Одержувачі даних</h3>
-        <ul><li><strong>Formspree Inc.</strong> — обробка форми (<a href="https://formspree.io/legal/privacy-policy" target="_blank">політика</a>)</li><li><strong>Vercel Inc.</strong> — хостинг сайту (<a href="https://vercel.com/legal/privacy-policy" target="_blank">політика</a>)</li></ul>
-        <p>Дані не продаються та не передаються третім особам.</p>
-        <h3>4. Правова підстава</h3>
-        <ul><li><strong>Ст. 6(1)(b) GDPR</strong> — обробка запиту з форми</li><li><strong>Ст. 6(1)(a) GDPR</strong> — згода на комерційну інформацію</li><li><strong>Ст. 6(1)(f) GDPR</strong> — обробка кореспонденції</li></ul>
-        <h3>5. Строк зберігання</h3>
-        <p>Не більше 12 місяців. Маркетингова згода — до моменту відкликання.</p>
-        <h3>6. Ваші права</h3>
-        <p>Доступ, виправлення, видалення, обмеження, перенесення, заперечення, відкликання згоди. Контакт: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <p>Скарга: Prezes UODO, ul.&nbsp;Stawki&nbsp;2, 00-193 Warszawa (<a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a>).</p>
-        <h3>7. Передача даних за межі ЄЕП</h3>
-        <p>Formspree Inc. та Vercel Inc. можуть обробляти дані у США — на підставі SCC та EU-US Data Privacy Framework.</p>
-        <h3>8. Файли cookie</h3>
-        <p>Сайт не використовує файлів cookie.</p>
-        <h3>9. Добровільність надання даних</h3>
-        <p>Надання даних добровільне, але необхідне для відповіді на запит.</p>
-        <h3>10. Джерело даних</h3>
-        <p>Дані отримуємо безпосередньо від вас — через форму, e-mail або Telegram.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/privacy" target="_blank" style="color:var(--rose);">Повна версія Політики конфіденційності платформи SalonBot →</a></p>
-        <p class="modal-updated">Останнє оновлення: червень 2026</p>
-      </div>
-
-      <!-- EN -->
-      <div data-lang="en">
-        <h2>Privacy Policy</h2>
-        <h3>1. Data Controller</h3>
-        <p>The Data Controller is <strong>Olena Shevchenko</strong>, conducting unregistered business activity (<em>działalność nierejestrowana</em>).</p>
-        <p>Correspondence address: Trzciana 206E, 36-071 Trzciana, Poland.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. What data we collect</h3>
-        <p>localStorage stores only your language preference — this is not personal data.</p>
-        <p><strong>Contact form:</strong> name, e-mail, Telegram (optional) and salon name — to respond to your enquiry and — with your consent — to send commercial information.</p>
-        <p>If you contact us directly via e-mail or Telegram, we process your data solely to reply.</p>
-        <h3>3. Data recipients</h3>
-        <ul><li><strong>Formspree Inc.</strong> — form processing (<a href="https://formspree.io/legal/privacy-policy" target="_blank">privacy policy</a>)</li><li><strong>Vercel Inc.</strong> — website hosting (<a href="https://vercel.com/legal/privacy-policy" target="_blank">privacy policy</a>)</li></ul>
-        <p>Data is not sold or shared with other third parties.</p>
-        <h3>4. Legal basis</h3>
-        <ul><li><strong>Art. 6(1)(b) GDPR</strong> — processing a form enquiry</li><li><strong>Art. 6(1)(a) GDPR</strong> — consent to commercial information</li><li><strong>Art. 6(1)(f) GDPR</strong> — handling correspondence</li></ul>
-        <h3>5. Retention period</h3>
-        <p>No longer than 12 months. Marketing consent — until withdrawal.</p>
-        <h3>6. Your rights</h3>
-        <p>Access, rectification, erasure, restriction, portability, objection, withdrawal of consent. Contact: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <p>Complaint: President of UODO, ul.&nbsp;Stawki&nbsp;2, 00-193 Warsaw (<a href="https://uodo.gov.pl" target="_blank">uodo.gov.pl</a>).</p>
-        <h3>7. Transfer outside the EEA</h3>
-        <p>Formspree Inc. and Vercel Inc. may process data in the USA — under SCC and EU-US Data Privacy Framework.</p>
-        <h3>8. Cookies</h3>
-        <p>This website does not use cookies.</p>
-        <h3>9. Voluntary provision of data</h3>
-        <p>Providing data is voluntary but necessary to respond to your enquiry.</p>
-        <h3>10. Data source</h3>
-        <p>We obtain data directly from you — via the contact form, e-mail, or Telegram.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/privacy" target="_blank" style="color:var(--rose);">Full Privacy Policy of the SalonBot platform →</a></p>
-        <p class="modal-updated">Last updated: June 2026</p>
-      </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL: Regulamin -->
-  <div class="modal-overlay" id="modal-terms" onclick="closeModal('modal-terms')">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal('modal-terms')">&#10005;</button>
-      <div class="modal-body">
-
-      <!-- PL -->
-      <div data-lang="pl" class="visible">
-        <h2>Regulamin</h2>
-        <h3>1. Postanowienia ogólne</h3>
-        <p>Niniejszy Regulamin określa zasady korzystania z serwisu informacyjnego dostępnego pod adresem <strong>salonbot.pl</strong>, prowadzonego przez <strong>Olena Shevchenko</strong>, prowadzącą działalność nierejestrowaną w rozumieniu art.&nbsp;5 ust.&nbsp;1 ustawy Prawo przedsiębiorców (dalej: „Usługodawca").</p>
-        <p>Adres do korespondencji: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. Zakres usług</h3>
-        <p>Serwis salonbot.pl jest stroną informacyjną prezentującą ofertę bota Telegram do zarządzania zapisami w salonach piękności. Informacje zamieszczone w serwisie mają charakter informacyjny i nie stanowią oferty w rozumieniu art.&nbsp;66 Kodeksu cywilnego.</p>
-        <h3>3. Warunki korzystania</h3>
-        <p>3.1. Korzystanie z serwisu jest bezpłatne i nie wymaga rejestracji.</p>
-        <p>3.2. Wymagane: połączenie z Internetem, przeglądarka z obsługą JavaScript, aktywne konto e-mail lub Telegram.</p>
-        <p>3.3. Zakazane jest dostarczanie treści bezprawnych, spamu lub prób nieautoryzowanego dostępu.</p>
-        <h3>4. Odpowiedzialność</h3>
-        <p>Usługodawca nie ponosi odpowiedzialności za przerwy techniczne niezależne od niego. Serwis może zawierać odnośniki do stron trzecich — Usługodawca nie odpowiada za ich treści.</p>
-        <h3>5. Własność intelektualna</h3>
-        <p>Wszelkie treści w serwisie stanowią własność Usługodawcy i są chronione prawem autorskim.</p>
-        <h3>6. Zmiany Regulaminu</h3>
-        <p>Zmiany wchodzą w życie w terminie 7 dni od opublikowania. Do zapytań złożonych wcześniej stosuje się wersję obowiązującą w momencie składania.</p>
-        <h3>7. Reklamacje</h3>
-        <p>Reklamacje: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>. Odpowiedź w terminie 14 dni.</p>
-        <h3>8. Kontakt</h3>
-        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Strona: <a href="https://salonbot.pl">salonbot.pl</a></p>
-        <h3>9. Prawo właściwe</h3>
-        <p>Regulamin podlega prawu polskiemu.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/terms" target="_blank" style="color:var(--rose);">Pełna wersja Regulaminu platformy SalonBot →</a></p>
-        <p class="modal-updated">Ostatnia aktualizacja: czerwiec 2026</p>
-      </div>
-
-      <!-- RU -->
-      <div data-lang="ru">
-        <h2>Правила пользования</h2>
-        <h3>1. Общие положения</h3>
-        <p>Настоящие Правила определяют условия пользования информационным сервисом <strong>salonbot.pl</strong>, управляемым <strong>Olena Shevchenko</strong>, осуществляющей незарегистрированную деятельность (<em>działalność nierejestrowana</em>) (далее — «Поставщик услуг»).</p>
-        <p>Адрес для корреспонденции: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. Объём услуг</h3>
-        <p>Сервис salonbot.pl — информационный сайт, представляющий Telegram-бота для записи в салоны красоты. Информация на сайте носит информационный характер и не является офертой.</p>
-        <h3>3. Условия использования</h3>
-        <p>3.1. Пользование бесплатное и не требует регистрации.</p>
-        <p>3.2. Требуется: подключение к интернету, браузер с JavaScript, e-mail или Telegram.</p>
-        <p>3.3. Запрещена отправка спама, вредоносных данных и попытки несанкционированного доступа.</p>
-        <h3>4. Ответственность</h3>
-        <p>Поставщик не несёт ответственности за технические перебои. Сайт может содержать ссылки на сторонние ресурсы — Поставщик не отвечает за их содержание.</p>
-        <h3>5. Интеллектуальная собственность</h3>
-        <p>Все материалы сайта являются собственностью Поставщика и защищены авторским правом.</p>
-        <h3>6. Изменения Правил</h3>
-        <p>Изменения вступают в силу через 7 дней после публикации. К ранее поданным запросам применяется действовавшая версия.</p>
-        <h3>7. Рекламации</h3>
-        <p>Жалобы: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>. Ответ в течение 14 дней.</p>
-        <h3>8. Контакт</h3>
-        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Сайт: <a href="https://salonbot.pl">salonbot.pl</a></p>
-        <h3>9. Применимое право</h3>
-        <p>Правила регулируются польским законодательством.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/terms" target="_blank" style="color:var(--rose);">Полная версия Правил пользования платформой SalonBot →</a></p>
-        <p class="modal-updated">Последнее обновление: июнь 2026</p>
-      </div>
-
-      <!-- UK -->
-      <div data-lang="uk">
-        <h2>Правила користування</h2>
-        <h3>1. Загальні положення</h3>
-        <p>Ці Правила визначають умови користування інформаційним сервісом <strong>salonbot.pl</strong>, що управляється <strong>Olena Shevchenko</strong>, яка здійснює незареєстровану діяльність (<em>działalność nierejestrowana</em>) (далі — «Постачальник послуг»).</p>
-        <p>Адреса для кореспонденції: Trzciana 206E, 36-071 Trzciana, Polska.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. Обсяг послуг</h3>
-        <p>Сервіс salonbot.pl — інформаційний сайт, що представляє Telegram-бота для запису в салони краси. Інформація на сайті має інформаційний характер і не є офертою.</p>
-        <h3>3. Умови користування</h3>
-        <p>3.1. Користування безкоштовне і не потребує реєстрації.</p>
-        <p>3.2. Потрібно: підключення до інтернету, браузер з JavaScript, e-mail або Telegram.</p>
-        <p>3.3. Заборонено надсилання спаму, шкідливих даних та спроби несанкціонованого доступу.</p>
-        <h3>4. Відповідальність</h3>
-        <p>Постачальник не несе відповідальності за технічні перебої. Сайт може містити посилання на сторонні ресурси — Постачальник не відповідає за їх зміст.</p>
-        <h3>5. Інтелектуальна власність</h3>
-        <p>Усі матеріали сайту є власністю Постачальника та захищені авторським правом.</p>
-        <h3>6. Зміни Правил</h3>
-        <p>Зміни набирають чинності через 7 днів після публікації. До раніше поданих запитів застосовується чинна версія.</p>
-        <h3>7. Рекламації</h3>
-        <p>Скарги: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>. Відповідь протягом 14 днів.</p>
-        <h3>8. Контакти</h3>
-        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Вебсайт: <a href="https://salonbot.pl">salonbot.pl</a></p>
-        <h3>9. Застосовне право</h3>
-        <p>Правила регулюються польським законодавством.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/terms" target="_blank" style="color:var(--rose);">Повна версія Правил користування платформою SalonBot →</a></p>
-        <p class="modal-updated">Останнє оновлення: червень 2026</p>
-      </div>
-
-      <!-- EN -->
-      <div data-lang="en">
-        <h2>Terms of Service</h2>
-        <h3>1. General provisions</h3>
-        <p>These Terms govern the use of the informational website <strong>salonbot.pl</strong>, operated by <strong>Olena Shevchenko</strong>, conducting unregistered business activity (<em>działalność nierejestrowana</em>) (hereinafter the "Service Provider").</p>
-        <p>Correspondence address: Trzciana 206E, 36-071 Trzciana, Poland.<br>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>.</p>
-        <h3>2. Scope of services</h3>
-        <p>salonbot.pl is an informational website presenting a Telegram bot for managing bookings in beauty salons. The information is for informational purposes only and does not constitute an offer.</p>
-        <h3>3. Terms of use</h3>
-        <p>3.1. Use is free and requires no registration.</p>
-        <p>3.2. Required: internet connection, browser with JavaScript, e-mail or Telegram account.</p>
-        <p>3.3. Sending spam, malicious data, or unauthorised access attempts is prohibited.</p>
-        <h3>4. Liability</h3>
-        <p>The Service Provider is not liable for technical interruptions beyond its control. The website may contain links to third-party sites — the Service Provider is not responsible for their content.</p>
-        <h3>5. Intellectual property</h3>
-        <p>All content on the website is owned by the Service Provider and protected by copyright.</p>
-        <h3>6. Changes to Terms</h3>
-        <p>Changes take effect 7 days after publication. Enquiries submitted before the change are governed by the version in effect at the time.</p>
-        <h3>7. Complaints</h3>
-        <p>Complaints: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a>. Response within 14 days.</p>
-        <h3>8. Contact</h3>
-        <p>E-mail: <a href="mailto:salonbotpl@gmail.com">salonbotpl@gmail.com</a><br>Telegram: @SalonBotAlerts<br>Website: <a href="https://salonbot.pl">salonbot.pl</a></p>
-        <h3>9. Governing law</h3>
-        <p>These Terms are governed by Polish law.</p>
-        <p style="margin-top:24px;font-size:13px;"><a href="/terms" target="_blank" style="color:var(--rose);">Full Terms of Service for the SalonBot platform →</a></p>
-        <p class="modal-updated">Last updated: June 2026</p>
-      </div>
-
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
