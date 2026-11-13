@@ -53,11 +53,14 @@ export default async function handler(req, res) {
         body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' }),
       });
       results.telegram = r.ok;
+      // Без токена в логе: только код ответа и описание Telegram (401 = токен устарел).
+      if (!r.ok) console.error('Telegram not delivered:', r.status, (await r.text().catch(() => '')).slice(0, 200));
     } catch (e) {
       console.error('Telegram error:', e);
       results.telegram = false;
     }
   } else {
+    console.error('Telegram not configured: TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID missing');
     results.telegram = null;
   }
 
@@ -71,13 +74,19 @@ export default async function handler(req, res) {
         body: JSON.stringify({ name, email, telegram, phone: String(phone || '').slice(0, 30), salon, comment, source: String(source || '').slice(0, 80), marketing: marketing === true ? 'tak' : 'nie' }),
       });
       results.email = r.ok;
+      if (!r.ok) console.error('Formspree not delivered:', r.status, (await r.text().catch(() => '')).slice(0, 200));
     } catch (e) {
       console.error('Formspree error:', e);
       results.email = false;
     }
   } else {
+    console.error('Formspree not configured: FORMSPREE_ID missing');
     results.email = null;
   }
 
+  // Заявка не дошла никуда — не говорить «принято»: форма покажет ошибку с прямыми контактами.
+  if (results.telegram !== true && results.email !== true) {
+    return res.status(502).json({ ok: false, ...results });
+  }
   return res.status(200).json({ ok: true, ...results });
 }
