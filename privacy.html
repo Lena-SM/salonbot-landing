@@ -628,9 +628,18 @@
       try { localStorage.setItem('salonbot-lang', lang); } catch(e) {}
     }
     (function() {
+      // ?lang=uk — язык из ссылки (мастер-бот открывает страницу шторкой Telegram,
+      // где нет языка, сохранённого в браузере); иначе — сохранённый выбор.
+      var allowed = ['pl', 'ru', 'uk', 'en'];
+      var fromUrl = null;
+      try { fromUrl = new URLSearchParams(window.location.search).get('lang'); } catch(e) {}
+      if (fromUrl && allowed.indexOf(fromUrl) !== -1) {
+        setLang(fromUrl);
+        return;
+      }
       try {
         var saved = localStorage.getItem('salonbot-lang');
-        if (saved && ['pl', 'ru', 'uk', 'en'].indexOf(saved) !== -1) {
+        if (saved && allowed.indexOf(saved) !== -1) {
           setLang(saved);
         }
       } catch(e) {}
